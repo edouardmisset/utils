@@ -17,7 +17,9 @@
  * stringToBoolean('no', ['yes', 'y', 'true']) // returns false
  * ```
  */
-export function stringToBoolean(value: string,
-  truthyValues: string[] = ['true']): boolean {
+export function stringToBoolean(
+  value: string,
+  truthyValues: string[] = ['true'],
+): boolean {
   return truthyValues.includes(value.toLowerCase().trim())
 }
