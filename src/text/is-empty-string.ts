@@ -6,5 +6,6 @@
  * @param {undefined | null | string} s - The string to be checked.
  * @returns {boolean} - A boolean value indicating whether the string is empty, `null`, or `undefined`.
  */
-export const isEmptyStringOrNullish = (s: undefined | null | string): boolean =>
-  s === null || s === undefined || s.trim() === ''
+export function isEmptyStringOrNullish(s: undefined | null | string): boolean {
+  return s === null || s === undefined || s.trim() === ''
+}

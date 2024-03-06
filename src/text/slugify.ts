@@ -15,10 +15,11 @@
  * slugify('Hello World!');
  * // => 'hello-world'
  */
-export const slugify = (str: string): string =>
-  str
+export function slugify(str: string): string {
+  return str
     .toLowerCase()
     .trim()
     .replace(/[^\w\s-]/g, '')
     .replace(/[\s_-]+/g, '-')
     .replace(/^-+|-+$/g, '')
+}
