@@ -1,0 +1,19 @@
+name: Publish  # Name of the workflow
+on:  # Defines the event that triggers the workflow
+  push:  # The workflow is triggered when code is pushed
+    branches:
+      - main  # The workflow is triggered when code is pushed to the main branch
+
+jobs:  # Defines the jobs to be run
+  publish:  # Name of the job
+    runs-on: ubuntu-latest  # The type of machine to run the job on
+
+    permissions:  # Permissions for the job
+      contents: read  # Permission to read the repository contents
+      id-token: write  # Permission to write the id token
+
+    steps:  # Defines the steps to be run
+      - uses: actions/checkout@v4  # Checks out the repository using the v4 version of the checkout action
+
+      - name: Publish package  # Name of the step
+        run: npx jsr publish  # Runs the command to publish the package
