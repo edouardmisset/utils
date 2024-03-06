@@ -1,7 +1,22 @@
+/**
+ * A TypeScript type alias called `ObjectType`. It represents an object type
+ * with string keys and values of type `T`. It is a shorthand for
+ * `Record<string, T>`. This is a more explicit way to `object` type.
+ */
 // deno-lint-ignore no-explicit-any
 export type ObjectType<T = any> = Record<string, T>
 
+/**
+ * A TypeScript type alias called `Value`. It represents a primitive type in
+ * TypeScript. It is a union of `string`, `number`, `boolean`, `null`, and
+ * `undefined`. 
+ */
 export type Value = string | number | boolean | null | undefined
+/**
+ * A TypeScript type alias called `DefinedValue`. It represents a primitive type
+ * in TypeScript that is not `null` or `undefined`. It is a union of `string`,
+ * `number`, and `boolean`.
+ */
 export type DefinedValue = string | number | boolean
 
 /**
@@ -147,8 +162,8 @@ export type NotNullProperty<
   Obj extends ObjectType<unknown>,
   Key extends keyof Obj = keyof Obj,
 > = {
-  [P in Key]: Exclude<Obj[P], null>
-}
+    [P in Key]: Exclude<Obj[P], null>
+  }
 
 /**
  * A TypeScript type alias called `Prettify`.

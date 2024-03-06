@@ -1,6 +1,9 @@
 // deno-lint-ignore no-explicit-any
 type BasicNode = Record<string, any>
 
+/**
+ * The parameters for the {@link searchTree} function
+ */
 export interface SearchTreeParameters<NodeType extends BasicNode = BasicNode> {
   node: NodeType
   searchTerm: string
@@ -8,6 +11,9 @@ export interface SearchTreeParameters<NodeType extends BasicNode = BasicNode> {
   searchItemField: keyof NodeType
 }
 
+/**
+ * The parameters for the {@link searchTreeList} function
+ */
 export type SearchTreeListParameters<NodeType extends BasicNode = BasicNode> =
   & Omit<
     SearchTreeParameters<NodeType>,
