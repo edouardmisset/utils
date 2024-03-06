@@ -1,6 +1,6 @@
 {
   "name": "@edouardmisset/utils",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "exports": "./src/mod.ts",
   "tasks": {
     "dev": "deno fmt --watch & deno lint --watch & deno test --doc --allow-all --parallel --watch",

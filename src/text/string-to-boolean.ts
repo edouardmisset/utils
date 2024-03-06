@@ -8,12 +8,14 @@
  * @returns {boolean} - Returns `true` if the trimmed, lowercased `value` is included in `truthyValues`, else `false`.
  *
  * @example
+ * ```ts
  * stringToBoolean('true') // returns true
  * stringToBoolean('True') // returns true
  * stringToBoolean(' TRUE ') // returns true
  * stringToBoolean('false') // returns false
  * stringToBoolean('yes', ['yes', 'y', 'true']) // returns true
  * stringToBoolean('no', ['yes', 'y', 'true']) // returns false
+ * ```
  */
 export function stringToBoolean(value: string,
   truthyValues: string[] = ['true']): boolean {
