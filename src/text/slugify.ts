@@ -12,8 +12,10 @@
  * @returns {string} The slugified string.
  *
  * @example
- * slugify('Hello World!');
- * // => 'hello-world'
+ * ```typescript
+ * slugify('Hello World!')
+ * // returns 'hello-world'
+ * ```
  */
 export function slugify(str: string): string {
   return str

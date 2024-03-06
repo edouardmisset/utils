@@ -10,8 +10,10 @@
  * @returns {string} The string with accents removed.
  *
  * @example
- * removeAccent('résumé');
- * // => 'resume'
+ * ```typescript
+ * removeAccents('résumé')
+ * // returns 'resume'
+ * ```
  */
 export function removeAccents(str: string): string {
   return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '')

@@ -1,5 +1,15 @@
 {
   "deno.enable": true,
   "deno.lint": true,
-  "deno.unstable": false
+  "deno.unstable": false,
+  "prettier.enable": false,
+  "eslint.enable": false,
+  "editor.formatOnSave": true,
+  "editor.formatOnSaveMode": "file",
+  "editor.formatOnPaste": true,
+  "editor.defaultFormatter": "denoland.vscode-deno",
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "always",
+    "source.organizeImports": "always"
+  }
 }

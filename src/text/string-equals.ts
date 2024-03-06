@@ -1,9 +1,21 @@
 /**
- * Checks if a string equals a substring in a case-insensitive manner.
+ * Checks if a string equals another string in a case-insensitive manner.
  *
- * @param leftString - The left string to search.
- * @param rightString - The right string to search.
- * @returns A boolean indicating whether the string equals the substring.
+ * @param {string} leftString - The first string to compare.
+ * @param {string} rightString - The second string to compare.
+ * @returns {boolean} - A boolean indicating whether the two strings are equal, ignoring case.
+ *
+ * @example
+ * ```typescript
+ * stringEqualsCaseInsensitive('Hello', 'hello')
+ * // returns true
+ * ```
+ *
+ * @example
+ * ```typescript
+ * stringEqualsCaseInsensitive('Hello', 'world')
+ * // returns false
+ * ```
  */
 export function stringEqualsCaseInsensitive(
   leftString: string,

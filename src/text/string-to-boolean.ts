@@ -8,7 +8,7 @@
  * @returns {boolean} - Returns `true` if the trimmed, lowercased `value` is included in `truthyValues`, else `false`.
  *
  * @example
- * ```ts
+ * ```typescript
  * stringToBoolean('true') // returns true
  * stringToBoolean('True') // returns true
  * stringToBoolean(' TRUE ') // returns true

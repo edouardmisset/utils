@@ -1,7 +1,7 @@
 import { removeAccents } from './remove-accents.ts'
 import { assertEquals } from 'asserts'
 
-Deno.test("removeAccents", async t => {
+Deno.test('removeAccents', async (t) => {
   await t.step('should remove accents from string', () => {
     assertEquals(removeAccents('Héllo Wórld'), 'Hello World')
   })

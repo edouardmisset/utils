@@ -9,21 +9,28 @@
  * @returns {boolean} Returns true if the string includes the substring, false otherwise.
  *
  * @example
+ * ```typescript
  * // returns true
  * stringIncludesCaseInsensitive('Hello World', 'hello')
+ * ```
  *
  * @example
+ * ```typescript
  * // returns false
  * stringIncludesCaseInsensitive('Hello World', 'hello', { caseSensitive: true })
+ * ```
  */
 export function stringIncludesCaseInsensitive(
   string: string,
   subString: string,
-  { caseSensitive }: { caseSensitive?: boolean } = { caseSensitive: false }
+  { caseSensitive }: { caseSensitive?: boolean } = { caseSensitive: false },
 ): boolean {
   return caseSensitive
     ? string.includes(subString)
     : string.toLowerCase().includes(subString.toLowerCase())
 }
 
+/**
+ * Alias for {@link stringIncludesCaseInsensitive}.
+ */
 export const stringIncludes = stringIncludesCaseInsensitive

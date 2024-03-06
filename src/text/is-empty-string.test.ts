@@ -1,7 +1,7 @@
 import { isEmptyStringOrNullish } from './is-empty-string.ts'
 import { assertEquals } from 'asserts'
 
-Deno.test("isEmptyStringOrNullish", async t => {
+Deno.test('isEmptyStringOrNullish', async (t) => {
   await t.step('should return true for null', () => {
     assertEquals(isEmptyStringOrNullish(null), true)
   })

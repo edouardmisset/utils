@@ -1,4 +1,4 @@
-import { assertEquals } from "asserts"
+import { assertEquals } from 'asserts'
 
 import { stringIncludesCaseInsensitive } from './string-includes.ts'
 
