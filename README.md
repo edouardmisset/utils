@@ -10,10 +10,10 @@ Import it in your file:
 
 ```ts
 // The entire lib
-import * as mod from '@edouardmisset/utils'
+import * as mod from 'jsr:@edouardmisset/utils@^$MODULE_VERSION'
 
 // Only selected function
-import { capitalize } from '@edouardmisset/utils'
+import { capitalize } from 'jsr:@edouardmisset/utils@^$MODULE_VERSION'
 ```
 
 ### npm / yarn / pnpm / bun
