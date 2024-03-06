@@ -6,9 +6,9 @@
     "asserts": "https://deno.land/std@0.218.2/assert/assert_equals.ts"
   },
   "tasks": {
-    "dev": "deno fmt --watch & deno lint --watch & deno test --doc --allow-all --parallel --watch",
-    "test": "deno test --doc --allow-all --parallel --coverage",
-    "coverage:gen": "deno coverage coverage --lcov --output=coverage/cov.lcov",
+    "dev": "deno fmt --watch & deno lint --watch & deno test --parallel --watch",
+    "test": "deno test --coverage",
+    "coverage:gen": "deno coverage ./coverage --lcov --output=./coverage/cov.lcov",
     "coverage:view": "deno coverage --html coverage",
     "test:watch": "jest --watch"
   },
