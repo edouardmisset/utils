@@ -1,6 +1,6 @@
 # Utils
 
-Collection of utilities functions written in Typescript
+This package offers a collection of utility functions written in Typescript
 
 ## Install
 
@@ -37,3 +37,14 @@ bunx jsr add @edouardmisset/utils
 ```ts
 capitalize('hello') // returns "Hello"
 ```
+
+## Issues
+
+Please report any issues on
+[GitHub](https://github.com/edouardmisset/utils/issues)
+
+[PR](https://github.com/edouardmisset/utils/pulls) welcome
+
+## License
+
+[MIT](./LICENSE)
