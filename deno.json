@@ -1,0 +1,66 @@
+{
+  "name": "@edouardmisset/utils",
+  "version": "0.1.0",
+  "exports": "./src/mod.ts",
+  "tasks": {
+    "dev": "deno fmt --watch & deno lint --watch & deno test --doc --allow-all --parallel --watch",
+    "test": "deno test --doc --allow-all --parallel --coverage",
+    "coverage:gen": "deno coverage coverage --lcov --output=coverage/cov.lcov",
+    "coverage:view": "deno coverage --html coverage",
+    "test:watch": "jest --watch"
+  },
+  "compilerOptions": {
+    "strict": true,
+    "useUnknownInCatchVariables": true,
+    "noImplicitOverride": true
+  },
+  "exclude": [
+    ".git",
+    "cov",
+    "coverage",
+    "docs"
+  ],
+  "lint": {
+    "rules": {
+      "tags": [
+        "recommended"
+      ],
+      "include": [
+        "camelcase",
+        "default-param-last",
+        "eqeqeq",
+        "explicit-function-return-type",
+        "explicit-module-boundary-types",
+        "no-const-assign",
+        "no-eval",
+        "no-implicit-declare-namespace-export",
+        "no-non-null-asserted-optional-chain",
+        "no-non-null-assertion",
+        "no-self-compare",
+        "single-var-declarator"
+      ]
+    },
+    "include": [
+      "."
+    ]
+  },
+  "fmt": {
+    "useTabs": false,
+    "lineWidth": 80,
+    "indentWidth": 2,
+    "semiColons": false,
+    "singleQuote": true,
+    "include": [
+      "."
+    ]
+  },
+  "test": {
+    "include": [
+      "src"
+    ],
+    "exclude": [
+      "src/testdata/",
+      "data/fixtures/**/*.ts"
+    ]
+  }
+}
