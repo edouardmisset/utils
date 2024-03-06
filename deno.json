@@ -1,9 +1,9 @@
 {
   "name": "@edouardmisset/utils",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "exports": "./src/mod.ts",
   "imports": {
-    "asserts": "https://deno.land/std@0.218.2/assert/assert_equals.ts"
+    "asserts": "https://deno.land/std@0.218.2/assert/mod.ts"
   },
   "tasks": {
     "check": "deno lint && deno fmt && deno test --coverage",
