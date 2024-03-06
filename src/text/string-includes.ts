@@ -31,6 +31,6 @@ export function stringIncludesCaseInsensitive(
 }
 
 /**
- * Alias for {@link stringIncludesCaseInsensitive}.
+ * Alias for {@link stringIncludesCaseInsensitive}
  */
 export const stringIncludes = stringIncludesCaseInsensitive

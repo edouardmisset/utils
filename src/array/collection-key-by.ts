@@ -77,6 +77,6 @@ export function collectionKeyBy<Obj extends Record<string, unknown>,
 }
 
 /**
- * @description Alias for the {@link collectionKeyBy} function.
+ * Alias for the {@link collectionKeyBy} function
  */
 export const normalizeBy = collectionKeyBy

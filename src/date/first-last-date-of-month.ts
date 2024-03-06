@@ -14,8 +14,9 @@
  * firstDateOfMonth()
  * // Returns the first date of the current month
  */
-export const firstDateOfMonth = (date: Date = new Date()): Date =>
-  new Date(date.getFullYear(), date.getMonth(), 1)
+export function firstDateOfMonth(date: Date = new Date()): Date {
+  return new Date(date.getFullYear(), date.getMonth(), 1)
+}
 
 /**
  * Returns the last date of the month for a given date.
@@ -33,5 +34,6 @@ export const firstDateOfMonth = (date: Date = new Date()): Date =>
  * lastDateOfMonth()
  * // Returns the last date of the current month
  */
-export const lastDateOfMonth = (date: Date = new Date()): Date =>
-  new Date(date.getFullYear(), date.getMonth() + 1, 0)
+export function lastDateOfMonth(date: Date = new Date()): Date {
+  return new Date(date.getFullYear(), date.getMonth() + 1, 0)
+}
