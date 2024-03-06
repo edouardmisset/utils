@@ -27,10 +27,14 @@
  * const count = countBy(arr, isCherry); // 3
  * ```
  */
-export function countBy<T>(arr: T[], checkFunction: (arg: T) => boolean): number {
-  return arr.reduce((count, value) =>
-    checkFunction(value) ? count + 1 : count
-    , 0)
+export function countBy<T>(
+  arr: T[],
+  checkFunction: (arg: T) => boolean,
+): number {
+  return arr.reduce(
+    (count, value) => checkFunction(value) ? count + 1 : count,
+    0,
+  )
 }
 
 /**
@@ -51,7 +55,9 @@ export function countBy<T>(arr: T[], checkFunction: (arg: T) => boolean): number
  * // returns { '1': 2, '2': 1, '3': 1 }
  * ```
  */
-export function frequency<T extends string | number>(arr: T[]): Record<T, number> {
+export function frequency<T extends string | number>(
+  arr: T[],
+): Record<T, number> {
   return arr.reduce((acc: Record<T, number>, val: T) => {
     acc[val] = (acc[val] ?? 0) + 1
     return acc

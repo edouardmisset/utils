@@ -43,7 +43,9 @@ function isDateRangeOption(option: FilterOptions): option is StartAndEndDate {
  * @param {FilterOptions} option - The option to check.
  * @returns {boolean} - True if the option is of type DurationAndRefDate, false otherwise.
  */
-function isReferenceDateOption(option: FilterOptions): option is DurationAndRefDate {
+function isReferenceDateOption(
+  option: FilterOptions,
+): option is DurationAndRefDate {
   return 'referenceDate' in option && 'duration' in option
 }
 
@@ -54,8 +56,9 @@ function isReferenceDateOption(option: FilterOptions): option is DurationAndRefD
  * @returns {boolean} - True if all dates are valid, false otherwise.
  */
 function isValidDate(...dates: unknown[]): boolean {
-  for (const date of dates)
+  for (const date of dates) {
     if (!(date instanceof Date) || Number.isNaN(date)) return false
+  }
 
   return true
 }
@@ -79,7 +82,11 @@ function isYearMatch(dateValue: Date, year: number): boolean {
  * @param {Date} endDate - The end date of the range.
  * @returns {boolean} - True if the date is within the range, false otherwise.
  */
-function isWithinDateRange(dateValue: Date, startDate: Date, endDate: Date): boolean {
+function isWithinDateRange(
+  dateValue: Date,
+  startDate: Date,
+  endDate: Date,
+): boolean {
   return startDate <= dateValue && dateValue <= endDate
 }
 
@@ -91,7 +98,11 @@ function isWithinDateRange(dateValue: Date, startDate: Date, endDate: Date): boo
  * @param {number} duration - The duration from the reference date.
  * @returns {boolean} - True if the date is within the duration, false otherwise.
  */
-function isWithinDuration(dateValue: Date, referenceDate: Date, duration: number): boolean {
+function isWithinDuration(
+  dateValue: Date,
+  referenceDate: Date,
+  duration: number,
+): boolean {
   const refTime = referenceDate.getTime()
   const valueTime = dateValue.getTime()
   return refTime - duration <= valueTime && valueTime <= refTime
@@ -104,7 +115,8 @@ function isWithinDuration(dateValue: Date, referenceDate: Date, duration: number
  * @returns {boolean} - True if the value is compatible with Date, false otherwise.
  */
 function isDateCompatible(val: unknown): val is Date | number | string {
-  return typeof val === 'string' || val instanceof Date || typeof val === 'number'
+  return typeof val === 'string' || val instanceof Date ||
+    typeof val === 'number'
 }
 
 /**
@@ -120,7 +132,7 @@ function isDateCompatible(val: unknown): val is Date | number | string {
  * // Filter an array of objects by a year
  * const data = [{ date: new Date(2020, 0, 1) }, { date: new Date(2021, 0, 1) }]
  * const filter = createFilter('date', { year: 2020 })
- * const result = data.filter(filter) 
+ * const result = data.filter(filter)
  * // [{ date: new Date(2020, 0, 1) }]
  * ```
  *
@@ -129,7 +141,7 @@ function isDateCompatible(val: unknown): val is Date | number | string {
  * // Filter an array of objects by a date range
  * const data = [{ date: new Date(2020, 0, 1) }, { date: new Date(2021, 0, 1) }]
  * const filter = createFilter('date', { startDate: new Date(2020, 6, 1), endDate: new Date(2020, 11, 31) })
- * const result = data.filter(filter) 
+ * const result = data.filter(filter)
  * // []
  * ```
  *
@@ -138,11 +150,14 @@ function isDateCompatible(val: unknown): val is Date | number | string {
  * // Filter an array of objects by a duration from a reference date
  * const data = [{ date: new Date(2020, 0, 1) }, { date: new Date(2021, 0, 1) }]
  * const filter = createFilter('date', { referenceDate: new Date(2020, 6, 1), duration: 1000 * 60 * 60 * 24 * 180 }) // 180 days
- * const result = data.filter(filter) 
+ * const result = data.filter(filter)
  * // [{ date: new Date(2020, 0, 1) }]
  * ```
  */
-export function createFilter<Obj>(dateKey: keyof Obj, options: FilterOptions = {} as FilterOptions): (obj: Obj) => boolean {
+export function createFilter<Obj>(
+  dateKey: keyof Obj,
+  options: FilterOptions = {} as FilterOptions,
+): (obj: Obj) => boolean {
   return (obj: Obj): boolean => {
     const val = obj[dateKey]
     if (!isDateCompatible(val)) return true
@@ -155,15 +170,17 @@ export function createFilter<Obj>(dateKey: keyof Obj, options: FilterOptions = {
     if (
       isDateRangeOption(options) &&
       isValidDate(options.startDate, options.endDate)
-    )
+    ) {
       return isWithinDateRange(dateValue, options.startDate, options.endDate)
+    }
 
-    if (isReferenceDateOption(options) && isValidDate(options.referenceDate))
+    if (isReferenceDateOption(options) && isValidDate(options.referenceDate)) {
       return isWithinDuration(
         dateValue,
         options.referenceDate,
         options.duration,
       )
+    }
 
     // If no valid options are provided, include the item in the result
     return true

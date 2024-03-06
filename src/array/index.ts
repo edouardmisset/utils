@@ -11,4 +11,3 @@ export * from './min-by.ts'
 export * from './select-by.ts'
 export * from './sort-by.ts'
 export * from './sort.ts'
-

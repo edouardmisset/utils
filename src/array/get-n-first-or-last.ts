@@ -11,11 +11,11 @@
  *
  * @example
  * ```typescript
- * takeEnd([1, 2, 3, 4]) 
+ * takeEnd([1, 2, 3, 4])
  * // Returns [4]
- * takeEnd([1, 2, 3, 4], 2) 
+ * takeEnd([1, 2, 3, 4], 2)
  * // Returns [3, 4]
- * takeEnd([1, 2, 3, 4], -2) 
+ * takeEnd([1, 2, 3, 4], -2)
  * // Returns [3, 4]
  * ```
  */

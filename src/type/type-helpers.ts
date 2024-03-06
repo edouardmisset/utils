@@ -9,7 +9,7 @@ export type ObjectType<T = any> = Record<string, T>
 /**
  * A TypeScript type alias called `Value`. It represents a primitive type in
  * TypeScript. It is a union of `string`, `number`, `boolean`, `null`, and
- * `undefined`. 
+ * `undefined`.
  */
 export type Value = string | number | boolean | null | undefined
 /**
@@ -162,8 +162,8 @@ export type NotNullProperty<
   Obj extends ObjectType<unknown>,
   Key extends keyof Obj = keyof Obj,
 > = {
-    [P in Key]: Exclude<Obj[P], null>
-  }
+  [P in Key]: Exclude<Obj[P], null>
+}
 
 /**
  * A TypeScript type alias called `Prettify`.

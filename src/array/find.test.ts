@@ -1,7 +1,7 @@
 import { assertEquals, assertThrows } from 'asserts'
 import { createFindBy } from './find.ts'
 
-Deno.test("createFindBy", async t => {
+Deno.test('createFindBy', async (t) => {
   const objects = [{ id: 1, name: 'Object 1' }, { id: 2, name: 'Object 2' }]
 
   await t.step('should find an object by a specific key-value pair', () => {
@@ -18,9 +18,12 @@ Deno.test("createFindBy", async t => {
     assertEquals(result, { id: 2, name: 'Object 2' })
   })
 
-  await t.step('should throw an error if the key does not exist in the object', () => {
-    const findByNonexistentKey = createFindBy('nonexistentKey')
-    const findObject = findByNonexistentKey('value')
-    assertThrows(() => objects.find(findObject))
-  })
+  await t.step(
+    'should throw an error if the key does not exist in the object',
+    () => {
+      const findByNonexistentKey = createFindBy('nonexistentKey')
+      const findObject = findByNonexistentKey('value')
+      assertThrows(() => objects.find(findObject))
+    },
+  )
 })

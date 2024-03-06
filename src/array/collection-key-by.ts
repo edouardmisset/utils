@@ -24,14 +24,13 @@
  * console.log(keyedObject); // Outputs: undefined
  * ```
  */
-export function keyBy<Obj extends Record<string, unknown>,
-  Key extends keyof Obj>(array: Obj[],
-    key: Key): undefined | Record<string, Obj> {
-  return array.length === 0
-    ? undefined
-    : (Object.fromEntries(
-      array.map(value => [String(key ? value[key] : value), value])
-    ) as Record<string, Obj>)
+export function keyBy<
+  Obj extends Record<string, unknown>,
+  Key extends keyof Obj,
+>(array: Obj[], key: Key): undefined | Record<string, Obj> {
+  return array.length === 0 ? undefined : (Object.fromEntries(
+    array.map((value) => [String(key ? value[key] : value), value]),
+  ) as Record<string, Obj>)
 }
 
 /**
@@ -68,9 +67,13 @@ export function keyBy<Obj extends Record<string, unknown>,
  * console.log(keyedObject); // Outputs: undefined
  * ```
  */
-export function collectionKeyBy<Obj extends Record<string, unknown>,
-  Key extends keyof Obj>(collection: Obj[] | Record<string, Obj>,
-    key: Key): Record<string, Obj> | undefined {
+export function collectionKeyBy<
+  Obj extends Record<string, unknown>,
+  Key extends keyof Obj,
+>(
+  collection: Obj[] | Record<string, Obj>,
+  key: Key,
+): Record<string, Obj> | undefined {
   return Array.isArray(collection)
     ? keyBy(collection, key)
     : keyBy(Object.values(collection), key)

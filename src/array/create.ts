@@ -36,9 +36,9 @@ export function createArray<T = number>(
 /**
  * Creates an array of numbers (positive and/or negative) progressing from
  * `start` up to `end` (included).
- * 
+ *
  * If `end` is not provided, it defaults to `start` with `start` then set to 0.
- * 
+ *
  * **NOTE**: The output of this function is sorted in ascending order.
  *
  * @default step = 1
@@ -81,7 +81,11 @@ export function range(start: number, end?: number, step: number = 1): number[] {
   const lowerBound = Math.min(adjustedStart, adjustedEnd)
   const upperBound = Math.max(adjustedStart, adjustedEnd)
 
-  const length = Math.ceil(Math.abs(upperBound - lowerBound) / Math.abs(step)) + 1
+  const length = Math.ceil(Math.abs(upperBound - lowerBound) / Math.abs(step)) +
+    1
 
-  return Array.from({ length }, (_, i) => lowerBound + i * ((step < 0) ? -step : step)).sort((a, b) => a - b)
+  return Array.from(
+    { length },
+    (_, i) => lowerBound + i * ((step < 0) ? -step : step),
+  ).sort((a, b) => a - b)
 }

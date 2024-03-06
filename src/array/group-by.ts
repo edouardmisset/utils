@@ -20,10 +20,10 @@ export function groupBy<
   Obj extends Record<string, unknown>,
   Key extends keyof Obj,
   Value extends Obj[Key] & (string | number),
-  GroupedObject extends Record<Value, Obj[]>
+  GroupedObject extends Record<Value, Obj[]>,
 >(
   arr: Obj[],
-  key: Key
+  key: Key,
 ): GroupedObject {
   return arr.reduce(
     (grouped, element) =>
@@ -33,6 +33,6 @@ export function groupBy<
           element,
         ],
       }),
-    {} as GroupedObject
+    {} as GroupedObject,
   )
 }

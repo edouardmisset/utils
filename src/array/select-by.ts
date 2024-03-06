@@ -27,7 +27,7 @@ export function selectBy<
   Obj extends Record<string, unknown>,
   Key extends keyof Obj,
 >(arr: Obj[], key: Key): Obj[Key][] {
-  return arr.flatMap(item => (Object.hasOwn(item, key) ? [item[key]] : []))
+  return arr.flatMap((item) => (Object.hasOwn(item, key) ? [item[key]] : []))
 }
 
 /**
@@ -52,8 +52,11 @@ export function selectBy<
  * console.log(selectByName(obj)) // Outputs: 'John'
  * ```
  */
-export function createSelectBy<Obj extends Record<string, unknown>, Key extends keyof Obj>(key: Key): (item: Obj) => Obj[Key] {
-  return item => item[key]
+export function createSelectBy<
+  Obj extends Record<string, unknown>,
+  Key extends keyof Obj,
+>(key: Key): (item: Obj) => Obj[Key] {
+  return (item) => item[key]
 }
 
 /**
@@ -83,6 +86,12 @@ export function createSelectBy<Obj extends Record<string, unknown>, Key extends 
  * console.log(transformed) // Outputs: ['JOHN', 'JANE']
  * ```
  */
-export function selectAndTransform<Obj extends Record<string, unknown>, Key extends keyof Obj, R>(arr: Obj[], key: Key, transform: (value: Obj[Key]) => R): R[] {
-  return arr.flatMap(item => (Object.hasOwn(item, key) ? [transform(item[key])] : []))
+export function selectAndTransform<
+  Obj extends Record<string, unknown>,
+  Key extends keyof Obj,
+  R,
+>(arr: Obj[], key: Key, transform: (value: Obj[Key]) => R): R[] {
+  return arr.flatMap(
+    (item) => (Object.hasOwn(item, key) ? [transform(item[key])] : []),
+  )
 }

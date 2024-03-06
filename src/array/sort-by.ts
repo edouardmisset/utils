@@ -23,7 +23,11 @@
  * console.log(sorted) // Outputs: [{ name: 'John', age: 30 }, { name: 'Jane', age: 25 }]
  * ```
  */
-export function sortBy<Obj extends Record<string, unknown>>(arr: Obj[], property: keyof Obj, ascending: boolean = true): Obj[] {
+export function sortBy<Obj extends Record<string, unknown>>(
+  arr: Obj[],
+  property: keyof Obj,
+  ascending: boolean = true,
+): Obj[] {
   return [...arr].sort((left, right) => {
     const leftValue = left[property]
     const rightValue = right[property]
