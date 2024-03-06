@@ -1,16 +1,15 @@
 {
   "name": "@edouardmisset/utils",
-  "version": "0.1.5",
+  "version": "0.2.0",
   "exports": "./src/mod.ts",
   "imports": {
     "asserts": "https://deno.land/std@0.218.2/assert/assert_equals.ts"
   },
   "tasks": {
-    "dev": "deno fmt --watch & deno lint --watch & deno test --parallel --watch",
-    "test": "deno test --coverage",
+    "check": "deno lint && deno fmt && deno test --coverage",
     "coverage:gen": "deno coverage ./coverage --lcov --output=./coverage/cov.lcov",
     "coverage:view": "deno coverage --html coverage",
-    "test:watch": "jest --watch"
+    "test:watch": "deno test --watch"
   },
   "compilerOptions": {
     "strict": true,
