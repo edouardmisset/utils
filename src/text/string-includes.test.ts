@@ -1,4 +1,4 @@
-import { assertEquals } from 'https://deno.land/std@0.218.2/assert/assert_equals.ts'
+import { assertEquals } from "asserts"
 
 import { stringIncludesCaseInsensitive } from './string-includes.ts'
 
