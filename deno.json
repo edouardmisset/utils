@@ -1,12 +1,12 @@
 {
   "name": "@edouardmisset/utils",
-  "version": "0.6.1",
+  "version": "0.7.0",
   "exports": "./src/mod.ts",
   "imports": {
     "asserts": "https://deno.land/std@0.218.2/assert/mod.ts"
   },
   "tasks": {
-    "check": "deno lint && deno fmt && deno test --coverage",
+    "check": "deno lint && deno fmt && deno test --reporter=dot --coverage",
     "docs": "deno doc --html --name='utils' ./src/mod.ts",
     "coverage:gen": "deno coverage ./coverage --lcov --output=./coverage/cov.lcov",
     "coverage:view": "deno coverage --html coverage",
