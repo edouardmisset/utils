@@ -11,16 +11,16 @@
  * ```typescript
  * const array = [{ id: 1, value: 10 }, { id: 2, value: 5 }, { id: 3, value: 20 }]
  * const key = 'value'
- * const minObject = minBy(array, key)
- * console.log(minObject) // Outputs: { id: 2, value: 5 }
+ * minBy(array, key)
+ * // returns { id: 2, value: 5 }
  * ```
  *
  * @example
  * ```typescript
  * const emptyArray = []
  * const key = 'value'
- * const minObject = minBy(emptyArray, key)
- * console.log(minObject) // Outputs: undefined
+ * minBy(emptyArray, key)
+ * // returns undefined
  * ```
  */
 export function minBy<Obj extends Record<string, unknown>>(

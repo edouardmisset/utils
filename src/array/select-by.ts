@@ -11,16 +11,16 @@
  * ```typescript
  * const array = [{ a: 1, b: 2 }, { a: 3, b: 4 }]
  * const key = 'b'
- * const selected = selectBy(array, key)
- * console.log(selected) // Outputs: [2, 4]
+ * selectBy(array, key)
+ * // returns [2, 4]
  * ```
  *
  * @example
  * ```typescript
  * const array = [{ name: 'John', age: 30 }, { name: 'Jane', age: 25 }]
  * const key = 'name'
- * const selected = selectBy(array, key)
- * console.log(selected) // Outputs: ['John', 'Jane']
+ * selectBy(array, key)
+ * // returns ['John', 'Jane']
  * ```
  */
 export function selectBy<
@@ -41,15 +41,15 @@ export function selectBy<
  * @example
  * ```typescript
  * const selectById = createSelectBy<{ id: number, name: string }>('id')
- * const obj = { id: 1, name: 'John' }
- * console.log(selectById(obj)) // Outputs: 1
+ * selectById({ id: 1, name: 'John' })
+ * // returns 1
  * ```
  *
  * @example
  * ```typescript
  * const selectByName = createSelectBy<{ id: number, name: string }>('name')
- * const obj = { id: 1, name: 'John' }
- * console.log(selectByName(obj)) // Outputs: 'John'
+ * selectByName({ id: 1, name: 'John' })
+ * // returns 'John'
  * ```
  */
 export function createSelectBy<
@@ -74,16 +74,16 @@ export function createSelectBy<
  * ```typescript
  * const array = [{ a: 1, b: 2 }, { a: 3, b: 4 }]
  * const key = 'b'
- * const transformed = selectAndTransform(array, key, value => value * 2)
- * console.log(transformed) // Outputs: [4, 8]
+ * selectAndTransform(array, key, value => value * 2)
+ * // returns [4, 8]
  * ```
  *
  * @example
  * ```typescript
  * const array = [{ name: 'John', age: 30 }, { name: 'Jane', age: 25 }]
  * const key = 'name'
- * const transformed = selectAndTransform(array, key, name => name.toUpperCase())
- * console.log(transformed) // Outputs: ['JOHN', 'JANE']
+ * selectAndTransform(array, key, name => name.toUpperCase())
+ * // returns ['JOHN', 'JANE']
  * ```
  */
 export function selectAndTransform<

@@ -8,21 +8,21 @@
  *
  * @example
  * ```ts
- * const numbers = createArray(5, (_, index) => transform1(_, index * 2);
- * console.log(numbers); // [0, 2, 4, 6, 8]
+ * createArray(5, (_, index) => transform1(_, index * 2);
+ * // returns [0, 2, 4, 6, 8]
  * ```
  *
  * @example
  * ```ts
- * const strings = createArray(5, (_, index) => return `Item ${index}`);
- * console.log(strings); // ['Item 0', 'Item 1', 'Item 2', 'Item 3', 'Item 4']
+ * createArray(5, (_, index) => return `Item ${index}`);
+ * // returns ['Item 0', 'Item 1', 'Item 2', 'Item 3', 'Item 4']
  * ```
  *
  * @example
  * ```ts
  * // Create an array of numbers using the default transform function
- * const defaultNumbers = createArray(5);
- * console.log(defaultNumbers); // [0, 1, 2, 3, 4]
+ * createArray(5);
+ * // returns [0, 1, 2, 3, 4]
  * ```
  */
 export function createArray<T = number>(

@@ -11,16 +11,16 @@
  * ```typescript
  * const array = [{ id: 1, value: 10 }, { id: 2, value: 5 }, { id: 3, value: 20 }]
  * const key = 'value'
- * const maxObject = maxBy(array, key)
- * console.log(maxObject) // Outputs: { id: 3, value: 20 }
+ * maxBy(array, key)
+ * // returns { id: 3, value: 20 }
  * ```
  *
  * @example
  * ```typescript
  * const emptyArray = []
  * const key = 'value'
- * const maxObject = maxBy(emptyArray, key)
- * console.log(maxObject) // Outputs: undefined
+ * maxBy(emptyArray, key)
+ * // returns undefined
  * ```
  */
 export function maxBy<Obj extends Record<string, unknown>>(

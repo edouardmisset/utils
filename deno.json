@@ -1,14 +1,14 @@
 {
   "name": "@edouardmisset/utils",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "exports": "./src/mod.ts",
   "imports": {
     "asserts": "https://deno.land/std@0.218.2/assert/mod.ts"
   },
   "tasks": {
-    "check": "deno lint && deno fmt && deno test --reporter=dot --coverage",
+    "check": "deno lint && deno fmt && deno test --reporter=dot --coverage --parallel",
     "docs": "deno doc --html --name='utils' ./src/mod.ts",
-    "coverage:gen": "deno coverage ./coverage --lcov --output=./coverage/cov.lcov",
+    "coverage:gen": "deno coverage ./coverage --lcov --output=./coverage/lcov.info",
     "coverage:view": "deno coverage --html coverage",
     "test:watch": "deno test --watch"
   },

@@ -12,16 +12,16 @@
  * ```typescript
  * const array = [{ id: 1, name: 'Alice' }, { id: 2, name: 'Bob' }, { id: 3, name: 'Charlie' }];
  * const key = 'id';
- * const keyedObject = keyBy(array, key);
- * console.log(keyedObject); // Outputs: { '1': { id: 1, name: 'Alice' }, '2': { id: 2, name: 'Bob' }, '3': { id: 3, name: 'Charlie' } }
+ * keyBy(array, key);
+ * // returns { '1': { id: 1, name: 'Alice' }, '2': { id: 2, name: 'Bob' }, '3': { id: 3, name: 'Charlie' } }
  * ```
  *
  * @example
  * ```typescript
  * const emptyArray = [];
  * const key = 'id';
- * const keyedObject = keyBy(emptyArray, key);
- * console.log(keyedObject); // Outputs: undefined
+ * keyBy(emptyArray, key);
+ * // returns undefined
  * ```
  */
 export function keyBy<
@@ -47,24 +47,24 @@ export function keyBy<
  * ```typescript
  * const array = [{ id: 1, name: 'Alice' }, { id: 2, name: 'Bob' }, { id: 3, name: 'Charlie' }];
  * const key = 'id';
- * const keyedObject = collectionKeyBy(array, key);
- * console.log(keyedObject); // Outputs: { '1': { id: 1, name: 'Alice' }, '2': { id: 2, name: 'Bob' }, '3': { id: 3, name: 'Charlie' } }
+ * collectionKeyBy(array, key);
+ * // returns { '1': { id: 1, name: 'Alice' }, '2': { id: 2, name: 'Bob' }, '3': { id: 3, name: 'Charlie' } }
  * ```
  *
  * @example
  * ```typescript
  * const object = { a: { id: 1, name: 'Alice' }, b: { id: 2, name: 'Bob' }, c: { id: 3, name: 'Charlie' } };
  * const key = 'id';
- * const keyedObject = collectionKeyBy(object, key);
- * console.log(keyedObject); // Outputs: { '1': { id: 1, name: 'Alice' }, '2': { id: 2, name: 'Bob' }, '3': { id: 3, name: 'Charlie' } }
+ * collectionKeyBy(object, key);
+ * // returns { '1': { id: 1, name: 'Alice' }, '2': { id: 2, name: 'Bob' }, '3': { id: 3, name: 'Charlie' } }
  * ```
  *
  * @example
  * ```typescript
  * const emptyArray = [];
  * const key = 'id';
- * const keyedObject = collectionKeyBy(emptyArray, key);
- * console.log(keyedObject); // Outputs: undefined
+ * collectionKeyBy(emptyArray, key);
+ * // returns undefined
  * ```
  */
 export function collectionKeyBy<
