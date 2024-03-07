@@ -15,9 +15,23 @@ export type Value = string | number | boolean | null | undefined
 /**
  * A TypeScript type alias called `DefinedValue`. It represents a primitive type
  * in TypeScript that is not `null` or `undefined`. It is a union of `string`,
- * `number`, and `boolean`.
+ * `number`, `boolean`, `symbol` (and `bigint` if the target is ES2020 or later ).
  */
-export type DefinedValue = string | number | boolean
+export type DefinedValue = string | number | boolean | bigint | symbol
+
+/**
+ * A TypeScript type alias called `Primitive`. It represents a primitive type in
+ * JavaScript. It is a union of `string`, `number`, `boolean`, `bigint`, `symbol`,
+ * `undefined`, and `null`.
+ */
+export type Primitive =
+  | string
+  | number
+  | boolean
+  | bigint
+  | symbol
+  | undefined
+  | null
 
 /**
  * Constructs a type by overriding some properties of an original type with properties from another type.
