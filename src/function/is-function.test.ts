@@ -1,9 +1,9 @@
 import { assert } from 'asserts'
 import { isFunction } from './is-function.ts'
 
-Deno.test("isFunction", async t => {
+Deno.test('isFunction', async (t) => {
   await t.step('should return true for function', () => {
-    const result = isFunction(() => { })
+    const result = isFunction(() => {})
     assert(result)
   })
 

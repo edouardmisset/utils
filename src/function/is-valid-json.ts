@@ -6,11 +6,11 @@
  *
  * @example
  * ```typescript
- * isValidJSON('{"name":"John", "age":30, "city":"New York"}') 
+ * isValidJSON('{"name":"John", "age":30, "city":"New York"}')
  * // returns true
- * isValidJSON('Invalid JSON string') 
+ * isValidJSON('Invalid JSON string')
  * // returns false
- * isValidJSON('') 
+ * isValidJSON('')
  * // returns true
  * ```
  */

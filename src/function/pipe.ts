@@ -18,7 +18,7 @@ type UnaryFunction<T> = (arg: T) => T
  * ```
  */
 export function compose<T>(...functions: UnaryFunction<T>[]): UnaryFunction<T> {
-  return data => functions.reduceRight((value, func) => func(value), data)
+  return (data) => functions.reduceRight((value, func) => func(value), data)
 }
 
 /**
@@ -39,5 +39,5 @@ export function compose<T>(...functions: UnaryFunction<T>[]): UnaryFunction<T> {
  * ```
  */
 export function pipe<T>(...functions: UnaryFunction<T>[]): UnaryFunction<T> {
-  return data => functions.reduce((value, func) => func(value), data)
+  return (data) => functions.reduce((value, func) => func(value), data)
 }

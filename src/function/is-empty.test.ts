@@ -1,7 +1,7 @@
 import { assert } from 'asserts'
 import { isEmpty } from './is-empty.ts'
 
-Deno.test("isEmpty", async t => {
+Deno.test('isEmpty', async (t) => {
   await t.step('should return true for null', () => {
     const result = isEmpty(null)
     assert(result)

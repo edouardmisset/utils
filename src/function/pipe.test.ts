@@ -5,7 +5,7 @@ const addOne = (x: number) => x + 1
 const double = (x: number) => x * 2
 const triple = (x: number) => x * 3
 
-Deno.test("compose", async t => {
+Deno.test('compose', async (t) => {
   const addOneThenDouble = compose(double, addOne)
   const addOneThenDoubleThenTriple = compose(triple, double, addOne)
 
@@ -20,7 +20,7 @@ Deno.test("compose", async t => {
   })
 })
 
-Deno.test("pipe", async t => {
+Deno.test('pipe', async (t) => {
   const addOneThenDouble = pipe(addOne, double)
   const addOneThenDoubleThenTriple = pipe(addOne, double, triple)
 

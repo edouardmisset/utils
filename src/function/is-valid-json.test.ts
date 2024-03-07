@@ -1,7 +1,7 @@
 import { assert } from 'asserts'
 import { isValidJSON } from './is-valid-json.ts'
 
-Deno.test("isValidJSON", async t => {
+Deno.test('isValidJSON', async (t) => {
   await t.step('should return true for valid JSON', () => {
     const result = isValidJSON('{"name":"John", "age":30, "city":"New York"}')
     assert(result)

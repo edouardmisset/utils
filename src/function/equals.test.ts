@@ -1,7 +1,7 @@
 import { assert } from 'asserts'
 import { deepEquals } from './equals.ts'
 
-Deno.test("deepEquals", async t => {
+Deno.test('deepEquals', async (t) => {
   await t.step('should return true for equal primitive values', () => {
     const result = deepEquals(1, 1)
     assert(result)

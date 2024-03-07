@@ -18,8 +18,11 @@
  * ```
  */
 export function sleep(milliseconds: number): Promise<void> {
-  if (milliseconds < 0)
-    throw new Error(`Invalid time value (${milliseconds} ms). Time must be a positive number.`)
+  if (milliseconds < 0) {
+    throw new Error(
+      `Invalid time value (${milliseconds} ms). Time must be a positive number.`,
+    )
+  }
 
-  return new Promise<void>(resolve => setTimeout(resolve, milliseconds))
+  return new Promise<void>((resolve) => setTimeout(resolve, milliseconds))
 }

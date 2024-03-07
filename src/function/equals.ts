@@ -22,37 +22,44 @@
  *
  * @example
  * ```ts
- * deepEquals({ a: 1, b: 2 }, { a: 1, b: 2 }) 
+ * deepEquals({ a: 1, b: 2 }, { a: 1, b: 2 })
  * // returns true
- * deepEquals({ a: 1, b: 2 }, { a: 1, b: 3 }) 
+ * deepEquals({ a: 1, b: 2 }, { a: 1, b: 3 })
  * // returns false
- * deepEquals('a', 'a') 
+ * deepEquals('a', 'a')
  * // returns true
- * deepEquals('a', 'b') 
+ * deepEquals('a', 'b')
  * // returns false
- * deepEquals(new Date('2021-01-01'), new Date('2021-01-01')) 
+ * deepEquals(new Date('2021-01-01'), new Date('2021-01-01'))
  * // returns true
- * deepEquals(new Date('2021-01-01'), new Date('2022-01-01')) 
+ * deepEquals(new Date('2021-01-01'), new Date('2022-01-01'))
  * // returns false
  * ```
  */
 export function deepEquals<T>(left: T, right: T): boolean {
   if (left === right) return true
 
-  if (left instanceof Date && right instanceof Date)
+  if (left instanceof Date && right instanceof Date) {
     return left.getTime() === right.getTime()
+  }
 
-  if (!left ||
+  if (
+    !left ||
     !right ||
-    (typeof left !== 'object' && typeof right !== 'object'))
+    (typeof left !== 'object' && typeof right !== 'object')
+  ) {
     return left === right
+  }
 
-  if (typeof left === 'object' &&
+  if (
+    typeof left === 'object' &&
     typeof right === 'object' &&
     left !== null &&
     right !== null &&
-    Object.getPrototypeOf(left) !== Object.getPrototypeOf(right))
+    Object.getPrototypeOf(left) !== Object.getPrototypeOf(right)
+  ) {
     return false
+  }
 
   const leftObject = left as Record<string, unknown>
   const rightObject = right as Record<string, unknown>
@@ -60,5 +67,5 @@ export function deepEquals<T>(left: T, right: T): boolean {
   const leftKeys = Object.keys(leftObject)
   if (leftKeys.length !== Object.keys(rightObject).length) return false
 
-  return leftKeys.every(key => deepEquals(leftObject[key], rightObject[key]))
+  return leftKeys.every((key) => deepEquals(leftObject[key], rightObject[key]))
 }

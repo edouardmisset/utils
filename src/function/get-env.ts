@@ -26,7 +26,7 @@ type EnvType = keyof typeof ENVIRONNEMENT_PREFIX
  */
 export async function getEnv(
   variable: string,
-  env: EnvType = 'node'
+  env: EnvType = 'node',
 ): Promise<string> {
   const prefix = ENVIRONNEMENT_PREFIX[env]
   let value: string | undefined = undefined
@@ -53,8 +53,10 @@ export async function getEnv(
   }
 
   if (value === undefined) {
-    throw new TypeError(`It seems like the variable "${variable}" is not set in the environment (\`.env\` file).
-    @Dev: Did you forget to execute "cp .env.dev .env" and adjust variables in the .env file to match your own environment ?`)
+    throw new TypeError(
+      `It seems like the variable "${variable}" is not set in the environment (\`.env\` file).
+    @Dev: Did you forget to execute "cp .env.dev .env" and adjust variables in the .env file to match your own environment ?`,
+    )
   }
   return value
 }
