@@ -10,7 +10,7 @@ Deno.test('sortValues', async (t) => {
   await t.step(
     'should sort values in ascending order when second argument is true',
     () => {
-      const result = sortValues({ b: 1, a: 2, c: 3 }, { ascending: true })
+      const result = sortValues({ a: 2, b: 1, c: 3 }, { ascending: true })
       assertEquals(result, { b: 1, a: 2, c: 3 })
     },
   )

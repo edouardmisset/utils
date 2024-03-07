@@ -1,4 +1,4 @@
-import { assert } from 'asserts'
+import { assert, assertEquals } from 'asserts'
 import { deepEquals } from './equals.ts'
 
 Deno.test('deepEquals', async (t) => {
@@ -41,4 +41,60 @@ Deno.test('deepEquals', async (t) => {
     const result = deepEquals([1, 2, 3], [1, 2, 4])
     assert(!result)
   })
+
+  await t.step(
+    'should return false for objects with different prototypes',
+    () => {
+      // @ts-expect-error - Testing for invalid input
+      const result = deepEquals({ a: 1 }, new Date())
+      assertEquals(result, false)
+    },
+  )
+
+  await t.step(
+    'should return false for objects with the same prototype and different values',
+    () => {
+      const result = deepEquals({ a: 1 }, { b: 2 })
+      assertEquals(result, false)
+    },
+  )
+
+  await t.step('should return false for null and an object', () => {
+    const result = deepEquals(null, { a: 1 })
+    assertEquals(result, false)
+  })
+
+  await t.step('should return true for two null values', () => {
+    const result = deepEquals(null, null)
+    assertEquals(result, true)
+  })
+
+  await t.step(
+    'should return false for objects with the same number of keys but different keys and values',
+    () => {
+      const result = deepEquals({ a: 1, b: 2 }, { c: 3, d: 4 })
+      assertEquals(result, false)
+    },
+  )
+
+  await t.step(
+    'should return false for objects with different number of keys',
+    () => {
+      const result = deepEquals({ a: 1, b: 2, c: 3 }, { d: 4, e: 5 })
+      assertEquals(result, false)
+    },
+  )
+
+  await t.step('should return true for two empty objects', () => {
+    const result = deepEquals({}, {})
+    assertEquals(result, true)
+  })
+
+  await t.step(
+    'should return false for an empty and a non-empty object',
+    () => {
+      const result = deepEquals({}, { a: 1 })
+      assertEquals(result, false)
+    },
+  )
 })

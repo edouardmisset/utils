@@ -1,5 +1,5 @@
 import { assertEquals, assertThrows } from 'asserts'
-import { scale } from './scale.ts'
+import { percent, rescale, scale } from './scale.ts'
 
 Deno.test('scale', async (t) => {
   await t.step('scales value from one range to another', () => {
@@ -27,5 +27,69 @@ Deno.test('scale', async (t) => {
       Error,
       'inMinimum (10) cannot equal inMaximum (10) as this leads to a division by 0.',
     )
+  })
+})
+
+Deno.test('rescale', async (t) => {
+  await t.step('should scale a value from one range to another', () => {
+    const result = rescale({ value: 5, min: 0, max: 10 })
+    assertEquals(result, 0.5)
+  })
+
+  await t.step('should handle a value at the lower bound of the range', () => {
+    const result = rescale({ value: 0, min: 0, max: 10 })
+    assertEquals(result, 0)
+  })
+
+  await t.step('should handle a value at the upper bound of the range', () => {
+    const result = rescale({ value: 10, min: 0, max: 10 })
+    assertEquals(result, 1)
+  })
+
+  await t.step('should handle a negative value', () => {
+    const result = rescale({ value: -5, min: -10, max: 10 })
+    assertEquals(result, 0.25)
+  })
+
+  await t.step('should handle a negative range', () => {
+    const result = rescale({ value: -5, min: -10, max: 0 })
+    assertEquals(result, 0.5)
+  })
+
+  await t.step('should handle a value outside the range', () => {
+    const result = rescale({ value: 15, min: 0, max: 10 })
+    assertEquals(result, 1.5)
+  })
+})
+
+Deno.test('percent', async (t) => {
+  await t.step('should scale a value from one range to another', () => {
+    const result = percent({ value: 5, min: 0, max: 10 })
+    assertEquals(result, 50)
+  })
+
+  await t.step('should handle a value at the lower bound of the range', () => {
+    const result = percent({ value: 0, min: 0, max: 10 })
+    assertEquals(result, 0)
+  })
+
+  await t.step('should handle a value at the upper bound of the range', () => {
+    const result = percent({ value: 10, min: 0, max: 10 })
+    assertEquals(result, 100)
+  })
+
+  await t.step('should handle a negative value', () => {
+    const result = percent({ value: -5, min: -10, max: 10 })
+    assertEquals(result, 25)
+  })
+
+  await t.step('should handle a negative range', () => {
+    const result = percent({ value: -5, min: -10, max: 0 })
+    assertEquals(result, 50)
+  })
+
+  await t.step('should handle a value outside the range', () => {
+    const result = percent({ value: 15, min: 0, max: 10 })
+    assertEquals(result, 150)
   })
 })
