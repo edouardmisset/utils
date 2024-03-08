@@ -1,4 +1,7 @@
-type ScaleParameters = {
+/**
+ * `scale` function's parameters.
+ */
+export type ScaleParameters = {
   inMinimum: number
   inMaximum: number
   outMinimum?: number
@@ -6,10 +9,13 @@ type ScaleParameters = {
   value: number
 }
 
-type Rescale = {
+/**
+ * `rescale` function's parameters.
+ */
+export type Rescale = {
   value: number
-  min: number
-  max: number
+  minimum: number
+  maximum: number
 }
 
 /**
@@ -45,7 +51,7 @@ export function scale(params: ScaleParameters): number {
   }
   return (
     ((value - inMinimum) * (outMaximum - outMinimum)) /
-      (inMaximum - inMinimum) +
+    (inMaximum - inMinimum) +
     outMinimum
   )
 }
@@ -55,21 +61,21 @@ export function scale(params: ScaleParameters): number {
  *
  * @param {Object} params - The scaling parameters.
  * @param {number} params.value - The value to scale.
- * @param {number} params.min - The lower bound of the original range.
- * @param {number} params.max - The upper bound of the original range.
+ * @param {number} params.minimum - The lower bound of the original range.
+ * @param {number} params.maximum - The upper bound of the original range.
  * @returns {number} The scaled value as a percentage.
  *
  * @example
  * ```typescript
- * percent({ value: 5, min: 0, max: 10 })
+ * percent({ value: 5, minimum: 0, maximum: 10 })
  * // returns 50
  * ```
  */
 export function percent(params: Rescale): number {
-  const { value, min, max } = params
+  const { value, minimum, maximum } = params
   return scale({
-    inMinimum: min,
-    inMaximum: max,
+    inMinimum: minimum,
+    inMaximum: maximum,
     outMinimum: 0,
     outMaximum: 100,
     value,
@@ -81,21 +87,21 @@ export function percent(params: Rescale): number {
  *
  * @param {Object} params - The scaling parameters.
  * @param {number} params.value - The value to scale.
- * @param {number} params.min - The lower bound of the original range.
- * @param {number} params.max - The upper bound of the original range.
+ * @param {number} params.minimum - The lower bound of the original range.
+ * @param {number} params.maximum - The upper bound of the original range.
  * @returns {number} The scaled value.
  *
  * @example
  * ```typescript
- * rescale({ value: 5, min: 0, max: 10 })
+ * rescale({ value: 5, minimum: 0, maximum: 10 })
  * // returns 0.5
  * ```
  */
 export function rescale(params: Rescale): number {
-  const { value, min, max } = params
+  const { value, minimum, maximum } = params
   return scale({
-    inMinimum: min,
-    inMaximum: max,
+    inMinimum: minimum,
+    inMaximum: maximum,
     value,
     outMinimum: 0,
     outMaximum: 1,

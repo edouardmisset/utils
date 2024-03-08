@@ -1,5 +1,12 @@
-type Quotient = number
-type Remainder = number
+/**
+ * A type that represents the quotient of a division operation (`number`).
+ */
+export type Quotient = number
+
+/**
+ * A type that represents the remainder of a division operation (`number`).
+ */
+export type Remainder = number
 
 /**
  * This function performs both division and modulo operation at the same time.

@@ -1,25 +1,51 @@
 import { Prettify } from '../mod.ts'
 import { OptionalKey } from '../type/type-helpers.ts'
 
-type milliseconds = number
-type integer = number
+/**
+ * Type is a number representing the duration in milliseconds.
+ */
+export type milliseconds = number
 
-type StartAndEndDate = {
+/**
+ * Type is a number representing an integer.
+ */
+export type integer = number
+
+/**
+ * Type representing a start and end date (as `Date` types).
+ */
+export type StartAndEndDate = {
   startDate: Date
   endDate: Date
 }
 
-type Year = {
+/**
+ * Type representing a year as an integer (number).
+ */
+export type Year = {
   year: integer
 }
 
-type DurationAndRefDate = {
+/**
+ * Type representing a duration (in milliseconds) and a reference date (as
+ * `Date` type).
+ */
+export type DurationAndRefDate = {
   referenceDate: Date
   durationInMS: milliseconds
 }
 
-type FilterOptions = Year | StartAndEndDate | DurationAndRefDate
+/**
+ * The filter options for the {@link filterByDate} function.
+ * This can be a year, a start and end date, or a duration from a reference date.
+ */
+export type FilterOptions = Year | StartAndEndDate | DurationAndRefDate
 
+/**
+ * The filter options for the {@link filterByDate} function.
+ * This can be a year, a start and end date, or a duration from a reference date
+ * (defaults to reference date = `now` and duration = one year in milliseconds).
+ */
 export type CreateFilterOptions = Prettify<
   | Year
   | StartAndEndDate

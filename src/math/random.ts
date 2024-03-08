@@ -1,8 +1,8 @@
 /**
  * Generates a random number between the specified minimum and maximum values (inclusive).
  *
- * @param min The minimum value.
- * @param max The maximum value.
+ * @param minimum The minimum value.
+ * @param maximum The maximum value.
  * @returns A random number between the minimum and maximum values.
  *
  * @example
@@ -11,8 +11,8 @@
  * // returns a random number between 1 and 5 for example: 1.2
  * ```
  */
-export function random(min: number, max: number): number {
-  return min + Math.random() * (max - min)
+export function random(minimum: number, maximum: number): number {
+  return minimum + Math.random() * (maximum - minimum)
 }
 
 /**

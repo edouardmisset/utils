@@ -1,4 +1,8 @@
-type IterableOrNullish =
+/**
+ * A type that represents any iterable value, or a value that is `null` or
+ * `undefined`.
+ */
+export type IterableOrNullish =
   | Record<string, unknown>
   | unknown[]
   | string

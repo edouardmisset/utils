@@ -1,11 +1,17 @@
-const ENVIRONNEMENT_PREFIX = {
+/**
+ * A Readonly object mapping environment prefixes to different environments.
+ */
+export const ENVIRONNEMENT_PREFIX = {
   node: '',
   CRA: 'REACT_APP_',
   vite: 'VITE_',
   deno: '',
 } as const
 
-type EnvType = keyof typeof ENVIRONNEMENT_PREFIX
+/**
+ * Type of the environment for which to retrieve the environment variable.
+ */
+export type EnvType = keyof typeof ENVIRONNEMENT_PREFIX
 
 /**
  * Retrieves the value of an environment variable.

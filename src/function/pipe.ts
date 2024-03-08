@@ -1,11 +1,16 @@
-type UnaryFunction<T> = (arg: T) => T
+/**
+ * Type of a function that takes a single argument and returns a value of the
+ * same type.
+ */
+export type UnaryFunction<T> = (arg: T) => T
 
 /**
  * Composes any number of unary functions into a single unary function.
  * Functions are applied in right-to-left order.
  *
  * @param {...UnaryFunction<T>[]} functions - The unary functions to compose.
- * @returns {UnaryFunction<T>} A function that, when called with an argument, applies the composed functions to the argument.
+ * @returns {UnaryFunction<T>} A function that, when called with an argument,
+ * applies the composed functions to the argument. 
  *
  * @template T The type of the argument and return value.
  *
@@ -31,7 +36,8 @@ export const combine = compose
  * Functions are applied in left-to-right order.
  *
  * @param {...UnaryFunction<T>[]} functions - The unary functions to pipe.
- * @returns {UnaryFunction<T>} A function that, when called with an argument, applies the piped functions to the argument.
+ * @returns {UnaryFunction<T>} A function that, when called with an argument,
+ * applies the piped functions to the argument. 
  *
  * @template T The type of the argument and return value.
  *

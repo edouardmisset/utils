@@ -1,8 +1,18 @@
+/**
+ * A basic node type that can be used in a tree. This is a record with string
+ * keys and any values. This type is used as a default type for the nodes in the
+ * tree. 
+ */
 // deno-lint-ignore no-explicit-any
-type BasicNode = Record<string, any>
+export type BasicNode = Record<string, any>
 
 /**
- * The parameters for the {@link searchTree} function
+ * The parameters for the {@link searchTree} function.
+ * This is an object that contains:
+ * - `node`: The root node of the tree to search.
+ * - `searchTerm`: The term to search for.
+ * - `subItemsField`: The name of the field that contains the sub-nodes of a node.
+ * - `searchItemField`: The name of the field to compare with the search term.
  */
 export interface SearchTreeParameters<NodeType extends BasicNode = BasicNode> {
   node: NodeType

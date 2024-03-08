@@ -1,6 +1,6 @@
 {
   "name": "@edouardmisset/utils",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "exports": "./src/mod.ts",
   "imports": {
     "asserts": "https://deno.land/std@0.218.2/assert/mod.ts"
