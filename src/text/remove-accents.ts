@@ -1,10 +1,14 @@
 /**
  * Removes diacritics (accents) from a string.
  *
- * The function uses the "Normalization Form D" (NFD) to decompose the string into base characters and combining characters (accents).
- * It then removes the accents by replacing them with an empty string.
+ * The function uses the "Normalization Form Decomposition" (NFD)
+ * {@link [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/normalize#description)}
+ * to decompose the string into base characters and combining characters
+ * (accents).It then removes the accents by replacing them with an empty string.
  *
- * The regular expression /[\u0300-\u036f]/g matches any character in the Unicode range from 0300 to 036F, which includes many common diacritical marks.
+ * The regular expression /[\u0300-\u036f]/g matches any character in the
+ * Unicode range from 0300 to 036F, which includes many common diacritical
+ * marks.
  *
  * @param {string} str - The string from which to remove accents.
  * @returns {string} The string with accents removed.
