@@ -82,6 +82,7 @@ that have contributed to the JavaScript and TypeScript developer community.
 
 - [30 Seconds of Code](https://www.30secondsofcode.org/)
 - [You-Dont-Need-Lodash-Underscore](https://github.com/you-dont-need/You-Dont-Need-Lodash-Underscore)
+- [TotalTypeScript](https://www.totaltypescript.com)
 - [Deno standard library](https://jsr.io/@std)
 - And many others...
 
