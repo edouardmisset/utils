@@ -22,3 +22,8 @@ export function isValidJSON(str: string): boolean {
     return false
   }
 }
+
+/**
+ * Alias for the {@link isValidJSON} function.
+ */
+export const isJSON = isValidJSON

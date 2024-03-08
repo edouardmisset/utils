@@ -1,5 +1,4 @@
 export * from './capitalize.ts'
-export * from './is-empty-string.ts'
 export * from './remove-accents.ts'
 export * from './slugify.ts'
 export * from './string-equals.ts'

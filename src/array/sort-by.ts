@@ -45,3 +45,8 @@ export function sortBy<Obj extends Record<string, unknown>>(
     return 0
   })
 }
+
+/**
+ * Alias for the {@link sortBy} function.
+ */
+export const orderBy = sortBy

@@ -32,3 +32,8 @@ export function createFindBy<Obj extends Record<string, unknown>>(
     return obj[key] === value
   }
 }
+
+/**
+ * Alias for the {@link createFindBy} function.
+ */
+export const buildFindBy = createFindBy

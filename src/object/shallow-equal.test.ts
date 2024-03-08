@@ -1,5 +1,5 @@
 import { assertEquals } from 'asserts'
-import { shallowEqual } from './shallow-comparison.ts'
+import { shallowEqual } from './shallow-equal.ts'
 
 Deno.test('shallowEqual', async (t) => {
   await t.step('should return true for two identical objects', () => {

@@ -22,6 +22,12 @@
 export function takeEnd<T>(array: T[], n: number = 1): T[] {
   return array.slice(-Math.abs(n))
 }
+
+/**
+ * Alias for the {@link takeEnd} function.
+ */
+export const getLastElements = takeEnd
+
 /**
  * Returns the first `n` elements from the given array.
  *
@@ -43,6 +49,12 @@ export function takeEnd<T>(array: T[], n: number = 1): T[] {
 export function takeStart<T>(array: T[], n: number = 1): T[] {
   return array.slice(0, Math.abs(n))
 }
+
+/**
+ * Alias for the {@link takeStart} function.
+ */
+export const getFirstElements = takeStart
+
 /**
  * Returns the first `n` elements if `n` is positive or the last `n` elements if `n` is negative from the given array.
  *

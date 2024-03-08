@@ -33,6 +33,11 @@ export function createStringSorter<Obj extends Record<string, unknown>>(
 }
 
 /**
+ * Alias for the {@link createStringSorter} function.
+ */
+export const buildStringSorter = createStringSorter
+
+/**
  * Creates a number sorter function.
  *
  * @template Obj - A type that extends Record<string, unknown>.
@@ -70,6 +75,11 @@ export function createNumberSorter<Obj extends Record<string, unknown>>(
 }
 
 /**
+ * Alias for the {@link createNumberSorter} function.
+ */
+export const buildNumberSorter = createNumberSorter
+
+/**
  * Creates a date sorter function.
  *
  * @template Obj - A type that extends Record<string, unknown>.
@@ -104,3 +114,8 @@ export function createDateSorter<Obj extends Record<string, unknown>>(
     return (leftDate.getTime() - rightDate.getTime()) * (ascending ? 1 : -1)
   }
 }
+
+/**
+ * Alias for the {@link createDateSorter} function.
+ */
+export const buildDateSorter = createDateSorter

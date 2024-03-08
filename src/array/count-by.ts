@@ -38,6 +38,11 @@ export function countBy<T>(
 }
 
 /**
+ * Alias for the {@link countBy} function.
+ */
+export const countIf = countBy
+
+/**
  * Calculates the frequency of each unique element in an array.
  * @template T - The type of elements in the array, which extends string or number.
  * @param {T[]} arr - An array of elements of type T.

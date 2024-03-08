@@ -5,6 +5,5 @@ export * from './object-keys.ts'
 export * from './object-size.ts'
 export * from './omit.ts'
 export * from './pick.ts'
-export * from './shallow-comparison.ts'
-export * from './sort-keys.ts'
-export * from './sort-values.ts'
+export * from './shallow-equal.ts'
+

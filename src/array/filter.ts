@@ -1,12 +1,11 @@
+import { CreateFilterOptions } from './filter-by-date.ts'
+
 /**
  * Creates a date filter function that can be used to filter dates based on provided parameters.
  *
- * @param {Object} params - The parameters to use for the filter. Can be one of the following forms:
- *   - { startDate: Date; endDate: Date }
- *   - { referenceDate?: Date; durationInMilliseconds?: number }
- *   - { year: number }
- *   - undefined
- * @returns {(date: Date) => boolean} - A filter function that takes a date and returns true if the date passes the filter, false otherwise.
+ * @param {CreateFilterOptions} params - The parameters to use for the filter.
+ * @returns {(date: Date) => boolean} - A filter function that takes a date and
+ * returns true if the date passes the filter, false otherwise.
  *
  * @example
  * ```typescript
@@ -29,11 +28,9 @@
  * const result = filter(new Date(2020, 0, 1)) // true
  * ```
  */
-export function createDateFilter(params:
-  | { startDate: Date; endDate: Date }
-  | { referenceDate?: Date; durationInMilliseconds?: number }
-  | { year: number }
-  | undefined = {}): (date: Date) => boolean {
+export function createDateFilter(
+  params: CreateFilterOptions = {},
+): (date: Date) => boolean {
   const oneYearInMilliseconds = 365 * 24 * 60 * 60 * 1000
 
   if ('year' in params) {
@@ -48,12 +45,16 @@ export function createDateFilter(params:
 
   const {
     referenceDate = new Date(),
-    durationInMilliseconds = oneYearInMilliseconds,
+    durationInMS = oneYearInMilliseconds,
   } = params
 
-  return (date) =>
-    date.getTime() >= referenceDate.getTime() - durationInMilliseconds
+  return (date) => date.getTime() >= referenceDate.getTime() - durationInMS
 }
+
+/**
+ * Alias for the {@link createDateFilter} function.
+ */
+export const buildDateFilter = createDateFilter
 
 /**
  * Creates a boolean filter function.

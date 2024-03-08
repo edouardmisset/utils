@@ -1,7 +1,7 @@
 /**
  * Transforms an array of objects into an object where the keys are the values
  * of a specified key in the objects, and the values are the objects themselves.
- * If the array is empty, returns undefined. 
+ * If the array is empty, returns undefined.
  *
  * @template Obj - The type of the objects in the array. Must extend
  * Record<string, unknown>.

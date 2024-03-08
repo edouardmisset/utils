@@ -192,8 +192,8 @@ export type NotNullProperty<
   Obj extends ObjectType<unknown>,
   Key extends keyof Obj = keyof Obj,
 > = {
-    [P in Key]: Exclude<Obj[P], null>
-  }
+  [P in Key]: Exclude<Obj[P], null>
+}
 
 /**
  * A TypeScript type alias called `Prettify`.

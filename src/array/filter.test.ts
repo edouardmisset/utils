@@ -22,7 +22,7 @@ Deno.test('createDateFilter', async (t) => {
     () => {
       const filter = createDateFilter({
         referenceDate: new Date(2020, 4, 1),
-        durationInMilliseconds: 1000 * 60 * 60 * 24 * 180,
+        durationInMS: 1000 * 60 * 60 * 24 * 180,
       }) // 180 days
       const result = filter(new Date(2020, 0, 1))
       assertEquals(result, true)

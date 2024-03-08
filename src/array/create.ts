@@ -89,3 +89,8 @@ export function range(start: number, end?: number, step: number = 1): number[] {
     (_, i) => lowerBound + i * ((step < 0) ? -step : step),
   ).sort((a, b) => a - b)
 }
+
+/**
+ * Alias for the {@link range} function.
+ */
+export const sequence = range

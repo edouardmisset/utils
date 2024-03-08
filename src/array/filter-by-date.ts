@@ -1,3 +1,6 @@
+import { Prettify } from '../mod.ts'
+import { OptionalKey } from '../type/type-helpers.ts'
+
 type milliseconds = number
 type integer = number
 
@@ -12,10 +15,16 @@ type Year = {
 
 type DurationAndRefDate = {
   referenceDate: Date
-  duration: milliseconds
+  durationInMS: milliseconds
 }
 
 type FilterOptions = Year | StartAndEndDate | DurationAndRefDate
+
+export type CreateFilterOptions = Prettify<
+  | Year
+  | StartAndEndDate
+  | OptionalKey<DurationAndRefDate, 'durationInMS' | 'referenceDate'>
+>
 
 /**
  * Checks if the given option is of type Year.
@@ -24,29 +33,33 @@ type FilterOptions = Year | StartAndEndDate | DurationAndRefDate
  * @returns {boolean} - True if the option is of type Year, false otherwise.
  */
 function isYearOption(option: FilterOptions): option is Year {
-  return 'year' in option
+  return (option as Year)?.year !== undefined
 }
 
 /**
  * Checks if the given option is of type StartAndEndDate.
  *
  * @param {FilterOptions} option - The option to check.
- * @returns {boolean} - True if the option is of type StartAndEndDate, false otherwise.
+ * @returns {boolean} - True if the option is of type StartAndEndDate, false
+ * otherwise.
  */
 function isDateRangeOption(option: FilterOptions): option is StartAndEndDate {
-  return 'startDate' in option && 'endDate' in option
+  return (option as StartAndEndDate)?.startDate !== undefined &&
+    (option as StartAndEndDate)?.endDate !== undefined
 }
 
 /**
  * Checks if the given option is of type DurationAndRefDate.
  *
  * @param {FilterOptions} option - The option to check.
- * @returns {boolean} - True if the option is of type DurationAndRefDate, false otherwise.
+ * @returns {boolean} - True if the option is of type DurationAndRefDate, false
+ * otherwise.
  */
 function isReferenceDateOption(
   option: FilterOptions,
 ): option is DurationAndRefDate {
-  return 'referenceDate' in option && 'duration' in option
+  return (option as DurationAndRefDate)?.referenceDate !== undefined &&
+    (option as DurationAndRefDate)?.durationInMS !== undefined
 }
 
 /**
@@ -75,7 +88,7 @@ function isYearMatch(dateValue: Date, year: number): boolean {
 }
 
 /**
- * Checks if the given date is within the given start and end dates.
+ * Checks if the given date is within the given start and end dates (inclusive).
  *
  * @param {Date} dateValue - The date to check.
  * @param {Date} startDate - The start date of the range.
@@ -91,21 +104,23 @@ function isWithinDateRange(
 }
 
 /**
- * Checks if the given date is within the duration from the reference date.
+ * Checks if the given date is within the duration from the reference date
+ * (inclusive).
  *
  * @param {Date} dateValue - The date to check.
  * @param {Date} referenceDate - The reference date.
- * @param {number} duration - The duration from the reference date.
- * @returns {boolean} - True if the date is within the duration, false otherwise.
+ * @param {number} durationInMS - The duration from the reference date.
+ * @returns {boolean} - True if the date is within the duration, false
+ * otherwise.
  */
 function isWithinDuration(
   dateValue: Date,
   referenceDate: Date,
-  duration: number,
+  durationInMS: number,
 ): boolean {
   const refTime = referenceDate.getTime()
   const valueTime = dateValue.getTime()
-  return refTime - duration <= valueTime && valueTime <= refTime
+  return refTime - durationInMS <= valueTime && valueTime <= refTime
 }
 
 /**
@@ -154,12 +169,12 @@ function isDateCompatible(val: unknown): val is Date | number | string {
  * // [{ date: new Date(2020, 0, 1) }]
  * ```
  */
-export function createFilter<Obj>(
-  dateKey: keyof Obj,
+export function filterByDate<Obj extends Record<string, unknown>>(
+  dateKey: keyof Obj = 'date',
   options: FilterOptions = {} as FilterOptions,
 ): (obj: Obj) => boolean {
   return (obj: Obj): boolean => {
-    const val = obj[dateKey]
+    const val = obj[dateKey] // || obj?.date || obj?.timestamp
     if (!isDateCompatible(val)) return true
 
     const dateValue = new Date(val)
@@ -178,7 +193,7 @@ export function createFilter<Obj>(
       return isWithinDuration(
         dateValue,
         options.referenceDate,
-        options.duration,
+        options.durationInMS,
       )
     }
 
@@ -186,3 +201,8 @@ export function createFilter<Obj>(
     return true
   }
 }
+
+/**
+ * Alias for the {@link createDateFilter} function.
+ */
+export const filterByDateKey = filterByDate

@@ -31,6 +31,11 @@ export function selectBy<
 }
 
 /**
+ * Alias for the {@link selectBy} function.
+ */
+export const pluckBy = selectBy
+
+/**
  * Creates a function that selects a specific key's value from a given object.
  *
  * @template Obj - The type of the object.
@@ -58,6 +63,11 @@ export function createSelectBy<
 >(key: Key): (item: Obj) => Obj[Key] {
   return (item) => item[key]
 }
+
+/**
+ * Alias for the {@link selectBy} function.
+ */
+export const buildSelectBy = createSelectBy
 
 /**
  * Applies a transformation function to the values a specified by a key of each object in an array.
@@ -95,3 +105,8 @@ export function selectAndTransform<
     (item) => (Object.hasOwn(item, key) ? [transform(item[key])] : []),
   )
 }
+
+/**
+ * Alias for the {@link selectAndTransform} function.
+ */
+export const pluckAndMap = selectAndTransform
