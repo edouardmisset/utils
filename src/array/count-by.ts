@@ -11,18 +11,18 @@
  *
  * @example
  * ```typescript
- * const arr = [1, 2, 3, 4, 5];
+ * const arr = [1, 2, 3, 4, 5]
  * function isEven(num) {
- *   return num % 2 === 0;
+ *   return num % 2 === 0
  * }
  * const count = countBy(arr, isEven); // 2
  * ```
  *
  * @example
  * ```typescript
- * const arr = ['apple', 'banana', 'cherry', 'apple', 'cherry', 'cherry'];
+ * const arr = ['apple', 'banana', 'cherry', 'apple', 'cherry', 'cherry']
  * function isCherry(fruit) {
- *   return fruit === 'cherry';
+ *   return fruit === 'cherry'
  * }
  * const count = countBy(arr, isCherry); // 3
  * ```

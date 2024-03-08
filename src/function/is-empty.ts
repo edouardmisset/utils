@@ -27,7 +27,7 @@ type IterableOrNullish =
  * `false`.
  *
  * @example
- * ```ts
+ * ```typescript
  * isEmpty(null) // returns true
  * isEmpty('') // returns true
  * isEmpty('   ') // returns true

@@ -5,11 +5,11 @@
  * @returns {boolean} Returns `true` if `maybeFunction` is a function, else `false`.
  *
  * @example
- * isFunction(function() {});
+ * isFunction(function() {})
  * // returns true
  *
  * @example
- * isFunction('not a function');
+ * isFunction('not a function')
  * // returns false
  */
 // deno-lint-ignore ban-types

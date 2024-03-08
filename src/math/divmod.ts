@@ -13,13 +13,13 @@ type Remainder = number
  * and the second element is the remainder.
  *
  * @example
- * ```ts
+ * ```typescript
  * divmod(10, 3)
  * // returns [3, 1]
  * ```
  *
  * @example
- * ```ts
+ * ```typescript
  * divmod(12, 3)
  * // returns [4, 0]
  * ```

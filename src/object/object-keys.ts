@@ -18,8 +18,8 @@
  *
  * @example
  * ```typescript
- * const person = { name: 'Alice', age: 25 };
- * objectKeys(person);
+ * const person = { name: 'Alice', age: 25 }
+ * objectKeys(person)
  * // returns ['name', 'age']
  * ```
  */

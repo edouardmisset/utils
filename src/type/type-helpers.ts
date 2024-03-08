@@ -48,18 +48,18 @@ export type Primitive =
  * original type.
  *
  * @example
- * ```ts
+ * ```typescript
  * type Person = {
- *   name: string;
- *   age: number;
- * };
+ *   name: string
+ *   age: number
+ * }
  *
  * type Employee = {
- *   age: string;
- *   company: string;
- * };
+ *   age: string
+ *   company: string
+ * }
  *
- * type EmployeePerson = Override<Person, Employee>;
+ * type EmployeePerson = Override<Person, Employee>
  * // Equivalent to: { name: string; age: string; company: string; }
  * ```
  */
@@ -86,21 +86,21 @@ export type Override<OriginalType, OverrideType> =
  * @example
  * ```typescript
  * type Person = {
- *   name: string;
- *   age?: number;
- * };
+ *   name: string
+ *   age?: number
+ * }
  *
- * type PersonWithRequiredAge = RequireKey<Person, 'age'>;
+ * type PersonWithRequiredAge = RequireKey<Person, 'age'>
  * // Equivalent to: { name: string; age: number; }
  * ```
  *
  * @example
  * ```typescript
  * type Employee = {
- *   name: string;
- *   age?: number;
- *   company?: string;
- * };
+ *   name: string
+ *   age?: number
+ *   company?: string
+ * }
  *
  * type EmployeeWithRequiredAgeAndCompany = RequireKey<Employee, 'age' | 'company'>
  * // Equivalent to: { name: string; age: number; company: string; }
@@ -126,9 +126,9 @@ export type RequireKey<
  * @example
  * ```typescript
  * type Person = {
- *   name: string;
- *   age: number;
- * };
+ *   name: string
+ *   age: number
+ * }
  *
  * type PersonWithOptionalAge = OptionalKey<Person, 'age'>
  * // Equivalent to: { name: string; age?: number; }
@@ -137,10 +137,10 @@ export type RequireKey<
  * @example
  * ```typescript
  * type Employee = {
- *   name: string;
- *   age: number;
- *   company: string;
- * };
+ *   name: string
+ *   age: number
+ *   company: string
+ * }
  *
  * type EmployeeWithOptionalAgeAndCompany = OptionalKey<Employee, 'age' | 'company'>
  * // Equivalent to: { name: string; age?: number; company?: string; }
@@ -168,23 +168,23 @@ export type OptionalKey<
  * @example
  * ```typescript
  * type Person = {
- *   name: string | null;
- *   age: number | null;
- * };
+ *   name: string | null
+ *   age: number | null
+ * }
  *
- * type PersonWithoutNull = NotNullProperty<Person>;
+ * type PersonWithoutNull = NotNullProperty<Person>
  * // Equivalent to: { name: string; age: number; }
  * ```
  *
  * @example
  * ```typescript
  * type Employee = {
- *   name: string | null;
- *   age: number | null;
- *   company: string | null;
- * };
+ *   name: string | null
+ *   age: number | null
+ *   company: string | null
+ * }
  *
- * type EmployeeWithoutNull = NotNullProperty<Employee, 'age' | 'company'>;
+ * type EmployeeWithoutNull = NotNullProperty<Employee, 'age' | 'company'>
  * // Equivalent to: { name: string | null; age: number; company: string; }
  * ```
  */
@@ -192,8 +192,8 @@ export type NotNullProperty<
   Obj extends ObjectType<unknown>,
   Key extends keyof Obj = keyof Obj,
 > = {
-  [P in Key]: Exclude<Obj[P], null>
-}
+    [P in Key]: Exclude<Obj[P], null>
+  }
 
 /**
  * A TypeScript type alias called `Prettify`.
@@ -223,23 +223,23 @@ export type Prettify<Obj extends object> =
  * @example
  * ```typescript
  * type Person = {
- *   name: string;
- *   age: number;
- * };
+ *   name: string
+ *   age: number
+ * }
  *
- * type PersonValues = ObjectValues<Person>;
+ * type PersonValues = ObjectValues<Person>
  * // Equivalent to: string | number
  * ```
  *
  * @example
  * ```typescript
  * type Employee = {
- *   name: string;
- *   age: number;
- *   company: string;
- * };
+ *   name: string
+ *   age: number
+ *   company: string
+ * }
  *
- * type EmployeeValues = ObjectValues<Employee>;
+ * type EmployeeValues = ObjectValues<Employee>
  * // Equivalent to: string | number
  * ```
  */
@@ -254,13 +254,13 @@ export type ObjectValues<Obj extends object> = Obj[keyof Obj]
  * @example
  * ```typescript
  * // Define a type that can be either "red" or any string excluding "red"
- * type RedOrOther = LooseAutoComplete<"red">;
+ * type RedOrOther = LooseAutoComplete<"red">
  *
  * // This is valid because "red" is one of the allowed values
- * let example1: RedOrOther = "red";
+ * let example1: RedOrOther = "red"
  *
  * // This is also valid because any string excluding "red" is allowed
- * let example2: RedOrOther = "blue";
+ * let example2: RedOrOther = "blue"
  * ```
  */
 export type LooseAutoComplete<S extends string> = S | Omit<string, S>

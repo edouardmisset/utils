@@ -7,21 +7,21 @@
  * @returns {T[]} An array of length `length` with its elements being the result of the `transform` function.
  *
  * @example
- * ```ts
- * createArray(5, (_, index) => transform1(_, index * 2);
+ * ```typescript
+ * createArray(5, (_, index) => transform1(_, index * 2)
  * // returns [0, 2, 4, 6, 8]
  * ```
  *
  * @example
- * ```ts
- * createArray(5, (_, index) => return `Item ${index}`);
+ * ```typescript
+ * createArray(5, (_, index) => return `Item ${index}`)
  * // returns ['Item 0', 'Item 1', 'Item 2', 'Item 3', 'Item 4']
  * ```
  *
  * @example
- * ```ts
+ * ```typescript
  * // Create an array of numbers using the default transform function
- * createArray(5);
+ * createArray(5)
  * // returns [0, 1, 2, 3, 4]
  * ```
  */
@@ -50,25 +50,25 @@ export function createArray<T = number>(
  *
  * @example
  * ```typescript
- * range(4);
+ * range(4)
  * // returns [0, 1, 2, 3, 4]
  * ```
  *
  * @example
  * ```typescript
- * range(-4);
+ * range(-4)
  * // returns [-4, -3, -2, -1, 0]
  * ```
  *
  * @example
  * ```typescript
- * range(1, 5);
+ * range(1, 5)
  * // returns [1, 2, 3, 4, 5]
  * ```
  *
  * @example
  * ```typescript
- * range(0, 20, 5);
+ * range(0, 20, 5)
  * // returns [0, 5, 10, 15, 20]
  * ```
  */

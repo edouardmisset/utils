@@ -21,7 +21,7 @@
  * @returns {boolean} - Returns `true` if the values are equivalent, else `false`.
  *
  * @example
- * ```ts
+ * ```typescript
  * deepEqual({ a: 1, b: 2 }, { a: 1, b: 2 })
  * // returns true
  * deepEqual({ a: 1, b: 2 }, { a: 1, b: 3 })

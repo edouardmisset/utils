@@ -11,13 +11,13 @@
  * @returns {number} The number rounded to the specified precision.
  *
  * @example
- * ```ts
+ * ```typescript
  * roundToPrecision(1.2365, 2)
  * // returns 1.24
  * ```
  *
  * @example
- * ```ts
+ * ```typescript
  * roundToPrecision(1.2345)
  * // returns 1
  * ```

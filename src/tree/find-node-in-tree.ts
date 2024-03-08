@@ -42,9 +42,9 @@ export type SearchTreeListParameters<NodeType extends BasicNode = BasicNode> =
  *
  * @example
  * ```typescript
- * const node = { id: 1, name: 'Node 1', children: [{ id: 2, name: 'Node 2' }] };
- * const params = { node, searchTerm: 'Node 2', subItemsField: 'children', searchItemField: 'name' };
- * searchTree(params);
+ * const node = { id: 1, name: 'Node 1', children: [{ id: 2, name: 'Node 2' }] }
+ * const params = { node, searchTerm: 'Node 2', subItemsField: 'children', searchItemField: 'name' }
+ * searchTree(params)
  * // returns { id: 2, name: 'Node 2' }
  * ```
  */
@@ -85,9 +85,9 @@ export function searchTree<NodeType extends BasicNode = BasicNode>(
  *
  * @example
  * ```typescript
- * const nodes = [{ id: 1, name: 'Node 1', children: [{ id: 2, name: 'Node 2' }] }];
- * const params = { nodeList: nodes, searchTerm: 'Node 2', subItemsField: 'children', searchItemField: 'name' };
- * searchTreeList(params);
+ * const nodes = [{ id: 1, name: 'Node 1', children: [{ id: 2, name: 'Node 2' }] }]
+ * const params = { nodeList: nodes, searchTerm: 'Node 2', subItemsField: 'children', searchItemField: 'name' }
+ * searchTreeList(params)
  * // returns { id: 2, name: 'Node 2' }
  * ```
  */
