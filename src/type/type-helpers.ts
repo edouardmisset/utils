@@ -34,14 +34,18 @@ export type Primitive =
   | null
 
 /**
- * Constructs a type by overriding some properties of an original type with properties from another type.
+ * Constructs a type by overriding some properties of an original type with
+ * properties from another type.
  *
  * This type helper uses the `Omit` and `keyof` utility types from TypeScript.
- * It first omits the keys of the `OverrideType` from the `OriginalType`, and then combines the result with the `OverrideType`.
- * This means that properties in the `OverrideType` will override properties in the `OriginalType`.
+ * It first omits the keys of the `OverrideType` from the `OriginalType`, and
+ * then combines the result with the `OverrideType`.
+ * This means that properties in the `OverrideType` will override properties in
+ * the `OriginalType`.
  *
  * @template OriginalType The original type.
- * @template OverrideType The type that should override properties in the original type.
+ * @template OverrideType The type that should override properties in the
+ * original type.
  *
  * @example
  * ```ts
@@ -69,11 +73,15 @@ export type Override<OriginalType, OverrideType> =
 /**
  * Constructs a type by making some properties of an existing type required.
  *
- * This type helper uses the `Omit`, `Pick`, and `Required` utility types from TypeScript.
- * It first omits the specified keys from the original type, and then makes those keys required.
+ * This type helper uses the `Omit`, `Pick`, and `Required` utility types from
+ * TypeScript.
+ * It first omits the specified keys from the original type, and then makes
+ * those keys required.
  *
  * @template Obj The original type.
- * @template Key The keys of the properties that should be made required. It extends `keyof Obj`, which means it can be any key of `Obj`. The default value is `keyof Obj`, which means all keys of `Obj`.
+ * @template Key The keys of the properties that should be made required. It
+ * extends `keyof Obj`, which means it can be any key of `Obj`. The default
+ * value is `keyof Obj`, which means all keys of `Obj`.
  *
  * @example
  * ```typescript
@@ -94,7 +102,7 @@ export type Override<OriginalType, OverrideType> =
  *   company?: string;
  * };
  *
- * type EmployeeWithRequiredAgeAndCompany = RequireKey<Employee, 'age' | 'company'>;
+ * type EmployeeWithRequiredAgeAndCompany = RequireKey<Employee, 'age' | 'company'>
  * // Equivalent to: { name: string; age: number; company: string; }
  * ```
  */
@@ -107,10 +115,13 @@ export type RequireKey<
  * Constructs a type by making some properties of an existing type optional.
  *
  * This type helper uses the `Omit` and `Partial` utility types from TypeScript.
- * It first omits the specified keys from the original type, and then makes those keys optional.
+ * It first omits the specified keys from the original type, and then makes
+ * those keys optional.
  *
  * @template Obj The original type.
- * @template Key The keys of the properties that should be made optional. It extends `keyof Obj`, which means it can be any key of `Obj`. The default value is `keyof Obj`, which means all keys of `Obj`.
+ * @template Key The keys of the properties that should be made optional. It
+ * extends `keyof Obj`, which means it can be any key of `Obj`. The default
+ * value is `keyof Obj`, which means all keys of `Obj`.
  *
  * @example
  * ```typescript
@@ -119,7 +130,7 @@ export type RequireKey<
  *   age: number;
  * };
  *
- * type PersonWithOptionalAge = OptionalKey<Person, 'age'>;
+ * type PersonWithOptionalAge = OptionalKey<Person, 'age'>
  * // Equivalent to: { name: string; age?: number; }
  * ```
  *
@@ -131,7 +142,7 @@ export type RequireKey<
  *   company: string;
  * };
  *
- * type EmployeeWithOptionalAgeAndCompany = OptionalKey<Employee, 'age' | 'company'>;
+ * type EmployeeWithOptionalAgeAndCompany = OptionalKey<Employee, 'age' | 'company'>
  * // Equivalent to: { name: string; age?: number; company?: string; }
  * ```
  */
@@ -141,13 +152,18 @@ export type OptionalKey<
 > = Omit<Obj, Key> & Partial<Pick<Obj, Key>>
 
 /**
- * Constructs a type by excluding `null` from the possible values of some properties of an existing type.
+ * Constructs a type by excluding `null` from the possible values of some
+ * properties of an existing type.
  *
  * This type helper uses the `Exclude` utility type from TypeScript.
- * It iterates over the keys of the original type, and for each key, it creates a new type that excludes `null` from the possible values of that property.
+ * It iterates over the keys of the original type, and for each key, it creates
+ * a new type that excludes `null` from the possible values of that property.
  *
- * @template Obj The original type. It extends `object`, which means it can be any object type.
- * @template Key The keys of the properties that should exclude `null`. It extends `keyof Obj`, which means it can be any key of `Obj`. The default value is `keyof Obj`, which means all keys of `Obj`.
+ * @template Obj The original type. It extends `object`, which means it can be
+ * any object type.
+ * @template Key The keys of the properties that should exclude `null`. It
+ * extends `keyof Obj`, which means it can be any key of `Obj`. The default
+ * value is `keyof Obj`, which means all keys of `Obj`.
  *
  * @example
  * ```typescript
@@ -181,8 +197,10 @@ export type NotNullProperty<
 
 /**
  * A TypeScript type alias called `Prettify`.
- * It takes a type as its argument and returns a new type that has the same properties as the original type,
- * but the properties are not intersected. This means that the new type is easier to read and understand.
+ * It takes a type as its argument and returns a new type that has the same
+ * properties as the original type,
+ * but the properties are not intersected. This means that the new type is
+ * easier to read and understand.
  */
 export type Prettify<Obj extends object> =
   & {
@@ -192,10 +210,13 @@ export type Prettify<Obj extends object> =
   & {}
 
 /**
- * Constructs a type consisting of the values of the properties of an existing type.
+ * Constructs a type consisting of the values of the properties of an existing
+ * type.
  *
- * This type helper uses the `keyof` and indexed access (`[]`) types from TypeScript.
- * It creates a new type that includes the types of all values of the properties of the original type.
+ * This type helper uses the `keyof` and indexed access (`[]`) types from
+ * TypeScript.
+ * It creates a new type that includes the types of all values of the properties
+ * of the original type.
  *
  * @template Obj The original type.
  *
@@ -225,7 +246,8 @@ export type Prettify<Obj extends object> =
 export type ObjectValues<Obj extends object> = Obj[keyof Obj]
 
 /**
- * Represents a type that can be either a specific string (or union of strings) `S` or any string.
+ * Represents a type that can be either a specific string (or union of strings)
+ * `S` or any string.
  *
  * @template S A string literal type.
  *

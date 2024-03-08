@@ -1,44 +1,44 @@
 import { assert, assertEquals } from 'asserts'
-import { deepEquals } from './equals.ts'
+import { deepEqual } from './equals.ts'
 
 Deno.test('deepEquals', async (t) => {
   await t.step('should return true for equal primitive values', () => {
-    const result = deepEquals(1, 1)
+    const result = deepEqual(1, 1)
     assert(result)
   })
 
   await t.step('should return false for unequal primitive values', () => {
-    const result = deepEquals(1, 2)
+    const result = deepEqual(1, 2)
     assert(!result)
   })
 
   await t.step('should return true for equal objects', () => {
-    const result = deepEquals({ a: 1, b: 2 }, { a: 1, b: 2 })
+    const result = deepEqual({ a: 1, b: 2 }, { a: 1, b: 2 })
     assert(result)
   })
 
   await t.step('should return false for unequal objects', () => {
-    const result = deepEquals({ a: 1, b: 2 }, { a: 1, b: 3 })
+    const result = deepEqual({ a: 1, b: 2 }, { a: 1, b: 3 })
     assert(!result)
   })
 
   await t.step('should return true for equal dates', () => {
-    const result = deepEquals(new Date('2021-01-01'), new Date('2021-01-01'))
+    const result = deepEqual(new Date('2021-01-01'), new Date('2021-01-01'))
     assert(result)
   })
 
   await t.step('should return false for unequal dates', () => {
-    const result = deepEquals(new Date('2021-01-01'), new Date('2022-01-01'))
+    const result = deepEqual(new Date('2021-01-01'), new Date('2022-01-01'))
     assert(!result)
   })
 
   await t.step('should return true for equal arrays', () => {
-    const result = deepEquals([1, 2, 3], [1, 2, 3])
+    const result = deepEqual([1, 2, 3], [1, 2, 3])
     assert(result)
   })
 
   await t.step('should return false for unequal arrays', () => {
-    const result = deepEquals([1, 2, 3], [1, 2, 4])
+    const result = deepEqual([1, 2, 3], [1, 2, 4])
     assert(!result)
   })
 
@@ -46,7 +46,7 @@ Deno.test('deepEquals', async (t) => {
     'should return false for objects with different prototypes',
     () => {
       // @ts-expect-error - Testing for invalid input
-      const result = deepEquals({ a: 1 }, new Date())
+      const result = deepEqual({ a: 1 }, new Date())
       assertEquals(result, false)
     },
   )
@@ -54,25 +54,25 @@ Deno.test('deepEquals', async (t) => {
   await t.step(
     'should return false for objects with the same prototype and different values',
     () => {
-      const result = deepEquals({ a: 1 }, { b: 2 })
+      const result = deepEqual({ a: 1 }, { b: 2 })
       assertEquals(result, false)
     },
   )
 
   await t.step('should return false for null and an object', () => {
-    const result = deepEquals(null, { a: 1 })
+    const result = deepEqual(null, { a: 1 })
     assertEquals(result, false)
   })
 
   await t.step('should return true for two null values', () => {
-    const result = deepEquals(null, null)
+    const result = deepEqual(null, null)
     assertEquals(result, true)
   })
 
   await t.step(
     'should return false for objects with the same number of keys but different keys and values',
     () => {
-      const result = deepEquals({ a: 1, b: 2 }, { c: 3, d: 4 })
+      const result = deepEqual({ a: 1, b: 2 }, { c: 3, d: 4 })
       assertEquals(result, false)
     },
   )
@@ -80,20 +80,20 @@ Deno.test('deepEquals', async (t) => {
   await t.step(
     'should return false for objects with different number of keys',
     () => {
-      const result = deepEquals({ a: 1, b: 2, c: 3 }, { d: 4, e: 5 })
+      const result = deepEqual({ a: 1, b: 2, c: 3 }, { d: 4, e: 5 })
       assertEquals(result, false)
     },
   )
 
   await t.step('should return true for two empty objects', () => {
-    const result = deepEquals({}, {})
+    const result = deepEqual({}, {})
     assertEquals(result, true)
   })
 
   await t.step(
     'should return false for an empty and a non-empty object',
     () => {
-      const result = deepEquals({}, { a: 1 })
+      const result = deepEqual({}, { a: 1 })
       assertEquals(result, false)
     },
   )

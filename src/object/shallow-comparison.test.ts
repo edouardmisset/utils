@@ -1,11 +1,11 @@
 import { assertEquals } from 'asserts'
-import { shallowComparison } from './shallow-comparison.ts'
+import { shallowEqual } from './shallow-comparison.ts'
 
-Deno.test('shallowComparison', async (t) => {
+Deno.test('shallowEqual', async (t) => {
   await t.step('should return true for two identical objects', () => {
     const obj1 = { a: 1, b: 2 }
     const obj2 = { a: 1, b: 2 }
-    const result = shallowComparison(obj1, obj2)
+    const result = shallowEqual(obj1, obj2)
     assertEquals(result, true)
   })
 
@@ -14,7 +14,7 @@ Deno.test('shallowComparison', async (t) => {
     () => {
       const obj1 = { a: 1, b: 2 }
       const obj2 = { b: 2, a: 1 }
-      const result = shallowComparison(obj1, obj2)
+      const result = shallowEqual(obj1, obj2)
       assertEquals(result, true)
     },
   )
@@ -24,7 +24,7 @@ Deno.test('shallowComparison', async (t) => {
     () => {
       const obj1 = { a: 1, b: 2 }
       const obj2 = { a: 1, b: 3 }
-      const result = shallowComparison(obj1, obj2)
+      const result = shallowEqual(obj1, obj2)
       assertEquals(result, false)
     },
   )
@@ -34,7 +34,7 @@ Deno.test('shallowComparison', async (t) => {
     () => {
       const obj1 = { a: 1, b: 2 }
       const obj2 = { a: 1, c: 2 }
-      const result = shallowComparison(obj1, obj2 as unknown as typeof obj1)
+      const result = shallowEqual(obj1, obj2 as unknown as typeof obj1)
       assertEquals(result, false)
     },
   )
@@ -44,7 +44,7 @@ Deno.test('shallowComparison', async (t) => {
     () => {
       const obj1 = { a: 1, b: 2 }
       const obj2 = { a: 1, b: 2, c: 3 }
-      const result = shallowComparison(obj1, obj2)
+      const result = shallowEqual(obj1, obj2)
       assertEquals(result, false)
     },
   )

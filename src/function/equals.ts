@@ -11,7 +11,7 @@
  *   returns `false`.
  * - If both values are objects with the same prototype, it checks if they have
  *   the same number of keys. If they don't, it returns `false`. If they do, it
- *   recursively calls `deepEquals` on each pair of corresponding values. If all
+ *   recursively calls `deepEqual` on each pair of corresponding values. If all
  *   pairs of values are deeply equal, it returns `true`. If any pair of values
  *   is not deeply equal, it returns `false`.
  *
@@ -22,21 +22,21 @@
  *
  * @example
  * ```ts
- * deepEquals({ a: 1, b: 2 }, { a: 1, b: 2 })
+ * deepEqual({ a: 1, b: 2 }, { a: 1, b: 2 })
  * // returns true
- * deepEquals({ a: 1, b: 2 }, { a: 1, b: 3 })
+ * deepEqual({ a: 1, b: 2 }, { a: 1, b: 3 })
  * // returns false
- * deepEquals('a', 'a')
+ * deepEqual('a', 'a')
  * // returns true
- * deepEquals('a', 'b')
+ * deepEqual('a', 'b')
  * // returns false
- * deepEquals(new Date('2021-01-01'), new Date('2021-01-01'))
+ * deepEqual(new Date('2021-01-01'), new Date('2021-01-01'))
  * // returns true
- * deepEquals(new Date('2021-01-01'), new Date('2022-01-01'))
+ * deepEqual(new Date('2021-01-01'), new Date('2022-01-01'))
  * // returns false
  * ```
  */
-export function deepEquals<T>(left: T, right: T): boolean {
+export function deepEqual<T>(left: T, right: T): boolean {
   if (left === right) return true
 
   if (left instanceof Date && right instanceof Date) {
@@ -67,5 +67,10 @@ export function deepEquals<T>(left: T, right: T): boolean {
   const leftKeys = Object.keys(leftObject)
   if (leftKeys.length !== Object.keys(rightObject).length) return false
 
-  return leftKeys.every((key) => deepEquals(leftObject[key], rightObject[key]))
+  return leftKeys.every((key) => deepEqual(leftObject[key], rightObject[key]))
 }
+
+/**
+ * Alias for the {@link deepEqual} function.
+ */
+export const isEqual = deepEqual

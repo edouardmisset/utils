@@ -15,13 +15,13 @@ import { objectKeys } from './object-keys.ts'
  * const obj1 = { a: 1, b: 2 }
  * const obj2 = { b: 2, a: 1 }
  * const obj3 = { a: 1, b: 3 }
- * shallowComparison(obj1, obj2)
+ * shallowEqual(obj1, obj2)
  * // returns true
- * shallowComparison(obj1, obj3)
+ * shallowEqual(obj1, obj3)
  * // returns false
  * ```
  */
-export function shallowComparison<Obj extends ObjectType>(
+export function shallowEqual<Obj extends ObjectType>(
   leftObject: Obj,
   rightObject: Obj,
 ): boolean {
@@ -35,13 +35,3 @@ export function shallowComparison<Obj extends ObjectType>(
       key === rightKeys[index] && leftObject[key] === rightObject[key],
   )
 }
-
-/**
- * Alias for the {@link shallowComparison} function.
- */
-export const isEqual = shallowComparison
-
-/**
- * Alias for the {@link shallowComparison} function.
- */
-export const shallowEqual = shallowComparison
