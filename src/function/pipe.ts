@@ -10,7 +10,7 @@ export type UnaryFunction<T> = (arg: T) => T
  *
  * @param {...UnaryFunction<T>[]} functions - The unary functions to compose.
  * @returns {UnaryFunction<T>} A function that, when called with an argument,
- * applies the composed functions to the argument. 
+ * applies the composed functions to the argument.
  *
  * @template T The type of the argument and return value.
  *
@@ -37,7 +37,7 @@ export const combine = compose
  *
  * @param {...UnaryFunction<T>[]} functions - The unary functions to pipe.
  * @returns {UnaryFunction<T>} A function that, when called with an argument,
- * applies the piped functions to the argument. 
+ * applies the piped functions to the argument.
  *
  * @template T The type of the argument and return value.
  *

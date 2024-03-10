@@ -39,7 +39,7 @@ export function createArray<T = number>(
  *
  * If `end` is not provided, it defaults to `start` with `start` then set to 0.
  *
- * **NOTE**: The output of this function is sorted in ascending order.
+ * **Note**: The output of this function is sorted in ascending order.
  *
  * @default step = 1
  *

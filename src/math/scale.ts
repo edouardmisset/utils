@@ -51,7 +51,7 @@ export function scale(params: ScaleParameters): number {
   }
   return (
     ((value - inMinimum) * (outMaximum - outMinimum)) /
-    (inMaximum - inMinimum) +
+      (inMaximum - inMinimum) +
     outMinimum
   )
 }

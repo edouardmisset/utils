@@ -1,7 +1,7 @@
 /**
  * A basic node type that can be used in a tree. This is a record with string
  * keys and any values. This type is used as a default type for the nodes in the
- * tree. 
+ * tree.
  */
 // deno-lint-ignore no-explicit-any
 export type BasicNode = Record<string, any>
