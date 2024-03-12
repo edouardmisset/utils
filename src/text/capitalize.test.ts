@@ -1,5 +1,5 @@
+import { assertEquals } from '@std/assert'
 import { capitalize } from './capitalize.ts'
-import { assertEquals } from 'asserts'
 
 Deno.test('capitalize', async (t) => {
   await t.step(

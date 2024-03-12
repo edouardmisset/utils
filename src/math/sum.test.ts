@@ -1,4 +1,4 @@
-import { assertEquals } from 'asserts'
+import { assertEquals } from '@std/assert'
 import { sum } from './sum.ts'
 
 Deno.test('sum', async (t) => {

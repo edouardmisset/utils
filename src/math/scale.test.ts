@@ -1,4 +1,4 @@
-import { assertEquals, assertThrows } from 'asserts'
+import { assertEquals, assertThrows } from '@std/assert'
 import { percent, rescale, scale } from './scale.ts'
 
 Deno.test('scale', async (t) => {

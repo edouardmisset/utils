@@ -1,4 +1,4 @@
-import { assertEquals } from 'asserts'
+import { assertEquals } from '@std/assert'
 import { invert } from './invert.ts'
 
 Deno.test('invert', async (t) => {

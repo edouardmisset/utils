@@ -1,4 +1,4 @@
-import { assertEquals, assertThrows } from 'asserts'
+import { assertEquals, assertThrows } from '@std/assert'
 import { average } from './average.ts'
 
 Deno.test('average function', async (t) => {

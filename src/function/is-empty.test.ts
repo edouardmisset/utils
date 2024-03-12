@@ -1,4 +1,4 @@
-import { assert } from 'asserts'
+import { assert } from '@std/assert'
 import { isEmpty } from './is-empty.ts'
 
 Deno.test('isEmpty', async (t) => {

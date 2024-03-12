@@ -1,4 +1,4 @@
-import { assertEquals } from 'asserts'
+import { assertEquals } from '@std/assert'
 import { sortBy } from './sort-by.ts'
 
 Deno.test('sortBy', async (t) => {

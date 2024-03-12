@@ -1,4 +1,4 @@
-import { assertEquals } from 'asserts'
+import { assertEquals } from '@std/assert'
 import { objectKeys } from './object-keys.ts'
 
 Deno.test('objectKeys', async (t) => {

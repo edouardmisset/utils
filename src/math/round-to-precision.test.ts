@@ -1,4 +1,4 @@
-import { assertEquals } from 'asserts'
+import { assertEquals } from '@std/assert'
 import { roundToPrecision } from './round-to-precision.ts'
 
 Deno.test('roundToPrecision', async (t) => {

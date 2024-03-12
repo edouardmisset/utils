@@ -1,4 +1,4 @@
-import { assertEquals } from 'asserts'
+import { assertEquals } from '@std/assert'
 import { mapObject } from './map-object.ts'
 
 Deno.test('mapObject', async (t) => {

@@ -1,4 +1,4 @@
-import { assertEquals } from 'asserts'
+import { assertEquals } from '@std/assert'
 import { groupBy } from './group-by.ts'
 
 Deno.test('groupBy', async (t) => {

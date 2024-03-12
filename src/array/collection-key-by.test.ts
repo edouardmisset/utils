@@ -1,4 +1,4 @@
-import { assertEquals } from 'asserts'
+import { assertEquals } from '@std/assert'
 import { collectionKeyBy, keyBy } from './collection-key-by.ts'
 
 Deno.test('keyBy', async (t) => {

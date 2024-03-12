@@ -1,4 +1,4 @@
-import { assertEquals } from 'asserts'
+import { assertEquals } from '@std/assert'
 import { shuffleArray } from './random-sort.ts'
 
 Deno.test({

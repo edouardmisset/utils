@@ -1,4 +1,4 @@
-import { assert } from 'asserts'
+import { assert } from '@std/assert'
 import { stringEquals, stringEqualsCaseInsensitive } from './string-equals.ts'
 
 Deno.test('stringEqualsCaseInsensitive', async (t) => {
