@@ -24,4 +24,4 @@ export function randomSort<T>(originalArray: T[]): T[] {
 /**
  * Alias for the {@link randomSort} function.
  */
-export const shuffleArray = randomSort
+export const shuffleArray: typeof randomSort = randomSort

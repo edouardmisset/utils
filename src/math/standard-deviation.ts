@@ -52,4 +52,4 @@ export function standardDeviation(
 /**
  * Alias for the {@link standardDeviation} function.
  */
-export const variance = standardDeviation
+export const variance: typeof standardDeviation = standardDeviation

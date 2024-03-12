@@ -29,7 +29,7 @@ export function compose<T>(...functions: UnaryFunction<T>[]): UnaryFunction<T> {
 /**
  * Alias for the {@link compose} function.
  */
-export const combine = compose
+export const combine: typeof compose = compose
 
 /**
  * Pipes any number of unary functions into a single unary function.
@@ -56,4 +56,4 @@ export function pipe<T>(...functions: UnaryFunction<T>[]): UnaryFunction<T> {
 /**
  * Alias for the {@link pipe} function.
  */
-export const chain = pipe
+export const chain: typeof pipe = pipe

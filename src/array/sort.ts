@@ -35,7 +35,7 @@ export function createStringSorter<Obj extends Record<string, unknown>>(
 /**
  * Alias for the {@link createStringSorter} function.
  */
-export const buildStringSorter = createStringSorter
+export const buildStringSorter: typeof createStringSorter = createStringSorter
 
 /**
  * Creates a number sorter function.
@@ -77,7 +77,7 @@ export function createNumberSorter<Obj extends Record<string, unknown>>(
 /**
  * Alias for the {@link createNumberSorter} function.
  */
-export const buildNumberSorter = createNumberSorter
+export const buildNumberSorter: typeof createNumberSorter = createNumberSorter
 
 /**
  * Creates a date sorter function.
@@ -118,4 +118,4 @@ export function createDateSorter<Obj extends Record<string, unknown>>(
 /**
  * Alias for the {@link createDateSorter} function.
  */
-export const buildDateSorter = createDateSorter
+export const buildDateSorter: typeof createDateSorter = createDateSorter

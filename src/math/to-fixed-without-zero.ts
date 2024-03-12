@@ -26,4 +26,4 @@ export function toFixedWithoutZeros(num: number, precision: number): string {
 /**
  * Alias for the {@link toFixedWithoutZeros} function.
  */
-export const toFixed = toFixedWithoutZeros
+export const toFixed: typeof toFixedWithoutZeros = toFixedWithoutZeros

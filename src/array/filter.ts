@@ -54,7 +54,7 @@ export function createDateFilter(
 /**
  * Alias for the {@link createDateFilter} function.
  */
-export const buildDateFilter = createDateFilter
+export const buildDateFilter: typeof createDateFilter = createDateFilter
 
 /**
  * Creates a boolean filter function.

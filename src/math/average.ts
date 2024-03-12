@@ -35,4 +35,4 @@ export function average(...num: (number[] | number)[]): number {
 /**
  * Alias for the {@link average} function.
  */
-export const mean = average
+export const mean: typeof average = average

@@ -33,4 +33,5 @@ export function stringIncludesCaseInsensitive(
 /**
  * Alias for the {@link stringIncludesCaseInsensitive} function.
  */
-export const stringIncludes = stringIncludesCaseInsensitive
+export const stringIncludes: typeof stringIncludesCaseInsensitive =
+  stringIncludesCaseInsensitive

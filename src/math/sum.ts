@@ -17,8 +17,9 @@
  * sum([])
  * // returns 0
  */
-export const sum = (...num: (number[] | number)[]): number =>
-  num.flat().reduce(
+export function sum(...num: (number[] | number)[]): number {
+  return num.flat().reduce(
     (accumulator, value) => accumulator + value,
     0,
   )
+}

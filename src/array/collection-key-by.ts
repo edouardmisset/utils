@@ -90,4 +90,4 @@ export function collectionKeyBy<
 /**
  * Alias for the {@link collectionKeyBy} function
  */
-export const normalizeBy = collectionKeyBy
+export const normalizeBy: typeof collectionKeyBy = collectionKeyBy
