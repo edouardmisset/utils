@@ -8,13 +8,13 @@
  *
  * @example
  * ```typescript
- * createArray(5, (_, index) => transform1(_, index * 2)
+ * createArray(5, (_, index) => transform1(_, index * 2))
  * // returns [0, 2, 4, 6, 8]
  * ```
  *
  * @example
  * ```typescript
- * createArray(5, (_, index) => return `Item ${index}`)
+ * createArray(5, (_, index) => `Item ${index}`)
  * // returns ['Item 0', 'Item 1', 'Item 2', 'Item 3', 'Item 4']
  * ```
  *

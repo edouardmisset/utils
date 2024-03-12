@@ -12,7 +12,7 @@
  * ```typescript
  * const sorter = createStringSorter<{ name: string, age: number }>('name')
  * const array = [{ name: 'John', age: 30 }, { name: 'Jane', age: 25 }]
- * array.sort(sorter))
+ * array.sort(sorter)
  * // returns [{ name: 'Jane', age: 25 }, { name: 'John', age: 30 }]
  * ```
  */
