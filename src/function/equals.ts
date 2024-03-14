@@ -73,4 +73,4 @@ export function deepEqual<T>(left: T, right: T): boolean {
 /**
  * Alias for the {@link deepEqual} function.
  */
-export const isEqual = deepEqual
+export const isEqual: typeof deepEqual = deepEqual

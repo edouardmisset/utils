@@ -13,8 +13,9 @@
  * product([1, 2, 3, 4])
  * // returns 24
  */
-export const product = (...num: (number | number[])[]): number =>
-  num.flat().reduce(
+export function product(...num: (number | number[])[]): number {
+  return num.flat().reduce(
     (acc, val) => acc * val,
     1,
   )
+}

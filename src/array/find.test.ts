@@ -1,4 +1,4 @@
-import { assertEquals, assertThrows } from 'asserts'
+import { assertEquals, assertThrows } from '@std/assert'
 import { createFindBy } from './find.ts'
 
 Deno.test('createFindBy', async (t) => {

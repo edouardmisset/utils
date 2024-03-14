@@ -1,4 +1,4 @@
-import { assertEquals, assertThrows } from 'asserts'
+import { assertEquals, assertThrows } from '@std/assert'
 import { convertStringDate, datification } from './convert-string-date.ts'
 
 Deno.test('convertStringDate', async (t) => {

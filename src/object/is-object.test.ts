@@ -1,4 +1,4 @@
-import { assert } from 'asserts'
+import { assert } from '@std/assert'
 import { isNotNestedObject, isObject, isPlainObject } from './is-object.ts'
 
 Deno.test('isObject', async (t) => {

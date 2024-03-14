@@ -1,4 +1,4 @@
-import { assertEquals } from 'asserts'
+import { assertEquals } from '@std/assert'
 import { omit } from './omit.ts'
 
 Deno.test('omit', async (t) => {

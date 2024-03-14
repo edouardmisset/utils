@@ -1,5 +1,5 @@
+import { assertEquals } from '@std/assert'
 import { stringToBoolean } from './string-to-boolean.ts'
-import { assertEquals } from 'asserts'
 
 Deno.test('stringToBoolean', async (t) => {
   await t.step(

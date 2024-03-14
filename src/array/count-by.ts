@@ -40,7 +40,7 @@ export function countBy<T>(
 /**
  * Alias for the {@link countBy} function.
  */
-export const countIf = countBy
+export const countIf: typeof countBy = countBy
 
 /**
  * Calculates the frequency of each unique element in an array.
@@ -63,7 +63,7 @@ export const countIf = countBy
 export function frequency<T extends string | number>(
   arr: T[],
 ): Record<T, number> {
-  return arr.reduce((acc: Record<T, number>, val: T) => {
+  return arr.reduce((acc, val) => {
     acc[val] = (acc[val] ?? 0) + 1
     return acc
   }, {} as Record<T, number>)

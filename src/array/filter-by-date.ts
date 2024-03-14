@@ -231,4 +231,4 @@ export function filterByDate<Obj extends Record<string, unknown>>(
 /**
  * Alias for the {@link createDateFilter} function.
  */
-export const filterByDateKey = filterByDate
+export const filterByDateKey: typeof filterByDate = filterByDate

@@ -1,4 +1,4 @@
-import { assertEquals } from 'asserts'
+import { assertEquals } from '@std/assert'
 import { compose, pipe } from './pipe.ts'
 
 const addOne = (x: number) => x + 1

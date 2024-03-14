@@ -1,6 +1,6 @@
 /**
  * Capitalizes the first letter of a word (string).
- * 
+ *
  * **Note:** This function will convert the rest of the string to lowercase.
  *
  * @param {string} word - The word to capitalize.

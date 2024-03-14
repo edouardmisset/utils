@@ -1,5 +1,5 @@
+import { assertEquals } from '@std/assert'
 import { slugify } from './slugify.ts'
-import { assertEquals } from 'asserts'
 
 Deno.test('slugify', async (t) => {
   await t.step('should return a lowercase string', () => {

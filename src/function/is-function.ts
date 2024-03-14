@@ -13,5 +13,6 @@
  * // returns false
  */
 // deno-lint-ignore ban-types
-export const isFunction = (maybeFunction: unknown): maybeFunction is Function =>
-  typeof maybeFunction === 'function'
+export function isFunction(maybeFunction: unknown): maybeFunction is Function {
+  return typeof maybeFunction === 'function'
+}

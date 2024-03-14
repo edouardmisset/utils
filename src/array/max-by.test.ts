@@ -1,4 +1,4 @@
-import { assertEquals } from 'asserts'
+import { assertEquals } from '@std/assert'
 import { maxBy } from './max-by.ts'
 
 Deno.test('maxBy', async (t) => {

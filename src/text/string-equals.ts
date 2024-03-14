@@ -57,11 +57,12 @@ export function stringEqualsCaseInsensitive(
  * // returns false
  * ```
  */
-export const stringEquals = (
+export function stringEquals(
   leftString: string,
   rightString: string,
   { caseSensitive }: { caseSensitive?: boolean } = { caseSensitive: false },
-): boolean =>
-  caseSensitive
+): boolean {
+  return caseSensitive
     ? leftString.normalize('NFC') === rightString.normalize('NFC')
     : stringEqualsCaseInsensitive(leftString, rightString)
+}

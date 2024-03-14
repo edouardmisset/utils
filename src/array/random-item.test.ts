@@ -1,4 +1,4 @@
-import { assert, assertThrows } from 'asserts'
+import { assert, assertThrows } from '@std/assert'
 import { randomItem } from './random-item.ts'
 
 Deno.test({

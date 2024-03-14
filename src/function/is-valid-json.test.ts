@@ -1,4 +1,4 @@
-import { assert } from 'asserts'
+import { assert } from '@std/assert'
 import { isValidJSON } from './is-valid-json.ts'
 
 Deno.test('isValidJSON', async (t) => {

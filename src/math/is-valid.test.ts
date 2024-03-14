@@ -1,4 +1,4 @@
-import { assert, assertEquals } from 'asserts'
+import { assert, assertEquals } from '@std/assert'
 import { isValidNumber, validNumberWithFallback } from './is-valid.ts'
 
 Deno.test('isValidNumber function', async (t) => {

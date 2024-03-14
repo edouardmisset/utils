@@ -20,7 +20,7 @@ export function commonElements<T>(leftArray: T[], rightArray: T[]): T[] {
 /**
  * Alias for the {@link commonElements} function.
  */
-export const intersection = commonElements
+export const intersection: typeof commonElements = commonElements
 
 /**
  * Returns the unique elements from the combination of two arrays.
@@ -44,7 +44,7 @@ export function mergeUnique<T>(leftArray: T[], rightArray: T[]): T[] {
 /**
  * Alias for the {@link mergeUnique} function.
  */
-export const union = mergeUnique
+export const union: typeof mergeUnique = mergeUnique
 
 /**
  * Returns the elements that are unique to the first array.
@@ -71,7 +71,7 @@ export function uniqueInFirst<T>(firstArray: T[], ...otherArrays: T[][]): T[] {
 /**
  * Alias for the {@link uniqueInFirst} function.
  */
-export const setDifference = uniqueInFirst
+export const setDifference: typeof uniqueInFirst = uniqueInFirst
 
 /**
  * Returns the unique elements from n arrays.
@@ -102,4 +102,4 @@ export function uniqueElements<T>(...arrays: T[][]): T[] {
 /**
  * Alias for the {@link uniqueElements} function.
  */
-export const symmetricDifference = uniqueElements
+export const symmetricDifference: typeof uniqueElements = uniqueElements

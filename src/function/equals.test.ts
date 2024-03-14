@@ -1,4 +1,4 @@
-import { assert, assertEquals } from 'asserts'
+import { assert, assertEquals } from '@std/assert'
 import { deepEqual } from './equals.ts'
 
 Deno.test('deepEquals', async (t) => {

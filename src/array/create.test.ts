@@ -1,4 +1,4 @@
-import { assertEquals } from 'asserts'
+import { assertEquals } from '@std/assert'
 import { createArray, range } from './create.ts'
 
 Deno.test('createArray', async (t) => {

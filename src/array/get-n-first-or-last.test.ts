@@ -1,4 +1,4 @@
-import { assertEquals } from 'asserts'
+import { assertEquals } from '@std/assert'
 import { take, takeEnd, takeStart } from './get-n-first-or-last.ts'
 
 Deno.test('takeEnd', async (t) => {

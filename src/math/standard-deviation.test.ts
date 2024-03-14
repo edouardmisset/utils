@@ -1,4 +1,4 @@
-import { assertEquals } from 'asserts'
+import { assertEquals } from '@std/assert'
 import { standardDeviation } from './standard-deviation.ts'
 
 Deno.test('standardDeviation', async (t) => {

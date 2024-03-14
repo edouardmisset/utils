@@ -30,4 +30,4 @@ export function sleep(milliseconds: number): Promise<void> {
 /**
  * Alias for the {@link sleep} function.
  */
-export const wait = sleep
+export const wait: typeof sleep = sleep

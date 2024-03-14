@@ -11,10 +11,11 @@
  * // returns 3
  * ```
  */
-export const objectSize = (obj: Record<string, unknown>): number =>
-  Object.keys(obj).length
+export function objectSize(obj: Record<string, unknown>): number {
+  return Object.keys(obj).length
+}
 
 /**
  * Alias for the {@link objectSize} function.
  */
-export const objectLength = objectSize
+export const objectLength: typeof objectSize = objectSize

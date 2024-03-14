@@ -8,18 +8,24 @@
  *
  * @example
  * ```typescript
- * createArray(5, (_, index) => transform1(_, index * 2)
+ * import { createArray } from './create.ts'
+ *
+ * createArray(5, (_, index) => index * 2)
  * // returns [0, 2, 4, 6, 8]
  * ```
  *
  * @example
  * ```typescript
- * createArray(5, (_, index) => return `Item ${index}`)
+ * import { createArray } from './create.ts'
+ *
+ * createArray(5, (_, index) => `Item ${index}`)
  * // returns ['Item 0', 'Item 1', 'Item 2', 'Item 3', 'Item 4']
  * ```
  *
  * @example
  * ```typescript
+ * import { createArray } from './create.ts'
+ *
  * // Create an array of numbers using the default transform function
  * createArray(5)
  * // returns [0, 1, 2, 3, 4]
@@ -50,24 +56,32 @@ export function createArray<T = number>(
  *
  * @example
  * ```typescript
- * range(4)
- * // returns [0, 1, 2, 3, 4]
+ * import { range } from './create.ts'
+ * import { assertEquals } from '@std/assert/assert_equals'
+ *
+ * assertEquals(range(4), [0, 1, 2, 3, 4])
  * ```
  *
  * @example
  * ```typescript
+ * import { range } from './create.ts'
+ *
  * range(-4)
  * // returns [-4, -3, -2, -1, 0]
  * ```
  *
  * @example
  * ```typescript
+ * import { range } from './create.ts'
+ *
  * range(1, 5)
  * // returns [1, 2, 3, 4, 5]
  * ```
  *
  * @example
  * ```typescript
+ * import { range } from './create.ts'
+ *
  * range(0, 20, 5)
  * // returns [0, 5, 10, 15, 20]
  * ```
@@ -93,4 +107,4 @@ export function range(start: number, end?: number, step: number = 1): number[] {
 /**
  * Alias for the {@link range} function.
  */
-export const sequence = range
+export const sequence: typeof range = range

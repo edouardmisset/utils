@@ -2,13 +2,23 @@
   "version": "3",
   "packages": {
     "specifiers": {
-      "jsr:@std/dotenv@0.218.2": "jsr:@std/dotenv@0.218.2"
+      "jsr:@std/assert@^0.219.1": "jsr:@std/assert@0.219.1",
+      "jsr:@std/fmt@^0.219.1": "jsr:@std/fmt@0.219.1"
     },
     "jsr": {
-      "@std/dotenv@0.218.2": {
-        "integrity": "b1d6749c6ae394355502a001266701b36cf659090dd19abcf3275f3f6a9fd7de"
+      "@std/assert@0.219.1": {
+        "integrity": "e76c2a1799a78f0f4db7de04bdc9b908a7a4b821bb65eda0285885297d4fb8af",
+        "dependencies": [
+          "jsr:@std/fmt@^0.219.1"
+        ]
+      },
+      "@std/fmt@0.219.1": {
+        "integrity": "2432152e927df249a207177aa048a6d9465956ea0047653ee6abd4f514db504f"
       }
     }
+  },
+  "redirects": {
+    "https://deno.land/std/testing/asserts.ts": "https://deno.land/std@0.218.2/testing/asserts.ts"
   },
   "remote": {
     "https://deno.land/std@0.218.2/assert/_constants.ts": "a271e8ef5a573f1df8e822a6eb9d09df064ad66a4390f21b3e31f820a38e0975",
@@ -44,5 +54,11 @@
     "https://deno.land/std@0.218.2/assert/unreachable.ts": "3670816a4ab3214349acb6730e3e6f5299021234657eefe05b48092f3848c270",
     "https://deno.land/std@0.218.2/fmt/colors.ts": "d239d84620b921ea520125d778947881f62c50e78deef2657073840b8af9559a",
     "https://deno.land/std@0.218.2/testing/asserts.ts": "0cb9c745d9b157bed062a4aa8647168d2221f6456c385a548b0ca24de9e0f3ca"
+  },
+  "workspace": {
+    "dependencies": [
+      "jsr:@std/assert@^0.219.1",
+      "jsr:@std/dotenv@^0.219.1"
+    ]
   }
 }

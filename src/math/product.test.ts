@@ -1,4 +1,4 @@
-import { assertEquals } from 'asserts'
+import { assertEquals } from '@std/assert'
 import { product } from './product.ts'
 
 Deno.test('product function', async (t) => {

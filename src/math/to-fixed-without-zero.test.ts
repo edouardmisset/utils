@@ -1,4 +1,4 @@
-import { assertEquals } from 'asserts'
+import { assertEquals } from '@std/assert'
 import { toFixedWithoutZeros } from './to-fixed-without-zero.ts'
 
 Deno.test('toFixedWithoutZeros', async (t) => {

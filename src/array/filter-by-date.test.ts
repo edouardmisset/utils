@@ -1,4 +1,4 @@
-import { assertEquals } from 'asserts'
+import { assertEquals } from '@std/assert'
 import { filterByDate } from './filter-by-date.ts'
 
 Deno.test({

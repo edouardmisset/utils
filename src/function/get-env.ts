@@ -49,7 +49,7 @@ export async function getEnv(
   if (env === 'deno') {
     try {
       const { load } = await import(
-        'jsr:@std/dotenv@0.218.2'
+        '@std/dotenv'
       )
       const env = await load()
       value = env[variable]

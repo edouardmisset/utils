@@ -1,4 +1,4 @@
-import { assert } from 'asserts'
+import { assert } from '@std/assert'
 import { random, randomInt } from './random.ts'
 
 Deno.test('random functions', async (t) => {

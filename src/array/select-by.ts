@@ -33,7 +33,7 @@ export function selectBy<
 /**
  * Alias for the {@link selectBy} function.
  */
-export const pluckBy = selectBy
+export const pluckBy: typeof selectBy = selectBy
 
 /**
  * Creates a function that selects a specific key's value from a given object.
@@ -67,7 +67,7 @@ export function createSelectBy<
 /**
  * Alias for the {@link selectBy} function.
  */
-export const buildSelectBy = createSelectBy
+export const buildSelectBy: typeof createSelectBy = createSelectBy
 
 /**
  * Applies a transformation function to the values a specified by a key of each object in an array.
@@ -109,4 +109,4 @@ export function selectAndTransform<
 /**
  * Alias for the {@link selectAndTransform} function.
  */
-export const pluckAndMap = selectAndTransform
+export const pluckAndMap: typeof selectAndTransform = selectAndTransform

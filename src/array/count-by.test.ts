@@ -1,4 +1,4 @@
-import { assertEquals } from 'asserts'
+import { assertEquals } from '@std/assert'
 import { countBy, frequency } from './count-by.ts'
 
 Deno.test('countBy', async (t) => {

@@ -1,4 +1,4 @@
-import { assertEquals } from 'asserts'
+import { assertEquals } from '@std/assert'
 import { createSelectBy, selectAndTransform, selectBy } from './select-by.ts'
 
 Deno.test('selectBy', async (t) => {

@@ -1,4 +1,4 @@
-import { assertEquals, assertThrows } from 'asserts'
+import { assertEquals, assertThrows } from '@std/assert'
 import { divmod } from './divmod.ts'
 
 Deno.test('divmod function', async (t) => {
