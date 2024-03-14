@@ -8,7 +8,7 @@ export type BasicNode = Record<string, any>
 
 /**
  * The parameters for the {@link searchTree} function.
- * 
+ *
  * This is an object that contains:
  * - `node`: The root node of the tree to search.
  * - `searchTerm`: The term to search for.

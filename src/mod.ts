@@ -6,4 +6,3 @@ export * from './object/mod.ts'
 export * from './text/mod.ts'
 export * from './tree/mod.ts'
 export * from './type/mod.ts'
-
