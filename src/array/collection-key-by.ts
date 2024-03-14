@@ -13,14 +13,17 @@
  *
  * @example
  * ```typescript
+ * import { keyBy } from './key-by.ts'
+ * 
  * const array = [{ id: 1, name: 'Alice' }, { id: 2, name: 'Bob' }, { id: 3, name: 'Charlie' }]
- * const key = 'id'
- * keyBy(array, key)
+ * keyBy(array, 'id')
  * // returns { '1': { id: 1, name: 'Alice' }, '2': { id: 2, name: 'Bob' }, '3': { id: 3, name: 'Charlie' } }
  * ```
  *
  * @example
  * ```typescript
+ * import { keyBy } from './key-by.ts'
+ *
  * const emptyArray = []
  * const key = 'id'
  * keyBy(emptyArray, key)

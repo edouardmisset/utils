@@ -63,7 +63,7 @@ export const countIf: typeof countBy = countBy
 export function frequency<T extends string | number>(
   arr: T[],
 ): Record<T, number> {
-  return arr.reduce((acc: Record<T, number>, val: T) => {
+  return arr.reduce((acc, val) => {
     acc[val] = (acc[val] ?? 0) + 1
     return acc
   }, {} as Record<T, number>)
