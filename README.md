@@ -1,5 +1,8 @@
 # Utils
 
+[![JSR](https://jsr.io/badges/@edouardmisset/utils)](https://jsr.io/@edouardmisset/utils)
+[![JSR Score](https://jsr.io/badges/@edouardmisset/utils/score)](https://jsr.io/@edouardmisset/utils)
+
 🚀 Powerful TypeScript utility toolkit for modern web developers
 
 - [Utils](#utils)
