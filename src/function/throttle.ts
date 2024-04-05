@@ -30,5 +30,4 @@ export const throttle = (params: ThrottleParams): AnyVoidFunction => {
     lastCalled = now
     return callback.apply(this, args)
   }
-
 }
