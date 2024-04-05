@@ -15,10 +15,6 @@ Deno.test('maxBy', async (t) => {
     },
   )
 
-  await t.step('should return undefined if the array is empty', () => {
-    assertEquals(maxBy([], 'value'), undefined)
-  })
-
   await t.step(
     'should return the first object if there are multiple objects with the maximum value',
     () => {

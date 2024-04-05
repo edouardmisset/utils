@@ -138,12 +138,15 @@ function isDateCompatible(val: unknown): val is Date | number | string {
 }
 
 /**
- * Creates a filter function that can be used to filter an array of objects based on a date property and provided filter options.
+ * Creates a filter function that can be used to filter an array of objects
+ * based on a date property and provided filter options.
  *
  * @template Obj - The type of object in the array to filter.
- * @param {keyof Obj} dateKey - The key of the date property in the objects to filter.
+ * @param {keyof Obj} dateKey - The key of the date property in the objects to
+ * filter.
  * @param {FilterOptions} [options={}] - The filter options to use.
- * @returns {(obj: Obj) => boolean} - A filter function that takes an object and returns true if the object passes the filter, false otherwise.
+ * @returns {(obj: Obj) => boolean} - A filter function that takes an object and
+ * returns true if the object passes the filter, false otherwise. 
  *
  * @example
  * ```typescript
@@ -179,7 +182,7 @@ export function filterByDate<Obj extends Record<string, unknown>>(
   return (obj: Obj): boolean => {
     if (objectSize(options) === 0) return true
 
-    const val = obj[dateKey] // || obj?.date || obj?.timestamp
+    const val = obj[dateKey]
     if (!isDateCompatible(val)) return true
 
     const dateValue = new Date(val)
