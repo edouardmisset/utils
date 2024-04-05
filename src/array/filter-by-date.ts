@@ -146,7 +146,7 @@ function isDateCompatible(val: unknown): val is Date | number | string {
  * filter.
  * @param {FilterOptions} [options={}] - The filter options to use.
  * @returns {(obj: Obj) => boolean} - A filter function that takes an object and
- * returns true if the object passes the filter, false otherwise. 
+ * returns true if the object passes the filter, false otherwise.
  *
  * @example
  * ```typescript
