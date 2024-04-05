@@ -51,8 +51,8 @@ Deno.test({
       {
         name: 'should return all objects if no valid options are provided',
         fn: () => {
-          const filter = filterByDate('date')
-          const result = data.filter(filter)
+          const dateFilter = filterByDate('date')
+          const result = data.filter(dateFilter)
           assertEquals(result, data)
         },
       },

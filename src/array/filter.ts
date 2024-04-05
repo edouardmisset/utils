@@ -1,9 +1,11 @@
-import { CreateFilterOptions } from './filter-by-date.ts'
+import { FilterOptions, isDateRangeOption, isYearOption } from './mod.ts'
+
+export const oneYearInMilliseconds = 365 * 24 * 60 * 60 * 1000
 
 /**
  * Creates a date filter function that can be used to filter dates based on provided parameters.
  *
- * @param {CreateFilterOptions} params - The parameters to use for the filter.
+ * @param {FilterOptions} options - The parameters to use for the filter.
  * @returns {(date: Date) => boolean} - A filter function that takes a date and
  * returns true if the date passes the filter, false otherwise.
  *
@@ -29,24 +31,22 @@ import { CreateFilterOptions } from './filter-by-date.ts'
  * ```
  */
 export function createDateFilter(
-  params: CreateFilterOptions = {},
+  options: FilterOptions = ({} as FilterOptions),
 ): (date: Date) => boolean {
-  const oneYearInMilliseconds = 365 * 24 * 60 * 60 * 1000
-
-  if ('year' in params) {
-    return (date) => date.getFullYear() === params.year
+  if (isYearOption(options)) {
+    return (date) => date.getFullYear() === options.year
   }
 
-  if ('startDate' in params && 'endDate' in params) {
+  if (isDateRangeOption(options)) {
     return (date) =>
-      date.getTime() >= params.startDate.getTime() &&
-      date.getTime() <= params.endDate.getTime()
+      date.getTime() >= options.startDate.getTime() &&
+      date.getTime() <= (options?.endDate ?? new Date()).getTime()
   }
 
   const {
     referenceDate = new Date(),
     durationInMS = oneYearInMilliseconds,
-  } = params
+  } = options
 
   return (date) => date.getTime() >= referenceDate.getTime() - durationInMS
 }
@@ -62,8 +62,8 @@ export const buildDateFilter: typeof createDateFilter = createDateFilter
  *
  * @template Obj - The type of the object.
  * @template Key - The type of the key of the object.
- * @param {Key} key - The key of the property to check in the value object.
- * @returns {(value: Obj) => boolean} The filter function.
+ * @param {Key} key - The key of the property to check in the object.
+ * @returns {(obj: Obj) => boolean} The filter function.
  *
  * @example
  * ```typescript
@@ -76,7 +76,7 @@ export const buildDateFilter: typeof createDateFilter = createDateFilter
 export function createBooleanFilter<
   Obj extends Record<string, unknown>,
   Key extends keyof Obj,
->(key: Key): (value: Obj) => boolean {
-  return (value: Obj): boolean =>
-    typeof value?.[key] === 'boolean' ? value[key] === true : false
+>(key: Key): (obj: Obj) => boolean {
+  return (obj: Obj): boolean =>
+    typeof obj?.[key] === 'boolean' ? obj[key] === true : false
 }
