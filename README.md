@@ -4,6 +4,7 @@
 [![JSR
 Score](https://jsr.io/badges/@edouardmisset/utils/score)](https://jsr.io/@edouardmisset/utils)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/6977b38a37ed478985cd1b15233505e7)](https://app.codacy.com/gh/edouardmisset/utils/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
+[![Codacy Badge](https://app.codacy.com/project/badge/Coverage/6977b38a37ed478985cd1b15233505e7)](https://app.codacy.com/gh/edouardmisset/utils/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_coverage)
 
 🚀 Powerful TypeScript utility toolkit for modern web developers
 
