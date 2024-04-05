@@ -1,5 +1,6 @@
 # Utils
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/50fd4df111a243e6a9cb3084e515e7f3)](https://app.codacy.com/gh/edouardmisset/utils?utm_source=github.com&utm_medium=referral&utm_content=edouardmisset/utils&utm_campaign=Badge_Grade)
 [![JSR](https://jsr.io/badges/@edouardmisset/utils)](https://jsr.io/@edouardmisset/utils)
 [![JSR Score](https://jsr.io/badges/@edouardmisset/utils/score)](https://jsr.io/@edouardmisset/utils)
 
