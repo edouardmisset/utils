@@ -7,7 +7,7 @@ interface ThrottleParams {
 
 /**
  * Creates a throttled function that only invokes the provided callback at most
- * once per every wait milliseconds.
+ * once per every 'delay' milliseconds.
  *
  * @param {ThrottleParams} params - The parameters for the throttle function.
  * @returns {AnyVoidFunction} - A new function that throttles the callback.
@@ -21,15 +21,14 @@ interface ThrottleParams {
  */
 export const throttle = (params: ThrottleParams): AnyVoidFunction => {
   const { callback, delay = 100 } = params
-  let throttlePause: boolean
 
+  let lastCalled = 0
   return (...args) => {
-    if (throttlePause === true) return
+    const now = new Date().getTime()
+    if (now - lastCalled < delay) return
 
-    throttlePause = true
-    setTimeout(() => {
-      callback.apply(this, args)
-      throttlePause = false
-    }, delay)
+    lastCalled = now
+    return callback.apply(this, args)
   }
+
 }

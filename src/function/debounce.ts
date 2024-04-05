@@ -8,7 +8,7 @@ interface DebounceParams {
 
 /**
  * Creates a debounced function that delays invoking the provided callback until
- * after wait milliseconds have elapsed since the last time the debounced
+ * after wait 'delay' milliseconds have elapsed since the last time the debounced
  * function was invoked.
  *
  * @param {DebounceParams} params - The parameters for the debounce function.
