@@ -33,7 +33,7 @@
  */
 export function createArray<T = number>(
   length: number,
-  // @ts-ignore:
+  // @ts-ignore: I don't know how to fix this type error
   transform: Parameters<typeof Array.from<T, U>>[1] = (_, index) => index,
 ): T[] {
   return Array.from({ length }, transform)
