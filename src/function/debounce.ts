@@ -5,7 +5,6 @@ interface DebounceParams {
   timerId?: { id: number }
   delay?: number
 }
-type ThrottleParams = Omit<DebounceParams, 'timerId'>
 
 /**
  * Creates a debounced function that delays invoking the provided callback until after wait milliseconds have elapsed since the last time the debounced function was invoked.
@@ -27,34 +26,6 @@ export const debounce = (params: DebounceParams): AnyVoidFunction => {
 
     timerId.id = setTimeout(() => {
       callback.apply(this, args)
-    }, delay)
-  }
-}
-
-/**
- * Creates a throttled function that only invokes the provided callback at most once per every wait milliseconds.
- *
- * @param {ThrottleParams} params - The parameters for the throttle function.
- * @returns {AnyVoidFunction} - A new function that throttles the callback.
- *
- * @example
- * ```typescript
- * const throttledFunction = throttle({ callback: () => console.log('Hello'), delay: 1000 })
- * throttledFunction() // 'Hello' will be logged immediately
- * throttledFunction() // 'Hello' will not be logged because the function is throttled
- * ```
- */
-export const throttle = (params: ThrottleParams): AnyVoidFunction => {
-  const { callback, delay = 100 } = params
-  let throttlePause: boolean
-
-  return (...args) => {
-    if (throttlePause === true) return
-
-    throttlePause = true
-    setTimeout(() => {
-      callback.apply(this, args)
-      throttlePause = false
     }, delay)
   }
 }
