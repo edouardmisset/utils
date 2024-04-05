@@ -54,8 +54,6 @@ export function deepEqual<T>(left: T, right: T): boolean {
   if (
     typeof left === 'object' &&
     typeof right === 'object' &&
-    left !== null &&
-    right !== null &&
     Object.getPrototypeOf(left) !== Object.getPrototypeOf(right)
   ) {
     return false
