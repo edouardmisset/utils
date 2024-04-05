@@ -8,15 +8,18 @@ jobs:
     name: codacy-coverage-reporter
     steps:
       - name: Clone repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Install Deno
         uses: denoland/setup-deno@v1
         with:
           deno-version: v1.x
 
-      - name: Test and generate coverage
+      - name: Run tests
         run: "deno task test"
+
+      - name: Generate coverage
+        run: "deno task coverage:gen"
 
       - name: Run codacy-coverage-reporter
         uses: codacy/codacy-coverage-reporter-action@v1
