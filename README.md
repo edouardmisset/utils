@@ -96,6 +96,10 @@ Feel free to report any issues on
 
 [MIT](./LICENSE)
 
+## Quality & Coverage
+
+_[Dashboard](https://app.codacy.com/gh/edouardmisset/utils/dashboard)_
+
 ## Credits 🙏
 
 This project draws inspiration and learns from various resources and projects
