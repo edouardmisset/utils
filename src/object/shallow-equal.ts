@@ -1,4 +1,4 @@
-import { ObjectType } from '../type/type-helpers.ts'
+import { ObjectOfType } from '../mod.ts'
 import { objectKeys } from './object-keys.ts'
 
 /**
@@ -21,7 +21,7 @@ import { objectKeys } from './object-keys.ts'
  * // returns false
  * ```
  */
-export function shallowEqual<Obj extends ObjectType>(
+export function shallowEqual<Obj extends ObjectOfType>(
   leftObject: Obj,
   rightObject: Obj,
 ): boolean {

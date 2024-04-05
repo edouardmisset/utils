@@ -4,7 +4,8 @@
  * `Record<string, T>`. This is a more explicit way to `object` type.
  */
 // deno-lint-ignore no-explicit-any
-export type ObjectOfType<Value = any, Key extends string | number = string> = Record<Key, Value>
+export type ObjectOfType<Value = any, Key extends string | number = string> =
+  Record<Key, Value>
 
 /**
  * A TypeScript type alias called `Value`. It represents a primitive type in
@@ -192,8 +193,8 @@ export type NotNullProperty<
   Obj extends ObjectOfType<unknown>,
   Key extends keyof Obj = keyof Obj,
 > = {
-    [P in Key]: Exclude<Obj[P], null>
-  }
+  [P in Key]: Exclude<Obj[P], null>
+}
 
 /**
  * A TypeScript type alias called `Prettify`.

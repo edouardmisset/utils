@@ -40,7 +40,7 @@ export const mean: typeof average = average
 /**
  * Calculates the average time from an array of Date objects and returns it as a
  * string.
- * 
+ *
  * **Note:** For best results, the dates should be in the same timezone, in the
  * format ("YYYY-MM-DDTHH:MM:SSZ") `2022-01-01T01:00:00Z` (ISO 8601).
  * The time is calculated as if all the dates were on the same day.
