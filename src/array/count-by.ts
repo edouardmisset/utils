@@ -12,19 +12,21 @@
  * @example
  * ```typescript
  * const arr = [1, 2, 3, 4, 5]
- * function isEven(num) {
+ * function isEven(num: number) {
  *   return num % 2 === 0
  * }
- * const count = countBy(arr, isEven); // 2
+ * countBy(arr, isEven)
+ * // returns 2
  * ```
  *
  * @example
  * ```typescript
  * const arr = ['apple', 'banana', 'cherry', 'apple', 'cherry', 'cherry']
- * function isCherry(fruit) {
+ * function isCherry(fruit: string) {
  *   return fruit === 'cherry'
  * }
- * const count = countBy(arr, isCherry); // 3
+ * countBy(arr, isCherry)
+ * // returns 3
  * ```
  */
 export function countBy<T>(

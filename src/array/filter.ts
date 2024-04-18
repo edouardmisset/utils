@@ -1,6 +1,6 @@
 import { FilterOptions, isDateRangeOption, isYearOption } from './mod.ts'
 
-/** 
+/**
  * The number of milliseconds in a year.
  */
 export const oneYearInMilliseconds = 365 * 24 * 60 * 60 * 1000
