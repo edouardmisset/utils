@@ -8,7 +8,7 @@
  * in a random order.
  *
  * @example
- * ```ts
+ * ```typescript
  * const numbers = [1, 2, 3, 4, 5]
  * randomSort(numbers)
  * // returns [3, 1, 5, 2, 4] (output will vary)

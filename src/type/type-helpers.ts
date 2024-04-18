@@ -165,7 +165,7 @@ export type OptionalKey<
  *   age: number | null
  * }
  *
- * type PersonWithoutNull = NotNullProperty<Person>
+ * type PersonWithoutNull = NotNullValues<Person>
  * // Equivalent to: { name: string; age: number; }
  *
  * type Employee = {
@@ -174,15 +174,52 @@ export type OptionalKey<
  *   company: string | null
  * }
  *
- * type EmployeeWithoutNull = NotNullProperty<Employee, 'age' | 'company'>
+ * type EmployeeWithoutNull = NotNullValues<Employee, 'age' | 'company'>
  * // Equivalent to: { name: string | null; age: number; company: string; }
  * ```
  */
-export type NotNullProperty<
+export type NotNullValues<
   Obj extends ObjectOfType<unknown>,
   Key extends keyof Obj = keyof Obj,
 > = {
   [P in Key]: Exclude<Obj[P], null>
+}
+
+/**
+ * Constructs a type by excluding `null` and `undefined` from the possible values
+ * of some properties of an existing type.
+ * This type helper uses the `Exclude` utility type from TypeScript.
+ * It iterates over the keys of the original type, and for each key, it creates
+ * a new type that excludes `null` and `undefined` from the possible values of
+ * that property.
+ * @template Obj The original type. It extends `object`, which means it can be
+ * any object type.
+ * @template Key The keys of the properties that should exclude `null` and
+ * `undefined`. It extends `keyof Obj`, which means it can be any key of `Obj`.
+ * The default value is `keyof Obj`, which means all keys of `Obj`.
+ * @example
+ * ```typescript
+ * type Person = {
+ *  name: string | null | undefined
+ * age: number | null | undefined
+ * }
+ * type PersonWithoutNullish = NotNullishValues<Person>
+ * // Equivalent to: { name: string; age: number; }
+ *
+ * type Employee = {
+ * name: string | null | undefined
+ * age: number | null | undefined
+ * company: string | null | undefined
+ * }
+ * type EmployeeWithoutNullish = NotNullishValues<Employee, 'age' | 'company'>
+ * // Equivalent to: { name: string | null | undefined; age: number; company: string; }
+ * ```
+ */
+export type NotNullishValues<
+  Obj extends ObjectOfType<unknown>,
+  Key extends keyof Obj = keyof Obj,
+> = {
+  [P in Key]: Exclude<Obj[P], null | undefined>
 }
 
 /**

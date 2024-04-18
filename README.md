@@ -16,6 +16,7 @@ Score](https://jsr.io/badges/@edouardmisset/utils/score)](https://jsr.io/@edouar
   - [Docs 📜](#docs-)
   - [Issues 🐛](#issues-)
   - [License 🪪](#license-)
+  - [Quality \& Coverage](#quality--coverage)
   - [Credits 🙏](#credits-)
 
 ## Install
@@ -35,7 +36,7 @@ deno add @edouardmisset/utils
 
 Then import it in you files:
 
-```ts
+```typescript
 // The entire lib
 import * as mod from '@edouardmisset/utils'
 
@@ -47,7 +48,7 @@ import { capitalize } from '@edouardmisset/utils'
 
 Import it in your file:
 
-```ts
+```typescript
 // The entire lib
 import * as mod from 'jsr:@edouardmisset/utils'
 
@@ -76,7 +77,7 @@ bunx jsr add @edouardmisset/utils
 
 ### Usage
 
-```ts
+```typescript
 capitalize('hello') // returns "Hello"
 ```
 

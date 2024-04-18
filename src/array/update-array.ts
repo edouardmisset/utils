@@ -16,7 +16,7 @@
  * @returns {T[]} - A new array with the specified object updated.
  *
  * @example
- * ```ts
+ * ```typescript
  * const input = [
  *   { id: 1, name: 'John' },
  *   { id: 2, name: 'Jane' },
