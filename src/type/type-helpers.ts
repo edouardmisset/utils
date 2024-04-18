@@ -1,29 +1,27 @@
 /**
- * A TypeScript type alias called `ObjectType`. It represents an object type
- * with string keys and values of type `T`. It is a shorthand for
- * `Record<string, T>`. This is a more explicit way to `object` type.
+ * It represents an object type with string keys and values of type `T`. It is a
+ * shorthand for `Record<string, T>`. This is a more explicit way to `object`
+ * type.
  */
 // deno-lint-ignore no-explicit-any
 export type ObjectOfType<Value = any, Key extends string | number = string> =
   Record<Key, Value>
 
 /**
- * A TypeScript type alias called `Value`. It represents a primitive type in
- * TypeScript. It is a union of `string`, `number`, `boolean`, `null`, and
- * `undefined`.
+ * It represents a primitive type in TypeScript. It is a union of `string`,
+ * `number`, `boolean`, `null`, and `undefined`.
  */
 export type Value = string | number | boolean | null | undefined
 /**
- * A TypeScript type alias called `DefinedValue`. It represents a primitive type
- * in TypeScript that is not `null` or `undefined`. It is a union of `string`,
- * `number`, `boolean`, `symbol` (and `bigint` if the target is ES2020 or later ).
+ * It represents a primitive type in TypeScript that is not `null` or
+ * `undefined`. It is a union of `string`, `number`, `boolean`, `symbol` (and
+ * `bigint` if the target is ES2020 or later ).
  */
 export type DefinedValue = string | number | boolean | bigint | symbol
 
 /**
- * A TypeScript type alias called `Primitive`. It represents a primitive type in
- * JavaScript. It is a union of `string`, `number`, `boolean`, `bigint`, `symbol`,
- * `undefined`, and `null`.
+ * It represents a primitive type in JavaScript. It is a union of `string`,
+ * `number`, `boolean`, `bigint`, `symbol`, `undefined`, and `null`.
  */
 export type Primitive =
   | string
@@ -93,10 +91,7 @@ export type Override<OriginalType, OverrideType> =
  *
  * type PersonWithRequiredAge = RequireKey<Person, 'age'>
  * // Equivalent to: { name: string; age: number; }
- * ```
  *
- * @example
- * ```typescript
  * type Employee = {
  *   name: string
  *   age?: number
@@ -133,10 +128,7 @@ export type RequireKey<
  *
  * type PersonWithOptionalAge = OptionalKey<Person, 'age'>
  * // Equivalent to: { name: string; age?: number; }
- * ```
  *
- * @example
- * ```typescript
  * type Employee = {
  *   name: string
  *   age: number
@@ -175,10 +167,7 @@ export type OptionalKey<
  *
  * type PersonWithoutNull = NotNullProperty<Person>
  * // Equivalent to: { name: string; age: number; }
- * ```
  *
- * @example
- * ```typescript
  * type Employee = {
  *   name: string | null
  *   age: number | null
@@ -197,10 +186,9 @@ export type NotNullProperty<
 }
 
 /**
- * A TypeScript type alias called `Prettify`.
  * It takes a type as its argument and returns a new type that has the same
- * properties as the original type,
- * but the properties are not intersected. This means that the new type is
+ * properties as the original type, but the properties are not intersected. This
+ * means that the new type is
  * easier to read and understand.
  */
 export type Prettify<Obj extends object> =
@@ -230,10 +218,7 @@ export type Prettify<Obj extends object> =
  *
  * type PersonValues = ObjectValues<Person>
  * // Equivalent to: string | number
- * ```
  *
- * @example
- * ```typescript
  * type Employee = {
  *   name: string
  *   age: number

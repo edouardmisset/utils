@@ -42,10 +42,12 @@ export function standardDeviation(
   usePopulation: boolean = false,
 ): number {
   if (numbers.length === 1) return 0
+
   const size = numbers.length
   const mean = numbers.reduce((acc, val) => acc + val, 0) / size
   const variance = numbers.reduce((acc, val) => acc + (val - mean) ** 2, 0) /
     (size - (usePopulation ? 0 : 1))
+
   return Math.sqrt(variance)
 }
 
