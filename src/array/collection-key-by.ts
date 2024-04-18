@@ -13,7 +13,7 @@
  *
  * @example
  * ```typescript
- * import { keyBy } from './key-by.ts'
+ * import { keyBy } from './collection-key-by.ts'
  *
  * const array = [{ id: 1, name: 'Alice' }, { id: 2, name: 'Bob' }, { id: 3, name: 'Charlie' }]
  * keyBy(array, 'id')
@@ -22,7 +22,7 @@
  *
  * @example
  * ```typescript
- * import { keyBy } from './key-by.ts'
+ * import { keyBy } from './collection-key-by.ts'
  *
  * const emptyArray = []
  * const key = 'id'

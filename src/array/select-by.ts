@@ -83,16 +83,14 @@ export const buildSelectBy: typeof createSelectBy = createSelectBy
  * @example
  * ```typescript
  * const array = [{ a: 1, b: 2 }, { a: 3, b: 4 }]
- * const key = 'b'
- * selectAndTransform(array, key, value => value * 2)
+ * selectAndTransform(array, 'b', value => value * 2)
  * // returns [4, 8]
  * ```
  *
  * @example
  * ```typescript
  * const array = [{ name: 'John', age: 30 }, { name: 'Jane', age: 25 }]
- * const key = 'name'
- * selectAndTransform(array, key, name => name.toUpperCase())
+ * selectAndTransform(array, 'name', name => name.toUpperCase())
  * // returns ['JOHN', 'JANE']
  * ```
  */

@@ -18,8 +18,7 @@
  * @example
  * ```typescript
  * const emptyArray = []
- * const key = 'value'
- * minBy(emptyArray, key)
+ * minBy(emptyArray, 'value')
  * // returns undefined
  * ```
  */

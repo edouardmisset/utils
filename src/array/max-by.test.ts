@@ -25,4 +25,12 @@ Deno.test('maxBy', async (t) => {
       assertEquals(result, { id: 3, value: 10 })
     },
   )
+
+  await t.step(
+    'should return undefined if the array is empty',
+    () => {
+      const result = maxBy([], 'value')
+      assertEquals(result, undefined)
+    },
+  )
 })

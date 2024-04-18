@@ -50,7 +50,7 @@ export const mean: typeof average = average
  *
  * @example
  * ```typescript
- * import { averageTime } from './averageTime'
+ * import { averageTime } from './average.ts'
  *
  * const dates = [new Date('2022-01-01T09:00:00Z'), new Date('2022-01-01T11:00:00Z')]
  * averageTime(dates)

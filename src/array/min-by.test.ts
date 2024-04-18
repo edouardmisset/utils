@@ -25,4 +25,12 @@ Deno.test('minBy', async (t) => {
       assertEquals(result, { id: 3, value: 10 })
     },
   )
+
+  await t.step(
+    'should return undefined if the array is empty',
+    () => {
+      const result = minBy([], 'value')
+      assertEquals(result, undefined)
+    },
+  )
 })

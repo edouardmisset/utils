@@ -10,12 +10,12 @@
  *
  * @example
  * ```typescript
- * const obj = { a: 1, b: 'hello', c: true }
- * isKey(obj, 'b')
+ * const obj1 = { a: 1, b: 'hello', c: true }
+ * isKey(obj1, 'b')
  * // returns true
  *
- * const obj = { a: 1, b: 'hello', c: true }
- * isKey(obj, 'd')
+ * const obj2 = { a: 1, b: 'hello', c: true }
+ * isKey(obj2, 'd')
  * // returns false
  * ```
  */

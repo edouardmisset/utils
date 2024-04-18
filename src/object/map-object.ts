@@ -15,7 +15,7 @@
  * @example
  * ```typescript
  * const object = { a: 1, b: 2 }
- * const fn = (value) => value * 2
+ * const fn = (num: number) => num * 2
  * mapObject(object, fn)
  * // returns { a: 2, b: 4 }
  * ```
