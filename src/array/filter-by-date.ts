@@ -73,7 +73,10 @@ export function isDateRangeOption(
  */
 export function isValidDate(...dates: unknown[]): boolean {
   for (const date of dates) {
-    if (!(date instanceof Date) || Number.isNaN(date)) return false
+    if (
+      !(date instanceof Date) || Number.isNaN(date) ||
+      date.toString() === 'Invalid Date'
+    ) return false
   }
 
   return true

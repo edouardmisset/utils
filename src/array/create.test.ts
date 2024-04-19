@@ -1,4 +1,4 @@
-import { assertEquals } from '@std/assert'
+import { assertEquals, assertThrows } from '@std/assert'
 import { createArray, range } from './create.ts'
 
 Deno.test('createArray', async (t) => {
@@ -65,6 +65,13 @@ Deno.test('range', async (t) => {
     'should create an array of numbers progressing from start to end with a specified step',
     () => {
       assertEquals(range(0, 20, 5), [0, 5, 10, 15, 20])
+    },
+  )
+
+  await t.step(
+    'should throw an error if the step is 0',
+    () => {
+      assertThrows(() => range(0, 2, 0), Error, 'step cannot be 0')
     },
   )
 })

@@ -107,6 +107,20 @@ Deno.test('createNumberSorter', async (t) => {
       assertEquals(result, [20, 10, 5, 0, -10])
     },
   )
+
+  await t.step('should handle NaN values in objects', () => {
+    const sorter = createNumberSorter('value')
+    const array = [{ value: 10 }, { value: NaN }, { value: 20 }]
+    const result = array.sort(sorter)
+    assertEquals(result, [{ value: 10 }, { value: 20 }, { value: NaN }])
+  })
+
+  await t.step('should handle NaN values in primitive arrays', () => {
+    const sorter = createNumberSorter()
+    const array = [10, NaN, 20]
+    const result = array.sort(sorter)
+    assertEquals(result, [10, 20, NaN])
+  })
 })
 
 Deno.test('createDateSorter', async (t) => {
@@ -178,4 +192,30 @@ Deno.test('createDateSorter', async (t) => {
       ])
     },
   )
+
+  await t.step('should handle invalid dates in objects', () => {
+    const sorter = createDateSorter('date')
+    const array = [{ date: new Date('invalid') }, {
+      date: new Date(2022, 0, 1),
+    }, { date: new Date(2022, 0, 2) }]
+    const result = array.sort(sorter)
+    assertEquals(result, [{ date: new Date(2022, 0, 1) }, {
+      date: new Date(2022, 0, 2),
+    }, { date: new Date('invalid') }])
+  })
+
+  await t.step('should handle invalid dates in primitive arrays', () => {
+    const sorter = createDateSorter()
+    const array = [
+      new Date('invalid'),
+      new Date(2022, 0, 1),
+      new Date(2022, 0, 2),
+    ]
+    const result = array.sort(sorter)
+    assertEquals(result, [
+      new Date(2022, 0, 1),
+      new Date(2022, 0, 2),
+      new Date('invalid'),
+    ])
+  })
 })

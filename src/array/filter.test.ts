@@ -28,6 +28,37 @@ Deno.test('createDateFilter', async (t) => {
       assertEquals(result, true)
     },
   )
+
+  await t.step(
+    'should filter dates by a duration from a reference date with default values',
+    () => {
+      const filter = createDateFilter({})
+      const result = filter(new Date())
+      assertEquals(result, true)
+    },
+  )
+
+  await t.step(
+    'should filter dates by a duration from a reference date with only durationInMS',
+    () => {
+      const filter = createDateFilter({
+        durationInMS: 1000 * 60 * 60 * 24 * 180,
+      }) // 180 days
+      const result = filter(new Date())
+      assertEquals(result, true)
+    },
+  )
+
+  await t.step(
+    'should filter dates by a duration from a reference date with only referenceDate',
+    () => {
+      const filter = createDateFilter({
+        referenceDate: new Date(),
+      })
+      const result = filter(new Date())
+      assertEquals(result, true)
+    },
+  )
 })
 
 Deno.test('createBooleanFilter', async (t) => {

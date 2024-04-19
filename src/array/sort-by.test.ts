@@ -39,4 +39,16 @@ Deno.test('sortBy', async (t) => {
       name: 'John',
     }])
   })
+
+  await t.step(
+    'should return the same order when the property values are not numbers or strings',
+    () => {
+      const objects = [{ id: 1, value: true }, { id: 2, value: false }, {
+        id: 3,
+        value: true,
+      }]
+      const result = sortBy(objects, 'value')
+      assertEquals(result, objects)
+    },
+  )
 })
