@@ -3,6 +3,7 @@
   "packages": {
     "specifiers": {
       "jsr:@std/assert@^0.219.1": "jsr:@std/assert@0.219.1",
+      "jsr:@std/dotenv@^0.219.1": "jsr:@std/dotenv@0.219.1",
       "jsr:@std/fmt@^0.219.1": "jsr:@std/fmt@0.219.1"
     },
     "jsr": {
@@ -11,6 +12,9 @@
         "dependencies": [
           "jsr:@std/fmt@^0.219.1"
         ]
+      },
+      "@std/dotenv@0.219.1": {
+        "integrity": "061a8d284c85ac6f47ce6df7b90f950ae3f89de61e94cf4523cc4a1ba5175050"
       },
       "@std/fmt@0.219.1": {
         "integrity": "2432152e927df249a207177aa048a6d9465956ea0047653ee6abd4f514db504f"

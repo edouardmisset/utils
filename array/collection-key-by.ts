@@ -24,9 +24,7 @@
  * ```typescript
  * import { keyBy } from './collection-key-by.ts'
  *
- * const emptyArray = []
- * const key = 'id'
- * keyBy(emptyArray, key)
+ * keyBy([], 'id')
  * // returns undefined
  * ```
  */
