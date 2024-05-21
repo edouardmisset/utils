@@ -5,7 +5,7 @@ Deno.test('createArray', async (t) => {
   await t.step(
     'should create an array of a specified length and populate it with the results of calling a provided function on every index',
     () => {
-      const transform = (_: unknown, index: number) => index * 2
+      const transform = (_: unknown, index: number): number => index * 2
       assertEquals(createArray(5, transform), [0, 2, 4, 6, 8])
     },
   )
@@ -13,7 +13,7 @@ Deno.test('createArray', async (t) => {
   await t.step(
     'should create an array of a specified length and populate it with strings',
     () => {
-      const transform = (_: unknown, index: number) => `Item ${index}`
+      const transform = (_: unknown, index: number): string => `Item ${index}`
       assertEquals(createArray(5, transform), [
         'Item 0',
         'Item 1',

@@ -10,11 +10,11 @@
  * This ensures that the TypeScript compiler knows that the keys are of type
  * `keyof T`, not just `string`.
  *
- * @template Obj The type of the object. It extends `Record<string, unknown>`.
+ * @template Object_ The type of the object. It extends `Record<string, unknown>`.
  *
- * @param {Obj} object The object to get the keys from.
+ * @param {Object_} object The object to get the keys from.
  *
- * @returns {(keyof Obj)[]} An array of the keys of the object.
+ * @returns {(keyof Object_)[]} An array of the keys of the object.
  *
  * @example
  * ```typescript
@@ -23,8 +23,8 @@
  * // returns ['name', 'age']
  * ```
  */
-export function objectKeys<Obj extends Record<string, unknown>>(
-  object: Obj,
-): (keyof Obj)[] {
-  return Object.keys(object) as (keyof Obj)[]
+export function objectKeys<Object_ extends Record<string, unknown>>(
+  object: Object_,
+): (keyof Object_)[] {
+  return Object.keys(object) as (keyof Object_)[]
 }

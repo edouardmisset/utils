@@ -1,5 +1,5 @@
 // deno-lint-ignore no-explicit-any
-type AnyVoidFunction = (...arg: any[]) => void
+type AnyVoidFunction = (...argument: any[]) => void
 interface ThrottleParams {
   callback: AnyVoidFunction
   delay?: number

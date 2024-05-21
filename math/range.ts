@@ -2,9 +2,9 @@
  * An object containing the maximum, minimum, and value to be checked.
  */
 export interface ValueAndRange {
-  value: number
-  minimum: number
   maximum: number
+  minimum: number
+  value: number
   inclusive?: boolean
 }
 

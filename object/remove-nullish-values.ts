@@ -5,7 +5,7 @@
  * empty strings (`''`). By default, the function will not.
  *
  * @template T - The type of the object.
- * @param {T} obj - The object from which to remove nullish values.
+ * @param {T} object - The object from which to remove nullish values.
  * @returns {T} - The object without nullish values.
  *
  * @example
@@ -22,9 +22,9 @@
 export function removeNullishObjectValues<
   U extends string | number | object | boolean | undefined | null,
   T extends Record<string, U>,
->(obj: T, strict = true): Partial<T> {
+>(object: T, strict = true): Partial<T> {
   return Object.fromEntries(
-    Object.entries(obj).filter(([, value]) =>
+    Object.entries(object).filter(([, value]) =>
       // deno-lint-ignore eqeqeq
       value != null && (strict ? true : value !== '')
     ),

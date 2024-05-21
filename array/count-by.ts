@@ -2,8 +2,8 @@
  * Counts the number of elements in an array that satisfy a condition.
  *
  * @template T The type of elements in the array.
- * @param {T[]} arr - The array to process.
- * @param {(arg: T) => boolean} checkFunction - The function to test each element of the array.
+ * @param {T[]} array - The array to process.
+ * @param {(argument: T) => boolean} checkFunction - The function to test each element of the array.
  * This function should accept a single argument of type T (the type of elements in the array)
  * and return a boolean.
  *
@@ -11,29 +11,29 @@
  *
  * @example
  * ```typescript
- * const arr = [1, 2, 3, 4, 5]
+ * const array = [1, 2, 3, 4, 5]
  * function isEven(num: number) {
  *   return num % 2 === 0
  * }
- * countBy(arr, isEven)
+ * countBy(array, isEven)
  * // returns 2
  * ```
  *
  * @example
  * ```typescript
- * const arr = ['apple', 'banana', 'cherry', 'apple', 'cherry', 'cherry']
+ * const array = ['apple', 'banana', 'cherry', 'apple', 'cherry', 'cherry']
  * function isCherry(fruit: string) {
  *   return fruit === 'cherry'
  * }
- * countBy(arr, isCherry)
+ * countBy(array, isCherry)
  * // returns 3
  * ```
  */
 export function countBy<T>(
-  arr: T[],
-  checkFunction: (arg: T) => boolean,
+  array: T[],
+  checkFunction: (argument: T) => boolean,
 ): number {
-  return arr.reduce(
+  return array.reduce(
     (count, value) => checkFunction(value) ? count + 1 : count,
     0,
   )
@@ -47,7 +47,7 @@ export const countIf: typeof countBy = countBy
 /**
  * Calculates the frequency of each unique element in an array.
  * @template T - The type of elements in the array, which extends string or number.
- * @param {T[]} arr - An array of elements of type T.
+ * @param {T[]} array - An array of elements of type T.
  * @returns {Record<T, number>} - An object where the keys are the unique elements from the input array and the values are their corresponding frequencies.
  *
  * @example
@@ -63,9 +63,9 @@ export const countIf: typeof countBy = countBy
  * ```
  */
 export function frequency<T extends string | number>(
-  arr: T[],
+  array: T[],
 ): Record<T, number> {
-  return arr.reduce((acc, val) => {
+  return array.reduce((acc, val) => {
     acc[val] = (acc[val] ?? 0) + 1
     return acc
   }, {} as Record<T, number>)

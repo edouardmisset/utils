@@ -2,7 +2,7 @@
  * Type of a function that takes a single argument and returns a value of the
  * same type.
  */
-export type UnaryFunction<T> = (arg: T) => T
+export type UnaryFunction<T> = (argument: T) => T
 
 /**
  * Composes any number of unary functions into a single unary function.

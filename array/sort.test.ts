@@ -11,13 +11,13 @@ Deno.test('createStringSorter', async (t) => {
     assertEquals(result, ['Adam', 'Jane', 'John', 'Zane'])
   })
 
-  const sorter = createStringSorter('name')
+  const nameSorter = createStringSorter('name')
   const array = [{ name: 'John' }, { name: 'Jane' }, { name: 'Adam' }, {
     name: 'Zane',
   }]
 
   await t.step('should sort objects by a string key in ascending order', () => {
-    const result = array.sort(sorter)
+    const result = array.sort(nameSorter)
     assertEquals(result, [
       { name: 'Adam' },
       { name: 'Jane' },
@@ -37,29 +37,29 @@ Deno.test('createStringSorter', async (t) => {
   )
 
   await t.step('should handle empty arrays', () => {
-    const result = [].sort(sorter)
+    const result = [].sort(nameSorter)
     assertEquals(result, [])
   })
 
   await t.step('should handle arrays with one element', () => {
-    const result = [{ name: 'John' }].sort(sorter)
+    const result = [{ name: 'John' }].sort(nameSorter)
     assertEquals(result, [{ name: 'John' }])
   })
 
   await t.step('should handle arrays with identical elements', () => {
-    const result = [{ name: 'John' }, { name: 'John' }].sort(sorter)
+    const result = [{ name: 'John' }, { name: 'John' }].sort(nameSorter)
     assertEquals(result, [{ name: 'John' }, { name: 'John' }])
   })
 })
 
 Deno.test('createNumberSorter', async (t) => {
-  const sorter = createNumberSorter('value')
+  const numberSorter = createNumberSorter('value')
   const array = [{ value: 10 }, { value: 5 }, { value: 20 }, { value: 0 }, {
     value: -10,
   }]
 
   await t.step('should sort objects by a number key in ascending order', () => {
-    const result = array.sort(sorter)
+    const result = array.sort(numberSorter)
     assertEquals(result, [{ value: -10 }, { value: 0 }, { value: 5 }, {
       value: 10,
     }, { value: 20 }])
@@ -76,17 +76,17 @@ Deno.test('createNumberSorter', async (t) => {
   )
 
   await t.step('should handle empty arrays', () => {
-    const result = [].sort(sorter)
+    const result = [].sort(numberSorter)
     assertEquals(result, [])
   })
 
   await t.step('should handle arrays with one element', () => {
-    const result = [{ value: 10 }].sort(sorter)
+    const result = [{ value: 10 }].sort(numberSorter)
     assertEquals(result, [{ value: 10 }])
   })
 
   await t.step('should handle arrays with identical elements', () => {
-    const result = [{ value: 10 }, { value: 10 }].sort(sorter)
+    const result = [{ value: 10 }, { value: 10 }].sort(numberSorter)
     assertEquals(result, [{ value: 10 }, { value: 10 }])
   })
 
@@ -124,7 +124,7 @@ Deno.test('createNumberSorter', async (t) => {
 })
 
 Deno.test('createDateSorter', async (t) => {
-  const sorter = createDateSorter('date')
+  const dateSorter = createDateSorter('date')
   const array = [
     { date: new Date(2022, 0, 2) },
     { date: new Date(2022, 0, 1) },
@@ -132,7 +132,7 @@ Deno.test('createDateSorter', async (t) => {
   ]
 
   await t.step('should sort objects by a date key in ascending order', () => {
-    const result = array.sort(sorter)
+    const result = array.sort(dateSorter)
     assertEquals(result, [{ date: new Date(2022, 0, 1) }, {
       date: new Date(2022, 0, 2),
     }, { date: new Date(2022, 0, 3) }])
@@ -146,19 +146,19 @@ Deno.test('createDateSorter', async (t) => {
   })
 
   await t.step('should handle empty arrays', () => {
-    const result = [].sort(sorter)
+    const result = [].sort(dateSorter)
     assertEquals(result, [])
   })
 
   await t.step('should handle arrays with one element', () => {
-    const result = [{ date: new Date(2022, 0, 1) }].sort(sorter)
+    const result = [{ date: new Date(2022, 0, 1) }].sort(dateSorter)
     assertEquals(result, [{ date: new Date(2022, 0, 1) }])
   })
 
   await t.step('should handle arrays with identical elements', () => {
     const result = [{ date: new Date(2022, 0, 1) }, {
       date: new Date(2022, 0, 1),
-    }].sort(sorter)
+    }].sort(dateSorter)
     assertEquals(result, [{ date: new Date(2022, 0, 1) }, {
       date: new Date(2022, 0, 1),
     }])
@@ -194,24 +194,22 @@ Deno.test('createDateSorter', async (t) => {
   )
 
   await t.step('should handle invalid dates in objects', () => {
-    const sorter = createDateSorter('date')
-    const array = [{ date: new Date('invalid') }, {
+    const dateArray = [{ date: new Date('invalid') }, {
       date: new Date(2022, 0, 1),
     }, { date: new Date(2022, 0, 2) }]
-    const result = array.sort(sorter)
+    const result = dateArray.sort(dateSorter)
     assertEquals(result, [{ date: new Date(2022, 0, 1) }, {
       date: new Date(2022, 0, 2),
     }, { date: new Date('invalid') }])
   })
 
   await t.step('should handle invalid dates in primitive arrays', () => {
-    const sorter = createDateSorter()
-    const array = [
+    const dateArray = [
       new Date('invalid'),
       new Date(2022, 0, 1),
       new Date(2022, 0, 2),
     ]
-    const result = array.sort(sorter)
+    const result = dateArray.sort(dateSorter)
     assertEquals(result, [
       new Date(2022, 0, 1),
       new Date(2022, 0, 2),

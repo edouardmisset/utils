@@ -1,8 +1,8 @@
 /**
  * Creates a string sorter function.
  *
- * @template Obj - A type that extends Record<string, unknown>.
- * @param {keyof Obj} [key] - The key to sort by.
+ * @template Object_ - A type that extends Record<string, unknown>.
+ * @param {keyof Object_} [key] - The key to sort by.
  * @param {boolean} [ascending=true] - Whether to sort in ascending order. If
  * false, sorts in descending order.
  * @returns {function} - A function that takes two strings or objects and
@@ -16,17 +16,17 @@
  * // returns [{ name: 'Jane', age: 25 }, { name: 'John', age: 30 }]
  * ```
  */
-export function createStringSorter<Obj extends Record<string, unknown>>(
-  key?: keyof Obj,
+export function createStringSorter<Object_ extends Record<string, unknown>>(
+  key?: keyof Object_,
   ascending = true,
-): (left: Obj | string, right: Obj | string) => number {
+): (left: Object_ | string, right: Object_ | string) => number {
   return (left, right) => {
     const leftStr = typeof left === 'string'
       ? left
-      : (left[key as keyof Obj] as string)
+      : (left[key as keyof Object_] as string)
     const rightStr = typeof right === 'string'
       ? right
-      : (right[key as keyof Obj] as string)
+      : (right[key as keyof Object_] as string)
 
     return leftStr.localeCompare(rightStr) * (ascending ? 1 : -1)
   }
@@ -40,8 +40,8 @@ export const buildStringSorter: typeof createStringSorter = createStringSorter
 /**
  * Creates a number sorter function.
  *
- * @template Obj - A type that extends Record<string, unknown>.
- * @param {keyof Obj} [key] - The key to sort by.
+ * @template Object_ - A type that extends Record<string, unknown>.
+ * @param {keyof Object_} [key] - The key to sort by.
  * @param {boolean} [ascending=true] - Whether to sort in ascending order. If
  * false, sorts in descending order.
  * @returns {function} - A function that takes two numbers or objects and
@@ -55,17 +55,17 @@ export const buildStringSorter: typeof createStringSorter = createStringSorter
  * // returns [{ id: 2, value: 5 }, { id: 1, value: 10 }, { id: 3, value: 20 }]
  * ```
  */
-export function createNumberSorter<Obj extends Record<string, unknown>>(
-  key?: keyof Obj,
+export function createNumberSorter<Object_ extends Record<string, unknown>>(
+  key?: keyof Object_,
   ascending = true,
-): (left: Obj | number, right: Obj | number) => number {
+): (left: Object_ | number, right: Object_ | number) => number {
   return (left, right) => {
     const leftNum = typeof left === 'number'
       ? left
-      : (left[key as keyof Obj] as number)
+      : (left[key as keyof Object_] as number)
     const rightNum = typeof right === 'number'
       ? right
-      : (right[key as keyof Obj] as number)
+      : (right[key as keyof Object_] as number)
 
     if (Number.isNaN(leftNum)) return 1
     if (Number.isNaN(rightNum)) return -1
@@ -82,8 +82,8 @@ export const buildNumberSorter: typeof createNumberSorter = createNumberSorter
 /**
  * Creates a date sorter function.
  *
- * @template Obj - A type that extends Record<string, unknown>.
- * @param {keyof Obj} [key] - The key to sort by.
+ * @template Object_ - A type that extends Record<string, unknown>.
+ * @param {keyof Object_} [key] - The key to sort by.
  * @param {boolean} [ascending=true] - Whether to sort in ascending order. If
  * false, sorts in descending order.
  * @returns {function} - A function that takes two dates or objects and returns
@@ -97,17 +97,17 @@ export const buildNumberSorter: typeof createNumberSorter = createNumberSorter
  * // returns [{ id: 1, date: new Date(2022, 0, 1) }, { id: 2, date: new Date(2022, 0, 2) }, { id: 3, date: new Date(2022, 0, 3) }]
  * ```
  */
-export function createDateSorter<Obj extends Record<string, unknown>>(
-  key?: keyof Obj,
+export function createDateSorter<Object_ extends Record<string, unknown>>(
+  key?: keyof Object_,
   ascending = true,
-): (left: Obj | Date, right: Obj | Date) => number {
+): (left: Object_ | Date, right: Object_ | Date) => number {
   return (left, right) => {
     const leftDate = left instanceof Date
       ? left
-      : (left[key as keyof Obj] as Date)
+      : (left[key as keyof Object_] as Date)
     const rightDate = right instanceof Date
       ? right
-      : (right[key as keyof Obj] as Date)
+      : (right[key as keyof Object_] as Date)
 
     if (Number.isNaN(leftDate.getTime())) return 1
     if (Number.isNaN(rightDate.getTime())) return -1

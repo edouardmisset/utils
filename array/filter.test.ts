@@ -10,20 +10,21 @@ Deno.test('createDateFilter', async (t) => {
 
   await t.step('should filter dates by a date range', () => {
     const filter = createDateFilter({
-      startDate: new Date(2020, 6, 1),
       endDate: new Date(2020, 11, 31),
+      startDate: new Date(2020, 6, 1),
     })
     const result = filter(new Date(2020, 0, 1))
     assertEquals(result, false)
   })
 
+  const days180 = 1000 * 60 * 60 * 24 * 180
   await t.step(
     'should filter dates by a duration from a reference date',
     () => {
       const filter = createDateFilter({
+        durationInMS: days180,
         referenceDate: new Date(2020, 4, 1),
-        durationInMS: 1000 * 60 * 60 * 24 * 180,
-      }) // 180 days
+      })
       const result = filter(new Date(2020, 0, 1))
       assertEquals(result, true)
     },
@@ -42,8 +43,8 @@ Deno.test('createDateFilter', async (t) => {
     'should filter dates by a duration from a reference date with only durationInMS',
     () => {
       const filter = createDateFilter({
-        durationInMS: 1000 * 60 * 60 * 24 * 180,
-      }) // 180 days
+        durationInMS: days180,
+      })
       const result = filter(new Date())
       assertEquals(result, true)
     },

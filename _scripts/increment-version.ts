@@ -27,13 +27,16 @@ const releaseTypeFromArg = Deno.args[0] as ReleaseType
 
 if (!basicReleaseTypes.has(releaseTypeFromArg)) {
   console.error(
-    `Invalid release type. Please provide one of the following: ${[...basicReleaseTypes].join(', ')
+    `Invalid release type. Please provide one of the following: ${
+      [...basicReleaseTypes].join(', ')
     }`,
   )
   Deno.exit(1)
 }
 
-await incrementVersion(releaseTypeFromArg).catch(error => console.error(error))
+await incrementVersion(releaseTypeFromArg).catch((error) =>
+  console.error(error)
+)
 
 const f = new Deno.Command(Deno.execPath(), {
   args: ['fmt', 'deno.json'],

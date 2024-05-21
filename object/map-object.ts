@@ -4,7 +4,7 @@
  * the object thru the function.
  *
  * @param {Object.<string, Value>} object - The object to iterate over.
- * @param {(value: Value) => Returned} fn - The function invoked per
+ * @param {(value: Value) => Returned} transform - The function invoked per
  * iteration.
  * @returns {Object.<string, Returned>} The new object with the same keys and
  * mapped values.
@@ -21,15 +21,17 @@
  * ```
  */
 export function mapObject<
-  Obj extends Record<string, unknown>,
-  Value extends Obj[keyof Obj],
+  Object_ extends Record<string, unknown>,
+  Value extends Object_[keyof Object_],
   Returned,
-  Result extends { [k in keyof Obj]: Returned },
+  Result extends { [k in keyof Object_]: Returned },
 >(
-  object: Obj,
-  fn: (value: Value) => Returned,
+  object: Object_,
+  transform: (value: Value) => Returned,
 ): Result {
   return Object.fromEntries(
-    Object.entries(object).map(([key, value]) => [key, fn(value as Value)]),
+    Object.entries(object).map((
+      [key, value],
+    ) => [key, transform(value as Value)]),
   ) as Result
 }

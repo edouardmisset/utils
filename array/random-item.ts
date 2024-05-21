@@ -2,7 +2,7 @@
  * Returns a random item from an array.
  *
  * @template T The type of the elements in the array.
- * @param {T[]} arr The array to pick an item from.
+ * @param {T[]} array The array to pick an item from.
  * @returns {T} A random item from the array.
  * @throws {Error} If the array is empty.
  *
@@ -13,7 +13,7 @@
  * // returns 3 (output will vary)
  * ```
  */
-export function randomItem<T>(arr: T[]): T {
-  if (arr.length === 0) throw new Error('Array is empty')
-  return arr[Math.floor(Math.random() * arr.length)]
+export function randomItem<T>(array: T[]): T {
+  if (array.length === 0) throw new Error('Array is empty')
+  return array[Math.floor(Math.random() * array.length)]
 }

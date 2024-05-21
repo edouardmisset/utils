@@ -26,18 +26,14 @@ Deno.test(
     })
 
     await t.step(
-      {
-        name:
-          'should filter an array of objects by a duration from a reference date',
-        ignore: false,
-        fn: () => {
-          const _180Days = 1000 * 60 * 60 * 24 * 180
-          const result = data.filter(filterByDate('date', {
-            referenceDate: new Date(2020, 4, 1),
-            durationInMS: _180Days,
-          }))
-          assertEquals(result, [{ date: new Date(2020, 0, 1) }])
-        },
+      'should filter an array of objects by a duration from a reference date',
+      () => {
+        const _180Days = 1000 * 60 * 60 * 24 * 180
+        const result = data.filter(filterByDate('date', {
+          referenceDate: new Date(2020, 4, 1),
+          durationInMS: _180Days,
+        }))
+        assertEquals(result, [{ date: new Date(2020, 0, 1) }])
       },
     )
 

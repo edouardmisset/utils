@@ -4,7 +4,7 @@
  * Typescript. For example when iterating over the keys of an object.
  *
  * @template T - The type of the object.
- * @param {T} obj - The object to check.
+ * @param {T} object - The object to check.
  * @param {PropertyKey} key - The key to check for.
  * @returns {boolean} - True if the key exists in the object, false otherwise.
  *
@@ -20,8 +20,8 @@
  * ```
  */
 export function isKey<T extends object>(
-  obj: T,
+  object: T,
   key: PropertyKey,
 ): key is keyof T {
-  return key in obj
+  return key in object
 }

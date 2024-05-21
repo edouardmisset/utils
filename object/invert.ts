@@ -14,11 +14,11 @@
  * This function can be useful when you need to reverse a mapping, or when you
  * need to look up keys by their associated values.
  *
- * @template Obj - An object with string or number keys.
+ * @template Object_ - An object with string or number keys.
  * @template Key - The keys of the object T.
  * @template Return - The inverted object.
  *
- * @param {Obj} object - The original object to invert.
+ * @param {Object_} object - The original object to invert.
  * @returns {Return} The new object with inverted keys and values.
  *
  * @example
@@ -34,11 +34,11 @@
  * ```
  */
 export function invert<
-  Obj extends Record<string, unknown>,
-  Key extends keyof Obj,
+  Object_ extends Record<string, unknown>,
+  Key extends keyof Object_,
   Result extends Record<string, Key>,
 >(
-  object: Obj,
+  object: Object_,
 ): Result {
   return Object.entries(object).reduce((acc, [key, value]) => {
     if (!['string', 'number', 'symbol'].includes(typeof value)) {

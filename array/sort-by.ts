@@ -2,12 +2,12 @@
  * Sorts an array of objects by a specified property in ascending or descending
  * order.
  *
- * @template Obj - A type that extends Record<string, unknown>.
- * @param {Obj[]} arr - The array to sort.
- * @param {keyof Obj} property - The property to sort by.
+ * @template Object_ - A type that extends Record<string, unknown>.
+ * @param {Object_[]} array - The array to sort.
+ * @param {keyof Object_} property - The property to sort by.
  * @param {boolean} [ascending=true] - Whether to sort in ascending order. If
  * false, sorts in descending order.
- * @returns {Obj[]} - The sorted array.
+ * @returns {Object_[]} - The sorted array.
  *
  * @example
  * ```typescript
@@ -25,12 +25,12 @@
  * // returns [{ name: 'John', age: 30 }, { name: 'Jane', age: 25 }]
  * ```
  */
-export function sortBy<Obj extends Record<string, unknown>>(
-  arr: Obj[],
-  property: keyof Obj,
+export function sortBy<Object_ extends Record<string, unknown>>(
+  array: Object_[],
+  property: keyof Object_,
   ascending = true,
-): Obj[] {
-  return [...arr].sort((left, right) => {
+): Object_[] {
+  return [...array].sort((left, right) => {
     const leftValue = left[property]
     const rightValue = right[property]
     const order = ascending ? 1 : -1
