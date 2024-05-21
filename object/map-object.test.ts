@@ -20,7 +20,7 @@ Deno.test('mapObject', async (t) => {
   await t.step('should handle null values', () => {
     const result = mapObject(
       { a: null, b: '2' },
-      (value) => value === null ? 'null' : value,
+      (value) => value ?? 'null',
     )
     assertEquals(result, { a: 'null', b: '2' })
   })
@@ -28,7 +28,7 @@ Deno.test('mapObject', async (t) => {
   await t.step('should handle undefined values', () => {
     const result = mapObject(
       { a: undefined, b: '2' },
-      (value) => value === undefined ? -1 : value,
+      (value) => value ?? -1,
     )
     assertEquals(result, { a: -1, b: '2' })
   })

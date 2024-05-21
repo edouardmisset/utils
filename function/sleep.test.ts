@@ -12,12 +12,13 @@ Deno.test('sleep', async (t) => {
   })
 
   await t.step('should throw an error if the time is a negative number', () => {
+    const negativeSleepDurationInMs = -sleepDurationInMs
     assertThrows(
       () => {
-        sleep(-sleepDurationInMs)
+        void sleep(negativeSleepDurationInMs)
       },
       Error,
-      `Invalid time value (-${sleepDurationInMs} ms). Time must be a positive number.`,
+      `Invalid time value (${negativeSleepDurationInMs} ms). Time must be a positive number.`,
     )
   })
 })

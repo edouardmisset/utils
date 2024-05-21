@@ -39,11 +39,11 @@ export async function getEnv(
 
   if (env === 'node' || env === 'CRA') {
     // @ts-expect-error: it depends on the environment
-    value = process.env[variable] || process.env[`${prefix}${variable}`]
+    value = process.env[variable] ?? process.env[`${prefix}${variable}`]
   }
   if (env === 'vite') {
     // @ts-expect-error: it depends on the environment
-    value = import.meta.env[variable] || import.meta.env[`${prefix}${variable}`]
+    value = import.meta.env[variable] ?? import.meta.env[`${prefix}${variable}`]
   }
 
   if (env === 'deno') {

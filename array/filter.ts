@@ -43,7 +43,7 @@ export function createDateFilter(
   if (isDateRangeOption(options)) {
     return (date) =>
       date.getTime() >= options.startDate.getTime() &&
-      date.getTime() <= (options?.endDate ?? new Date()).getTime()
+      date.getTime() <= (options.endDate ?? new Date()).getTime()
   }
 
   const {
@@ -80,6 +80,6 @@ export function createBooleanFilter<
   Obj extends Record<string, unknown>,
   Key extends keyof Obj,
 >(key: Key): (obj: Obj) => boolean {
-  return (obj: Obj): boolean =>
-    typeof obj?.[key] === 'boolean' ? obj[key] === true : false
+  return (obj: Obj) =>
+    typeof obj[key] === 'boolean' ? obj[key] === true : false
 }

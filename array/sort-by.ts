@@ -28,7 +28,7 @@
 export function sortBy<Obj extends Record<string, unknown>>(
   arr: Obj[],
   property: keyof Obj,
-  ascending: boolean = true,
+  ascending = true,
 ): Obj[] {
   return [...arr].sort((left, right) => {
     const leftValue = left[property]

@@ -1,7 +1,7 @@
 /**
  * `scale` function's parameters.
  */
-export type ScaleParameters = {
+export interface ScaleParameters {
   inMinimum: number
   inMaximum: number
   outMinimum?: number
@@ -12,7 +12,7 @@ export type ScaleParameters = {
 /**
  * `rescale` function's parameters.
  */
-export type Rescale = {
+export interface Rescale {
   value: number
   minimum: number
   maximum: number
@@ -51,8 +51,7 @@ export function scale(params: ScaleParameters): number {
   }
   return (
     ((value - inMinimum) * (outMaximum - outMinimum)) /
-      (inMaximum - inMinimum) +
-    outMinimum
+    (inMaximum - inMinimum) + outMinimum
   )
 }
 

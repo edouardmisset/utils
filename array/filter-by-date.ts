@@ -182,7 +182,7 @@ export function filterByDate<Obj extends Record<string, unknown>>(
   dateKey: keyof Obj = 'date',
   options: FilterOptions = {} as FilterOptions,
 ): (obj: Obj) => boolean {
-  return (obj: Obj): boolean => {
+  return (obj: Obj) => {
     if (objectSize(options) === 0) return true
 
     const val = obj[dateKey]
@@ -202,14 +202,14 @@ export function filterByDate<Obj extends Record<string, unknown>>(
       return isWithinDateRange(
         dateValue,
         options.startDate,
-        options?.endDate || new Date(),
+        options.endDate ?? new Date(),
       )
     }
 
     return isWithinDuration(
       dateValue,
-      options?.referenceDate ?? new Date(),
-      options?.durationInMS ?? oneYearInMilliseconds,
+      options.referenceDate ?? new Date(),
+      options.durationInMS ?? oneYearInMilliseconds,
     )
   }
 }

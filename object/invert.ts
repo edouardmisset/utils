@@ -36,7 +36,7 @@
 export function invert<
   Obj extends Record<string, unknown>,
   Key extends keyof Obj,
-  Result extends { [k: string]: Key },
+  Result extends Record<string, Key>,
 >(
   object: Obj,
 ): Result {

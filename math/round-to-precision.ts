@@ -22,6 +22,6 @@
  * // returns 1
  * ```
  */
-export function roundToPrecision(num: number, precision: number = 0): number {
+export function roundToPrecision(num: number, precision = 0): number {
   return Math.round(num * 10 ** precision) / 10 ** precision
 }
