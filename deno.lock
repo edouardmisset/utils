@@ -4,7 +4,8 @@
     "specifiers": {
       "jsr:@std/assert@^0.219.1": "jsr:@std/assert@0.219.1",
       "jsr:@std/dotenv@^0.219.1": "jsr:@std/dotenv@0.219.1",
-      "jsr:@std/fmt@^0.219.1": "jsr:@std/fmt@0.219.1"
+      "jsr:@std/fmt@^0.219.1": "jsr:@std/fmt@0.219.1",
+      "jsr:@std/semver@0.223.0": "jsr:@std/semver@0.223.0"
     },
     "jsr": {
       "@std/assert@0.219.1": {
@@ -18,6 +19,9 @@
       },
       "@std/fmt@0.219.1": {
         "integrity": "2432152e927df249a207177aa048a6d9465956ea0047653ee6abd4f514db504f"
+      },
+      "@std/semver@0.223.0": {
+        "integrity": "435f782c760d0662f6b93ccec343701fbd6b5b61d5f7ec6d5a908a911b78099b"
       }
     }
   },

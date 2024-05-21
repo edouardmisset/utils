@@ -4,7 +4,7 @@ import {
   increment,
   parse,
   ReleaseType,
-} from 'https://deno.land/std@0.223.0/semver/mod.ts'
+} from 'jsr:@std/semver@0.223.0'
 
 import denoJSON from '../deno.json' with { type: 'json' }
 
