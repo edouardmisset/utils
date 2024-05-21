@@ -3,12 +3,12 @@
  * of a specified key in the objects, and the values are the objects themselves.
  * If the array is empty, returns undefined.
  *
- * @template Obj - The type of the objects in the array. Must extend
+ * @template Object_ - The type of the objects in the array. Must extend
  * Record<string, unknown>.
- * @template Key - The type of the key to use. Must be a key of Obj.
- * @param {Obj[]} array - The array of objects to transform.
+ * @template Key - The type of the key to use. Must be a key of Object_.
+ * @param {Object_[]} array - The array of objects to transform.
  * @param {Key} key - The key to use for the new object.
- * @returns {undefined | Record<string, Obj>} - The transformed object, or
+ * @returns {undefined | Record<string, Object_>} - The transformed object, or
  * undefined if the array is empty.
  *
  * @example
@@ -29,12 +29,12 @@
  * ```
  */
 export function keyBy<
-  Obj extends Record<string, unknown>,
-  Key extends keyof Obj,
->(array: Obj[], key: Key): undefined | Record<string, Obj> {
+  Object_ extends Record<string, unknown>,
+  Key extends keyof Object_,
+>(array: Object_[], key: Key): undefined | Record<string, Object_> {
   return array.length === 0 ? undefined : (Object.fromEntries(
     array.map((value) => [String(key ? value[key] : value), value]),
-  ) as Record<string, Obj>)
+  ) as Record<string, Object_>)
 }
 
 /**
@@ -43,13 +43,13 @@ export function keyBy<
  * the values are the objects themselves. If the collection is empty, returns
  * undefined.
  *
- * @template Obj - The type of the objects in the collection. Must extend
+ * @template Object_ - The type of the objects in the collection. Must extend
  * Record<string, unknown>.
- * @template Key - The type of the key to use. Must be a key of Obj.
- * @param {Obj[] | Record<string, Obj>} collection - The collection of objects
+ * @template Key - The type of the key to use. Must be a key of Object_.
+ * @param {Object_[] | Record<string, Object_>} collection - The collection of objects
  * to transform.
  * @param {Key} key - The key to use for the new object.
- * @returns {undefined | Record<string, Obj>} - The transformed object, or
+ * @returns {undefined | Record<string, Object_>} - The transformed object, or
  * undefined if the collection is empty.
  *
  * @example
@@ -77,12 +77,12 @@ export function keyBy<
  * ```
  */
 export function collectionKeyBy<
-  Obj extends Record<string, unknown>,
-  Key extends keyof Obj,
+  Object_ extends Record<string, unknown>,
+  Key extends keyof Object_,
 >(
-  collection: Obj[] | Record<string, Obj>,
+  collection: Object_[] | Record<string, Object_>,
   key: Key,
-): Record<string, Obj> | undefined {
+): Record<string, Object_> | undefined {
   return Array.isArray(collection)
     ? keyBy(collection, key)
     : keyBy(Object.values(collection), key)

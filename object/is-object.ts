@@ -62,8 +62,8 @@ export function isPlainObject(val: unknown): val is Record<string, unknown> {
  * A non-nested object in JavaScript is an object that does not contain any
  * other objects as values.
  *
- * @param {Record<string, unknown>} obj - The object to check.
- * @returns {obj is Record<string, Primitive>} - Returns `true` if the object is not nested, else `false`.
+ * @param {Record<string, unknown>} object - The object to check.
+ * @returns {object is Record<string, Primitive>} - Returns `true` if the object is not nested, else `false`.
  *
  * @example
  * ```typescript
@@ -74,7 +74,7 @@ export function isPlainObject(val: unknown): val is Record<string, unknown> {
  * ```
  */
 export function isNotNestedObject(
-  obj: Record<string, unknown>,
-): obj is Record<string, Primitive> {
-  return Object.values(obj).every((val) => !isObject(val))
+  object: Record<string, unknown>,
+): object is Record<string, Primitive> {
+  return Object.values(object).every((val) => !isObject(val))
 }

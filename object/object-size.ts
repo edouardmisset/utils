@@ -2,8 +2,8 @@
  * Returns the size of an object, which is the number of its own enumerable
  * properties.
  *
- * @param {Record<string, unknown>} obj - The object to query.
- * @returns {number} Returns the size of the `obj`.
+ * @param {Record<string, unknown>} object - The object to query.
+ * @returns {number} Returns the size of the `object`.
  *
  * @example
  * ```typescript
@@ -11,8 +11,8 @@
  * // returns 3
  * ```
  */
-export function objectSize(obj: Record<string, unknown>): number {
-  return Object.keys(obj).length
+export function objectSize(object: Record<string, unknown>): number {
+  return Object.keys(object).length
 }
 
 /**

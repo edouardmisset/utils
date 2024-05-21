@@ -1,9 +1,9 @@
 import { assertEquals } from '@std/assert'
 import { compose, pipe } from './pipe.ts'
 
-const addOne = (x: number) => x + 1
-const double = (x: number) => x * 2
-const triple = (x: number) => x * 3
+const addOne = (x: number): number => x + 1
+const double = (x: number): number => x * 2
+const triple = (x: number): number => x * 3
 
 Deno.test('compose', async (t) => {
   const addOneThenDouble = compose(double, addOne)

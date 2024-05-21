@@ -77,10 +77,10 @@ export type Override<OriginalType, OverrideType> =
  * It first omits the specified keys from the original type, and then makes
  * those keys required.
  *
- * @template Obj The original type.
+ * @template Object_ The original type.
  * @template Key The keys of the properties that should be made required. It
- * extends `keyof Obj`, which means it can be any key of `Obj`. The default
- * value is `keyof Obj`, which means all keys of `Obj`.
+ * extends `keyof Object_`, which means it can be any key of `Object_`. The default
+ * value is `keyof Object_`, which means all keys of `Object_`.
  *
  * @example
  * ```typescript
@@ -103,9 +103,9 @@ export type Override<OriginalType, OverrideType> =
  * ```
  */
 export type RequireKey<
-  Obj extends ObjectOfType<unknown>,
-  Key extends keyof Obj = keyof Obj,
-> = Omit<Obj, Key> & Required<Pick<Obj, Key>>
+  Object_ extends ObjectOfType<unknown>,
+  Key extends keyof Object_ = keyof Object_,
+> = Omit<Object_, Key> & Required<Pick<Object_, Key>>
 
 /**
  * Constructs a type by making some properties of an existing type optional.
@@ -114,10 +114,10 @@ export type RequireKey<
  * It first omits the specified keys from the original type, and then makes
  * those keys optional.
  *
- * @template Obj The original type.
+ * @template Object_ The original type.
  * @template Key The keys of the properties that should be made optional. It
- * extends `keyof Obj`, which means it can be any key of `Obj`. The default
- * value is `keyof Obj`, which means all keys of `Obj`.
+ * extends `keyof Object_`, which means it can be any key of `Object_`. The default
+ * value is `keyof Object_`, which means all keys of `Object_`.
  *
  * @example
  * ```typescript
@@ -140,9 +140,9 @@ export type RequireKey<
  * ```
  */
 export type OptionalKey<
-  Obj extends ObjectOfType<unknown>,
-  Key extends keyof Obj = keyof Obj,
-> = Omit<Obj, Key> & Partial<Pick<Obj, Key>>
+  Object_ extends ObjectOfType<unknown>,
+  Key extends keyof Object_ = keyof Object_,
+> = Omit<Object_, Key> & Partial<Pick<Object_, Key>>
 
 /**
  * Constructs a type by excluding `null` from the possible values of some
@@ -152,11 +152,11 @@ export type OptionalKey<
  * It iterates over the keys of the original type, and for each key, it creates
  * a new type that excludes `null` from the possible values of that property.
  *
- * @template Obj The original type. It extends `object`, which means it can be
+ * @template Object_ The original type. It extends `object`, which means it can be
  * any object type.
  * @template Key The keys of the properties that should exclude `null`. It
- * extends `keyof Obj`, which means it can be any key of `Obj`. The default
- * value is `keyof Obj`, which means all keys of `Obj`.
+ * extends `keyof Object_`, which means it can be any key of `Object_`. The default
+ * value is `keyof Object_`, which means all keys of `Object_`.
  *
  * @example
  * ```typescript
@@ -179,10 +179,10 @@ export type OptionalKey<
  * ```
  */
 export type NotNullValues<
-  Obj extends ObjectOfType<unknown>,
-  Key extends keyof Obj = keyof Obj,
+  Object_ extends ObjectOfType<unknown>,
+  Key extends keyof Object_ = keyof Object_,
 > = {
-  [P in Key]: Exclude<Obj[P], null>
+  [P in Key]: Exclude<Object_[P], null>
 }
 
 /**
@@ -192,11 +192,11 @@ export type NotNullValues<
  * It iterates over the keys of the original type, and for each key, it creates
  * a new type that excludes `null` and `undefined` from the possible values of
  * that property.
- * @template Obj The original type. It extends `object`, which means it can be
+ * @template Object_ The original type. It extends `object`, which means it can be
  * any object type.
  * @template Key The keys of the properties that should exclude `null` and
- * `undefined`. It extends `keyof Obj`, which means it can be any key of `Obj`.
- * The default value is `keyof Obj`, which means all keys of `Obj`.
+ * `undefined`. It extends `keyof Object_`, which means it can be any key of `Object_`.
+ * The default value is `keyof Object_`, which means all keys of `Object_`.
  * @example
  * ```typescript
  * type Person = {
@@ -216,10 +216,10 @@ export type NotNullValues<
  * ```
  */
 export type NotNullishValues<
-  Obj extends ObjectOfType<unknown>,
-  Key extends keyof Obj = keyof Obj,
+  Object_ extends ObjectOfType<unknown>,
+  Key extends keyof Object_ = keyof Object_,
 > = {
-  [P in Key]: Exclude<Obj[P], null | undefined>
+  [P in Key]: Exclude<Object_[P], null | undefined>
 }
 
 /**
@@ -228,9 +228,9 @@ export type NotNullishValues<
  * means that the new type is
  * easier to read and understand.
  */
-export type Prettify<Obj extends object> =
+export type Prettify<Object_ extends object> =
   & {
-    [Key in keyof Obj]: Obj[Key]
+    [Key in keyof Object_]: Object_[Key]
   }
   // deno-lint-ignore ban-types
   & {}
@@ -244,7 +244,7 @@ export type Prettify<Obj extends object> =
  * It creates a new type that includes the types of all values of the properties
  * of the original type.
  *
- * @template Obj The original type.
+ * @template Object_ The original type.
  *
  * @example
  * ```typescript
@@ -266,7 +266,7 @@ export type Prettify<Obj extends object> =
  * // Equivalent to: string | number
  * ```
  */
-export type ObjectValues<Obj extends object> = Obj[keyof Obj]
+export type ObjectValues<Object_ extends object> = Object_[keyof Object_]
 
 /**
  * Represents a type that can be either a specific string (or union of strings)

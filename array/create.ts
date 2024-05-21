@@ -34,7 +34,8 @@
 export function createArray<T = number>(
   length: number,
   // @ts-expect-error: I don't know how to fix this type error
-  transform: Parameters<typeof Array.from<T, U>>[1] = (_, index) => index,
+  transform: Parameters<typeof Array.from<T, U>>[1] = (_, index): number =>
+    index,
 ): T[] {
   return Array.from({ length }, transform) as T[]
 }
@@ -100,7 +101,7 @@ export function range(start: number, end?: number, step = 1): number[] {
 
   return Array.from(
     { length },
-    (_, i) => lowerBound + i * ((step < 0) ? -step : step),
+    (_, index) => lowerBound + index * ((step < 0) ? -step : step),
   ).sort((a, b) => a - b)
 }
 

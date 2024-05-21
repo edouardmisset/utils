@@ -18,12 +18,12 @@ export type BasicNode = Record<string, any>
 export interface SearchTreeParameters<NodeType extends BasicNode = BasicNode> {
   /** The root node of the tree to search. */
   node: NodeType
+  /** The name of the field to compare with the search term. */
+  searchItemField: keyof NodeType
   /** The term to search for. */
   searchTerm: string
   /** The name of the field that contains the sub-nodes of a node. */
   subItemsField: keyof NodeType
-  /** The name of the field to compare with the search term. */
-  searchItemField: keyof NodeType
 }
 
 /**
@@ -115,9 +115,9 @@ export function searchTreeList<NodeType extends BasicNode = BasicNode>(
   for (const node of nodeList) {
     foundNode = searchTree({
       node,
+      searchItemField,
       searchTerm,
       subItemsField,
-      searchItemField,
     })
     if (foundNode) return foundNode
   }

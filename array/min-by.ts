@@ -2,10 +2,10 @@
  * Returns the **last** object with the minimum value for the specified key from an array of objects.
  * If the array is empty, returns undefined.
  *
- * @template Obj - The type of the objects in the array. Must extend Record<string, unknown>.
- * @param {Obj[]} array - The array of objects to search.
- * @param {keyof Obj} key - The key to compare.
- * @returns {Obj | undefined} - The object with the minimum value for the specified key, or undefined if the array is empty.
+ * @template Object_ - The type of the objects in the array. Must extend Record<string, unknown>.
+ * @param {Object_[]} array - The array of objects to search.
+ * @param {keyof Object_} key - The key to compare.
+ * @returns {Object_ | undefined} - The object with the minimum value for the specified key, or undefined if the array is empty.
  *
  * @example
  * ```typescript
@@ -22,10 +22,10 @@
  * // returns undefined
  * ```
  */
-export function minBy<Obj extends Record<string, unknown>>(
-  array: Obj[],
-  key: keyof Obj,
-): Obj | undefined {
+export function minBy<Object_ extends Record<string, unknown>>(
+  array: Object_[],
+  key: keyof Object_,
+): Object_ | undefined {
   return array.length === 0
     ? undefined
     : array.reduce((acc, val) => (acc[key] < val[key] ? acc : val), array[0])

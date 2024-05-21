@@ -63,10 +63,10 @@ export const buildDateFilter: typeof createDateFilter = createDateFilter
  * Creates a boolean filter function.
  * The filter function expects an object and checks if the specified key's value is true.
  *
- * @template Obj - The type of the object.
+ * @template Object_ - The type of the object.
  * @template Key - The type of the key of the object.
  * @param {Key} key - The key of the property to check in the object.
- * @returns {(obj: Obj) => boolean} The filter function.
+ * @returns {(object: Object_) => boolean} The filter function.
  *
  * @example
  * ```typescript
@@ -77,9 +77,9 @@ export const buildDateFilter: typeof createDateFilter = createDateFilter
  * ```
  */
 export function createBooleanFilter<
-  Obj extends Record<string, unknown>,
-  Key extends keyof Obj,
->(key: Key): (obj: Obj) => boolean {
-  return (obj: Obj) =>
-    typeof obj[key] === 'boolean' ? obj[key] === true : false
+  Object_ extends Record<string, unknown>,
+  Key extends keyof Object_,
+>(key: Key): (object: Object_) => boolean {
+  return (object: Object_) =>
+    typeof object[key] === 'boolean' ? object[key] === true : false
 }

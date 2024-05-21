@@ -1,11 +1,11 @@
 /**
  * Selects a specific key from each object in an array.
  *
- * @template Obj - The type of the objects in the array.
+ * @template Object_ - The type of the objects in the array.
  * @template Key - The type of the key to select from the objects.
- * @param {Obj[]} arr - The array of objects.
+ * @param {Object_[]} array - The array of objects.
  * @param {Key} key - The key to select from each object.
- * @returns {Array<Obj[Key]>} - An array of the selected properties.
+ * @returns {Array<Object_[Key]>} - An array of the selected properties.
  *
  * @example
  * ```typescript
@@ -24,10 +24,10 @@
  * ```
  */
 export function selectBy<
-  Obj extends Record<string, unknown>,
-  Key extends keyof Obj,
->(arr: Obj[], key: Key): Obj[Key][] {
-  return arr.flatMap((item) => (Object.hasOwn(item, key) ? [item[key]] : []))
+  Object_ extends Record<string, unknown>,
+  Key extends keyof Object_,
+>(array: Object_[], key: Key): Object_[Key][] {
+  return array.flatMap((item) => (Object.hasOwn(item, key) ? [item[key]] : []))
 }
 
 /**
@@ -38,7 +38,7 @@ export const pluckBy: typeof selectBy = selectBy
 /**
  * Creates a function that selects a specific key's value from a given object.
  *
- * @template Obj - The type of the object.
+ * @template Object_ - The type of the object.
  * @template Key - The type of the key to select.
  * @param {Key} key - The key to select.
  * @returns {function} A function that takes an object and returns the value of the selected key.
@@ -58,10 +58,10 @@ export const pluckBy: typeof selectBy = selectBy
  * ```
  */
 export function createSelectBy<
-  Obj extends Record<string, unknown>,
-  Key extends keyof Obj,
->(key: Key): (obj: Obj) => Obj[Key] {
-  return (obj) => obj[key]
+  Object_ extends Record<string, unknown>,
+  Key extends keyof Object_,
+>(key: Key): (object: Object_) => Object_[Key] {
+  return (object) => object[key]
 }
 
 /**
@@ -72,12 +72,12 @@ export const buildSelectBy: typeof createSelectBy = createSelectBy
 /**
  * Applies a transformation function to the values a specified by a key of each object in an array.
  *
- * @template Obj - The type of the objects in the array.
+ * @template Object_ - The type of the objects in the array.
  * @template Key - The type of the key to select from the objects.
  * @template R - The type of the result of the transformation function.
- * @param {Obj[]} arr - The array of objects.
+ * @param {Object_[]} array - The array of objects.
  * @param {Key} key - The key to select from each object.
- * @param {(value: Obj[Key]) => R} transform - The transformation function to apply to each selected key.
+ * @param {(value: Object_[Key]) => R} transform - The transformation function to apply to each selected key.
  * @returns {Array<R>} - An array of the transformed properties.
  *
  * @example
@@ -95,11 +95,11 @@ export const buildSelectBy: typeof createSelectBy = createSelectBy
  * ```
  */
 export function selectAndTransform<
-  Obj extends Record<string, unknown>,
-  Key extends keyof Obj,
+  Object_ extends Record<string, unknown>,
+  Key extends keyof Object_,
   R,
->(arr: Obj[], key: Key, transform: (value: Obj[Key]) => R): R[] {
-  return arr.flatMap(
+>(array: Object_[], key: Key, transform: (value: Object_[Key]) => R): R[] {
+  return array.flatMap(
     (item) => (Object.hasOwn(item, key) ? [transform(item[key])] : []),
   )
 }

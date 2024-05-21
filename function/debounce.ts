@@ -1,8 +1,8 @@
-type AnyVoidFunction = (...arg: unknown[]) => void
+type AnyVoidFunction = (...argument: unknown[]) => void
 interface DebounceParams {
   callback: AnyVoidFunction
-  timerId?: { id: number }
   delay?: number
+  timerId?: { id: number }
 }
 
 /**
@@ -20,7 +20,7 @@ interface DebounceParams {
  * ```
  */
 export const debounce = (params: DebounceParams): AnyVoidFunction => {
-  const { callback, timerId = { id: -1 }, delay = 50 } = params
+  const { callback, delay = 50, timerId = { id: -1 } } = params
 
   return (...args) => {
     if (timerId.id !== -1) clearTimeout(timerId.id)

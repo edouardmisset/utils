@@ -15,8 +15,8 @@ export type integer = number
  * Type representing a start and end date (as `Date` types).
  */
 export type StartAndEndDate = {
-  startDate: Date
   endDate?: Date
+  startDate: Date
 }
 
 /**
@@ -30,16 +30,16 @@ export type Year = {
  * Type representing a duration (in milliseconds) and a reference date (as
  * `Date` type).
  */
-export type DurationAndRefDate = {
-  referenceDate?: Date
+export type DurationAndReferenceDate = {
   durationInMS?: milliseconds
+  referenceDate?: Date
 }
 
 /**
  * The filter options for the {@link filterByDate} function.
  * This can be a year, a start and end date, or a duration from a reference date.
  */
-export type FilterOptions = Year | StartAndEndDate | DurationAndRefDate
+export type FilterOptions = Year | StartAndEndDate | DurationAndReferenceDate
 
 /**
  * Checks if the given option is of type Year.
@@ -144,11 +144,11 @@ function isDateCompatible(val: unknown): val is Date | number | string {
  * Creates a filter function that can be used to filter an array of objects
  * based on a date property and provided filter options.
  *
- * @template Obj - The type of object in the array to filter.
- * @param {keyof Obj} dateKey - The key of the date property in the objects to
+ * @template Object_ - The type of object in the array to filter.
+ * @param {keyof Object_} dateKey - The key of the date property in the objects to
  * filter.
  * @param {FilterOptions} [options={}] - The filter options to use.
- * @returns {(obj: Obj) => boolean} - A filter function that takes an object and
+ * @returns {(object: Object_) => boolean} - A filter function that takes an object and
  * returns true if the object passes the filter, false otherwise.
  *
  * @example
@@ -178,14 +178,14 @@ function isDateCompatible(val: unknown): val is Date | number | string {
  * // [{ date: new Date(2020, 0, 1) }]
  * ```
  */
-export function filterByDate<Obj extends Record<string, unknown>>(
-  dateKey: keyof Obj = 'date',
+export function filterByDate<Object_ extends Record<string, unknown>>(
+  dateKey: keyof Object_ = 'date',
   options: FilterOptions = {} as FilterOptions,
-): (obj: Obj) => boolean {
-  return (obj: Obj) => {
+): (object: Object_) => boolean {
+  return (object: Object_) => {
     if (objectSize(options) === 0) return true
 
-    const val = obj[dateKey]
+    const val = object[dateKey]
     if (!isDateCompatible(val)) return true
 
     const dateValue = new Date(val)

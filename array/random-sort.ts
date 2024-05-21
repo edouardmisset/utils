@@ -16,7 +16,7 @@
  */
 export function randomSort<T>(originalArray: T[]): T[] {
   return originalArray
-    .map((value) => ({ value, randomValue: Math.random() }))
+    .map((value) => ({ randomValue: Math.random(), value }))
     .sort((a, b) => a.randomValue - b.randomValue)
     .map(({ value }) => value)
 }

@@ -5,9 +5,9 @@ import { objectKeys } from './object-keys.ts'
  * Performs a shallow comparison between two objects of the same type.
  * It checks if both objects have the same keys and if the values for these keys are the same in both objects.
  *
- * @template Obj The type of the objects to compare.
- * @param {Obj} leftObject The first object to compare.
- * @param {Obj} rightObject The second object to compare.
+ * @template Object_ The type of the objects to compare.
+ * @param {Object_} leftObject The first object to compare.
+ * @param {Object_} rightObject The second object to compare.
  * @returns {boolean} True if the objects have the same keys and the same values for each key, false otherwise.
  *
  * @example
@@ -21,9 +21,9 @@ import { objectKeys } from './object-keys.ts'
  * // returns false
  * ```
  */
-export function shallowEqual<Obj extends ObjectOfType>(
-  leftObject: Obj,
-  rightObject: Obj,
+export function shallowEqual<Object_ extends ObjectOfType>(
+  leftObject: Object_,
+  rightObject: Object_,
 ): boolean {
   const leftKeys = objectKeys(leftObject).sort()
   const rightKeys = objectKeys(rightObject).sort()
