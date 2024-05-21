@@ -3,7 +3,7 @@
  *
  * @template Object_ - The type of the object.
  * @param {keyof Object_} key - The key to match in the objects.
- * @returns {(value: unknown) => (object: Object_) => boolean} - A function that takes a value and returns a function that takes an object and returns true if the object's key matches the value, false otherwise.
+ * @returns {(value: unknown) => (object_: Object_) => boolean} - A function that takes a value and returns a function that takes an object and returns true if the object's key matches the value, false otherwise.
  *
  * @example
  * ```typescript
@@ -23,13 +23,13 @@
  */
 export function createFindBy<Object_ extends Record<string, unknown>>(
   key: keyof Object_,
-): (value: unknown) => (object: Object_) => boolean {
-  return (value) => (object) => {
-    if (!Object.hasOwn(object, key)) {
+): (value: unknown) => (object_: Object_) => boolean {
+  return (value) => (object_) => {
+    if (!Object.hasOwn(object_, key)) {
       throw new Error(`Key "${String(key)}" does not exist in the object.`)
     }
 
-    return object[key] === value
+    return object_[key] === value
   }
 }
 

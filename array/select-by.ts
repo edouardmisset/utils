@@ -60,8 +60,8 @@ export const pluckBy: typeof selectBy = selectBy
 export function createSelectBy<
   Object_ extends Record<string, unknown>,
   Key extends keyof Object_,
->(key: Key): (object: Object_) => Object_[Key] {
-  return (object) => object[key]
+>(key: Key): (object_: Object_) => Object_[Key] {
+  return (object_) => object_[key]
 }
 
 /**

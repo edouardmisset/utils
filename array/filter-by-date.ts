@@ -148,7 +148,7 @@ function isDateCompatible(val: unknown): val is Date | number | string {
  * @param {keyof Object_} dateKey - The key of the date property in the objects to
  * filter.
  * @param {FilterOptions} [options={}] - The filter options to use.
- * @returns {(object: Object_) => boolean} - A filter function that takes an object and
+ * @returns {(object_: Object_) => boolean} - A filter function that takes an object and
  * returns true if the object passes the filter, false otherwise.
  *
  * @example
@@ -181,11 +181,11 @@ function isDateCompatible(val: unknown): val is Date | number | string {
 export function filterByDate<Object_ extends Record<string, unknown>>(
   dateKey: keyof Object_ = 'date',
   options: FilterOptions = {} as FilterOptions,
-): (object: Object_) => boolean {
-  return (object: Object_) => {
+): (object_: Object_) => boolean {
+  return (object_: Object_) => {
     if (objectSize(options) === 0) return true
 
-    const val = object[dateKey]
+    const val = object_[dateKey]
     if (!isDateCompatible(val)) return true
 
     const dateValue = new Date(val)
