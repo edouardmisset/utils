@@ -22,12 +22,6 @@ export function isValidNumber(num: unknown): num is number {
   return typeof num === 'number' && Number.isFinite(num)
 }
 
-/** Check if a string or number is a valid number */
-const validateNumber = n => {
-  const num = parseFloat(n);
-  return !Number.isNaN(num) && Number.isFinite(num) && Number(n) == n;
-}
-
 /**
  * Converts a value to a valid number or returns a fallback value.
  *
