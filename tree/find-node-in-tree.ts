@@ -70,7 +70,7 @@ export function searchTree<NodeType extends BasicNode = BasicNode>(
 
   if (node[searchItemField] === searchTerm) return node
 
-  if ((node?.[subItemsField]?.length ?? 0) > 0) {
+  if ((node[subItemsField]?.length ?? 0) > 0) {
     return searchTreeList({
       nodeList: node[subItemsField],
       searchTerm,

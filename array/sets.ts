@@ -91,7 +91,7 @@ export const setDifference: typeof uniqueInFirst = uniqueInFirst
 export function uniqueElements<T>(...arrays: T[][]): T[] {
   const counts = new Map<T, number>()
   arrays.flat().forEach((value) => {
-    counts.set(value, (counts.get(value) || 0) + 1)
+    counts.set(value, (counts.get(value) ?? 0) + 1)
   })
 
   return [...counts.entries()]

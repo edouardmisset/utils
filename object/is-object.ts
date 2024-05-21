@@ -7,7 +7,7 @@ import { Primitive } from '../type/type-helpers.ts'
  * objects.
  *
  * @param {unknown} val - The value to check.
- * @returns {val is {[k: string]: unknown}} - Returns `true` if the value is an
+ * @returns {val is Record<string, unknown>} - Returns `true` if the value is an
  * object, else `false`.
  *
  * @example
@@ -22,7 +22,7 @@ import { Primitive } from '../type/type-helpers.ts'
  * // returns false
  * ```
  */
-export function isObject(val: unknown): val is { [k: string]: unknown } {
+export function isObject(val: unknown): val is Record<string, unknown> {
   return !!val && typeof val === 'object'
 }
 
@@ -33,7 +33,7 @@ export function isObject(val: unknown): val is { [k: string]: unknown } {
  * constructor.
  *
  * @param {unknown} val - The value to check.
- * @returns {val is {[k: string]: unknown}} - Returns `true` if the value is a
+ * @returns {val is Record<string, unknown>} - Returns `true` if the value is a
  * plain object, else `false`.
  *
  * @example
@@ -50,7 +50,7 @@ export function isObject(val: unknown): val is { [k: string]: unknown } {
  * // returns false
  * ```
  */
-export function isPlainObject(val: unknown): val is { [k: string]: unknown } {
+export function isPlainObject(val: unknown): val is Record<string, unknown> {
   return !!val &&
     typeof val === 'object' &&
     Object.getPrototypeOf(val) === Object.prototype
@@ -62,8 +62,8 @@ export function isPlainObject(val: unknown): val is { [k: string]: unknown } {
  * A non-nested object in JavaScript is an object that does not contain any
  * other objects as values.
  *
- * @param {{[k: string]: unknown}} obj - The object to check.
- * @returns {obj is {[k: string]: Primitive }} - Returns `true` if the object is not nested, else `false`.
+ * @param {Record<string, unknown>} obj - The object to check.
+ * @returns {obj is Record<string, Primitive>} - Returns `true` if the object is not nested, else `false`.
  *
  * @example
  * ```typescript
@@ -74,7 +74,7 @@ export function isPlainObject(val: unknown): val is { [k: string]: unknown } {
  * ```
  */
 export function isNotNestedObject(
-  obj: { [k: string]: unknown },
-): obj is { [k: string]: Primitive } {
+  obj: Record<string, unknown>,
+): obj is Record<string, Primitive> {
   return Object.values(obj).every((val) => !isObject(val))
 }

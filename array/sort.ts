@@ -18,7 +18,7 @@
  */
 export function createStringSorter<Obj extends Record<string, unknown>>(
   key?: keyof Obj,
-  ascending: boolean = true,
+  ascending = true,
 ): (left: Obj | string, right: Obj | string) => number {
   return (left, right) => {
     const leftStr = typeof left === 'string'
@@ -57,7 +57,7 @@ export const buildStringSorter: typeof createStringSorter = createStringSorter
  */
 export function createNumberSorter<Obj extends Record<string, unknown>>(
   key?: keyof Obj,
-  ascending: boolean = true,
+  ascending = true,
 ): (left: Obj | number, right: Obj | number) => number {
   return (left, right) => {
     const leftNum = typeof left === 'number'
@@ -99,7 +99,7 @@ export const buildNumberSorter: typeof createNumberSorter = createNumberSorter
  */
 export function createDateSorter<Obj extends Record<string, unknown>>(
   key?: keyof Obj,
-  ascending: boolean = true,
+  ascending = true,
 ): (left: Obj | Date, right: Obj | Date) => number {
   return (left, right) => {
     const leftDate = left instanceof Date

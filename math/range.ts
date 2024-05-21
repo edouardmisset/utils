@@ -1,7 +1,7 @@
 /**
  * An object containing the maximum, minimum, and value to be checked.
  */
-export type ValueAndRange = {
+export interface ValueAndRange {
   value: number
   minimum: number
   maximum: number

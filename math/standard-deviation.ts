@@ -39,7 +39,7 @@
  */
 export function standardDeviation(
   numbers: number[],
-  usePopulation: boolean = false,
+  usePopulation = false,
 ): number {
   if (numbers.length === 1) return 0
 

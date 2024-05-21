@@ -19,7 +19,7 @@
  * // returns [3, 4]
  * ```
  */
-export function takeEnd<T>(array: T[], n: number = 1): T[] {
+export function takeEnd<T>(array: T[], n = 1): T[] {
   return array.slice(-Math.abs(n))
 }
 
@@ -46,7 +46,7 @@ export const getLastElements: typeof takeEnd = takeEnd
  * takeStart([1, 2, 3, 4], -2) // returns [1, 2]
  * ```
  */
-export function takeStart<T>(array: T[], n: number = 1): T[] {
+export function takeStart<T>(array: T[], n = 1): T[] {
   return array.slice(0, Math.abs(n))
 }
 
@@ -73,6 +73,6 @@ export const getFirstElements: typeof takeStart = takeStart
  * take([1, 2, 3, 4], -2) // returns [3, 4]
  * ```
  */
-export function take<T>(array: T[], n: number = 1): T[] {
+export function take<T>(array: T[], n = 1): T[] {
   return n >= 0 ? takeStart(array, n) : takeEnd(array, n)
 }

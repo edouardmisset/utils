@@ -1,5 +1,4 @@
-// deno-lint-ignore no-explicit-any
-type AnyVoidFunction = (...arg: any[]) => void
+type AnyVoidFunction = (...arg: unknown[]) => void
 interface DebounceParams {
   callback: AnyVoidFunction
   timerId?: { id: number }

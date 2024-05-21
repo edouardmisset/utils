@@ -33,7 +33,7 @@
  */
 export function createArray<T = number>(
   length: number,
-  // @ts-ignore: I don't know how to fix this type error
+  // @ts-expect-error: I don't know how to fix this type error
   transform: Parameters<typeof Array.from<T, U>>[1] = (_, index) => index,
 ): T[] {
   return Array.from({ length }, transform) as T[]
@@ -86,11 +86,11 @@ export function createArray<T = number>(
  * // returns [0, 5, 10, 15, 20]
  * ```
  */
-export function range(start: number, end?: number, step: number = 1): number[] {
+export function range(start: number, end?: number, step = 1): number[] {
   if (step === 0) throw new Error('step cannot be 0')
 
   const adjustedStart = end === undefined ? 0 : start
-  const adjustedEnd = end === undefined ? start : end
+  const adjustedEnd = end ?? start
 
   const lowerBound = Math.min(adjustedStart, adjustedEnd)
   const upperBound = Math.max(adjustedStart, adjustedEnd)
