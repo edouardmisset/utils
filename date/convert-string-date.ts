@@ -64,3 +64,32 @@ export function convertStringDate(dateString: string): string {
 export function datification(date: string | Date): Date {
   return typeof date === 'string' ? new Date(date) : date
 }
+
+/**
+ * Converts a Date object into a string in the format 'yyyy-mm-dd'.
+ *
+ * @param {Date} date - The date to convert.
+ * @returns {string} The date as a string in the format 'yyyy-mm-dd'.
+ *
+ * @example
+ * ```typescript
+ * import { stringifyDate } from './convert-string-date.ts'
+ *
+ * const date = new Date(2022, 0, 31) // January 31, 2022
+ * stringifyDate(date)
+ * // returns '2022-01-31'
+ * ```
+ */
+export function stringifyDate(date: Date): `${string}-${string}-${string}` {
+  if (!(date instanceof Date)) {
+    throw new TypeError(
+      `Expected a Date object for ${date} but got ${typeof date}`,
+    )
+  }
+
+  const year = date.getFullYear().toString()
+  const month = (date.getMonth() + 1).toString().padStart(2, '0')
+  const day = date.getDate().toString().padStart(2, '0')
+
+  return `${year}-${month}-${day}`
+}
