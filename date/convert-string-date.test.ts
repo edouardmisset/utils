@@ -1,4 +1,4 @@
-import { assertEquals, assertThrows } from '@std/assert'
+import { assertEquals, assertInstanceOf, assertThrows } from '@std/assert'
 import { convertStringDate, datification } from './convert-string-date.ts'
 
 Deno.test('convertStringDate', async (t) => {
@@ -24,6 +24,10 @@ Deno.test('datification', async (t) => {
       datification('2022-01-01T12:00').getTime(),
       new Date('2022-01-01T12:00').getTime(),
     )
+  })
+
+  await t.step('should convert string in international date format to Date object', () => {
+    assertInstanceOf(datification('2022-01-31'), Date)
   })
 
   await t.step('should return the same Date object for Date input', () => {
