@@ -1,10 +1,15 @@
 /**
- * An object containing the maximum, minimum, and value to be checked.
+ * An object containing the maximum, minimum, value to be considered and
+ * optionally its inclusiveness.
  */
 export interface ValueAndRange {
+  /** The maximum value of the range */
   maximum: number
+  /** The minimum value of the range */
   minimum: number
+  /** The value to consider with respect to the range */
   value: number
+  /** Wether or not the bounds (min & max) are included or not */
   inclusive?: boolean
 }
 

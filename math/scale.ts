@@ -2,19 +2,27 @@
  * `scale` function's parameters.
  */
 export interface ScaleParameters {
+  /** The upper bound of the original range */
   inMaximum: number
+  /** The lower bound of the original range */
   inMinimum: number
+  /** The upper bound of the target range */
   outMaximum?: number
+  /** The lower bound of the target range */
   outMinimum?: number
+  /** The value to transform */
   value: number
 }
 
 /**
- * `rescale` function's parameters.
+ * `rescale` function's parameters rescale a value between 0 and 1 given its range.
  */
 export interface Rescale {
+  /** The upper bound of the original range */
   maximum: number
+  /** The lower bound of the original range */
   minimum: number
+  /** The value to scale between 0 and 1 */
   value: number
 }
 
@@ -82,7 +90,7 @@ export function percent(params: Rescale): number {
 }
 
 /**
- * Scales a value from one range to another value between 0 and 1.
+ * Scales a value from one range to a value between 0 and 1.
  *
  * @param {Object} params - The scaling parameters.
  * @param {number} params.value - The value to scale.

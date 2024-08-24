@@ -1,14 +1,14 @@
 /**
  * Calculates the distance between two strings.
- * 
+ *
  * @param {string} source - the first string to compare against
  * @param {string} target - the second string
  * @returns {number} - The number of character difference
- * 
+ *
  * @example
  * levenshteinDistance('hi', 'hi')
  * // returns 0
- * 
+ *
  * levenshteinDistance('hello', 'hi')
  * // returns 4
  */
