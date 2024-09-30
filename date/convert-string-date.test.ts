@@ -24,9 +24,10 @@ Deno.test('convertStringDate', async (t) => {
 
 Deno.test('datification', async (t) => {
   await t.step('should convert string to Date object', () => {
+    const stringDate = '2022-01-01T12:00'
     assertEquals(
-      datification('2022-01-01T12:00').getTime(),
-      new Date('2022-01-01T12:00').getTime(),
+      datification(stringDate).getTime(),
+      new Date(stringDate).getTime(),
     )
   })
 

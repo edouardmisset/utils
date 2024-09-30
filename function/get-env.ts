@@ -1,6 +1,8 @@
 /**
  * A Readonly object mapping environment prefixes to different environments.
  */
+import process from 'node:process'
+
 export const ENVIRONNEMENT_PREFIX = {
   node: '',
   CRA: 'REACT_APP_',
@@ -38,7 +40,6 @@ export async function getEnv(
   let value: string | undefined = undefined
 
   if (env === 'node' || env === 'CRA') {
-    // @ts-expect-error: it depends on the environment
     value = process.env[variable] ?? process.env[`${prefix}${variable}`]
   }
   if (env === 'vite') {

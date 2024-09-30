@@ -13,9 +13,9 @@ async function incrementVersion(releaseType: ReleaseType): Promise<void> {
   if (!canParse(currentVersion)) {
     throw new Error(`Invalid version: ${currentVersion}`)
   }
-  const v = parse(currentVersion)
+  const version = parse(currentVersion)
 
-  const nextVersion = increment(v, releaseType)
+  const nextVersion = increment(version, releaseType)
 
   denoJSON.version = format(nextVersion)
 

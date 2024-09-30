@@ -27,9 +27,10 @@
  */
 export function convertStringDate(dateString: string): string {
   if (dateString === '') return dateString
-  if (!/^\d{2}\/\d{2}\/\d{4} \d{2}:\d{2}$/gi.test(dateString)) {
+  if (!/^\d{2}\/\d{2}\/\d{4} \d{2}:\d{2}$/.test(dateString)) {
     throw new Error(
-      'Invalid date format. It should be in the form: `dd/mm/yyyy hh:mm`',
+      `Invalid date format (${String(dateString)}). 
+It should be in the form: "dd/mm/yyyy hh:mm"`,
     )
   }
 
@@ -43,10 +44,11 @@ export function convertStringDate(dateString: string): string {
  * Converts a string or a Date object into a Date object.
  *
  * If the input is a string, it assumes the string is a valid date string (ISO
- * 8601 format: YYYY-MM-DDTHH:MM:SSZ // ie: 2024-03-06T09:09:03Z).
+ * 8601 format: YYYY-MM-DDTHH:MM:SSZ // ie: 2024-03-06T16:09:03Z).
  * If the input is already a Date object, it returns the input as is.
  *
- * @param {(string | Date)} date - The input to convert into a Date object. If it's a string, it should be in UTC format (YYYY-MM-DDTHH:MM).
+ * @param {(string | Date)} date - The input to convert into a Date object. If
+ * it's a string, it should be in ISO 8601 format (YYYY-MM-DDTHH:MM:SSZ).
  * @returns {Date} - The converted Date object.
  *
  * @example
@@ -62,7 +64,19 @@ export function convertStringDate(dateString: string): string {
  * ```
  */
 export function datification(date: string | Date): Date {
-  return typeof date === 'string' ? new Date(date) : date
+  if (date instanceof Date) return date
+
+  const ISO8601DatePattern =
+    /^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$/
+
+  if (!ISO8601DatePattern.test(date)) {
+    throw new Error(
+      `Invalid date format (${String(date)}).
+It should follow the ISO 8601 standard like: "YYYY-MM-DDTHH:MM:SSZ"`,
+    )
+  }
+
+  return new Date(date)
 }
 
 /**
