@@ -7,6 +7,7 @@ export const ENVIRONNEMENT_PREFIX = {
   node: '',
   CRA: 'REACT_APP_',
   vite: 'VITE_',
+  next: 'NEXT_',
   deno: '',
 } as const
 
