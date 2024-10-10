@@ -76,7 +76,9 @@ export function isValidDate(...dates: unknown[]): boolean {
     if (
       !(date instanceof Date) || Number.isNaN(date) ||
       date.toString() === 'Invalid Date'
-    ) return false
+    ) {
+      return false
+    }
   }
 
   return true

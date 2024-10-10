@@ -4,32 +4,39 @@ import { filterByDate, isValidDate } from './filter-by-date.ts'
 Deno.test(
   'filterByDate',
   async (t) => {
-    const data = [
+    const dates = [
       { date: new Date(2020, 0, 1) },
       { date: new Date(2021, 0, 1) },
       { date: new Date(2022, 0, 1) },
     ]
 
     await t.step('should filter an array of objects by a year', () => {
-      const filter = filterByDate('date', { year: 2020 })
-      const result = data.filter(filter)
+      const filter = filterByDate<typeof dates[number]>('date', { year: 2020 })
+      const result = dates.filter(filter)
       assertEquals(result, [{ date: new Date(2020, 0, 1) }])
     })
 
     await t.step('should filter an array of objects by a date range', () => {
-      const filter = filterByDate('date', {
+      const filter1 = filterByDate<typeof dates[number]>('date', {
         startDate: new Date(2020, 6, 1),
         endDate: new Date(2020, 11, 31),
       })
-      const result = data.filter(filter)
-      assertEquals(result, [])
+      const result1 = dates.filter(filter1)
+      assertEquals(result1, [])
+
+      const filter2 = filterByDate<typeof dates[number]>('date', {
+        startDate: new Date(2018, 6, 1),
+        endDate: new Date(2024, 11, 31),
+      })
+      const result2 = dates.filter(filter2)
+      assertEquals(result2, dates)
     })
 
     await t.step(
       'should filter an array of objects by a duration from a reference date',
       () => {
         const _180Days = 1000 * 60 * 60 * 24 * 180
-        const result = data.filter(filterByDate('date', {
+        const result = dates.filter(filterByDate('date', {
           referenceDate: new Date(2020, 4, 1),
           durationInMS: _180Days,
         }))
@@ -40,20 +47,19 @@ Deno.test(
     await t.step(
       'should return all objects if no valid options are provided',
       () => {
-        const dateFilter = filterByDate('date')
-        const result = data.filter(dateFilter)
-        assertEquals(result, data)
+        const result = dates.filter(filterByDate('date'))
+        assertEquals(result, dates)
       },
     )
 
     await t.step(
       'should return all objects if the date key does not exist in the objects',
       () => {
-        const result = data.filter(
+        const result = dates.filter(
           // @ts-expect-error: Testing a non-existent key. An error is expected.
           filterByDate('nonexistentKey', { year: 2020 }),
         )
-        assertEquals(result, data)
+        assertEquals(result, dates)
       },
     )
 
@@ -68,13 +74,13 @@ Deno.test(
     )
 
     await t.step('should throw an error for invalid date range', () => {
-      const filter = filterByDate('date', {
+      const filter = filterByDate<typeof dates[number]>('date', {
         startDate: new Date('invalid date'),
         endDate: new Date(2020, 11, 31),
       })
       assertThrows(
         () => {
-          data.filter(filter)
+          dates.filter(filter)
         },
         Error,
         'Invalid date range',
@@ -95,7 +101,9 @@ Deno.test(
       'should return all objects if the date value is an invalid date',
       () => {
         const invalidData = [{ date: new Date('invalid date') }]
-        const filter = filterByDate('date', { year: 2020 })
+        const filter = filterByDate<typeof dates[number]>('date', {
+          year: 2020,
+        })
         const result = invalidData.filter(filter)
         assertEquals(result, invalidData)
       },

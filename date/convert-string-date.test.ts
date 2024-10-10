@@ -42,6 +42,13 @@ Deno.test('datification', async (t) => {
     const date = new Date()
     assertEquals(datification(date).getTime(), date.getTime())
   })
+
+  await t.step(
+    'should throw an error if the date formatted as an ISO8601 date',
+    () => {
+      assertThrows(() => datification('01012000'))
+    },
+  )
 })
 
 Deno.test('stringifyDate', async (t) => {
