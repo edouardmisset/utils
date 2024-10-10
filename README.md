@@ -53,10 +53,10 @@ Import it in your file:
 import * as mod from 'jsr:@edouardmisset/utils'
 
 // Or fix a specific version
-import * as mod from 'jsr:@edouardmisset/utils@1.0.0'
+import * as mod from 'jsr:@edouardmisset/utils@3.0.0'
 
 // Only selected function
-import { capitalize } from 'jsr:@edouardmisset/utils@1.0.0'
+import { capitalize } from 'jsr:@edouardmisset/utils@3.0.0'
 ```
 
 ### npm / yarn / pnpm / bun

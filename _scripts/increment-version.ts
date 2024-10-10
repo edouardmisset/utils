@@ -1,10 +1,4 @@
-import {
-  canParse,
-  format,
-  increment,
-  parse,
-  ReleaseType,
-} from 'jsr:@std/semver@0.223.0'
+import { canParse, format, increment, parse, ReleaseType } from '@std/semver'
 
 import denoJSON from '../deno.json' with { type: 'json' }
 
