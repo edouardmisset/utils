@@ -1,7 +1,7 @@
 {
   "$schema": "https://deno.land/x/deno/cli/schemas/config-file.v1.json",
   "name": "@edouardmisset/utils",
-  "version": "3.3.2",
+  "version": "3.3.3",
   "exports": "./mod.ts",
   "imports": {
     "@std/assert": "jsr:@std/assert@^1",
@@ -24,16 +24,10 @@
     "useUnknownInCatchVariables": true,
     "noImplicitOverride": true
   },
-  "exclude": [
-    ".git",
-    "coverage",
-    "docs"
-  ],
+  "exclude": [".git", "coverage", "docs"],
   "lint": {
     "rules": {
-      "tags": [
-        "recommended"
-      ],
+      "tags": ["recommended"],
       "include": [
         "camelcase",
         "default-param-last",
@@ -49,9 +43,7 @@
         "single-var-declarator"
       ]
     },
-    "include": [
-      "."
-    ]
+    "include": ["."]
   },
   "fmt": {
     "useTabs": false,
@@ -59,14 +51,8 @@
     "indentWidth": 2,
     "semiColons": false,
     "singleQuote": true,
-    "include": [
-      "."
-    ],
+    "include": ["."],
     "proseWrap": "always"
   },
-  "test": {
-    "include": [
-      "./**/*.test.ts"
-    ]
-  }
+  "test": { "include": ["./**/*.test.ts"] }
 }

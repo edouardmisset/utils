@@ -1,7 +1,7 @@
 /**
  * Inverts the keys and values of an object.
  *
- * The original object's keys should be strings or numbers. The values of the
+ * The original object's keys should be strings, numbers or symbol. The values of the
  * original should be serializable and of type : `string`, `number` or `symbol`.
  * The values of the original object will become the keys of the new object, and
  * the keys of the original object will become the values of the new object.
@@ -14,8 +14,10 @@
  * This function can be useful when you need to reverse a mapping, or when you
  * need to look up keys by their associated values.
  *
+ * @template Val - The type of the values in the original object.
  * @template Object_ - An object with string or number keys.
  * @template Key - The keys of the object T.
+ * @template Values - The values of the object T.
  * @template Return - The inverted object.
  *
  * @param {Object_} object - The original object to invert.
@@ -34,9 +36,11 @@
  * ```
  */
 export function invert<
-  Object_ extends Record<string, unknown>,
+  Val extends string | number | symbol,
+  Object_ extends Record<string, Val>,
   Key extends keyof Object_,
-  Result extends Record<string, Key>,
+  Values extends Object_[Key],
+  Result extends Record<Values, Key>,
 >(
   object: Object_,
 ): Result {
