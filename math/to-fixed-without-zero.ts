@@ -3,7 +3,7 @@
  * decimals,
  * and removes trailing zeros after the decimal point.
  *
- * @param {number} num - The number to format.
+ * @param {number} number_ - The number to format.
  * @param {number} precision - The number of decimal places.
  * @returns {string} The formatted number as a string.
  *
@@ -19,8 +19,11 @@
  * // returns "1"
  * ```
  */
-export function toFixedWithoutZeros(num: number, precision: number): string {
-  return `${Number.parseFloat(num.toFixed(precision))}`
+export function toFixedWithoutZeros(
+  number_: number,
+  precision: number,
+): string {
+  return `${Number.parseFloat(number_.toFixed(precision))}`
 }
 
 /**

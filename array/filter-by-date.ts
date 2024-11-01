@@ -126,20 +126,20 @@ function isWithinDuration(
   referenceDate: Date,
   durationInMS: number,
 ): boolean {
-  const refTime = referenceDate.getTime()
+  const referenceTime = referenceDate.getTime()
   const valueTime = dateValue.getTime()
-  return refTime - durationInMS <= valueTime && valueTime <= refTime
+  return referenceTime - durationInMS <= valueTime && valueTime <= referenceTime
 }
 
 /**
  * Checks if the given value is compatible with Date.
  *
- * @param {unknown} val - The value to check.
+ * @param {unknown} value - The value to check.
  * @returns {boolean} - True if the value is compatible with Date, false otherwise.
  */
-function isDateCompatible(val: unknown): val is Date | number | string {
-  return typeof val === 'string' || val instanceof Date ||
-    typeof val === 'number'
+function isDateCompatible(value: unknown): value is Date | number | string {
+  return typeof value === 'string' || value instanceof Date ||
+    typeof value === 'number'
 }
 
 /**
@@ -187,13 +187,13 @@ export function filterByDate<Object_ extends Record<string, unknown>>(
   return (object_: Object_) => {
     if (objectSize(options) === 0) return true
 
-    const val = object_[dateKey]
-    if (!isDateCompatible(val)) return true
+    const dateValue = object_[dateKey]
+    if (!isDateCompatible(dateValue)) return true
 
-    const dateValue = new Date(val)
-    if (!isValidDate(dateValue)) return true
+    const date = new Date(dateValue)
+    if (!isValidDate(date)) return true
 
-    if (isYearOption(options)) return isYearMatch(dateValue, options.year)
+    if (isYearOption(options)) return isYearMatch(date, options.year)
 
     if (
       isDateRangeOption(options)
@@ -202,14 +202,14 @@ export function filterByDate<Object_ extends Record<string, unknown>>(
         throw new Error('Invalid date range')
       }
       return isWithinDateRange(
-        dateValue,
+        date,
         options.startDate,
         options.endDate ?? new Date(),
       )
     }
 
     return isWithinDuration(
-      dateValue,
+      date,
       options.referenceDate ?? new Date(),
       options.durationInMS ?? oneYearInMilliseconds,
     )

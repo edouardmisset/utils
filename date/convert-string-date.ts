@@ -97,7 +97,7 @@ It should follow the ISO 8601 standard like: "YYYY-MM-DDTHH:MM:SSZ"`,
 export function stringifyDate(date: Date): `${string}-${string}-${string}` {
   if (!(date instanceof Date)) {
     throw new TypeError(
-      `Expected a Date object for ${date} but got ${typeof date}`,
+      `Expected a Date object for ${date} but got ${(typeof date) as unknown}`,
     )
   }
 

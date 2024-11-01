@@ -6,10 +6,11 @@ import {
   uniqueInFirst,
 } from './sets.ts'
 
-Deno.test('commonElements', async (t) => {
-  const array1 = [1, 2, 3]
-  const array2 = [2, 3, 4]
+const array1 = [1, 2, 3]
+const array2 = [2, 3, 4]
+const array3 = [3, 4, 5]
 
+Deno.test('commonElements', async (t) => {
   await t.step('should return common elements of two arrays', () => {
     const result = commonElements(array1, array2)
     assertEquals(result, [2, 3])
@@ -17,9 +18,6 @@ Deno.test('commonElements', async (t) => {
 })
 
 Deno.test('mergeUnique', async (t) => {
-  const array1 = [1, 2, 3]
-  const array2 = [2, 3, 4]
-
   await t.step(
     'should return unique elements from the combination of two arrays',
     () => {
@@ -30,10 +28,6 @@ Deno.test('mergeUnique', async (t) => {
 })
 
 Deno.test('uniqueInFirst', async (t) => {
-  const array1 = [1, 2, 3]
-  const array2 = [2, 3, 4]
-  const array3 = [3, 4, 5]
-
   await t.step(
     'should return elements that are unique to the first array',
     () => {
@@ -44,10 +38,6 @@ Deno.test('uniqueInFirst', async (t) => {
 })
 
 Deno.test('uniqueElements', async (t) => {
-  const array1 = [1, 2, 3]
-  const array2 = [2, 3, 4]
-  const array3 = [3, 4, 5]
-
   await t.step('should return unique elements from n arrays', () => {
     const result = uniqueElements(array1, array2, array3)
     assertEquals(result, [1, 5])

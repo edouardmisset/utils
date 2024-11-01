@@ -1,7 +1,7 @@
 /**
  * Checks if a string is valid JSON.
  *
- * @param {string} str - The string to check.
+ * @param {string} string_ - The string to check.
  * @returns {boolean} - Returns true if the string is valid JSON, otherwise false.
  *
  * @example
@@ -14,9 +14,9 @@
  * // returns true
  * ```
  */
-export function isValidJSON(str: string): boolean {
+export function isValidJSON(string_: string): boolean {
   try {
-    JSON.parse(str)
+    JSON.parse(string_)
     return true
   } catch (_error) {
     return false

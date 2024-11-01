@@ -14,7 +14,7 @@
  * This function can be useful when you need to reverse a mapping, or when you
  * need to look up keys by their associated values.
  *
- * @template Val - The type of the values in the original object.
+ * @template Value - The type of the values in the original object.
  * @template Object_ - An object with string or number keys.
  * @template Key - The keys of the object T.
  * @template Values - The values of the object T.
@@ -36,8 +36,8 @@
  * ```
  */
 export function invert<
-  Val extends string | number | symbol,
-  Object_ extends Record<string, Val>,
+  Value extends string | number | symbol,
+  Object_ extends Record<string, Value>,
   Key extends keyof Object_,
   Values extends Object_[Key],
   Result extends Record<Values, Key>,

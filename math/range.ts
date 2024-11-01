@@ -3,14 +3,14 @@
  * optionally its inclusiveness.
  */
 export interface ValueAndRange {
+  /** Wether or not the bounds (min & max) are included or not */
+  inclusive?: boolean
   /** The maximum value of the range */
   maximum: number
   /** The minimum value of the range */
   minimum: number
   /** The value to consider with respect to the range */
   value: number
-  /** Wether or not the bounds (min & max) are included or not */
-  inclusive?: boolean
 }
 
 /**

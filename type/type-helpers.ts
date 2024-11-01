@@ -287,3 +287,8 @@ export type ObjectValues<Object_ extends object> = Object_[keyof Object_]
  * ```
  */
 export type LooseAutoComplete<S extends string> = S | Omit<string, S>
+
+/** A type representing any function that takes any number of arguments and
+ * returns void. */
+// deno-lint-ignore no-explicit-any
+export type AnyVoidFunction = (...argument: any[]) => void

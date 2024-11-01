@@ -1,7 +1,7 @@
 /**
  * Calculates the average of the given numbers.
  *
- * @param {number[] | number} num - The numbers to calculate the average of.
+ * @param {number[] | number} number_ - The numbers to calculate the average of.
  * @throws {Error} When no arguments are provided.
  * @returns {number} The average of the given numbers.
  *
@@ -17,12 +17,14 @@
  * // returns 3
  * ```
  */
-export function average(...num: (number[] | number)[]): number {
-  const numbers = num.flat()
+export function average(...number_: (number[] | number)[]): number {
+  const numbers = number_.flat()
 
   if (numbers.length === 0) {
     throw new Error(
-      `Cannot calculate average if no values are passed in (${String(num)})`,
+      `Cannot calculate average if no values are passed in (${
+        String(number_)
+      })`,
     )
   }
 

@@ -1,6 +1,12 @@
 import { assertEquals } from '@std/assert'
 import { collectionKeyBy, keyBy } from './collection-key-by.ts'
 
+const userCollection = {
+  '1': { id: 1, name: 'Alice' },
+  '2': { id: 2, name: 'Bob' },
+  '3': { id: 3, name: 'Charlie' },
+} as const
+
 Deno.test('keyBy', async (t) => {
   await t.step(
     'should transform an array of objects into an object keyed by a specified key',
@@ -10,11 +16,7 @@ Deno.test('keyBy', async (t) => {
         name: 'Charlie',
       }]
       const key = 'id'
-      assertEquals(keyBy(array, key), {
-        '1': { id: 1, name: 'Alice' },
-        '2': { id: 2, name: 'Bob' },
-        '3': { id: 3, name: 'Charlie' },
-      })
+      assertEquals(keyBy(array, key), userCollection)
     },
   )
 
@@ -34,11 +36,7 @@ Deno.test('collectionKeyBy', async (t) => {
         name: 'Charlie',
       }]
       const key = 'id'
-      assertEquals(collectionKeyBy(collection, key), {
-        '1': { id: 1, name: 'Alice' },
-        '2': { id: 2, name: 'Bob' },
-        '3': { id: 3, name: 'Charlie' },
-      })
+      assertEquals(collectionKeyBy(collection, key), userCollection)
     },
   )
 
@@ -51,11 +49,7 @@ Deno.test('collectionKeyBy', async (t) => {
         charlie: { id: 3, name: 'Charlie' },
       }
       const key = 'id'
-      assertEquals(collectionKeyBy(collection, key), {
-        '1': { id: 1, name: 'Alice' },
-        '2': { id: 2, name: 'Bob' },
-        '3': { id: 3, name: 'Charlie' },
-      })
+      assertEquals(collectionKeyBy(collection, key), userCollection)
     },
   )
 

@@ -26,7 +26,11 @@ export function minBy<Object_ extends Record<string, unknown>>(
   array: Object_[],
   key: keyof Object_,
 ): Object_ | undefined {
-  return array.length === 0
-    ? undefined
-    : array.reduce((acc, val) => (acc[key] < val[key] ? acc : val), array[0])
+  return array.length === 0 ? undefined : array.reduce(
+    (
+      currentMin,
+      candidate,
+    ) => (currentMin[key] < candidate[key] ? currentMin : candidate),
+    array[0],
+  )
 }

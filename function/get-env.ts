@@ -19,8 +19,8 @@ export type EnvType = keyof typeof ENVIRONNEMENT_PREFIX
 /**
  * Retrieves the value of an environment variable.
  *
- * @param {string} variable - The name of the environment variable to retrieve.
- * @param {EnvType} [env='node'] - The environment from which to retrieve the variable.
+ * @param {string} environmentVariable - The name of the environment variable to retrieve.
+ * @param {EnvType} [environmentType='node'] - The environment from which to retrieve the variable.
  * 'node' and 'CRA' will use process.env, 'vite' will use import.meta.env.
  *
  * @throws {TypeError} Will throw an error if the environment variable is not set.
@@ -34,27 +34,28 @@ export type EnvType = keyof typeof ENVIRONNEMENT_PREFIX
  * ```
  */
 export async function getEnv(
-  variable: string,
-  env: EnvType = 'node',
+  environmentVariable: string,
+  environmentType: EnvType = 'node',
 ): Promise<string> {
-  const prefix = ENVIRONNEMENT_PREFIX[env]
+  const prefix = ENVIRONNEMENT_PREFIX[environmentType]
   let value: string | undefined = undefined
 
-  if (env === 'node' || env === 'CRA') {
-    value = process.env[variable] ?? process.env[`${prefix}${variable}`]
+  if (environmentType === 'node' || environmentType === 'CRA') {
+    value = process.env[environmentVariable] ??
+      process.env[`${prefix}${environmentVariable}`]
   }
-  if (env === 'vite') {
+  if (environmentType === 'vite') {
     // @ts-expect-error: it depends on the environment
-    value = import.meta.env[variable] ?? import.meta.env[`${prefix}${variable}`]
+    value = import.meta.env[environmentVariable] ??
+      // @ts-expect-error: it depends on the environment
+      import.meta.env[`${prefix}${environmentVariable}`]
   }
 
-  if (env === 'deno') {
+  if (environmentType === 'deno') {
     try {
-      const { load } = await import(
-        '@std/dotenv'
-      )
-      const env = await load()
-      value = env[variable]
+      const dotenv = await import('@std/dotenv')
+      const env = await dotenv?.load()
+      value = env[environmentVariable]
     } catch (error) {
       console.error("Error loading Deno's `dotenv` library:", error)
     }
@@ -62,7 +63,7 @@ export async function getEnv(
 
   if (value === undefined) {
     throw new TypeError(
-      `It seems like the variable "${variable}" is not set in the environment (\`.env\` file).
+      `It seems like the variable "${environmentVariable}" is not set in the environment (\`.env\` file).
     @Dev: Did you forget to execute "cp .env.dev .env" and adjust variables in the .env file to match your own environment ?`,
     )
   }

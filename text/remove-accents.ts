@@ -10,7 +10,7 @@
  * Unicode range from 0300 to 036F, which includes many common diacritical
  * marks.
  *
- * @param {string} str - The string from which to remove accents.
+ * @param {string} string_ - The string from which to remove accents.
  * @returns {string} The string with accents removed.
  *
  * @example
@@ -19,6 +19,6 @@
  * // returns 'resume'
  * ```
  */
-export function removeAccents(str: string): string {
-  return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+export function removeAccents(string_: string): string {
+  return string_.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
 }

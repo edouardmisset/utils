@@ -21,14 +21,14 @@ export function createStringSorter<Object_ extends Record<string, unknown>>(
   ascending = true,
 ): (left: Object_ | string, right: Object_ | string) => number {
   return (left, right) => {
-    const leftStr = typeof left === 'string'
+    const leftString = typeof left === 'string'
       ? left
       : (left[key as keyof Object_] as string)
-    const rightStr = typeof right === 'string'
+    const rightString = typeof right === 'string'
       ? right
       : (right[key as keyof Object_] as string)
 
-    return leftStr.localeCompare(rightStr) * (ascending ? 1 : -1)
+    return leftString.localeCompare(rightString) * (ascending ? 1 : -1)
   }
 }
 
@@ -60,17 +60,17 @@ export function createNumberSorter<Object_ extends Record<string, unknown>>(
   ascending = true,
 ): (left: Object_ | number, right: Object_ | number) => number {
   return (left, right) => {
-    const leftNum = typeof left === 'number'
+    const leftNumber = typeof left === 'number'
       ? left
       : (left[key as keyof Object_] as number)
-    const rightNum = typeof right === 'number'
+    const rightNumber = typeof right === 'number'
       ? right
       : (right[key as keyof Object_] as number)
 
-    if (Number.isNaN(leftNum)) return 1
-    if (Number.isNaN(rightNum)) return -1
+    if (Number.isNaN(leftNumber)) return 1
+    if (Number.isNaN(rightNumber)) return -1
 
-    return (leftNum - rightNum) * (ascending ? 1 : -1)
+    return (leftNumber - rightNumber) * (ascending ? 1 : -1)
   }
 }
 

@@ -110,15 +110,15 @@ Deno.test('createNumberSorter', async (t) => {
 
   await t.step('should handle NaN values in objects', () => {
     const sorter = createNumberSorter('value')
-    const array = [{ value: 10 }, { value: NaN }, { value: 20 }]
-    const result = array.sort(sorter)
+    const array2 = [{ value: 10 }, { value: NaN }, { value: 20 }]
+    const result = array2.sort(sorter)
     assertEquals(result, [{ value: 10 }, { value: 20 }, { value: NaN }])
   })
 
   await t.step('should handle NaN values in primitive arrays', () => {
     const sorter = createNumberSorter()
-    const array = [10, NaN, 20]
-    const result = array.sort(sorter)
+    const array2 = [10, NaN, 20]
+    const result = array2.sort(sorter)
     assertEquals(result, [10, 20, NaN])
   })
 })

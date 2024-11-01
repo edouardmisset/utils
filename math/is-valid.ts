@@ -3,7 +3,7 @@
  *
  * **Note**: `NaN` and `Infinity` are not valid.
  *
- * @param num - The value to check.
+ * @param maybeNumber - The value to check.
  * @returns A boolean indicating if the value is a valid number.
  *
  * @example
@@ -18,8 +18,8 @@
  * // returns false
  * ```
  */
-export function isValidNumber(num: unknown): num is number {
-  return typeof num === 'number' && Number.isFinite(num)
+export function isValidNumber(maybeNumber: unknown): maybeNumber is number {
+  return typeof maybeNumber === 'number' && Number.isFinite(maybeNumber)
 }
 
 /**

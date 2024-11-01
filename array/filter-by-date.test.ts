@@ -37,8 +37,8 @@ Deno.test(
       () => {
         const _180Days = 1000 * 60 * 60 * 24 * 180
         const result = dates.filter(filterByDate('date', {
-          referenceDate: new Date(2020, 4, 1),
           durationInMS: _180Days,
+          referenceDate: new Date(2020, 4, 1),
         }))
         assertEquals(result, [{ date: new Date(2020, 0, 1) }])
       },

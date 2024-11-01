@@ -18,21 +18,25 @@ Deno.test('invert', async (t) => {
   })
 
   await t.step('should handle null values', () => {
+    // @ts-expect-error - Testing for invalid input
     const result = invert({ a: null, b: 2 })
     assertEquals(result, { '2': 'b' })
   })
 
   await t.step('should handle undefined values', () => {
+    // @ts-expect-error - Testing for invalid input
     const result = invert({ a: undefined, b: 2 })
     assertEquals(result, { '2': 'b' })
   })
 
   await t.step('should handle object values', () => {
+    // @ts-expect-error - Testing for invalid input
     const result = invert({ a: { c: 3 }, b: '2' })
     assertEquals(result, { '2': 'b' })
   })
 
   await t.step('should handle array values', () => {
+    // @ts-expect-error - Testing for invalid input
     const result = invert({ a: [1, 2, 3], b: '2' })
     assertEquals(result, { '2': 'b' })
   })

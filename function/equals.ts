@@ -65,7 +65,13 @@ export function deepEqual<T>(left: T, right: T): boolean {
   const leftKeys = Object.keys(leftObject)
   if (leftKeys.length !== Object.keys(rightObject).length) return false
 
-  return leftKeys.every((key) => deepEqual(leftObject[key], rightObject[key]))
+  for (const key of leftKeys) {
+    if (!deepEqual(leftObject[key], rightObject[key])) {
+      return false
+    }
+  }
+
+  return true
 }
 
 /**

@@ -1,5 +1,6 @@
-type AnyVoidFunction = (...argument: unknown[]) => void
-interface DebounceParams {
+import type { AnyVoidFunction } from '../type/type-helpers.ts'
+
+interface DebounceParameters {
   callback: AnyVoidFunction
   delay?: number
   timerId?: { id: number }
@@ -10,7 +11,7 @@ interface DebounceParams {
  * after wait 'delay' milliseconds have elapsed since the last time the debounced
  * function was invoked.
  *
- * @param {DebounceParams} params - The parameters for the debounce function.
+ * @param {DebounceParameters} parameters - The parameters for the debounce function.
  * @returns {AnyVoidFunction} - A new function that debounces the callback.
  *
  * @example
@@ -19,14 +20,14 @@ interface DebounceParams {
  * debouncedFunction() // 'Hello' will be logged after 1 second
  * ```
  */
-export const debounce = (params: DebounceParams): AnyVoidFunction => {
-  const { callback, delay = 50, timerId = { id: -1 } } = params
+export const debounce = (parameters: DebounceParameters): AnyVoidFunction => {
+  const { callback, delay = 50, timerId = { id: -1 } } = parameters
 
-  return (...args) => {
+  return (...arguments_) => {
     if (timerId.id !== -1) clearTimeout(timerId.id)
 
     timerId.id = setTimeout(() => {
-      callback.apply(this, args)
+      callback.apply(this, arguments_)
     }, delay)
   }
 }

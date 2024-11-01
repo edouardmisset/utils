@@ -12,8 +12,8 @@
  * @example
  * ```typescript
  * const array = [1, 2, 3, 4, 5]
- * function isEven(num: number) {
- *   return num % 2 === 0
+ * function isEven(number_: number) {
+ *   return number_ % 2 === 0
  * }
  * countBy(array, isEven)
  * // returns 2
@@ -65,8 +65,8 @@ export const countIf: typeof countBy = countBy
 export function frequency<T extends string | number>(
   array: T[],
 ): Record<T, number> {
-  return array.reduce((acc, val) => {
-    acc[val] = (acc[val] ?? 0) + 1
-    return acc
+  return array.reduce((frequencyCounter, value) => {
+    frequencyCounter[value] = (frequencyCounter[value] ?? 0) + 1
+    return frequencyCounter
   }, {} as Record<T, number>)
 }

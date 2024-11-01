@@ -6,8 +6,8 @@ import { Primitive } from '../type/type-helpers.ts'
  * **Note**: `Date`s, `Array`s and other data structures are also considered
  * objects.
  *
- * @param {unknown} val - The value to check.
- * @returns {val is Record<string, unknown>} - Returns `true` if the value is an
+ * @param {unknown} value - The value to check.
+ * @returns {value is Record<string, unknown>} - Returns `true` if the value is an
  * object, else `false`.
  *
  * @example
@@ -22,8 +22,8 @@ import { Primitive } from '../type/type-helpers.ts'
  * // returns false
  * ```
  */
-export function isObject(val: unknown): val is Record<string, unknown> {
-  return !!val && typeof val === 'object'
+export function isObject(value: unknown): value is Record<string, unknown> {
+  return !!value && typeof value === 'object'
 }
 
 /**
@@ -32,8 +32,8 @@ export function isObject(val: unknown): val is Record<string, unknown> {
  * A plain object in JavaScript is an object that is created by the `Object`
  * constructor.
  *
- * @param {unknown} val - The value to check.
- * @returns {val is Record<string, unknown>} - Returns `true` if the value is a
+ * @param {unknown} value - The value to check.
+ * @returns {value is Record<string, unknown>} - Returns `true` if the value is a
  * plain object, else `false`.
  *
  * @example
@@ -50,10 +50,12 @@ export function isObject(val: unknown): val is Record<string, unknown> {
  * // returns false
  * ```
  */
-export function isPlainObject(val: unknown): val is Record<string, unknown> {
-  return !!val &&
-    typeof val === 'object' &&
-    Object.getPrototypeOf(val) === Object.prototype
+export function isPlainObject(
+  value: unknown,
+): value is Record<string, unknown> {
+  return !!value &&
+    typeof value === 'object' &&
+    Object.getPrototypeOf(value) === Object.prototype
 }
 
 /**
@@ -76,5 +78,5 @@ export function isPlainObject(val: unknown): val is Record<string, unknown> {
 export function isNotNestedObject(
   object: Record<string, unknown>,
 ): object is Record<string, Primitive> {
-  return Object.values(object).every((val) => !isObject(val))
+  return Object.values(object).every((value) => !isObject(value))
 }

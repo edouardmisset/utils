@@ -24,7 +24,7 @@ export type IterableOrNullish =
  * **Note** that this function does not consider other falsy values (like `false`,
  * `0`, or `NaN`) to be empty.
  *
- * @param {IterableOrNullish} val - The value to check. This can be any iterable
+ * @param {IterableOrNullish} value - The value to check. This can be any iterable
  * (like an object or an array), a string, or a nullish value (`null` or
  * `undefined`).
  * @returns {boolean} - Returns `true` if the value is considered empty, else
@@ -39,14 +39,11 @@ export type IterableOrNullish =
  * isEmpty([]) // returns true
  * isEmpty({ a: 1 }) // returns false
  * isEmpty('Hello, world!') // returns false
- * isEmpty(false) // returns false
- * isEmpty(0) // returns false
- * isEmpty(NaN) // returns false
  * ```
  */
-export function isEmpty(val: IterableOrNullish): boolean {
-  if (val === null || val === undefined) return true
-  return typeof val === 'string'
-    ? val.trim().length === 0
-    : Object.keys(val).length === 0
+export function isEmpty(value: IterableOrNullish): boolean {
+  if (value === null || value === undefined) return true
+  return typeof value === 'string'
+    ? value.trim().length === 0
+    : Object.keys(value).length === 0
 }

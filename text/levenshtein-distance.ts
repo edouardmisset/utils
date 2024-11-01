@@ -16,16 +16,27 @@ export const levenshteinDistance = (source: string, target: string): number => {
   if (!source.length) return target.length
   if (!target.length) return source.length
 
-  const arr: number[][] = []
-  for (let i = 0; i <= target.length; i++) {
-    arr[i] = [i]
-    for (let j = 1; j <= source.length; j++) {
-      arr[i][j] = i === 0 ? j : Math.min(
-        arr[i - 1][j] + 1,
-        arr[i][j - 1] + 1,
-        arr[i - 1][j - 1] + (source[j - 1] === target[i - 1] ? 0 : 1),
-      )
+  const distanceGrid: number[][] = []
+  for (
+    let currentIndex = 0;
+    currentIndex <= target.length;
+    currentIndex++
+  ) {
+    distanceGrid[currentIndex] = [currentIndex]
+    for (
+      let comparisonIndex = 1;
+      comparisonIndex <= source.length;
+      comparisonIndex++
+    ) {
+      distanceGrid[currentIndex][comparisonIndex] = currentIndex === 0
+        ? comparisonIndex
+        : Math.min(
+          distanceGrid[currentIndex - 1][comparisonIndex] + 1,
+          distanceGrid[currentIndex][comparisonIndex - 1] + 1,
+          distanceGrid[currentIndex - 1][comparisonIndex - 1] +
+            (source[comparisonIndex - 1] === target[currentIndex - 1] ? 0 : 1),
+        )
     }
   }
-  return arr[target.length][source.length]
+  return distanceGrid[target.length][source.length]
 }

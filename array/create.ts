@@ -58,7 +58,7 @@ export function createArray<T = number>(
  * @example
  * ```typescript
  * import { range } from './create.ts'
- * import { assertEquals } from '@std/assert/assert_equals'
+ * import { assertEquals } from '@std/assert'
  *
  * assertEquals(range(4), [0, 1, 2, 3, 4])
  * ```

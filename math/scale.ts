@@ -29,12 +29,12 @@ export interface Rescale {
 /**
  * Scales a value from one range to another.
  *
- * @param {Object} params - The scaling parameters.
- * @param {number} params.inMinimum - The lower bound of the original range.
- * @param {number} params.inMaximum - The upper bound of the original range.
- * @param {number} [params.outMinimum=0] - The lower bound of the target range.
- * @param {number} [params.outMaximum=1] - The upper bound of the target range.
- * @param {number} params.value - The value to scale.
+ * @param {Object} parameters - The scaling parameters.
+ * @param {number} parameters.inMinimum - The lower bound of the original range.
+ * @param {number} parameters.inMaximum - The upper bound of the original range.
+ * @param {number} [parameters.outMinimum=0] - The lower bound of the target range.
+ * @param {number} [parameters.outMaximum=1] - The upper bound of the target range.
+ * @param {number} parameters.value - The value to scale.
  * @returns {number} The scaled value.
  * @throws {Error} Will throw an error if inMinimum equals inMaximum (to prevent division by zero).
  *
@@ -50,8 +50,9 @@ export interface Rescale {
  * // returns 0.5
  * ```
  */
-export function scale(params: ScaleParameters): number {
-  const { inMinimum, inMaximum, outMinimum = 0, outMaximum = 1, value } = params
+export function scale(parameters: ScaleParameters): number {
+  const { inMinimum, inMaximum, outMinimum = 0, outMaximum = 1, value } =
+    parameters
   if (inMinimum === inMaximum) {
     throw new Error(
       `inMinimum (${inMinimum}) cannot equal inMaximum (${inMaximum}) as this leads to a division by 0.`,
@@ -66,10 +67,10 @@ export function scale(params: ScaleParameters): number {
 /**
  * Scales a value from one range to another, outputting a percentage.
  *
- * @param {Object} params - The scaling parameters.
- * @param {number} params.value - The value to scale.
- * @param {number} params.minimum - The lower bound of the original range.
- * @param {number} params.maximum - The upper bound of the original range.
+ * @param {Object} parameters - The scaling parameters.
+ * @param {number} parameters.value - The value to scale.
+ * @param {number} parameters.minimum - The lower bound of the original range.
+ * @param {number} parameters.maximum - The upper bound of the original range.
  * @returns {number} The scaled value as a percentage.
  *
  * @example
@@ -78,8 +79,8 @@ export function scale(params: ScaleParameters): number {
  * // returns 50
  * ```
  */
-export function percent(params: Rescale): number {
-  const { value, minimum, maximum } = params
+export function percent(parameters: Rescale): number {
+  const { value, minimum, maximum } = parameters
   return scale({
     inMinimum: minimum,
     inMaximum: maximum,
@@ -92,10 +93,10 @@ export function percent(params: Rescale): number {
 /**
  * Scales a value from one range to a value between 0 and 1.
  *
- * @param {Object} params - The scaling parameters.
- * @param {number} params.value - The value to scale.
- * @param {number} params.minimum - The lower bound of the original range.
- * @param {number} params.maximum - The upper bound of the original range.
+ * @param {Object} parameters - The scaling parameters.
+ * @param {number} parameters.value - The value to scale.
+ * @param {number} parameters.minimum - The lower bound of the original range.
+ * @param {number} parameters.maximum - The upper bound of the original range.
  * @returns {number} The scaled value.
  *
  * @example
@@ -104,8 +105,8 @@ export function percent(params: Rescale): number {
  * // returns 0.5
  * ```
  */
-export function rescale(params: Rescale): number {
-  const { value, minimum, maximum } = params
+export function rescale(parameters: Rescale): number {
+  const { value, minimum, maximum } = parameters
   return scale({
     inMinimum: minimum,
     inMaximum: maximum,
