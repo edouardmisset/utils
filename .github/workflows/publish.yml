@@ -15,5 +15,8 @@ jobs: # Defines the jobs to be run
     steps: # Defines the steps to be run
       - uses: actions/checkout@v4 # Checks out the repository using the v4 version of the checkout action
 
-      - name: Publish package # Name of the step
-        run: npx jsr publish # Runs the command to publish the package
+      - name: Set up Deno 2
+        uses: denoland/setup-deno@v2
+
+      - name: Publish package to JSR # Name of the step
+        run: deno publish # Runs the command to publish the package
