@@ -7,7 +7,7 @@
     "@edouardmisset/date": "jsr:@edouardmisset/date@^4.0.0",
     "@edouardmisset/function": "jsr:@edouardmisset/function@^4.0.0",
     "@edouardmisset/math": "jsr:@edouardmisset/math@^4.0.0",
-    "@edouardmisset/object": "jsr:@edouardmisset/object@^4.0.0",
+    "@edouardmisset/object": "jsr:@edouardmisset/object@^4.0.1",
     "@edouardmisset/text": "jsr:@edouardmisset/text@^4.0.0",
     "@edouardmisset/tree": "jsr:@edouardmisset/tree@^4.0.0",
     "@edouardmisset/type": "jsr:@edouardmisset/type@^4.0.0"
