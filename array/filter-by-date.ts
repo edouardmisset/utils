@@ -1,4 +1,4 @@
-import { objectSize } from '../mod.ts'
+import { objectSize } from '@edouardmisset/object'
 import { oneYearInMilliseconds } from './mod.ts'
 
 /**

@@ -1,4 +1,4 @@
-import type { AnyVoidFunction } from '../type/type-helpers.ts'
+import type { AnyVoidFunction } from '@edouardmisset/type'
 
 interface DebounceParameters {
   callback: AnyVoidFunction

@@ -1,0 +1,10 @@
+{
+  "$schema": "https://deno.land/x/deno/cli/schemas/config-file.v1.json",
+  "name": "@edouardmisset/date",
+  "version": "4.0.0",
+  "exports": {
+    ".": "./mod.ts",
+    "./convert-string-date.ts": "./convert_string_date.ts",
+    "./first-last-date-of-month.ts": "./first_last_date_of_month.ts"
+  }
+}

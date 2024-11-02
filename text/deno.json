@@ -1,0 +1,15 @@
+{
+  "$schema": "https://deno.land/x/deno/cli/schemas/config-file.v1.json",
+  "name": "@edouardmisset/text",
+  "version": "4.0.0",
+  "exports": {
+    ".": "./mod.ts",
+    "./capitalize.ts": "./capitalize.ts",
+    "./levenshtein-distance.ts": "./levenshtein-distance.ts",
+    "./remove-accents.ts": "./remove-accents.ts",
+    "./slugify.ts": "./slugify.ts",
+    "./string-equals.ts": "./string-equals.ts",
+    "./string-includes.ts": "./string-includes.ts",
+    "./string-to-boolean.ts": "./string-to-boolean.ts"
+  }
+}

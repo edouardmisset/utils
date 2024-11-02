@@ -1,4 +1,4 @@
-import { Primitive } from '../type/type-helpers.ts'
+import { Primitive } from '@edouardmisset/type'
 
 /**
  * Checks if a given value is an object.

@@ -2,9 +2,8 @@
   "version": "4",
   "specifiers": {
     "jsr:@std/assert@1": "1.0.6",
-    "jsr:@std/dotenv@~0.225.2": "0.225.2",
+    "jsr:@std/dotenv@*": "0.225.2",
     "jsr:@std/internal@^1.0.4": "1.0.4",
-    "jsr:@std/semver@1": "1.0.3",
     "npm:@types/node@*": "22.5.3"
   },
   "jsr": {
@@ -19,9 +18,6 @@
     },
     "@std/internal@1.0.4": {
       "integrity": "62e8e4911527e5e4f307741a795c0b0a9e6958d0b3790716ae71ce085f755422"
-    },
-    "@std/semver@1.0.3": {
-      "integrity": "7c139c6076a080eeaa4252c78b95ca5302818d7eafab0470d34cafd9930c13c8"
     }
   },
   "npm": {
@@ -34,12 +30,5 @@
     "undici-types@6.19.8": {
       "integrity": "sha512-ve2KP6f/JnbPBFyobGHuerC9g1FYGn/F8n1LWTwNxCEzd6IfqTwUQcNXgEtmmQ6DlRrC1hrSrBnCZPokRrDHjw=="
     }
-  },
-  "workspace": {
-    "dependencies": [
-      "jsr:@std/assert@1",
-      "jsr:@std/dotenv@~0.225.2",
-      "jsr:@std/semver@1"
-    ]
   }
 }

@@ -1,4 +1,4 @@
-import type { Prettify } from '../type/type-helpers.ts'
+import type { Prettify } from '@edouardmisset/type'
 
 /**
  * Omits the specified keys from an object and returns a new object without these

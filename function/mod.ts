@@ -1,3 +1,11 @@
+// This module is browser compatible.
+
+/**
+ * Utility functions for working with functions.
+ *
+ * @module
+ */
+
 export * from './debounce.ts'
 export * from './equals.ts'
 export * from './get-env.ts'
