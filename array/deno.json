@@ -1,0 +1,25 @@
+{
+  "$schema": "https://deno.land/x/deno/cli/schemas/config-file.v1.json",
+  "name": "@scope/array",
+  "version": "4.0.0",
+  "exports": {
+    ".": "./mod.ts",
+    "./collection-key-by.ts": "./collection-key-by.ts",
+    "./count-by.ts": "./count-by.ts",
+    "./create.ts": "./create.ts",
+    "./filter-by-date.ts": "./filter-by-date.ts",
+    "./filter.ts": "./filter.ts",
+    "./find.ts": "./find.ts",
+    "./get-n-first-or-last.ts": "./get-n-first-or-last.ts",
+    "./group-by.ts": "./group-by.ts",
+    "./max-by.ts": "./max-by.ts",
+    "./min-by.ts": "./min-by.ts",
+    "./random-item.ts": "./random-item.ts",
+    "./random-sort.ts": "./random-sort.ts",
+    "./select-by.ts": "./select-by.ts",
+    "./sets.ts": "./sets.ts",
+    "./sort-by.ts": "./sort-by.ts",
+    "./sort.ts": "./sort.ts",
+    "./update-array.ts": "./update-array.ts"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://deno.land/x/deno/cli/schemas/config-file.v1.json",
+  "name": "@scope/function",
+  "version": "4.0.0",
+  "exports": {
+    ".": "./mod.ts",
+    "./debounce.ts": "./debounce.ts",
+    "./equals.ts": "./equals.ts",
+    "./get-env.ts": "./get_env.ts",
+    "./is-empty.ts": "./is_empty.ts",
+    "./is-function.ts": "./is_function.ts",
+    "./is-valid-json.ts": "./is_valid_json.ts",
+    "./pipe.ts": "./pipe.ts",
+    "./sleep.ts": "./sleep.ts",
+    "./throttle.ts": "./throttle.ts"
+  }
+}

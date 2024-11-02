@@ -1,0 +1,20 @@
+{
+  "$schema": "https://deno.land/x/deno/cli/schemas/config-file.v1.json",
+  "name": "@scope/math",
+  "version": "4.0.0",
+  "exports": {
+    ".": "./mod.ts",
+    "./average.ts": "./average.ts",
+    "./divmod.ts": "./divmod.ts",
+    "./is-valid.ts": "./is_valid.ts",
+    "./product.ts": "./product.ts",
+    "./random.ts": "./random.ts",
+    "./range.ts": "./range.ts",
+    "./round-to-precision.ts": "./round_to_precision.ts",
+    "./scale.ts": "./scale.ts",
+    "./standard-deviation.ts": "./standard_deviation.ts",
+    "./sum.ts": "./sum.ts",
+    "./to-fixed-without-zero.ts": "./to_fixed_without_zero.ts",
+    "./validate-number.ts": "./validate_number.ts"
+  }
+}

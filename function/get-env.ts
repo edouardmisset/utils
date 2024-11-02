@@ -53,11 +53,11 @@ export async function getEnv(
 
   if (environmentType === 'deno') {
     try {
-      const dotenv = await import('@std/dotenv')
+      const dotenv = await import('jsr:@std/dotenv')
       const env = await dotenv?.load()
       value = env[environmentVariable]
     } catch (error) {
-      console.error("Error loading Deno's `dotenv` library:", error)
+      globalThis.console.error("Error loading Deno's `dotenv` library:", error)
     }
   }
 

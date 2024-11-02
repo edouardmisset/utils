@@ -20,7 +20,7 @@ const basicReleaseTypes = new Set<ReleaseType>(['major', 'minor', 'patch'])
 const releaseTypeFromArg = Deno.args[0] as ReleaseType
 
 if (!basicReleaseTypes.has(releaseTypeFromArg)) {
-  console.error(
+  globalThis.console.error(
     `Invalid release type. Please provide one of the following: ${
       [...basicReleaseTypes].join(', ')
     }`,
@@ -29,7 +29,7 @@ if (!basicReleaseTypes.has(releaseTypeFromArg)) {
 }
 
 await incrementVersion(releaseTypeFromArg).catch((error) =>
-  console.error(error)
+  globalThis.console.error(error)
 )
 
 const f = new Deno.Command(Deno.execPath(), {
@@ -41,9 +41,9 @@ try {
   const { stderr, success } = await f.output()
   const textDecoder = new TextDecoder()
   if (!success) {
-    console.error(textDecoder.decode(stderr))
+    globalThis.console.error(textDecoder.decode(stderr))
     Deno.exit(1)
   }
 } catch (error) {
-  console.error(error)
+  globalThis.console.error(error)
 }
