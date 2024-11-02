@@ -3,6 +3,14 @@
 /**
  * Utility functions for working with arrays.
  *
+ * ```typescript
+ * import { countBy } from 'jsr:@edouard/array'
+ * import { assertEquals } from '@std/assert'
+ *
+ * const array_ = [1, 2, 3, 4, 5]
+ * assertEquals(countBy(array_, (x) => x % 2 === 0), 2)
+ * ```
+ *
  * @module
  */
 

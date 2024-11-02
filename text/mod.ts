@@ -2,6 +2,13 @@
 
 /**
  * Utility functions for working with text.
+ * 
+ * ```typescript
+ * import { capitalize } from 'jsr:@edouard/text'
+ * import { assertEquals } from '@std/assert'
+ * 
+ * assertEquals(capitalize('hello'), 'Hello')
+ * ```
  *
  * @module
  */

@@ -3,6 +3,14 @@
 /**
  * Utility functions for working with objects.
  *
+ * ```typescript
+ * import { isObject } from 'jsr:@edouard/object'
+ * import { assertEquals } from '@std/assert'
+ *
+ * const object_ = { a: 1, b: 2 }
+ * assertEquals(isObject(object_), true)
+ * ```
+ *
  * @module
  */
 
