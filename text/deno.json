@@ -1,6 +1,6 @@
 {
   "$schema": "https://deno.land/x/deno/cli/schemas/config-file.v1.json",
-  "name": "@scope/text",
+  "name": "@edouardmisset/text",
   "version": "4.0.0",
   "exports": {
     ".": "./mod.ts",
