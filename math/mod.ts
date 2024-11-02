@@ -2,11 +2,11 @@
 
 /**
  * Utility functions for doing general math calculations.
- * 
+ *
  * ```typescript
  * import { sum } from 'jsr:@edouardmisset/math'
  * import { assertEquals } from '@std/assert'
- * 
+ *
  * const array_ = [1, 2, 3, 4, 5]
  * assertEquals(sum(array_), 15)
  * ```
@@ -26,4 +26,3 @@ export * from './standard-deviation.ts'
 export * from './sum.ts'
 export * from './to-fixed-without-zero.ts'
 export * from './validate-number.ts'
-
