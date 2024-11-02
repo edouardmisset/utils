@@ -1,4 +1,4 @@
-import { ObjectOfType } from '../mod.ts'
+import { ObjectOfType } from '@edouardmisset/type'
 import { objectKeys } from './object-keys.ts'
 
 /**

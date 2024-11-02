@@ -4,7 +4,7 @@
  * Utility functions for working with dates.
  *
  * ```typescript
- * import { convertStringDate, lastDateOfMonth, firstDateOfMonth } from "./mod.ts"
+ * import { convertStringDate, lastDateOfMonth, firstDateOfMonth } from "@edouardmisset/date"
  * import { assertEquals } from "@std/assert"
  *
  * const dateString = "2023/10/01"
@@ -22,3 +22,4 @@
 
 export * from './convert-string-date.ts'
 export * from './first-last-date-of-month.ts'
+
