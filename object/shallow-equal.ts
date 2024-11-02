@@ -12,12 +12,12 @@ import { objectKeys } from './object-keys.ts'
  *
  * @example
  * ```typescript
- * const obj1 = { a: 1, b: 2 }
- * const obj2 = { b: 2, a: 1 }
- * const obj3 = { a: 1, b: 3 }
- * shallowEqual(obj1, obj2)
+ * const object1 = { a: 1, b: 2 }
+ * const object2 = { b: 2, a: 1 }
+ * const object3 = { a: 1, b: 3 }
+ * shallowEqual(object1, object2)
  * // returns true
- * shallowEqual(obj1, obj3)
+ * shallowEqual(object1, object3)
  * // returns false
  * ```
  */

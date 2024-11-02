@@ -44,12 +44,12 @@ export function invert<
 >(
   object: Object_,
 ): Result {
-  return Object.entries(object).reduce((acc, [key, value]) => {
+  return Object.entries(object).reduce((accumulator, [key, value]) => {
     if (!['string', 'number', 'symbol'].includes(typeof value)) {
-      return acc
+      return accumulator
     }
 
-    Object.assign(acc, { [String(value)]: key })
-    return acc
+    Object.assign(accumulator, { [String(value)]: key })
+    return accumulator
   }, {} as Result)
 }
