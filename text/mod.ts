@@ -4,7 +4,7 @@
  * Utility functions for working with text.
  * 
  * ```typescript
- * import { capitalize } from 'jsr:@edouard/text'
+ * import { capitalize } from 'jsr:@edouardmisset/text'
  * import { assertEquals } from '@std/assert'
  * 
  * assertEquals(capitalize('hello'), 'Hello')
@@ -20,3 +20,4 @@ export * from './slugify.ts'
 export * from './string-equals.ts'
 export * from './string-includes.ts'
 export * from './string-to-boolean.ts'
+

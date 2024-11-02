@@ -4,7 +4,7 @@
  * Utility functions for doing general math calculations.
  * 
  * ```typescript
- * import { sum } from 'jsr:@edouard/math'
+ * import { sum } from 'jsr:@edouardmisset/math'
  * import { assertEquals } from '@std/assert'
  * 
  * const array_ = [1, 2, 3, 4, 5]

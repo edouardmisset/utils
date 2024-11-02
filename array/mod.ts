@@ -4,7 +4,7 @@
  * Utility functions for working with arrays.
  *
  * ```typescript
- * import { countBy } from 'jsr:@edouard/array'
+ * import { countBy } from 'jsr:@edouardmisset/array'
  * import { assertEquals } from '@std/assert'
  *
  * const array_ = [1, 2, 3, 4, 5]

@@ -2,7 +2,7 @@
  * TS utility functions for working with types.
  *
  * ```typescript
- * import { LooseAutocomplete } from 'jsr:@edouard/type'
+ * import { LooseAutoComplete } from 'jsr:@edouardmisset/type'
  *
  * type RedOrOther = LooseAutoComplete<"red">
  *

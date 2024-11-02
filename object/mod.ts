@@ -4,7 +4,7 @@
  * Utility functions for working with objects.
  *
  * ```typescript
- * import { isObject } from 'jsr:@edouard/object'
+ * import { isObject } from 'jsr:@edouardmisset/object'
  * import { assertEquals } from '@std/assert'
  *
  * const object_ = { a: 1, b: 2 }

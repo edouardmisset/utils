@@ -11,11 +11,11 @@
  * @example
  * ```typescript
  * const object1 = { a: 1, b: null, c: undefined, d: 'hello' }
- * removeNullishValues(object1)
+ * removeNullishObjectValues(object1)
  * // returns { a: 1, d: 'hello' }
  *
  * const object2 = { a: 0, b: false, c: '', d: NaN }
- * removeNullishValues(object2)
+ * removeNullishObjectValues(object2)
  * // returns { a: 0, b: false, c: '', d: NaN }
  * ```
  */
