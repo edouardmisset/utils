@@ -8,7 +8,6 @@
     "docs:lint": "deno doc --lint ./**/*.ts",
     "docs:test": "deno test --doc ./**/*.ts",
     "docs": "deno doc --html --name='utils' ./mod.ts",
-    "increment": "deno run --allow-read --allow-write --allow-run ./_scripts/increment-version.ts",
     "test:watch": "deno test --watch",
     "test": "deno test --reporter=dot --coverage --parallel"
   },

@@ -4,7 +4,7 @@
   "version": "4.0.0",
   "exports": {
     ".": "./mod.ts",
-    "./convert-string-date.ts": "./convert_string_date.ts",
-    "./first-last-date-of-month.ts": "./first_last_date_of_month.ts"
+    "./convert-string-date.ts": "./convert-string-date.ts",
+    "./first-last-date-of-month.ts": "./first-last-date-of-month.ts"
   }
 }
