@@ -29,7 +29,7 @@ export const oneYearInMilliseconds = 365 * 24 * 60 * 60 * 1000
  * @example
  * ```typescript
  * // Filter dates by a duration from a reference date
- * const filter = createDateFilter({ referenceDate: new Date(2020, 6, 1), durationInMilliseconds: 1000 * 60 * 60 * 24 * 180 }) // 180 days
+ * const filter = createDateFilter({ referenceDate: new Date(2020, 6, 1), durationInMS: 1000 * 60 * 60 * 24 * 180 }) // 180 days
  * const result = filter(new Date(2020, 0, 1)) // true
  * ```
  */

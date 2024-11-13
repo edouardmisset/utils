@@ -7,13 +7,12 @@
  * import { convertStringDate, lastDateOfMonth, firstDateOfMonth } from "@edouardmisset/date"
  * import { assertEquals } from "@std/assert"
  *
- * const dateString = "2023/10/01"
- * const date = convertStringDate(dateString)
- * assertEquals(date instanceof Date, true)
+ * const date = convertStringDate('31/12/2022 12:00')
+ * assertEquals(date, "2022-12-31T12:00")
  *
- * const last = lastDateOfMonth(new Date('2022-12-15'))
- * assertEquals(last.getDate(), 31)
- * const firstDate = firstDateOfMonth(new Date('2022-12-15'))
+ * const lastDate = lastDateOfMonth(new Date('2022-12-30'))
+ * assertEquals(lastDate.getDate(), 31)
+ * const firstDate = firstDateOfMonth(new Date('2022-12-30'))
  * assertEquals(firstDate.getDate(), 1)
  * ```
  *

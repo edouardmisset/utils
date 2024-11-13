@@ -13,19 +13,12 @@
  *
  * @example
  * ```typescript
- * import { keyBy } from './collection-key-by.ts'
- *
+ * import { assertEquals } from '@std/assert'
+ * 
  * const array = [{ id: 1, name: 'Alice' }, { id: 2, name: 'Bob' }, { id: 3, name: 'Charlie' }]
- * keyBy(array, 'id')
- * // returns { '1': { id: 1, name: 'Alice' }, '2': { id: 2, name: 'Bob' }, '3': { id: 3, name: 'Charlie' } }
- * ```
+ *  assertEquals(keyBy(array, 'id'), { '1': { id: 1, name: 'Alice' }, '2': { id: 2, name: 'Bob' }, '3': { id: 3, name: 'Charlie' } })
  *
- * @example
- * ```typescript
- * import { keyBy } from './collection-key-by.ts'
- *
- * keyBy([], 'id')
- * // returns undefined
+ * assertEquals(keyBy([], 'id'), undefined)
  * ```
  */
 export function keyBy<
@@ -70,9 +63,8 @@ export function keyBy<
  *
  * @example
  * ```typescript
- * const emptyArray = []
  * const key = 'id'
- * collectionKeyBy(emptyArray, key)
+ * collectionKeyBy([], key)
  * // returns undefined
  * ```
  */

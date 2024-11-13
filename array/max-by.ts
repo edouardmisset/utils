@@ -17,9 +17,8 @@
  *
  * @example
  * ```typescript
- * const emptyArray = []
  * const key = 'value'
- * maxBy(emptyArray, key)
+ * maxBy([], key)
  * // returns undefined
  * ```
  */

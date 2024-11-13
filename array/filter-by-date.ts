@@ -156,27 +156,27 @@ function isDateCompatible(value: unknown): value is Date | number | string {
  * @example
  * ```typescript
  * // Filter an array of objects by a year
- * const data = [{ date: new Date(2020, 0, 1) }, { date: new Date(2021, 0, 1) }]
- * const filter = createFilter('date', { year: 2020 })
- * const result = data.filter(filter)
+ * const dates = [{ date: new Date(2020, 0, 1) }, { date: new Date(2021, 0, 1) }]
+ * const filter = filterByDate('date', { year: 2020 })
+ * const result = dates.filter(filter)
  * // [{ date: new Date(2020, 0, 1) }]
  * ```
  *
  * @example
  * ```typescript
  * // Filter an array of objects by a date range
- * const data = [{ date: new Date(2020, 0, 1) }, { date: new Date(2021, 0, 1) }]
- * const filter = createFilter('date', { startDate: new Date(2020, 6, 1), endDate: new Date(2020, 11, 31) })
- * const result = data.filter(filter)
+ * const dates = [{ date: new Date(2020, 0, 1) }, { date: new Date(2021, 0, 1) }]
+ * const filter = filterByDate('date', { startDate: new Date(2020, 6, 1), endDate: new Date(2020, 11, 31) })
+ * const result = dates.filter(filter)
  * // []
  * ```
  *
  * @example
  * ```typescript
  * // Filter an array of objects by a duration from a reference date
- * const data = [{ date: new Date(2020, 0, 1) }, { date: new Date(2021, 0, 1) }]
- * const filter = createFilter('date', { referenceDate: new Date(2020, 6, 1), duration: 1000 * 60 * 60 * 24 * 180 }) // 180 days
- * const result = data.filter(filter)
+ * const dates = [{ date: new Date(2020, 0, 1) }, { date: new Date(2021, 0, 1) }]
+ * const filter = filterByDate('date', { referenceDate: new Date(2020, 6, 1), durationInMS: 1000 * 60 * 60 * 24 * 180 }) // 180 days
+ * const result = dates.filter(filter)
  * // [{ date: new Date(2020, 0, 1) }]
  * ```
  */
