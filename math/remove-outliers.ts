@@ -26,20 +26,18 @@ type RemoveOutliersOptions =
  *
  * @example
  * ```typescript
+ * import { assertEquals } from 'jsr:@std/assert'
  * // Example 1: Basic usage
- * const data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 100]
- * removeOutliers3StandardDeviation(data)
- * // returns [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+ * const data = [1, 2, 3, 3, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 7, 7, 8, 9, 1_000_000_000_000]
+ * assertEquals(removeOutliers3StandardDeviation(data), [1, 2, 3, 3, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 7, 7, 8, 9])
  *
  * // Example 2: No outliers
  * const data = [1, 2, 3, 4, 5]
- * removeOutliers3StandardDeviation(data)
- * // returns [1, 2, 3, 4, 5]
+ * assertEquals(removeOutliers3StandardDeviation(data), data)
  *
  * // Example 3: Small dataset
  * const data = [1]
- * removeOutliers3StandardDeviation(data)
- * // returns [1]
+ * assertEquals(removeOutliers3StandardDeviation(data), data)
  * ```
  */
 export function removeOutliers3StandardDeviation(numbers: number[]): number[] {
@@ -125,7 +123,7 @@ export function removeOutliersIQR(
  *
  * @param {number[]} numbers - The dataset from which to remove outliers.
  * @param {RemoveOutliersOptions} [options={ isSkewedDistribution: false }] -
- * Options for removing outliers. 
+ * Options for removing outliers.
  * @returns {number[]} A new array with the outliers removed.
  *
  * @example
@@ -142,7 +140,7 @@ export function removeOutliersIQR(
  *
  * // Example 3: Using IQR method with custom percentage
  * const data = [1, 2, 3, 4, 5, 100]
- * const filteredData = removeOutliersFromDistribution(data, { isSkewedDistribution: true, percentage: 10 }) 
+ * const filteredData = removeOutliersFromDistribution(data, { isSkewedDistribution: true, percentage: 10 })
  * console.log(filteredData) // Output: [3, 4]
  * ```
  */
@@ -154,4 +152,3 @@ export function removeOutliersFromDistribution(
     ? removeOutliersIQR(numbers, options?.percentage)
     : removeOutliers3StandardDeviation(numbers)
 }
-
