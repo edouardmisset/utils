@@ -1,9 +1,0 @@
-{
-  "$schema": "https://deno.land/x/deno/cli/schemas/config-file.v1.json",
-  "name": "@edouardmisset/tree",
-  "version": "4.0.0",
-  "exports": {
-    ".": "./mod.ts",
-    "./find-node-in-tree.ts": "./find-node-in-tree.ts"
-  }
-}
