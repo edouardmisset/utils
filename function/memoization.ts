@@ -1,9 +1,9 @@
 /**
  * Memoizes a given function by caching its computed results.
  *
- * @template Fct - The type of the function to be memoized.
- * @param {Fct} fn - The function to be memoized.
- * @returns {Fct & { clearCache: () => void }} - The memoized function with a
+ * @template Function_ - The type of the function to be memoized.
+ * @param {Function_} function_ - The function to be memoized.
+ * @returns {Function_ & { clearCache: () => void }} - The memoized function with a
  * method to clear the cache.
  *
  * @example
@@ -24,25 +24,26 @@
  * ```
  */
 // deno-lint-ignore no-explicit-any
-export function memoize<Fct extends (...args: any[]) => any>(
-  fn: Fct,
-): Fct & { clearCache: () => void } {
-  const cache = new Map<string, ReturnType<Fct>>()
+export function memoize<Function_ extends (...arguments_: any[]) => any>(
+  function_: Function_,
+): Function_ & { clearCache: () => void } {
+  const cache = new Map<string, ReturnType<Function_>>()
 
-  const memoizedFn = ((...args: Parameters<Fct>) => {
-    const key = args.length === 0 ? '__noArgs__' : JSON.stringify(args)
+  const memoizedFunction = ((...arguments_: Parameters<Function_>) => {
+    const key = arguments_.length === 0 ? '__noArguments___' : JSON.stringify(arguments_)
 
     if (!cache.has(key)) {
-      cache.set(key, fn(...args))
+      cache.set(key, function_(...arguments_))
     }
     return cache.get(key)
-  }) as Fct & { clearCache: () => void }
+  }) as Function_ & { clearCache: () => void }
 
-  memoizedFn.clearCache = () => {
+  memoizedFunction.clearCache = () => {
     cache.clear()
   }
 
-  return memoizedFn
+  return memoizedFunction
 }
 
-export const memo = memoize
+/** Alias for the {@link memoize} function. */
+export const memo: typeof memoize = memoize
