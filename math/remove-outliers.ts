@@ -26,7 +26,7 @@ type RemoveOutliersOptions =
  *
  * @example
  * ```typescript
- * import { assertEquals } from 'jsr:@std/assert'
+ * import { assertEquals } from '@std/assert'
  * // Example 1: Basic usage
  * const data = [1, 2, 3, 3, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 7, 7, 8, 9, 1_000_000_000_000]
  * assertEquals(removeOutliers3StandardDeviation(data), [1, 2, 3, 3, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 7, 7, 8, 9])
