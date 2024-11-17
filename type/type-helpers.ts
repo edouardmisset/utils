@@ -292,3 +292,10 @@ export type LooseAutoComplete<S extends string> = S | Omit<string, S>
  * returns void. */
 // deno-lint-ignore no-explicit-any
 export type AnyVoidFunction = (...argument: any[]) => void
+
+export type SetDifference<
+  A extends readonly unknown[],
+  B extends readonly unknown[],
+> =
+  | Exclude<A[number], B[number]>
+  | Exclude<B[number], A[number]>
