@@ -48,7 +48,7 @@ export const pluckBy: typeof selectBy = selectBy
  * const selectById = createSelectBy('id')
  * selectById({ id: 1, name: 'John' })
  * // returns 1
- * 
+ *
  * const selectByName = createSelectBy('name')
  * selectByName({ id: 1, name: 'John' })
  * // returns 'John'

@@ -14,7 +14,7 @@
  * @example
  * ```typescript
  * import { assertEquals } from '@std/assert'
- * 
+ *
  * const array = [{ id: 1, name: 'Alice' }, { id: 2, name: 'Bob' }, { id: 3, name: 'Charlie' }]
  *  assertEquals(keyBy(array, 'id'), { '1': { id: 1, name: 'Alice' }, '2': { id: 2, name: 'Bob' }, '3': { id: 3, name: 'Charlie' } })
  *

@@ -30,7 +30,9 @@ export function memoize<Function_ extends (...arguments_: any[]) => any>(
   const cache = new Map<string, ReturnType<Function_>>()
 
   const memoizedFunction = ((...arguments_: Parameters<Function_>) => {
-    const key = arguments_.length === 0 ? '__noArguments___' : JSON.stringify(arguments_)
+    const key = arguments_.length === 0
+      ? '__noArguments___'
+      : JSON.stringify(arguments_)
 
     if (!cache.has(key)) {
       cache.set(key, function_(...arguments_))
