@@ -1,4 +1,4 @@
-import { assertEquals } from '@std/assert/equals'
+import { assertEquals } from '@std/assert'
 import { memoize } from './memoization.ts'
 
 import { assertSpyCall, assertSpyCalls, spy } from '@std/testing/mock'
