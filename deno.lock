@@ -39,7 +39,8 @@
     "@std/testing@1.0.5": {
       "integrity": "6e693cbec94c81a1ad3df668685c7ba8e20742bb10305bc7137faa5cf16d2ec4",
       "dependencies": [
-        "jsr:@std/assert@^1.0.8"
+        "jsr:@std/assert@^1.0.8",
+        "jsr:@std/internal@^1.0.5"
       ]
     }
   },
@@ -53,5 +54,20 @@
     "undici-types@6.19.8": {
       "integrity": "sha512-ve2KP6f/JnbPBFyobGHuerC9g1FYGn/F8n1LWTwNxCEzd6IfqTwUQcNXgEtmmQ6DlRrC1hrSrBnCZPokRrDHjw=="
     }
+  },
+  "workspace": {
+    "dependencies": [
+      "jsr:@edouardmisset/array@^4.0.2",
+      "jsr:@edouardmisset/date@4",
+      "jsr:@edouardmisset/function@4",
+      "jsr:@edouardmisset/math@4",
+      "jsr:@edouardmisset/object@^4.0.1",
+      "jsr:@edouardmisset/text@4",
+      "jsr:@edouardmisset/type@4",
+      "jsr:@std/assert@1",
+      "jsr:@std/dotenv@~0.225.2",
+      "jsr:@std/semver@1",
+      "jsr:@std/testing@^1.0.5"
+    ]
   }
 }
