@@ -1,4 +1,4 @@
-import type { SetDifference } from '../type/mod.ts'
+import type { SetDifference } from '@edouardmisset/type/type-helpers.ts'
 
 /**
  * Returns the elements that are common to both arrays.

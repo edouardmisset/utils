@@ -6,7 +6,7 @@
     "coverage:gen": "deno coverage ./coverage --lcov --output=./coverage/lcov.info",
     "coverage:view": "deno coverage --html coverage",
     "docs:lint": "deno doc --lint ./**/*.ts",
-    "docs:test": "deno test --doc ./**/*.ts",
+    "docs:test": "deno test --doc --reporter=dot ./**/*.ts",
     "docs": "deno doc --html --name='utils' ./mod.ts",
     "test:watch": "deno test --watch",
     "test": "deno test --reporter=dot --coverage --parallel"

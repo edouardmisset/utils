@@ -192,8 +192,8 @@ export type NotNullValues<
   Object_ extends ObjectOfType<unknown>,
   Key extends keyof Object_ = keyof Object_,
 > = {
-  [P in Key]: Exclude<Object_[P], null>
-}
+    [P in Key]: Exclude<Object_[P], null>
+  }
 
 /**
  * Constructs a type by excluding `null` and `undefined` from the possible values
@@ -229,8 +229,8 @@ export type NotNullishValues<
   Object_ extends ObjectOfType<unknown>,
   Key extends keyof Object_ = keyof Object_,
 > = {
-  [P in Key]: Exclude<Object_[P], null | undefined>
-}
+    [P in Key]: Exclude<Object_[P], null | undefined>
+  }
 
 /**
  * It takes a type as its argument and returns a new type that has the same
@@ -303,6 +303,22 @@ export type LooseAutoComplete<S extends string> = S | Omit<string, S>
 // deno-lint-ignore no-explicit-any
 export type AnyVoidFunction = (...argument: any[]) => void
 
+/**
+ * Constructs a type representing the symmetric difference between two tuple types.
+ *
+ *
+ * @template A The first tuple type.
+ * @template B The second tuple type.
+ *
+ * @example
+ * ```typescript
+ * type TupleA = [1, 2, 3]
+ * type TupleB = [3, 4, 5]
+ *
+ * type Difference = SetDifference<TupleA, TupleB>
+ * // Equivalent to: 1 | 2 | 4 | 5
+ * ```
+ */
 export type SetDifference<
   A extends readonly unknown[],
   B extends readonly unknown[],

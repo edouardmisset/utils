@@ -8,8 +8,8 @@ import { join } from 'jsr:@std/path'
 // deno-lint-ignore no-explicit-any
 const imports = importMap.imports as any
 const denoJsonList = Promise.all(
-  denoJson.workspace.map((w) =>
-    Deno.readTextFile(join(w, 'deno.json')).then(JSON.parse)
+  denoJson.workspace.map((space) =>
+    Deno.readTextFile(join(space, 'deno.json')).then(JSON.parse)
   ),
 )
 
