@@ -1,4 +1,6 @@
-import { FilterOptions, isDateRangeOption, isYearOption } from './mod.ts'
+import { isDateInRangeOption } from '@edouardmisset/date/is-date-in-range.ts'
+import { isYearOption } from '@edouardmisset/date/is-date-in-year.ts'
+import { FilterOptions } from './filter-by-date.ts'
 
 /**
  * The number of milliseconds in a year.
@@ -40,7 +42,7 @@ export function createDateFilter(
     return (date) => date.getFullYear() === options.year
   }
 
-  if (isDateRangeOption(options)) {
+  if (isDateInRangeOption(options)) {
     return (date) =>
       date.getTime() >= options.startDate.getTime() &&
       date.getTime() <= (options.endDate ?? new Date()).getTime()

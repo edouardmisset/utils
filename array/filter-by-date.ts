@@ -1,39 +1,21 @@
-import { objectSize } from '@edouardmisset/object'
-import { oneYearInMilliseconds } from './mod.ts'
-
-/**
- * Type is a number representing the duration in milliseconds.
- */
-export type milliseconds = number
-
-/**
- * Type is a number representing an integer.
- */
-export type integer = number
-
-/**
- * Type representing a start and end date (as `Date` types).
- */
-export type StartAndEndDate = {
-  endDate?: Date
-  startDate: Date
-}
-
-/**
- * Type representing a year as an integer (number).
- */
-export type Year = {
-  year: integer
-}
-
-/**
- * Type representing a duration (in milliseconds) and a reference date (as
- * `Date` type).
- */
-export type DurationAndReferenceDate = {
-  durationInMS?: milliseconds
-  referenceDate?: Date
-}
+import { isDateCompatible } from '@edouardmisset/date/is-date-compatible.ts'
+import {
+  DurationAndReferenceDate,
+  isDateInDuration,
+} from '@edouardmisset/date/is-date-in-duration.ts'
+import {
+  isDateInRange,
+  isDateInRangeOption,
+  StartAndEndDate,
+} from '@edouardmisset/date/is-date-in-range.ts'
+import {
+  isDateInYear,
+  isYearOption,
+  Year,
+} from '@edouardmisset/date/is-date-in-year.ts'
+import { isValidDate } from '@edouardmisset/date/is-valid-date.ts'
+import { objectSize } from '@edouardmisset/object/object-size.ts'
+import { ONE_YEAR_IN_MILLISECONDS } from './filter.ts'
 
 /**
  * The filter options for the {@link filterByDate} function.
@@ -42,109 +24,13 @@ export type DurationAndReferenceDate = {
 export type FilterOptions = Year | StartAndEndDate | DurationAndReferenceDate
 
 /**
- * Checks if the given option is of type Year.
- *
- * @param {FilterOptions} option - The option to check.
- * @returns {boolean} - True if the option is of type Year, false otherwise.
- */
-export function isYearOption(option: FilterOptions): option is Year {
-  return (option as Year)?.year !== undefined
-}
-
-/**
- * Checks if the given option is of type StartAndEndDate.
- *
- * @param {FilterOptions} option - The option to check.
- * @returns {boolean} - True if the option is of type StartAndEndDate, false
- * otherwise.
- */
-export function isDateRangeOption(
-  option: FilterOptions,
-): option is StartAndEndDate {
-  return (option as StartAndEndDate)?.startDate !== undefined &&
-    (option as StartAndEndDate)?.endDate !== undefined
-}
-
-/**
- * Checks if the given dates are valid.
- *
- * @param {...unknown[]} dates - The dates to check.
- * @returns {boolean} - True if all dates are valid, false otherwise.
- */
-export function isValidDate(...dates: unknown[]): boolean {
-  for (const date of dates) {
-    if (
-      !(date instanceof Date) || Number.isNaN(date) ||
-      date.toString() === 'Invalid Date'
-    ) {
-      return false
-    }
-  }
-
-  return true
-}
-
-/**
- * Checks if the given date matches the given year.
- *
- * @param {Date} dateValue - The date to check.
- * @param {number} year - The year to match.
- * @returns {boolean} - True if the date matches the year, false otherwise.
- */
-function isYearMatch(dateValue: Date, year: number): boolean {
-  return dateValue.getFullYear() === year
-}
-
-/**
- * Checks if the given date is within the given start and end dates (inclusive).
- *
- * @param {Date} dateValue - The date to check.
- * @param {Date} startDate - The start date of the range.
- * @param {Date} endDate - The end date of the range.
- * @returns {boolean} - True if the date is within the range, false otherwise.
- */
-function isWithinDateRange(
-  dateValue: Date,
-  startDate: Date,
-  endDate: Date,
-): boolean {
-  return startDate <= dateValue && dateValue <= endDate
-}
-
-/**
- * Checks if the given date is within the duration from the reference date
- * (inclusive).
- *
- * @param {Date} dateValue - The date to check.
- * @param {Date} referenceDate - The reference date.
- * @param {number} durationInMS - The duration from the reference date.
- * @returns {boolean} - True if the date is within the duration, false
- * otherwise.
- */
-function isWithinDuration(
-  dateValue: Date,
-  referenceDate: Date,
-  durationInMS: number,
-): boolean {
-  const referenceTime = referenceDate.getTime()
-  const valueTime = dateValue.getTime()
-  return referenceTime - durationInMS <= valueTime && valueTime <= referenceTime
-}
-
-/**
- * Checks if the given value is compatible with Date.
- *
- * @param {unknown} value - The value to check.
- * @returns {boolean} - True if the value is compatible with Date, false otherwise.
- */
-function isDateCompatible(value: unknown): value is Date | number | string {
-  return typeof value === 'string' || value instanceof Date ||
-    typeof value === 'number'
-}
-
-/**
  * Creates a filter function that can be used to filter an array of objects
  * based on a date property and provided filter options.
+ *
+ * NOTE: By default it checks if the date provided is within the last year
+ *
+ * NOTE 2: The filter function will return true if the object does not have a
+ * options or if the date is invalid.
  *
  * @template Object_ - The type of object in the array to filter.
  * @param {keyof Object_} dateKey - The key of the date property in the objects to
@@ -193,26 +79,26 @@ export function filterByDate<Object_ extends Record<string, unknown>>(
     const date = new Date(dateValue)
     if (!isValidDate(date)) return true
 
-    if (isYearOption(options)) return isYearMatch(date, options.year)
+    if (isYearOption(options)) return isDateInYear(date, options.year)
 
     if (
-      isDateRangeOption(options)
+      isDateInRangeOption(options)
     ) {
       if (!isValidDate(options.startDate, options.endDate)) {
         throw new Error('Invalid date range')
       }
-      return isWithinDateRange(
+      return isDateInRange(
         date,
-        options.startDate,
-        options.endDate ?? new Date(),
+        options,
       )
     }
 
-    return isWithinDuration(
-      date,
-      options.referenceDate ?? new Date(),
-      options.durationInMS ?? oneYearInMilliseconds,
-    )
+    const {
+      durationInMS = ONE_YEAR_IN_MILLISECONDS,
+      referenceDate = new Date(),
+    } = options
+
+    return isDateInDuration(date, { referenceDate, durationInMS })
   }
 }
 

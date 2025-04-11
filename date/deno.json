@@ -5,6 +5,12 @@
   "exports": {
     ".": "./mod.ts",
     "./convert-string-date.ts": "./convert-string-date.ts",
-    "./first-last-date-of-month.ts": "./first-last-date-of-month.ts"
+    "./first-last-date-of-month.ts": "./first-last-date-of-month.ts",
+    "./is-date-compatible.ts": "./is-date-compatible.ts",
+    "./is-date-in-duration.ts": "./is-date-in-duration.ts",
+    "./is-date-in-range.ts": "./is-date-in-range.ts",
+    "./is-date-in-year.ts": "./is-date-in-year.ts",
+    "./is-valid-date.ts": "./is-valid-date.ts",
+    "./parse-date.ts": "./parse-date.ts"
   }
 }

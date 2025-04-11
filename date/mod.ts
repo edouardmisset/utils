@@ -21,3 +21,9 @@
 
 export * from './convert-string-date.ts'
 export * from './first-last-date-of-month.ts'
+export * from './is-date-compatible.ts'
+export * from './is-date-in-duration.ts'
+export * from './is-date-in-range.ts'
+export * from './is-date-in-year.ts'
+export * from './is-valid-date.ts'
+export * from './parse-date.ts'
