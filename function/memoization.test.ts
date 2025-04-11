@@ -1,7 +1,6 @@
 import { assertEquals } from '@std/assert'
-import { memoize } from './memoization.ts'
-
 import { assertSpyCall, assertSpyCalls, spy } from '@std/testing/mock'
+import { memoize } from './memoization.ts'
 
 Deno.test('memoize', async (t) => {
   await t.step('should memoize the results of a function', () => {
