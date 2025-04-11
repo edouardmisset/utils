@@ -1,8 +1,8 @@
 import process from 'node:process'
 
 /**
-* A Readonly object mapping environment prefixes to different environments.
-*/
+ * A Readonly object mapping environment prefixes to different environments.
+ */
 export const ENVIRONNEMENT_PREFIX = {
   node: '',
   CRA: 'REACT_APP_',

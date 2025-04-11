@@ -18,5 +18,5 @@ jobs: # Defines the jobs to be run
       - name: Set up Deno 2
         uses: denoland/setup-deno@v2
 
-      - name: Publish package to JSR # Name of the step
+      - name: Publish package to JSR
         run: deno publish # Runs the command to publish the package
