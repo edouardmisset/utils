@@ -1,5 +1,5 @@
-import { isValidDate } from '@edouardmisset/date/is-valid-date.ts'
 import { Integer } from '@edouardmisset/type/type-helpers.ts'
+import { isValidDate } from './is-valid-date.ts'
 
 /**
  * Type representing a year as an integer (number).
