@@ -33,6 +33,16 @@ export type Primitive =
   | null
 
 /**
+ * Type is a number representing the duration in milliseconds.
+ */
+export type Milliseconds = number
+
+/**
+ * Type is a number representing an integer.
+ */
+export type Integer = number
+
+/**
  * Constructs a type by overriding some properties of an original type with
  * properties from another type.
  *
