@@ -1,7 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/denoland/deno/main/cli/schemas/config-file.v1.json",
   "name": "@edouardmisset/text",
-  "version": "4.0.0",
+  "version": "4.1.0",
   "exports": {
     ".": "./mod.ts",
     "./capitalize.ts": "./capitalize.ts",
@@ -10,6 +10,7 @@
     "./slugify.ts": "./slugify.ts",
     "./string-equals.ts": "./string-equals.ts",
     "./string-includes.ts": "./string-includes.ts",
-    "./string-to-boolean.ts": "./string-to-boolean.ts"
+    "./string-to-boolean.ts": "./string-to-boolean.ts",
+    "./wrap-in-parentheses.ts": "./wrap-in-parentheses.ts"
   }
 }

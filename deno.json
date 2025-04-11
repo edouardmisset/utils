@@ -2,7 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/denoland/deno/main/cli/schemas/config-file.v1.json",
   "importMap": "./import-map.json",
   "tasks": {
-    "check": "deno lint && deno fmt && deno test --reporter=dot --coverage --parallel",
+    "check": "deno check ./**/*.ts && deno lint && deno fmt && deno test --reporter=dot --coverage --parallel",
     "coverage:gen": "deno coverage ./coverage --lcov --output=./coverage/lcov.info",
     "coverage:view": "deno coverage --html coverage",
     "docs:lint": "deno doc --lint ./**/*.ts",
