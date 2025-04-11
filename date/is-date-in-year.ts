@@ -32,7 +32,9 @@ export function isYearOption(option: unknown): option is Year {
 export function isDateInYear(date: string | Date, year: number): boolean {
   const parsedDate = typeof date === 'string' ? new Date(date) : date
   if (!isValidDate(parsedDate)) {
-    globalThis.console.error(`[isDateInYear] Invalid date provided: ${parsedDate}. Input was: date=${date}, year=${year}`)
+    globalThis.console.error(
+      `[isDateInYear] Invalid date provided: ${parsedDate}. Input was: date=${date}, year=${year}`,
+    )
     return false
   }
   return parsedDate.getFullYear() === year
