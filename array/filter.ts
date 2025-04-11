@@ -3,7 +3,7 @@ import { FilterOptions, isDateRangeOption, isYearOption } from './mod.ts'
 /**
  * The number of milliseconds in a year.
  */
-export const oneYearInMilliseconds = 365 * 24 * 60 * 60 * 1000
+export const ONE_YEAR_IN_MILLISECONDS = 31_536_000_000
 
 /**
  * Creates a date filter function that can be used to filter dates based on provided parameters.
@@ -48,7 +48,7 @@ export function createDateFilter(
 
   const {
     referenceDate = new Date(),
-    durationInMS = oneYearInMilliseconds,
+    durationInMS = ONE_YEAR_IN_MILLISECONDS,
   } = options
 
   return (date) => date.getTime() >= referenceDate.getTime() - durationInMS
