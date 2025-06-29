@@ -1,8 +1,21 @@
 import type { AnyVoidFunction } from '@edouardmisset/type'
 
+/**
+ * Parameters for the debounce function.
+ */
 interface DebounceParameters {
+  /**
+   * The function to debounce.
+   */
   callback: AnyVoidFunction
+  /**
+   * The delay in milliseconds before invoking the callback. Defaults to 50.
+   */
   delay?: number
+  /**
+   * An optional object to store the timer ID, allowing external control or
+   * cancellation.
+   */
   timerId?: { id: number }
 }
 
@@ -16,14 +29,17 @@ interface DebounceParameters {
  *
  * @example
  * ```typescript
+ * // Create a debounced function
  * const debouncedFunction = debounce({ callback: () => console.log('Hello'), delay: 1000 })
- * debouncedFunction() // 'Hello' will be logged after 1 second
+ *
+ * // Note: In actual usage, call the function and it will execute after the delay
+ * // debouncedFunction() // 'Hello' will be logged after 1000ms
  * ```
  */
 export const debounce = (parameters: DebounceParameters): AnyVoidFunction => {
   const { callback, delay = 50, timerId = { id: -1 } } = parameters
 
-  return (...arguments_) => {
+  return (...arguments_: unknown[]) => {
     if (timerId.id !== -1) clearTimeout(timerId.id)
 
     timerId.id = setTimeout(() => {

@@ -31,7 +31,12 @@ export function shallowEqual<Object_ extends ObjectOfType>(
   if (leftKeys.length !== rightKeys.length) return false
 
   return leftKeys.every(
-    (key, index) =>
-      key === rightKeys[index] && leftObject[key] === rightObject[key],
+    (
+      key,
+      index,
+    ) => (key === rightKeys[index] &&
+      (Number.isNaN(leftObject[key]) && Number.isNaN(rightObject[key])
+        ? true
+        : leftObject[key] === rightObject[key])),
   )
 }

@@ -1,4 +1,5 @@
 import process from 'node:process'
+import { err, ok, Result, tryCatch } from './try-catch.ts'
 
 /**
  * A Readonly object mapping environment prefixes to different environments.
@@ -23,20 +24,31 @@ export type EnvType = keyof typeof ENVIRONNEMENT_PREFIX
  * @param {EnvType} [environmentType='node'] - The environment from which to retrieve the variable.
  * 'node' and 'CRA' will use process.env, 'vite' will use import.meta.env.
  *
- * @throws {TypeError} Will throw an error if the environment variable is not set.
- *
- * @returns {Promise<string>} The value of the environment variable.
+ * @returns {Promise<Result<string, TypeError>>} A Result containing either the environment variable value or a TypeError if not found.
  *
  * @example
  * ```typescript
- * getEnv('MY_VARIABLE', 'node').then(value => console.log(value)) // logs the value of MY_VARIABLE from process.env
- * getEnv('MY_VARIABLE', 'vite').then(value => console.log(value)) // logs the value of MY_VARIABLE from import.meta.env
+ * // Note: In Deno, run with --allow-env flag for environment access
+ * const result = await getEnv('MY_VARIABLE', 'node')
+ * if (result.error) {
+ *   console.log('Variable not found:', result.error.message)
+ * } else {
+ *   console.log('Value:', result.data)
+ * }
+ *
+ * // Example with different environment types:
+ * const viteResult = await getEnv('MY_VARIABLE', 'vite')
+ * if (viteResult.error) {
+ *   console.log('Variable not found in Vite env:', viteResult.error.message)
+ * } else {
+ *   console.log('Vite value:', viteResult.data)
+ * }
  * ```
  */
 export async function getEnv(
   environmentVariable: string,
   environmentType: EnvType = 'node',
-): Promise<string> {
+): Promise<Result<string, TypeError>> {
   const prefix = ENVIRONNEMENT_PREFIX[environmentType]
   let value: string | undefined = undefined
 
@@ -52,20 +64,31 @@ export async function getEnv(
   }
 
   if (environmentType === 'deno') {
-    try {
+    const loadDotenv = async () => {
       const dotenv = await import('@std/dotenv')
-      const env = await dotenv?.load()
-      value = env[environmentVariable]
-    } catch (error) {
-      globalThis.console.error("Error loading Deno's `dotenv` library:", error)
+      const env = await dotenv.load()
+      return env[environmentVariable]
+    }
+
+    const result = await tryCatch(loadDotenv())
+
+    if (result.error) {
+      globalThis.console.error(
+        "Error loading Deno's `dotenv` library:",
+        result.error,
+      )
+    } else {
+      value = result.data
     }
   }
 
   if (value === undefined) {
-    throw new TypeError(
-      `It seems like the variable "${environmentVariable}" is not set in the environment (\`.env\` file).
+    return err(
+      new TypeError(
+        `It seems like the variable "${environmentVariable}" is not set in the environment (\`.env\` file).
     @Dev: Did you forget to execute "cp .env.dev .env" and adjust variables in the .env file to match your own environment ?`,
-    )
+      ),
+    ) as Result<string, TypeError>
   }
-  return value
+  return ok(value) as Result<string, TypeError>
 }

@@ -1,3 +1,5 @@
+import type { ObjectOfType } from '@edouardmisset/type'
+
 /**
  * Inverts the keys and values of an object.
  *
@@ -37,7 +39,7 @@
  */
 export function invert<
   Value extends string | number | symbol,
-  Object_ extends Record<string, Value>,
+  Object_ extends ObjectOfType<Value>,
   Key extends keyof Object_,
   Values extends Object_[Key],
   Result extends Record<Values, Key>,

@@ -1,3 +1,5 @@
+import type { ObjectOfType } from '@edouardmisset/type'
+
 /**
  * Groups an array of objects by a specific key.
  *
@@ -17,7 +19,7 @@
  * ```
  */
 export function groupBy<
-  Object_ extends Record<string, unknown>,
+  Object_ extends ObjectOfType<unknown>,
   Key extends keyof Object_,
   Value extends Object_[Key] & (string | number),
   GroupedObject extends Record<Value, Object_[]>,

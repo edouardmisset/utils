@@ -2,8 +2,8 @@
  * Type representing a start and end date (as `Date` types).
  */
 export type StartAndEndDate = {
-  endDate: Date
   startDate: Date
+  endDate: Date
 }
 
 /**

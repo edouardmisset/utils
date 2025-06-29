@@ -1,4 +1,4 @@
-import { Primitive } from '@edouardmisset/type'
+import { type ObjectOfType, Primitive } from '@edouardmisset/type'
 
 /**
  * Checks if a given value is an object.
@@ -7,7 +7,7 @@ import { Primitive } from '@edouardmisset/type'
  * objects.
  *
  * @param {unknown} value - The value to check.
- * @returns {value is Record<string, unknown>} - Returns `true` if the value is an
+ * @returns {value is ObjectOfType<unknown>} - Returns `true` if the value is an
  * object, else `false`.
  *
  * @example
@@ -22,7 +22,7 @@ import { Primitive } from '@edouardmisset/type'
  * // returns false
  * ```
  */
-export function isObject(value: unknown): value is Record<string, unknown> {
+export function isObject(value: unknown): value is ObjectOfType<unknown> {
   return !!value && typeof value === 'object'
 }
 
@@ -33,7 +33,7 @@ export function isObject(value: unknown): value is Record<string, unknown> {
  * constructor.
  *
  * @param {unknown} value - The value to check.
- * @returns {value is Record<string, unknown>} - Returns `true` if the value is a
+ * @returns {value is ObjectOfType<unknown>} - Returns `true` if the value is a
  * plain object, else `false`.
  *
  * @example
@@ -52,7 +52,7 @@ export function isObject(value: unknown): value is Record<string, unknown> {
  */
 export function isPlainObject(
   value: unknown,
-): value is Record<string, unknown> {
+): value is ObjectOfType<unknown> {
   return !!value &&
     typeof value === 'object' &&
     Object.getPrototypeOf(value) === Object.prototype
@@ -64,8 +64,8 @@ export function isPlainObject(
  * A non-nested object in JavaScript is an object that does not contain any
  * other objects as values.
  *
- * @param {Record<string, unknown>} object - The object to check.
- * @returns {object is Record<string, Primitive>} - Returns `true` if the object is not nested, else `false`.
+ * @param {ObjectOfType<unknown>} object - The object to check.
+ * @returns {object is ObjectOfType<Primitive>} - Returns `true` if the object is not nested, else `false`.
  *
  * @example
  * ```typescript
@@ -76,7 +76,7 @@ export function isPlainObject(
  * ```
  */
 export function isNotNestedObject(
-  object: Record<string, unknown>,
-): object is Record<string, Primitive> {
+  object: ObjectOfType<unknown>,
+): object is ObjectOfType<Primitive> {
   return Object.values(object).every((value) => !isObject(value))
 }

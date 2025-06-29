@@ -1,3 +1,5 @@
+import type { ObjectOfType } from '@edouardmisset/type'
+
 /**
  * Selects a specific key from each object in an array.
  *
@@ -24,7 +26,7 @@
  * ```
  */
 export function selectBy<
-  Object_ extends Record<string, unknown>,
+  Object_ extends ObjectOfType<unknown>,
   Key extends keyof Object_,
 >(array: Object_[], key: Key): Object_[Key][] {
   return array.flatMap((item) => (Object.hasOwn(item, key) ? [item[key]] : []))
@@ -55,7 +57,7 @@ export const pluckBy: typeof selectBy = selectBy
  * ```
  */
 export function createSelectBy<
-  Object_ extends Record<string, unknown>,
+  Object_ extends ObjectOfType<unknown>,
   Key extends keyof Object_,
 >(key: Key): (object_: Object_) => Object_[Key] {
   return (object_) => object_[key]
@@ -71,11 +73,11 @@ export const buildSelectBy: typeof createSelectBy = createSelectBy
  *
  * @template Object_ - The type of the objects in the array.
  * @template Key - The type of the key to select from the objects.
- * @template R - The type of the result of the transformation function.
+ * @template Result - The type of the result of the transformation function.
  * @param {Object_[]} array - The array of objects.
  * @param {Key} key - The key to select from each object.
- * @param {(value: Object_[Key]) => R} transform - The transformation function to apply to each selected key.
- * @returns {Array<R>} - An array of the transformed properties.
+ * @param {(value: Object_[Key]) => Result} transform - The transformation function to apply to each selected key.
+ * @returns {Array<Result>} - An array of the transformed properties.
  *
  * @example
  * ```typescript
@@ -92,10 +94,14 @@ export const buildSelectBy: typeof createSelectBy = createSelectBy
  * ```
  */
 export function selectAndTransform<
-  Object_ extends Record<string, unknown>,
+  Object_ extends ObjectOfType<unknown>,
   Key extends keyof Object_,
-  R,
->(array: Object_[], key: Key, transform: (value: Object_[Key]) => R): R[] {
+  Result,
+>(
+  array: Object_[],
+  key: Key,
+  transform: (value: Object_[Key]) => Result,
+): Result[] {
   return array.flatMap(
     (item) => (Object.hasOwn(item, key) ? [transform(item[key])] : []),
   )

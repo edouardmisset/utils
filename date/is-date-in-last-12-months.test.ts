@@ -1,4 +1,4 @@
-import { assertEquals, assertThrows } from '@std/assert'
+import { assertEquals } from '@std/assert'
 import { isDateInLast12Months } from './is-date-in-last-12-months.ts'
 
 Deno.test('isDateInLast12Months function', async (t) => {
@@ -7,7 +7,8 @@ Deno.test('isDateInLast12Months function', async (t) => {
     () => {
       const now = new Date()
       const result = isDateInLast12Months(now)
-      assertEquals(result, true)
+      assertEquals(result.error, undefined)
+      assertEquals(result.data, true)
     },
   )
 
@@ -17,7 +18,8 @@ Deno.test('isDateInLast12Months function', async (t) => {
       const pastDate = new Date()
       pastDate.setMonth(pastDate.getMonth() - 6)
       const result = isDateInLast12Months(pastDate)
-      assertEquals(result, true)
+      assertEquals(result.error, undefined)
+      assertEquals(result.data, true)
     },
   )
 
@@ -29,7 +31,8 @@ Deno.test('isDateInLast12Months function', async (t) => {
       lastYear.setFullYear(now.getFullYear() - 1)
       lastYear.setHours(0, 0, 0, 0)
       const result = isDateInLast12Months(lastYear)
-      assertEquals(result, true)
+      assertEquals(result.error, undefined)
+      assertEquals(result.data, true)
     },
   )
 
@@ -43,7 +46,8 @@ Deno.test('isDateInLast12Months function', async (t) => {
       const olderDate = new Date(lastYear)
       olderDate.setDate(olderDate.getDate() - 1)
       const result = isDateInLast12Months(olderDate)
-      assertEquals(result, false)
+      assertEquals(result.error, undefined)
+      assertEquals(result.data, false)
     },
   )
 
@@ -53,16 +57,17 @@ Deno.test('isDateInLast12Months function', async (t) => {
       const futureDate = new Date()
       futureDate.setDate(futureDate.getDate() + 1)
       const result = isDateInLast12Months(futureDate)
-      assertEquals(result, false)
+      assertEquals(result.error, undefined)
+      assertEquals(result.data, false)
     },
   )
 
   await t.step(
-    'should throw an error for an invalid date string',
+    'should return an error for an invalid date string',
     () => {
-      assertThrows(() => {
-        isDateInLast12Months('not a date')
-      })
+      const result = isDateInLast12Months('not a date')
+      assertEquals(result.data, undefined)
+      assertEquals(result.error?.message, 'Invalid date format.')
     },
   )
 })

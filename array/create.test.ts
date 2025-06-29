@@ -1,4 +1,4 @@
-import { assertEquals, assertThrows } from '@std/assert'
+import { assertEquals } from '@std/assert'
 import { createArray, range } from './create.ts'
 
 Deno.test('createArray', async (t) => {
@@ -36,42 +36,54 @@ Deno.test('range', async (t) => {
   await t.step(
     'should create an array of numbers progressing from start to end',
     () => {
-      assertEquals(range(1, 5), [1, 2, 3, 4, 5])
+      const { data, error } = range({ start: 1, end: 5 })
+      assertEquals(error, undefined)
+      assertEquals(data, [1, 2, 3, 4, 5])
     },
   )
 
   await t.step(
     'should create an array of numbers progressing from 0 to start if end is not provided',
     () => {
-      assertEquals(range(4), [0, 1, 2, 3, 4])
+      const { data, error } = range({ start: 4 })
+      assertEquals(error, undefined)
+      assertEquals(data, [0, 1, 2, 3, 4])
     },
   )
 
   await t.step(
     'should create an array of numbers progressing from 0 to negative start if end is not provided',
     () => {
-      assertEquals(range(-4), [-4, -3, -2, -1, 0])
+      const { data, error } = range({ start: -4 })
+      assertEquals(error, undefined)
+      assertEquals(data, [-4, -3, -2, -1, 0])
     },
   )
 
   await t.step(
     'should create an array of numbers progressing from a negative value to another negative with negative step',
     () => {
-      assertEquals(range(-4, -2, -2), [-4, -2])
+      const { data, error } = range({ start: -4, end: -2, step: -2 })
+      assertEquals(error, undefined)
+      assertEquals(data, [-4, -2])
     },
   )
 
   await t.step(
     'should create an array of numbers progressing from start to end with a specified step',
     () => {
-      assertEquals(range(0, 20, 5), [0, 5, 10, 15, 20])
+      const { data, error } = range({ start: 0, end: 20, step: 5 })
+      assertEquals(error, undefined)
+      assertEquals(data, [0, 5, 10, 15, 20])
     },
   )
 
   await t.step(
-    'should throw an error if the step is 0',
+    'should return an error if the step is 0',
     () => {
-      assertThrows(() => range(0, 2, 0), Error, 'step cannot be 0')
+      const { data, error } = range({ start: 0, end: 2, step: 0 })
+      assertEquals(data, undefined)
+      assertEquals(error?.message, 'step cannot be 0')
     },
   )
 })

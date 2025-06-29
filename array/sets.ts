@@ -15,7 +15,10 @@ import type { SetDifference } from '@edouardmisset/type/type-helpers.ts'
  * const result = commonElements(array1, array2) // [2, 3]
  * ```
  */
-export function commonElements<T>(leftArray: T[], rightArray: T[]): T[] {
+export function commonElements<T>(
+  leftArray: T[] | readonly T[],
+  rightArray: T[] | readonly T[],
+): T[] {
   return leftArray.filter((item) => new Set(rightArray).has(item))
 }
 
@@ -39,7 +42,10 @@ export const intersection: typeof commonElements = commonElements
  * const result = mergeUnique(array1, array2) // [1, 2, 3, 4]
  * ```
  */
-export function mergeUnique<T>(leftArray: T[], rightArray: T[]): T[] {
+export function mergeUnique<T>(
+  leftArray: T[] | readonly T[],
+  rightArray: T[] | readonly T[],
+): T[] {
   return Array.from(new Set([...leftArray, ...rightArray]))
 }
 
@@ -64,14 +70,18 @@ export const union: typeof mergeUnique = mergeUnique
  * const result = uniqueInFirst(array1, array2, array3) // [1]
  * ```
  */
-export function uniqueInFirst<T>(firstArray: T[], ...otherArrays: T[][]): T[] {
+export function uniqueInFirst<T>(
+  firstArray: T[] | readonly T[],
+  ...otherArrays: (T[] | readonly T[])[]
+): T[] {
   return firstArray.filter(
     (item) => !otherArrays.some((array) => new Set(array).has(item)),
   )
 }
 
 /**
- * Computes the difference between two arrays, returning the unique items from both arrays.
+ * Computes the difference between two arrays, returning the unique items from
+ * both arrays.
  *
  * @template FirstArrayType - The type of the first array.
  * @template SecondArrayType - The type of the second array.
@@ -122,7 +132,7 @@ export function setDifference<
  * const result = uniqueElements(array1, array2, array3) // [1, 5]
  * ```
  */
-export function uniqueElements<T>(...arrays: T[][]): T[] {
+export function uniqueElements<T>(...arrays: (T[] | readonly T[])[]): T[] {
   const counts = new Map<T, number>()
   arrays.flat().forEach((value) => {
     counts.set(value, (counts.get(value) ?? 0) + 1)

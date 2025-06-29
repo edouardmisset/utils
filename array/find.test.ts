@@ -1,4 +1,4 @@
-import { assertEquals, assertThrows } from '@std/assert'
+import { assertEquals } from '@std/assert'
 import { createFindBy } from './find.ts'
 
 Deno.test('createFindBy', async (t) => {
@@ -19,11 +19,16 @@ Deno.test('createFindBy', async (t) => {
   })
 
   await t.step(
-    'should throw an error if the key does not exist in the object',
+    'should return false if the key does not exist in the object',
     () => {
       const findByNonexistentKey = createFindBy('nonexistentKey')
       const findObject = findByNonexistentKey('value')
-      assertThrows(() => objects.find(findObject))
+      const result = objects.find(findObject)
+      assertEquals(result, undefined) // find returns undefined when predicate never returns true
+
+      // Test the actual predicate behavior directly
+      assertEquals(findObject(objects[0]), false)
+      assertEquals(findObject(objects[1]), false)
     },
   )
 })

@@ -1,5 +1,6 @@
 import { isDateInRangeOption } from '@edouardmisset/date/is-date-in-range.ts'
 import { isYearOption } from '@edouardmisset/date/is-date-in-year.ts'
+import type { ObjectOfType } from '@edouardmisset/type'
 import { FilterOptions } from './filter-by-date.ts'
 
 /**
@@ -45,7 +46,7 @@ export function createDateFilter(
   if (isDateInRangeOption(options)) {
     return (date) =>
       date.getTime() >= options.startDate.getTime() &&
-      date.getTime() <= (options.endDate ?? new Date()).getTime()
+      date.getTime() <= options.endDate.getTime()
   }
 
   const {
@@ -79,7 +80,7 @@ export const buildDateFilter: typeof createDateFilter = createDateFilter
  * ```
  */
 export function createBooleanFilter<
-  Object_ extends Record<string, unknown>,
+  Object_ extends ObjectOfType<unknown>,
   Key extends keyof Object_,
 >(key: Key): (object: Object_) => boolean {
   return (object: Object_) =>

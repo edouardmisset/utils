@@ -11,6 +11,19 @@ Deno.test('selectBy', async (t) => {
       assertEquals(result, ['John', 'Jane'])
     },
   )
+
+  await t.step(
+    'should skip objects that do not have the specified key',
+    () => {
+      const mixedObjects = [
+        { id: 1, name: 'John' },
+        { id: 2 }, // missing name key
+        { id: 3, name: 'Bob' },
+      ]
+      const result = selectBy(mixedObjects, 'name')
+      assertEquals(result, ['John', 'Bob'])
+    },
+  )
 })
 
 Deno.test('createSelectBy', async (t) => {
@@ -45,6 +58,23 @@ Deno.test('selectAndTransform', async (t) => {
         (name) => name.toUpperCase(),
       )
       assertEquals(result, ['JOHN', 'JANE'])
+    },
+  )
+
+  await t.step(
+    'should skip objects that do not have the specified key during transformation',
+    () => {
+      const mixedObjects = [
+        { id: 1, name: 'John' },
+        { id: 2 }, // missing name key
+        { id: 3, name: 'Bob' },
+      ]
+      const result = selectAndTransform(
+        mixedObjects,
+        'name',
+        (name) => name?.toUpperCase() ?? '',
+      )
+      assertEquals(result, ['JOHN', 'BOB'])
     },
   )
 })

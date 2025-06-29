@@ -1,34 +1,51 @@
+import type { ObjectOfType } from '@edouardmisset/type'
+
 /**
  * Creates a string sorter function.
  *
- * @template Object_ - A type that extends Record<string, unknown>.
- * @param {keyof Object_} [key] - The key to sort by.
- * @param {boolean} [ascending=true] - Whether to sort in ascending order. If
- * false, sorts in descending order.
+ * @template Object_ - A type that extends ObjectOfType<unknown>.
+ * @param {object} [options] - The sorting options that extends Intl.CollatorOptions.
+ * @param {boolean} [options.descending=false] - Whether to sort in descending order.
+ * @param {keyof Object_} [options.key] - The key to sort by when sorting objects.
+ * @param {string | undefined} [options.locales] - The locales to use for string comparison.
  * @returns {function} - A function that takes two strings or objects and
  * returns a number indicating their sort order.
  *
  * @example
  * ```typescript
- * const sorter = createStringSorter<{ name: string, age: number }>('name')
+ * const sorter = createStringSorter<{ name: string, age: number }>({ key: 'name' })
  * const array = [{ name: 'John', age: 30 }, { name: 'Jane', age: 25 }]
  * array.sort(sorter)
  * // returns [{ name: 'Jane', age: 25 }, { name: 'John', age: 30 }]
+ *
+ * // For descending order
+ * const descendingSorter = createStringSorter({ key: 'name', descending: true })
+ * array.sort(descendingSorter)
+ * // returns [{ name: 'John', age: 30 }, { name: 'Jane', age: 25 }]
  * ```
  */
-export function createStringSorter<Object_ extends Record<string, unknown>>(
-  key?: keyof Object_,
-  ascending = true,
+export function createStringSorter<Object_ extends ObjectOfType<unknown>>(
+  options?: {
+    descending?: boolean
+    key?: keyof Object_
+    locales?: string | undefined
+  } & Intl.CollatorOptions,
 ): (left: Object_ | string, right: Object_ | string) => number {
+  const { descending = false, key, locales = undefined, ...collatorOptions } =
+    options ?? {}
+
+  const { compare } = new Intl.Collator(locales, collatorOptions)
+
   return (left, right) => {
     const leftString = typeof left === 'string'
       ? left
       : (left[key as keyof Object_] as string)
+
     const rightString = typeof right === 'string'
       ? right
       : (right[key as keyof Object_] as string)
 
-    return leftString.localeCompare(rightString) * (ascending ? 1 : -1)
+    return compare(leftString, rightString) * (descending ? -1 : 1)
   }
 }
 
@@ -40,25 +57,33 @@ export const buildStringSorter: typeof createStringSorter = createStringSorter
 /**
  * Creates a number sorter function.
  *
- * @template Object_ - A type that extends Record<string, unknown>.
- * @param {keyof Object_} [key] - The key to sort by.
- * @param {boolean} [ascending=true] - Whether to sort in ascending order. If
- * false, sorts in descending order.
+ * @template Object_ - A type that extends ObjectOfType<unknown>.
+ * @param {object} [options] - The sorting options.
+ * @param {keyof Object_} [options.key] - The key to sort by when sorting objects.
+ * @param {boolean} [options.descending=false] - Whether to sort in descending order.
  * @returns {function} - A function that takes two numbers or objects and
  * returns a number indicating their sort order.
  *
  * @example
  * ```typescript
- * const sorter = createNumberSorter<{ id: number, value: number }>('value')
+ * const sorter = createNumberSorter<{ id: number, value: number }>({ key: 'value' })
  * const array = [{ id: 1, value: 10 }, { id: 2, value: 5 }, { id: 3, value: 20 }]
  * array.sort(sorter)
  * // returns [{ id: 2, value: 5 }, { id: 1, value: 10 }, { id: 3, value: 20 }]
+ *
+ * // For descending order
+ * const descendingSorter = createNumberSorter({ key: 'value', descending: true })
+ * array.sort(descendingSorter)
+ * // returns [{ id: 3, value: 20 }, { id: 1, value: 10 }, { id: 2, value: 5 }]
  * ```
  */
-export function createNumberSorter<Object_ extends Record<string, unknown>>(
-  key?: keyof Object_,
-  ascending = true,
+export function createNumberSorter<Object_ extends ObjectOfType<unknown>>(
+  options?: {
+    key?: keyof Object_
+    descending?: boolean
+  },
 ): (left: Object_ | number, right: Object_ | number) => number {
+  const { key, descending = false } = options ?? {}
   return (left, right) => {
     const leftNumber = typeof left === 'number'
       ? left
@@ -70,7 +95,7 @@ export function createNumberSorter<Object_ extends Record<string, unknown>>(
     if (Number.isNaN(leftNumber)) return 1
     if (Number.isNaN(rightNumber)) return -1
 
-    return (leftNumber - rightNumber) * (ascending ? 1 : -1)
+    return (leftNumber - rightNumber) * (descending ? -1 : 1)
   }
 }
 
@@ -82,25 +107,33 @@ export const buildNumberSorter: typeof createNumberSorter = createNumberSorter
 /**
  * Creates a date sorter function.
  *
- * @template Object_ - A type that extends Record<string, unknown>.
- * @param {keyof Object_} [key] - The key to sort by.
- * @param {boolean} [ascending=true] - Whether to sort in ascending order. If
- * false, sorts in descending order.
+ * @template Object_ - A type that extends ObjectOfType<unknown>.
+ * @param {object} [options] - The sorting options.
+ * @param {keyof Object_} [options.key] - The key to sort by when sorting objects.
+ * @param {boolean} [options.descending=false] - Whether to sort in descending order.
  * @returns {function} - A function that takes two dates or objects and returns
  * a number indicating their sort order.
  *
  * @example
  * ```typescript
- * const sorter = createDateSorter<{ id: number, date: Date }>('date')
- * const array = [{ id: 1, date: new Date(2022, 0, 1) }, { id: 2, date: new Date(2022, 0, 2) }, { id: 3, date: new Date(2022, 0, 3) }]
+ * const sorter = createDateSorter<{ id: number, date: Date }>({ key: 'date' })
+ * const array = [{ id: 1, date: new Date(2022, 0, 3) }, { id: 2, date: new Date(2022, 0, 1) }, { id: 3, date: new Date(2022, 0, 2) }]
  * array.sort(sorter)
- * // returns [{ id: 1, date: new Date(2022, 0, 1) }, { id: 2, date: new Date(2022, 0, 2) }, { id: 3, date: new Date(2022, 0, 3) }]
+ * // returns [{ id: 2, date: new Date(2022, 0, 1) }, { id: 3, date: new Date(2022, 0, 2) }, { id: 1, date: new Date(2022, 0, 3) }]
+ *
+ * // For descending order
+ * const descendingSorter = createDateSorter({ key: 'date', descending: true })
+ * array.sort(descendingSorter)
+ * // returns [{ id: 1, date: new Date(2022, 0, 3) }, { id: 3, date: new Date(2022, 0, 2) }, { id: 2, date: new Date(2022, 0, 1) }]
  * ```
  */
-export function createDateSorter<Object_ extends Record<string, unknown>>(
-  key?: keyof Object_,
-  ascending = true,
+export function createDateSorter<Object_ extends ObjectOfType<unknown>>(
+  options?: {
+    key?: keyof Object_
+    descending?: boolean
+  },
 ): (left: Object_ | Date, right: Object_ | Date) => number {
+  const { key, descending = false } = options ?? {}
   return (left, right) => {
     const leftDate = left instanceof Date
       ? left
@@ -111,7 +144,7 @@ export function createDateSorter<Object_ extends Record<string, unknown>>(
 
     if (Number.isNaN(leftDate.getTime())) return 1
     if (Number.isNaN(rightDate.getTime())) return -1
-    return (leftDate.getTime() - rightDate.getTime()) * (ascending ? 1 : -1)
+    return (leftDate.getTime() - rightDate.getTime()) * (descending ? -1 : 1)
   }
 }
 

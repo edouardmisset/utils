@@ -28,4 +28,3 @@ export * from './is-date-in-range.ts'
 export * from './is-date-in-year.ts'
 export * from './is-valid-date.ts'
 export * from './parse-date.ts'
-

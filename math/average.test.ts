@@ -1,21 +1,44 @@
-import { assertEquals, assertThrows } from '@std/assert'
+import { assertEquals } from '@std/assert'
 import { average, averageTime } from './average.ts'
 
 Deno.test('average function', async (t) => {
   await t.step('with multiple arguments', () => {
-    assertEquals(average(1, 2, 3, 4, 5), 3)
-    assertEquals(average(2, 4, 6, 8, 10), 6)
-    assertEquals(average(0, 0, 0, 0, 0), 0)
+    const result1 = average(1, 2, 3, 4, 5)
+    assertEquals(result1.error, undefined)
+    assertEquals(result1.data, 3)
+
+    const result2 = average(2, 4, 6, 8, 10)
+    assertEquals(result2.error, undefined)
+    assertEquals(result2.data, 6)
+
+    const result3 = average(0, 0, 0, 0, 0)
+    assertEquals(result3.error, undefined)
+    assertEquals(result3.data, 0)
   })
 
   await t.step('with single array argument', () => {
-    assertEquals(average([1, 2, 3, 4, 5]), 3)
-    assertEquals(average([2, 4, 6, 8, 10]), 6)
-    assertEquals(average([0, 0, 0, 0, 0]), 0)
+    const result1 = average([1, 2, 3, 4, 5])
+    assertEquals(result1.error, undefined)
+    assertEquals(result1.data, 3)
+
+    const result2 = average([2, 4, 6, 8, 10])
+    assertEquals(result2.error, undefined)
+    assertEquals(result2.data, 6)
+
+    const result3 = average([0, 0, 0, 0, 0])
+    assertEquals(result3.error, undefined)
+    assertEquals(result3.data, 0)
   })
 
   await t.step('with no arguments', () => {
-    assertThrows(() => average())
+    const result = average()
+    assertEquals(result.data, undefined)
+    assertEquals(
+      result.error?.message.includes(
+        'Cannot calculate average if no values are passed in',
+      ),
+      true,
+    )
   })
 })
 
@@ -26,7 +49,8 @@ Deno.test('averageTime function', async (t) => {
       new Date('2022-01-01T11:00:00Z'),
     ]
     const result = averageTime(dates)
-    assertEquals(result, '10:00:00')
+    assertEquals(result.error, undefined)
+    assertEquals(result.data, '10:00:00')
   })
 
   await t.step(
@@ -37,7 +61,8 @@ Deno.test('averageTime function', async (t) => {
         new Date('2022-01-01T01:00:00Z'),
       ]
       const result = averageTime(dates)
-      assertEquals(result, '12:00:00')
+      assertEquals(result.error, undefined)
+      assertEquals(result.data, '12:00:00')
     },
   )
 
@@ -46,7 +71,8 @@ Deno.test('averageTime function', async (t) => {
     () => {
       const dates: Date[] = []
       const result = averageTime(dates)
-      assertEquals(result, '00:00:00')
+      assertEquals(result.error, undefined)
+      assertEquals(result.data, '00:00:00')
     },
   )
 })

@@ -1,3 +1,5 @@
+import type { ObjectOfType } from '@edouardmisset/type'
+
 /**
  * Deeply compares two values to determine if they are structurally equivalent.
  *
@@ -59,8 +61,8 @@ export function deepEqual<T>(left: T, right: T): boolean {
     return false
   }
 
-  const leftObject = left as Record<string, unknown>
-  const rightObject = right as Record<string, unknown>
+  const leftObject = left as ObjectOfType<unknown>
+  const rightObject = right as ObjectOfType<unknown>
 
   const leftKeys = Object.keys(leftObject)
   if (leftKeys.length !== Object.keys(rightObject).length) return false

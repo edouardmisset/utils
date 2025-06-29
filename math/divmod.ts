@@ -1,3 +1,5 @@
+import { err, ok, Result } from '../function/try-catch.ts'
+
 /**
  * A type that represents the quotient of a division operation (`number`).
  */
@@ -14,37 +16,54 @@ export type Remainder = number
  * the divisor.
  *
  * @param {number} dividend - The number to be divided.
- * @param {Exclude<number, 0>} divisor - The number by which the dividend is to
- * be divided. This cannot be `0`
- * @returns {[number, number]} An array where the first element is the quotient
- * and the second element is the remainder.
+ * @param {number} divisor - The number by which the dividend is to be divided.
+ * @returns {Result<[number, number], Error>} A result object containing either an array where
+ * the first element is the quotient and the second element is the remainder, or an error.
  *
  * @example
  * ```typescript
- * divmod(10, 3)
- * // returns [3, 1]
+ * const result = divmod(10, 3)
+ * if (result.error) {
+ *   console.error('Division failed:', result.error.message)
+ * } else {
+ *   console.log('Result:', result.data) // [3, 1]
+ * }
  * ```
  *
  * @example
  * ```typescript
- * divmod(12, 3)
- * // returns [4, 0]
+ * const result = divmod(12, 3)
+ * if (result.error) {
+ *   console.error('Division failed:', result.error.message)
+ * } else {
+ *   console.log('Result:', result.data) // [4, 0]
+ * }
+ * ```
+ *
+ * @example
+ * ```typescript
+ * const result = divmod(10, 0)
+ * if (result.error) {
+ *   console.error('Error:', result.error.message) // "Cannot divide by zero (divisor: 0)"
+ * }
  * ```
  */
 export function divmod(
   dividend: number,
-  divisor: Exclude<number, 0>,
-): [Quotient, Remainder] {
-  if (dividend === 0) return [0, 0]
+  divisor: number,
+): Result<[Quotient, Remainder], Error> {
+  if (dividend === 0) return ok([0, 0]) as Result<[Quotient, Remainder], Error>
   if (divisor === 0) {
-    throw new Error(`Cannot divide by zero (divisor: ${divisor})`)
+    return err(
+      new Error(`Cannot divide by zero (divisor: ${divisor})`),
+    ) as Result<[Quotient, Remainder], Error>
   }
 
   const resultSign = Math.sign(dividend) * Math.sign(divisor)
   const remainder = Math.abs(dividend % divisor)
 
-  return [
+  return ok([
     resultSign * Math.floor(Math.abs(dividend / divisor)),
     remainder ? resultSign * remainder : 0,
-  ]
+  ]) as Result<[Quotient, Remainder], Error>
 }

@@ -1,3 +1,5 @@
+import type { ObjectOfType } from '@edouardmisset/type'
+
 /**
  * Removes nullish (`null` and `undefined`) values from the given object.
  *
@@ -21,7 +23,7 @@
  */
 export function removeNullishObjectValues<
   U extends string | number | object | boolean | undefined | null,
-  T extends Record<string, U>,
+  T extends ObjectOfType<U>,
 >(object: T, strict = true): Partial<T> {
   return Object.fromEntries(
     Object.entries(object).filter(([, value]) =>

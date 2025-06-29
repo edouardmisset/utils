@@ -1,3 +1,5 @@
+import type { ObjectOfType } from '@edouardmisset/type'
+
 /**
  * Transforms an array of objects into an object where the keys are the values
  * of a specified key in the objects, and the values are the objects themselves.
@@ -8,7 +10,7 @@
  * @template Key - The type of the key to use. Must be a key of Object_.
  * @param {Object_[]} array - The array of objects to transform.
  * @param {Key} key - The key to use for the new object.
- * @returns {undefined | Record<string, Object_>} - The transformed object, or
+ * @returns {undefined | ObjectOfType<Object_>} - The transformed object, or
  * undefined if the array is empty.
  *
  * @example
@@ -24,10 +26,10 @@
 export function keyBy<
   Object_ extends Record<string, unknown>,
   Key extends keyof Object_,
->(array: Object_[], key: Key): undefined | Record<string, Object_> {
+>(array: Object_[], key: Key): undefined | ObjectOfType<Object_> {
   return array.length === 0 ? undefined : (Object.fromEntries(
-    array.map((value) => [String(key ? value[key] : value), value]),
-  ) as Record<string, Object_>)
+    array.map((value) => [String(value[key] ?? value), value]),
+  ) as ObjectOfType<Object_>)
 }
 
 /**
@@ -39,10 +41,10 @@ export function keyBy<
  * @template Object_ - The type of the objects in the collection. Must extend
  * Record<string, unknown>.
  * @template Key - The type of the key to use. Must be a key of Object_.
- * @param {Object_[] | Record<string, Object_>} collection - The collection of objects
+ * @param {Object_[] | ObjectOfType<Object_>} collection - The collection of objects
  * to transform.
  * @param {Key} key - The key to use for the new object.
- * @returns {undefined | Record<string, Object_>} - The transformed object, or
+ * @returns {undefined | ObjectOfType<Object_>} - The transformed object, or
  * undefined if the collection is empty.
  *
  * @example
@@ -69,12 +71,12 @@ export function keyBy<
  * ```
  */
 export function collectionKeyBy<
-  Object_ extends Record<string, unknown>,
+  Object_ extends ObjectOfType<unknown>,
   Key extends keyof Object_,
 >(
-  collection: Object_[] | Record<string, Object_>,
+  collection: Object_[] | ObjectOfType<Object_>,
   key: Key,
-): Record<string, Object_> | undefined {
+): ObjectOfType<Object_> | undefined {
   return Array.isArray(collection)
     ? keyBy(collection, key)
     : keyBy(Object.values(collection), key)

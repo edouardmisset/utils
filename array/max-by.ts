@@ -1,8 +1,10 @@
+import type { ObjectOfType } from '@edouardmisset/type'
+
 /**
  * Returns the **last**  object with the maximum value for the specified key from an array of objects.
  * If the array is empty, returns undefined.
  *
- * @template Object_ - The type of the objects in the array. Must extend Record<string, unknown>.
+ * @template Object_ - The type of the objects in the array. Must extend ObjectOfType<unknown>.
  * @param {Object_[]} array - The array of objects to search.
  * @param {keyof Object_} key - The key to compare.
  * @returns {Object_ | undefined} - The object with the maximum value for the specified key, or undefined if the array is empty.
@@ -22,7 +24,7 @@
  * // returns undefined
  * ```
  */
-export function maxBy<Object_ extends Record<string, unknown>>(
+export function maxBy<Object_ extends ObjectOfType<unknown>>(
   array: Object_[],
   key: keyof Object_,
 ): Object_ | undefined {

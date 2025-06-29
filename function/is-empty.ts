@@ -1,3 +1,5 @@
+import { size } from '@edouardmisset/object'
+
 /**
  * A type that represents any iterable value, or a value that is `null` or
  * `undefined`.
@@ -45,5 +47,5 @@ export function isEmpty(value: IterableOrNullish): boolean {
   if (value === null || value === undefined) return true
   return typeof value === 'string'
     ? value.trim().length === 0
-    : Object.keys(value).length === 0
+    : size(value) === 0
 }

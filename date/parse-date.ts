@@ -1,39 +1,86 @@
+import { Result } from '../function/try-catch.ts'
 import { isValidDate } from './is-valid-date.ts'
 
 /**
  * Parses a date string in the format 'MM-DD-YYYY' and returns a Date object.
  *
  * @param {string} stringDate - The date string to parse, formatted as 'MM-DD-YYYY'.
- * @returns {Date} The parsed Date object.
- * @throws {Error} Throws an error if the date format is invalid or cannot be parsed.
+ * @returns {Result<Date, Error>} A Result containing either the parsed Date object or an Error if the format is invalid.
+ *
+ * @example
+ * ```typescript
+ * const result = parseDate('12-25-2023')
+ * if (result.error) {
+ *   console.log('Parse error:', result.error.message)
+ * } else {
+ *   console.log('Parsed date:', result.data)
+ * }
+ * ```
+ *
+ * @example
+ * ```typescript
+ * const result = parseDate('invalid-date')
+ * if (result.error) {
+ *   console.log('Parse error:', result.error.message) // "Invalid date format"
+ * }
+ * ```
  */
-export function parseDate(stringDate: string): Date {
+export function parseDate(stringDate: string): Result<Date, Error> {
   const datePattern = /^(\d{2})-(\d{2})-(\d{4})$/
   const [, month, day, year] = datePattern.exec(stringDate) ?? []
   const parsedDate = new Date(`${year}-${month}-${day}`)
 
   if (!isValidDate(parsedDate)) {
-    throw new Error('Invalid date format')
+    return {
+      data: undefined,
+      error: new Error('Invalid date format'),
+    }
   }
 
-  return parsedDate
+  return {
+    data: parsedDate,
+    error: undefined,
+  }
 }
 
 /**
  * Parses a date string in the format 'DD-MM-YYYY' and returns a Date object.
  *
  * @param {string} stringDate - The date string to parse, formatted as 'DD-MM-YYYY'.
- * @returns {Date} The parsed Date object.
- * @throws {Error} Throws an error if the date format is invalid or cannot be parsed.
+ * @returns {Result<Date, Error>} A Result containing either the parsed Date object or an Error if the format is invalid.
+ *
+ * @example
+ * ```typescript
+ * const result = parseFrenchDate('25-12-2023')
+ * if (result.error) {
+ *   console.log('Parse error:', result.error.message)
+ * } else {
+ *   console.log('Parsed date:', result.data)
+ * }
+ * ```
+ *
+ * @example
+ * ```typescript
+ * const result = parseFrenchDate('invalid-date')
+ * if (result.error) {
+ *   console.log('Parse error:', result.error.message) // "Invalid date format"
+ * }
+ * ```
  */
-export function parseFrenchDate(stringDate: string): Date {
+export function parseFrenchDate(stringDate: string): Result<Date, Error> {
   const datePattern = /^(\d{2})-(\d{2})-(\d{4})$/
   const [, day, month, year] = datePattern.exec(stringDate) ?? []
   const parsedDate = new Date(`${year}-${month}-${day}`)
 
   if (!isValidDate(parsedDate)) {
-    throw new Error('Invalid date format')
+    return {
+      data: undefined,
+      error: new Error('Invalid date format'),
+    }
   }
 
-  return parsedDate
+  return {
+    data: parsedDate,
+    error: undefined,
+  }
 }

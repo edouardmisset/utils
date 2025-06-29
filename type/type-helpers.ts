@@ -1,7 +1,7 @@
 /**
  * It represents an object type with string keys and values of type `T`. It is a
- * shorthand for `Record<string, T>`. This is a more explicit way to `object`
- * type.
+ * shorthand for `Record<string, T>`. This is a more explicit way to represent an
+ * object type.
  */
 // deno-lint-ignore no-explicit-any
 export type ObjectOfType<Value = any, Key extends string | number = string> =

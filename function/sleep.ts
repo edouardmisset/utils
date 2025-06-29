@@ -1,30 +1,46 @@
+import { Result } from './try-catch.ts'
+
 /**
  * Pauses the execution of an asynchronous function for a specified time (ms).
  *
  * @param {number} milliseconds - The amount of time to sleep in milliseconds.
- * @returns {Promise<void>} - A Promise that resolves after the specified time.
- * @throws {Error} - Throws an error if the time is a negative number.
+ * @returns {Promise<Result<void, RangeError>>} - A Promise that resolves to a result object.
  *
  * @example
  * ```typescript
- * await sleep(1000)
- * // pauses for 1 second
+ * const result = await sleep(1000)
+ * if (result.error) {
+ *   console.error('Sleep failed:', result.error.message)
+ * } else {
+ *   console.log('Sleep completed successfully')
+ * }
  * ```
  *
  * @example
  * ```typescript
- * await sleep(-1000)
- * // throws Error: Invalid time value. Time must be a non-negative number.
+ * const result = await sleep(-1000)
+ * if (result.error) {
+ *   console.log("Error:", result.error.message)
+ *   // Error: Invalid time value (-1000 ms). Time must be a positive number.
+ * }
  * ```
  */
-export function sleep(milliseconds: number): Promise<void> {
+export function sleep(milliseconds: number): Promise<Result<void, RangeError>> {
   if (milliseconds < 0) {
-    throw new Error(
-      `Invalid time value (${milliseconds} ms). Time must be a positive number.`,
-    )
+    return Promise.resolve({
+      data: undefined,
+      error: new RangeError(
+        `Invalid time value (${milliseconds} ms). Time must be a positive number.`,
+      ),
+    })
   }
 
-  return new Promise<void>((resolve) => setTimeout(resolve, milliseconds))
+  return new Promise<Result<void, RangeError>>((resolve) =>
+    setTimeout(
+      () => resolve({ data: undefined, error: undefined }),
+      milliseconds,
+    )
+  )
 }
 
 /**

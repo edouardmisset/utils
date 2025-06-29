@@ -1,3 +1,5 @@
+import { Result } from '../function/try-catch.ts'
+
 /**
  * Updates an object in an array in an immutable way.
  *
@@ -12,8 +14,7 @@
  * @param {T[]} array - The original array.
  * @param {keyof T} key - The key of the object to be updated.
  * @param {Partial<T>} newData - The new data to be updated.
- * @throws {Error} - If the `key` does not exist in `newData`.
- * @returns {T[]} - A new array with the specified object updated.
+ * @returns {Result<T[], Error>} A Result containing either a new array with the specified object updated or an Error if the key does not exist in newData.
  *
  * @example
  * ```typescript
@@ -22,21 +23,46 @@
  *   { id: 2, name: 'Jane' },
  * ]
  *
- * updateObjectInArray(input, 'id', { id: 1, name: 'Johnny' })
- * // returns [{ id: 1, name: 'Johnny' },{ id: 2, name: 'Jane' }]
+ * const result = updateObjectInArray(input, 'id', { id: 1, name: 'Johnny' })
+ * if (result.error) {
+ *   console.log('Error:', result.error.message)
+ * } else {
+ *   console.log(result.data) // [{ id: 1, name: 'Johnny' },{ id: 2, name: 'Jane' }]
+ * }
+ * ```
+ *
+ * @example
+ * ```typescript
+ * const input = [
+ *   { id: 1, name: 'John' },
+ *   { id: 2, name: 'Jane' },
+ * ]
+ *
+ * // Error case: key not in newData
+ * const result = updateObjectInArray(input, 'id', { name: 'Johnny' })
+ * if (result.error) {
+ *   console.log('Error:', result.error.message) // "The key id does not exist in newData"
+ * }
  * ```
  */
 export const updateObjectInArray = <T extends object>(
   array: T[],
   key: keyof T,
   newData: Partial<T>,
-): T[] => {
+): Result<T[], Error> => {
   if (newData[key] === undefined) {
-    throw new Error(`The key ${key.toString()} does not exist in newData`)
+    return {
+      data: undefined,
+      error: new Error(`The key ${key.toString()} does not exist in newData`),
+    }
   }
-  return array.map((object) =>
+  const result = array.map((object) =>
     object[key] === newData[key] ? { ...object, ...newData } : object
   )
+  return {
+    data: result,
+    error: undefined,
+  }
 }
 
 /**
