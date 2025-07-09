@@ -81,7 +81,7 @@ export function scale(parameters: ScaleParameters): Result<number, Error> {
   return {
     data: (
       outMinimum + ((value - inMinimum) * (outMaximum - outMinimum)) /
-      (inMaximum - inMinimum)
+        (inMaximum - inMinimum)
     ),
     error: undefined,
   }

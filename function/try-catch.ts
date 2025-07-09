@@ -12,6 +12,8 @@
  *
  * @example
  * ```typescript
+ * import { assertEquals } from "@std/assert"
+ *
  * // Synchronous function success case
  * const syncResult = tryCatch(() => JSON.parse('{"valid": "json"}'))
  * assertEquals(syncResult.data.valid, "json")
@@ -20,6 +22,8 @@
  *
  * @example
  * ```typescript
+ * import { assertEquals } from "@std/assert"
+ *
  * // Synchronous function error case
  * const syncErrorResult = tryCatch(() => JSON.parse('invalid json'))
  * assertEquals(syncErrorResult.data, undefined)
@@ -38,6 +42,8 @@
  *
  * @example
  * ```typescript
+ * import { assertEquals } from "@std/assert"
+ *
  * // Error case
  * const errorResult = await tryCatch(Promise.reject(new Error("failed")))
  * assertEquals(errorResult.data, undefined)
@@ -46,15 +52,16 @@
  *
  * @example
  * ```typescript
+ * import { assertEquals } from "@std/assert"
+ *
  * // Fetch API example
  * const result = await tryCatch(fetch("https://api.example.com/data"))
  * if (result.error) {
  *   console.error("Request failed:", result.error)
- *   return
+ * } else {
+ *   console.log("Request successful:", result.data)
  * }
- *
- * return result.data
- * }
+ * assertEquals(typeof result.data !== 'undefined' || result.error !== undefined, true)
  * ```
  */
 export type Success<T> = { data: T; error: undefined }

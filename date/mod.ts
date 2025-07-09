@@ -1,19 +1,29 @@
 // This module is browser compatible.
 
 /**
- * Utility functions for working with dates.
+ * Comprehensive date manipulation utilities for parsing, formatting, and date calculations.
+ * Includes functions for date conversion, boundary calculations, and date arithmetic.
  *
- * ```typescript
- * import { convertStringDate, lastDateOfMonth, firstDateOfMonth } from "@edouardmisset/date"
- * import { assertEquals } from "@std/assert"
+ * @example
+ * ```ts
+ * import { convertStringDate, lastDateOfMonth, firstDateOfMonth } from "jsr:@edouardmisset/date";
+ * import { assertEquals } from "@std/assert";
  *
- * const date = convertStringDate('31/12/2022 12:00')
- * assertEquals(date, "2022-12-31T12:00")
+ * //  convertStringDate function
+ * const isoResult = convertStringDate('31/12/2022 12:00');
+ * assertEquals(isoResult.error, undefined);
+ * assertEquals(isoResult.data, "2022-12-31T12:00");
  *
- * const lastDate = lastDateOfMonth(new Date('2022-12-30'))
- * assertEquals(lastDate.getDate(), 31)
- * const firstDate = firstDateOfMonth(new Date('2022-12-30'))
- * assertEquals(firstDate.getDate(), 1)
+ * //  month boundary functions
+ * const date = new Date('2022-12-15');
+ *
+ * const lastDay = lastDateOfMonth(date);
+ * assertEquals(lastDay.getDate(), 31);
+ * assertEquals(lastDay.getMonth(), 11); // December is month 11
+ *
+ * const firstDay = firstDateOfMonth(date);
+ * assertEquals(firstDay.getDate(), 1);
+ * assertEquals(firstDay.getMonth(), 11);
  * ```
  *
  * @module

@@ -1,14 +1,37 @@
 // This module is browser compatible.
 
 /**
- * Utility functions for doing general math calculations.
+ * Mathematical utility functions for calculations, statistics, and number validation.
+ * Includes arithmetic operations, averages, products, and mathematical validations.
  *
- * ```typescript
- * import { sum } from 'jsr:@edouardmisset/math'
- * import { assertEquals } from '@std/assert'
+ * @example
+ * ```ts
+ * import { sum, average, product, divmod } from "jsr:@edouardmisset/math";
+ * import { assertEquals } from "@std/assert";
  *
- * const array_ = [1, 2, 3, 4, 5]
- * assertEquals(sum(array_), 15)
+ * const numbers = [1, 2, 3, 4, 5];
+ *
+ * //  sum function
+ * const totalResult = sum(numbers);
+ * assertEquals(totalResult, 15);
+ *
+ * //  average function
+ * const avgResult = average(numbers);
+ * assertEquals(avgResult.error, undefined);
+ * assertEquals(avgResult.data, 3);
+ *
+ * //  product function
+ * const prodResult = product(numbers);
+ * assertEquals(prodResult, 120);
+ *
+ * //  divmod function
+ * const divmodResult = divmod(17, 5);
+ * assertEquals(divmodResult.error, undefined);
+ * if (divmodResult.data) {
+ *   const [quotient, remainder] = divmodResult.data;
+ *   assertEquals(quotient, 3);
+ *   assertEquals(remainder, 2);
+ * }
  * ```
  *
  * @module

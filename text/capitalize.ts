@@ -7,7 +7,7 @@
  * @param {string} word - The word to capitalize.
  * @param {object} [options] - Optional configuration object.
  * @param {boolean} [options.lowercase=true] - Whether to convert the rest of
- * the string to lowercase. 
+ * the string to lowercase.
  *
  * @returns {string} - The word with the first letter capitalized.
  *
@@ -35,10 +35,14 @@
  * // returns "HELLO wORLD"
  * ```
  */
-export function capitalize(word: string, options?: { lowercase?: boolean }): string {
+export function capitalize(
+  word: string,
+  options?: { lowercase?: boolean },
+): string {
   const { lowercase = true } = options ?? {}
 
   if (!word) return word
 
-  return word.charAt(0).toLocaleUpperCase() + (lowercase ? word.slice(1).toLocaleLowerCase() : word.slice(1))
+  return word.charAt(0).toLocaleUpperCase() +
+    (lowercase ? word.slice(1).toLocaleLowerCase() : word.slice(1))
 }

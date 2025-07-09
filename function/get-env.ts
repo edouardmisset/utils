@@ -28,20 +28,24 @@ export type EnvType = keyof typeof ENVIRONNEMENT_PREFIX
  *
  * @example
  * ```typescript
- * // Note: In Deno, run with --allow-env flag for environment access
- * const result = await getEnv('MY_VARIABLE', 'node')
- * if (result.error) {
- *   console.log('Variable not found:', result.error.message)
- * } else {
- *   console.log('Value:', result.data)
+ * import { assertEquals } from "@std/assert";
+ *
+ * // Note: This example shows the expected behavior
+ * // In actual usage, run Deno with --allow-env flag
+ *
+ * // Mock the environment for testing purposes
+ * const originalEnv = globalThis.Deno?.env.get;
+ * if (globalThis.Deno) {
+ *   globalThis.Deno.env.get = (key: string) => key === 'TEST_VAR' ? 'test_value' : undefined;
  * }
  *
- * // Example with different environment types:
- * const viteResult = await getEnv('MY_VARIABLE', 'vite')
- * if (viteResult.error) {
- *   console.log('Variable not found in Vite env:', viteResult.error.message)
- * } else {
- *   console.log('Vite value:', viteResult.data)
+ * const result = await getEnv('TEST_VAR', 'node');
+ * assertEquals(result.error, undefined);
+ * assertEquals(result.data, 'test_value');
+ *
+ * // Restore original env function
+ * if (globalThis.Deno && originalEnv) {
+ *   globalThis.Deno.env.get = originalEnv;
  * }
  * ```
  */

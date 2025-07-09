@@ -1,14 +1,41 @@
 // This module is browser compatible.
 
 /**
- * Utility functions for working with arrays.
+ * Comprehensive utility functions for array manipulation, filtering, grouping,
+ * and analysis.
+ * Includes functions for counting, grouping, finding elements, sorting, and
+ * statistical operations.
  *
- * ```typescript
- * import { countBy } from 'jsr:@edouardmisset/array'
- * import { assertEquals } from '@std/assert'
+ * @example
+ * ```ts
+ * import { groupBy, countBy, maxBy, randomItem } from "jsr:@edouardmisset/array";
+ * import { assertEquals } from "@std/assert";
  *
- * const array_ = [1, 2, 3, 4, 5]
- * assertEquals(countBy(array_, (x) => x % 2 === 0), 2)
+ * const users = [
+ *   { name: 'Alice', age: 25, role: 'admin' },
+ *   { name: 'Bob', age: 30, role: 'user' },
+ *   { name: 'Carol', age: 25, role: 'user' }
+ * ];
+ *
+ * //  groupBy function
+ * const byRole = groupBy(users, 'role');
+ * assertEquals(byRole.admin.length, 1);
+ * assertEquals(byRole.user.length, 2);
+ * assertEquals(byRole.admin[0].name, 'Alice');
+ *
+ * //  countBy function
+ * const evenAges = countBy(users, (user) => user.age % 2 === 0);
+ * assertEquals(evenAges, 1);
+ *
+ * //  maxBy function
+ * const oldest = maxBy(users, 'age');
+ * assertEquals(oldest?.name, 'Bob');
+ * assertEquals(oldest?.age, 30);
+ *
+ * //  randomItem function (check it returns a valid result)
+ * const randomResult = randomItem(users);
+ * assertEquals(randomResult.error, undefined);
+ * assertEquals(users.some(user => user === randomResult.data), true);
  * ```
  *
  * @module

@@ -1,13 +1,29 @@
 // This module is browser compatible.
 
 /**
- * Utility functions for working with text.
+ * Text processing utilities for string manipulation, formatting, and analysis.
+ * Includes functions for capitalization, slug generation, accent removal, and string comparison.
  *
- * ```typescript
- * import { capitalize } from 'jsr:@edouardmisset/text'
- * import { assertEquals } from '@std/assert'
+ * @example
+ * ```ts
+ * import { capitalize, slugify, removeAccents, levenshteinDistance } from "jsr:@edouardmisset/text";
+ * import { assertEquals } from "@std/assert";
  *
- * assertEquals(capitalize('hello'), 'Hello')
+ * //  capitalize function
+ * const title = capitalize('hello world');
+ * assertEquals(title, 'Hello world');
+ *
+ * //  slugify function
+ * const slug = slugify('Hello World! This is a Test');
+ * assertEquals(slug, 'hello-world-this-is-a-test');
+ *
+ * //  removeAccents function
+ * const clean = removeAccents('café naïve résumé');
+ * assertEquals(clean, 'cafe naive resume');
+ *
+ * //  levenshteinDistance function
+ * const distance = levenshteinDistance('kitten', 'sitting');
+ * assertEquals(distance, 3);
  * ```
  *
  * @module
