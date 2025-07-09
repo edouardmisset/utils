@@ -1,12 +1,12 @@
 // deno-lint-ignore-file no-console
 // Copyright 2018-2024 the Deno authors. All rights reserved. MIT license.
 
+import { green } from 'jsr:@std/fmt/colors'
+import { join } from 'jsr:@std/path'
 import denoJson from './deno.json' with { type: 'json' }
 import importMap from './import-map.json' with { type: 'json' }
-import { join } from 'jsr:@std/path'
 
-// deno-lint-ignore no-explicit-any
-const imports = importMap.imports as any
+const imports = importMap.imports
 const denoJsonList = Promise.all(
   denoJson.workspace.map((space) =>
     Deno.readTextFile(join(space, 'deno.json')).then(JSON.parse)
@@ -16,7 +16,7 @@ const denoJsonList = Promise.all(
 let failed = false
 
 for (const denoJson of await denoJsonList) {
-  const dependency = imports[denoJson.name]
+  const dependency = imports[denoJson.name as keyof typeof imports]
 
   if (!dependency) {
     console.warn(`No import map entry found for ${denoJson.name}`)
@@ -39,4 +39,4 @@ if (failed) {
   Deno.exit(1)
 }
 
-console.log('ok')
+console.log(green('Valid import map'))
