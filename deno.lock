@@ -5,6 +5,7 @@
     "jsr:@std/assert@^1.0.8": "1.0.8",
     "jsr:@std/dotenv@*": "0.225.2",
     "jsr:@std/dotenv@~0.225.2": "0.225.2",
+    "jsr:@std/fmt@*": "1.0.8",
     "jsr:@std/internal@^1.0.4": "1.0.4",
     "jsr:@std/internal@^1.0.5": "1.0.5",
     "jsr:@std/path@*": "1.0.8",
@@ -26,6 +27,9 @@
     },
     "@std/dotenv@0.225.2": {
       "integrity": "e2025dce4de6c7bca21dece8baddd4262b09d5187217e231b033e088e0c4dd23"
+    },
+    "@std/fmt@1.0.8": {
+      "integrity": "71e1fc498787e4434d213647a6e43e794af4fd393ef8f52062246e06f7e372b7"
     },
     "@std/internal@1.0.4": {
       "integrity": "62e8e4911527e5e4f307741a795c0b0a9e6958d0b3790716ae71ce085f755422"
