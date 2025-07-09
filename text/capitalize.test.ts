@@ -76,4 +76,34 @@ Deno.test('capitalize', async (t) => {
     // Note: ß converts to SS when uppercased in German
     assertEquals(capitalize('ßeta'), 'SSeta')
   })
+
+  // Options parameter tests
+  await t.step('should respect lowercase option when set to false', () => {
+    assertEquals(capitalize('hello WORLD', { lowercase: false }), 'Hello WORLD')
+    assertEquals(capitalize('MIXED cAsE', { lowercase: false }), 'MIXED cAsE')
+    assertEquals(capitalize('test', { lowercase: false }), 'Test')
+  })
+
+  await t.step('should default to lowercase behavior when options not provided', () => {
+    assertEquals(capitalize('HELLO WORLD'), 'Hello world')
+    assertEquals(capitalize('MiXeD cAsE'), 'Mixed case')
+  })
+
+  await t.step('should default to lowercase behavior when lowercase option is true', () => {
+    assertEquals(capitalize('HELLO WORLD', { lowercase: true }), 'Hello world')
+    assertEquals(capitalize('MiXeD cAsE', { lowercase: true }), 'Mixed case')
+  })
+
+  await t.step('should handle empty options object', () => {
+    assertEquals(capitalize('HELLO WORLD', {}), 'Hello world')
+  })
+
+  await t.step('should handle undefined options', () => {
+    assertEquals(capitalize('HELLO WORLD', undefined), 'Hello world')
+  })
+
+  await t.step('should preserve case with lowercase false and special characters', () => {
+    assertEquals(capitalize('éLÉPHANT', { lowercase: false }), 'ÉLÉPHANT')
+    assertEquals(capitalize('àVOIR', { lowercase: false }), 'ÀVOIR')
+  })
 })
