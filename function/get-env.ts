@@ -20,34 +20,14 @@ export type EnvType = keyof typeof ENVIRONNEMENT_PREFIX
 /**
  * Retrieves the value of an environment variable.
  *
- * @param {string} environmentVariable - The name of the environment variable to retrieve.
- * @param {EnvType} [environmentType='node'] - The environment from which to retrieve the variable.
- * 'node' and 'CRA' will use process.env, 'vite' will use import.meta.env.
+ * @param {string} environmentVariable - The name of the environment variable to
+ * retrieve.
+ * @param {EnvType} [environmentType='node'] - The environment from which to
+ * retrieve the variable. 'node' and 'CRA' will use process.env, 'vite' will use
+ * import.meta.env.
  *
- * @returns {Promise<Result<string, TypeError>>} A Result containing either the environment variable value or a TypeError if not found.
- *
- * @example
- * ```typescript
- * import { assertEquals } from "@std/assert";
- *
- * // Note: This example shows the expected behavior
- * // In actual usage, run Deno with --allow-env flag
- *
- * // Mock the environment for testing purposes
- * const originalEnv = globalThis.Deno?.env.get;
- * if (globalThis.Deno) {
- *   globalThis.Deno.env.get = (key: string) => key === 'TEST_VAR' ? 'test_value' : undefined;
- * }
- *
- * const result = await getEnv('TEST_VAR', 'node');
- * assertEquals(result.error, undefined);
- * assertEquals(result.data, 'test_value');
- *
- * // Restore original env function
- * if (globalThis.Deno && originalEnv) {
- *   globalThis.Deno.env.get = originalEnv;
- * }
- * ```
+ * @returns {Promise<Result<string, TypeError>>} A Result containing either the
+ * environment variable value or a TypeError if not found.
  */
 export async function getEnv(
   environmentVariable: string,

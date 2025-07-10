@@ -1,4 +1,5 @@
 import { isValidDate } from '@edouardmisset/date'
+import type { ObjectOfType } from '@edouardmisset/type/type-helpers.ts'
 
 /**
  * Sorts objects by their date property.
@@ -34,7 +35,7 @@ import { isValidDate } from '@edouardmisset/date'
  * // Sort in ascending order (oldest first)
  * const oldestFirst = events.sort((a, b) => sortByDate(a, b, { descending: false }));
  */
-export function sortByDate<T extends { date: string }>(
+export function sortByDate<T extends ObjectOfType & { date: string }>(
   { date: aStringDate }: T,
   { date: bStringDate }: T,
   options?: { descending?: boolean },
@@ -49,7 +50,10 @@ export function sortByDate<T extends { date: string }>(
   const bDate = new Date(bStringDate)
 
   if (!isValidDate(aDate, bDate)) {
-    globalThis.console.error('Invalid date format detected:', { aStringDate, bStringDate })
+    globalThis.console.error('Invalid date format detected:', {
+      aStringDate,
+      bStringDate,
+    })
     return 0
   }
 
