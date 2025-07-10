@@ -11,21 +11,21 @@
  *
  * const obj = { a: 1, b: 2 };
  *
- * //  isObject function
+ * // isObject function
  * assertEquals(isObject(obj), true);
  * assertEquals(isObject("not an object"), false);
  * assertEquals(isObject(null), false);
  *
- * //  invert function
+ * // invert function
  * const inverted = invert(obj);
  * assertEquals(inverted["1"], "a");
  * assertEquals(inverted["2"], "b");
  *
- * //  isKey function
+ * // isKey function
  * assertEquals(isKey(obj, 'a'), true);
  * assertEquals(isKey(obj, 'c'), false);
  *
- * //  mapObject function
+ * // mapObject function
  * const doubled = mapObject(obj, value => value * 2);
  * assertEquals(doubled.a, 2);
  * assertEquals(doubled.b, 4);

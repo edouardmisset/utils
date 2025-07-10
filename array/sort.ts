@@ -31,10 +31,20 @@ export function createStringSorter<Object_ extends ObjectOfType<unknown>>(
     locales?: string | undefined
   } & Intl.CollatorOptions,
 ): (left: Object_ | string, right: Object_ | string) => number {
-  const { descending = false, key, locales = undefined, numeric = true, sensitivity = 'base', ...collatorOptions } =
-    options ?? {}
+  const {
+    descending = false,
+    key,
+    locales = undefined,
+    numeric = true,
+    sensitivity = 'base',
+    ...collatorOptions
+  } = options ?? {}
 
-  const { compare } = new Intl.Collator(locales, { numeric, sensitivity, ...collatorOptions })
+  const { compare } = new Intl.Collator(locales, {
+    numeric,
+    sensitivity,
+    ...collatorOptions,
+  })
 
   return (left, right) => {
     const leftString = typeof left === 'string'
