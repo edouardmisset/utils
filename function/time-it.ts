@@ -32,20 +32,14 @@ import { err, ok, type Result, tryCatch } from '@edouardmisset/function'
  * assert(typeof result.value === "string");
  * assert(typeof result.duration === "number");
  */
-
-// Overload for asynchronous functions
 export async function timeIt<T, Args extends unknown[], E = Error>(
   fn: (...args: Args) => Promise<T>,
   ...args: Args
 ): Promise<TimeResult<T, E>>
-
-// Overload for synchronous functions
 export async function timeIt<T, Args extends unknown[], E = Error>(
   fn: (...args: Args) => T,
   ...args: Args
 ): Promise<TimeResult<T, E>>
-
-// Implementation
 export async function timeIt<T, Args extends unknown[], E = Error>(
   fn: (...args: Args) => T | Promise<T>,
   ...args: Args
@@ -63,6 +57,9 @@ export async function timeIt<T, Args extends unknown[], E = Error>(
   }
 }
 
+/**
+ * {@link Result} type with execution duration in milliseconds.
+ */
 export type TimeResult<T, E = Error> = Result<T, E> & {
   duration: number
 }

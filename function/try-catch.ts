@@ -66,10 +66,31 @@ import { isFunction } from '@edouardmisset/function'
  * assertEquals(typeof result.data !== 'undefined' || result.error !== undefined, true)
  * ```
  */
-export type Success<T> = { data: T; error: undefined }
-export type Failure<E> = { data: undefined; error: E }
+export function tryCatch<T, E = Error>(
+  fn: () => T,
+): Result<T, E>
+export function tryCatch<T, E = Error>(
+  promise: Promise<T>,
+): Promise<Result<T, E>>
+export function tryCatch<T, E = Error>(
+  fn: (() => T) | Promise<T>,
+): Result<T, E> | Promise<Result<T, E>> {
+  // Handle synchronous function
+  if (isFunction(fn)) {
+    try {
+      const data = fn()
+      return ok(data) as Result<T, E>
+    } catch (error) {
+      return err(error as E) as Result<T, E>
+    }
+  }
 
-export type Result<T, E = Error> = Success<T> | Failure<E>
+  // Handle promise
+  return Promise.resolve(fn)
+    .then((data) => ok(data) as Result<T, E>)
+    .catch((error) => err(error as E) as Result<T, E>)
+}
+
 
 /**
  * Creates a successful Result object containing the provided data.
@@ -93,32 +114,9 @@ export function err<E = Error>(error: E): Failure<E> {
   return { data: undefined, error }
 }
 
-// Overload for synchronous functions
-export function tryCatch<T, E = Error>(
-  fn: () => T,
-): Result<T, E>
-
-// Overload for promises
-export function tryCatch<T, E = Error>(
-  promise: Promise<T>,
-): Promise<Result<T, E>>
-
-// Implementation
-export function tryCatch<T, E = Error>(
-  fn: (() => T) | Promise<T>,
-): Result<T, E> | Promise<Result<T, E>> {
-  // Handle synchronous function
-  if (isFunction(fn)) {
-    try {
-      const data = fn()
-      return ok(data) as Result<T, E>
-    } catch (error) {
-      return err(error as E) as Result<T, E>
-    }
-  }
-
-  // Handle promise
-  return Promise.resolve(fn)
-    .then((data) => ok(data) as Result<T, E>)
-    .catch((error) => err(error as E) as Result<T, E>)
-}
+/** Result type for successful operations. */
+export type Success<T> = { data: T; error: undefined }
+/** Result type for failed operations. */
+export type Failure<E> = { data: undefined; error: E }
+/** Union type representing a result that can be either successful or failed. */
+export type Result<T, E = Error> = Success<T> | Failure<E>

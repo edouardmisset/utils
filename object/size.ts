@@ -1,3 +1,5 @@
+import type { ObjectOfType } from '@edouardmisset/type'
+
 /**
  * Returns the size of a collection, which can be:
  * - For objects: the number of own enumerable properties
@@ -33,9 +35,6 @@
  * // returns 3
  * ```
  */
-
-import type { ObjectOfType } from '@edouardmisset/type'
-
 export function size<T = unknown>(
   o: ObjectOfType<T> | Array<T> | Map<string, T> | Set<T> | string,
 ): number {
