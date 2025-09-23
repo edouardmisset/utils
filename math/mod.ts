@@ -37,6 +37,7 @@
  * @module
  */
 
+export * from './average-time.ts'
 export * from './average.ts'
 export * from './divmod.ts'
 export * from './is-valid.ts'
