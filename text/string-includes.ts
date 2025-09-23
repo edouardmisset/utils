@@ -1,12 +1,16 @@
 /**
- * Checks if a string includes a substring. The check can be case sensitive or case insensitive.
+ * Checks if a string includes a substring. The check can be case sensitive or
+ * case insensitive.
  *
  * @param {string} string - The string to search in.
  * @param {string} subString - The substring to search for.
- * @param {Object} [options={ caseSensitive: false }] - An optional parameter that specifies whether the search should be case sensitive.
- * @param {boolean} [options.caseSensitive=false] - If true, the search will be case sensitive.
+ * @param {Object} [options={ caseSensitive: false }] - An optional parameter
+ * that specifies whether the search should be case sensitive.
+ * @param {boolean} [options.caseSensitive=false] - If true, the search will be
+ * case sensitive.
  *
- * @returns {boolean} Returns true if the string includes the substring, false otherwise.
+ * @returns {boolean} Returns true if the string includes the substring, false
+ * otherwise.
  *
  * @example
  * ```typescript
