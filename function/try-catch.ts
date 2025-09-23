@@ -1,3 +1,5 @@
+import { isFunction } from '@edouardmisset/function/is-function.ts'
+
 /**
  * Wraps a Promise, function or async function in a try-catch block and returns
  * a result object with either data or error.
@@ -103,12 +105,12 @@ export function tryCatch<T, E = Error>(
 
 // Implementation
 export function tryCatch<T, E = Error>(
-  input: (() => T) | Promise<T>,
+  fn: (() => T) | Promise<T>,
 ): Result<T, E> | Promise<Result<T, E>> {
   // Handle synchronous function
-  if (typeof input === 'function') {
+  if (isFunction(fn)) {
     try {
-      const data = input()
+      const data = fn()
       return ok(data) as Result<T, E>
     } catch (error) {
       return err(error as E) as Result<T, E>
@@ -116,12 +118,7 @@ export function tryCatch<T, E = Error>(
   }
 
   // Handle promise
-  return (async () => {
-    try {
-      const data = await input
-      return ok(data) as Result<T, E>
-    } catch (error) {
-      return err(error as E) as Result<T, E>
-    }
-  })()
+  return Promise.resolve(fn)
+    .then((data) => ok(data) as Result<T, E>)
+    .catch((error) => err(error as E) as Result<T, E>)
 }
