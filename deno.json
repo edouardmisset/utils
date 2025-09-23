@@ -8,7 +8,8 @@
     "docs:lint": "deno doc --lint ./**/*.ts",
     "test": "deno test --doc --reporter=dot --ignore=check-imports.ts --coverage --parallel ./**/*.ts",
     "docs": "deno doc --html --name='utils' ./mod.ts",
-    "test:watch": "deno test --reporter=dot --ignore=check-imports.ts --watch"
+    "test:watch": "deno test --reporter=dot --ignore=check-imports.ts --watch",
+    "check:imports": "deno run --allow-read ./check-imports.ts"
   },
   "workspace": [
     "./array",
