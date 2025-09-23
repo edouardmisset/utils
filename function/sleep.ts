@@ -27,10 +27,11 @@ import { err, ok, type Result } from '@edouardmisset/function'
  */
 export function sleep(milliseconds: number): Promise<Result<void, RangeError>> {
   if (milliseconds < 0) {
-    return Promise.resolve(err(new RangeError(
-      `Invalid time value (${milliseconds} ms). Time must be a positive number.`,
+    return Promise.resolve(err(
+      new RangeError(
+        `Invalid time value (${milliseconds} ms). Time must be a positive number.`,
+      ),
     ))
-    )
   }
 
   return new Promise<Result<void, RangeError>>((resolve) =>
