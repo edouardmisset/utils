@@ -3,39 +3,37 @@ import { err, ok, type Result, tryCatch } from '@edouardmisset/function'
 /**
  * Measures the execution time of a synchronous or asynchronous function.
  *
- * @template T The return type of the function.
- * @template Args The argument types of the function.
- * @param fn - The function to execute and time.
- * @param args - Arguments to pass to the function.
- * @returns An object containing the result (or error) and the duration in
- * milliseconds.
+ * @typeParam T Return type of the function.
+ * @typeParam Args Argument tuple passed to the function.
+ * @typeParam E Error type captured in the Result.
+ *
+ * @param fn The function to execute and time.
+ * @param args Arguments to pass to the function.
+ * @returns A promise resolving to a Result with the function outcome and the
+ * duration in milliseconds. Errors thrown by `fn` are captured; this function
+ * does not throw.
  *
  * @example
- * import { assertEquals, assert } from "@std/assert";
+ * import { assertEquals } from "@std/assert";
  * // Synchronous example
- * function add(a: number, b: number): number {
- *   return a + b;
- * }
- * const result = await timeIt(add, 2, 3);
- * assert(result.ok);
- * assertEquals(result.value, 5);
- * assert(typeof result.duration === "number");
+ * const r1 = await timeIt((a: number, b: number) => a + b, 2, 3);
+ * assertEquals(r1.error, undefined);
+ * assertEquals(r1.data, 5);
+ * assertEquals(typeof r1.duration, "number");
  *
  * @example
- * import { assert, assertStringIncludes } from "@std/assert";
+ * import { assertEquals } from "@std/assert";
  * // Asynchronous example
- * async function fetchData(url: string): Promise<string> {
- *   return await fetch(url).then(res => res.text());
- * }
- * const result = await timeIt(fetchData, "https://example.com");
- * assert(result.ok);
- * assert(typeof result.value === "string");
- * assert(typeof result.duration === "number");
+ * const r2 = await timeIt(async (n: number) => n * 2, 21);
+ * assertEquals(r2.error, undefined);
+ * assertEquals(r2.data, 42);
+ * assertEquals(typeof r2.duration, "number");
  */
 export async function timeIt<T, Args extends unknown[], E = Error>(
   fn: (...args: Args) => Promise<T>,
   ...args: Args
 ): Promise<TimeResult<T, E>>
+/** Synchronous overload. Returns a Promise resolving to the timed Result. */
 export async function timeIt<T, Args extends unknown[], E = Error>(
   fn: (...args: Args) => T,
   ...args: Args
