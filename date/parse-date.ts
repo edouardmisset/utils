@@ -1,5 +1,5 @@
+import { isValidDate } from '@edouardmisset/date'
 import { err, ok, type Result } from '@edouardmisset/function'
-import { isValidDate } from './is-valid-date.ts'
 
 /**
  * Parses a date string in the format 'MM-DD-YYYY' and returns a Date object.

@@ -9,7 +9,7 @@
  *
  * @example
  * ```typescript
- * import { validateNumber } from './validate-number.ts'
+ * import { validateNumber } from '@edouardmisset/math'
  *
  * validateNumber(123)
  * // returns true

@@ -1,4 +1,4 @@
-import { err, ok, type Result } from '../function/try-catch.ts'
+import { err, ok, type Result } from '@edouardmisset/function'
 
 /**
  * Calculates the average of the given numbers.

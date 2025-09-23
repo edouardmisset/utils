@@ -133,7 +133,7 @@ It should follow the ISO 8601 standard like: "YYYY-MM-DDTHH:MM:SSZ"`,
  *
  * @example
  * ```typescript
- * import { stringifyDate } from './convert-string-date.ts'
+ * import { stringifyDate } from '@edouardmisset/date'
  *
  * const date = new Date(2022, 0, 31) // January 31, 2022
  * const result = stringifyDate(date)

@@ -1,4 +1,4 @@
-import { err, ok, Result } from '../function/try-catch.ts'
+import { err, ok, type Result } from '@edouardmisset/function'
 
 /**
  * A type that represents the quotient of a division operation (`number`).

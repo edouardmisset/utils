@@ -1,5 +1,5 @@
+import { err, ok, type Result, tryCatch } from '@edouardmisset/function'
 import process from 'node:process'
-import { err, ok, Result, tryCatch } from './try-catch.ts'
 
 /**
  * A Readonly object mapping environment prefixes to different environments.

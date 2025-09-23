@@ -1,7 +1,6 @@
-import { isDateInRangeOption } from '@edouardmisset/date/is-date-in-range.ts'
-import { isYearOption } from '@edouardmisset/date/is-date-in-year.ts'
+import { FilterOptions } from '@edouardmisset/array'
+import { isDateInRangeOption, isYearOption } from '@edouardmisset/date'
 import type { ObjectOfType } from '@edouardmisset/type'
-import { FilterOptions } from './filter-by-date.ts'
 
 /**
  * The number of milliseconds in a year.

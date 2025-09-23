@@ -1,5 +1,5 @@
+import { objectKeys } from '@edouardmisset/object'
 import { ObjectOfType } from '@edouardmisset/type'
-import { objectKeys } from './object-keys.ts'
 
 /**
  * Performs a shallow comparison between two objects of the same type.

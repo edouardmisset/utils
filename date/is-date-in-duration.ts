@@ -1,4 +1,4 @@
-import { Milliseconds } from '@edouardmisset/type/type-helpers.ts'
+import { Milliseconds } from '@edouardmisset/type'
 
 /**
  * Type representing a duration (in milliseconds) and a reference date (as

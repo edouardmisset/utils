@@ -1,23 +1,19 @@
-import { isDateCompatible } from '@edouardmisset/date/is-date-compatible.ts'
+import { ONE_YEAR_IN_MILLISECONDS } from '@edouardmisset/array'
 import {
   DurationAndReferenceDate,
+  isDateCompatible,
   isDateInDuration,
-} from '@edouardmisset/date/is-date-in-duration.ts'
-import {
   isDateInRange,
   isDateInRangeOption,
-  StartAndEndDate,
-} from '@edouardmisset/date/is-date-in-range.ts'
-import {
   isDateInYear,
+  isValidDate,
   isYearOption,
+  StartAndEndDate,
   Year,
-} from '@edouardmisset/date/is-date-in-year.ts'
-import { isValidDate } from '@edouardmisset/date/is-valid-date.ts'
+} from '@edouardmisset/date'
+import { err, ok, type Result } from '@edouardmisset/function'
+import { size } from '@edouardmisset/object'
 import type { ObjectOfType } from '@edouardmisset/type'
-import { err, ok, Result } from '../function/try-catch.ts'
-import { size } from '../object/size.ts'
-import { ONE_YEAR_IN_MILLISECONDS } from './filter.ts'
 
 /**
  * The filter options for the {@link filterByDate} function.

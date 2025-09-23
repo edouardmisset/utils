@@ -1,5 +1,5 @@
-import { average } from '@edouardmisset/math/average.ts'
-import { err, ok, Result } from '../function/try-catch.ts'
+import { err, ok, type Result } from '@edouardmisset/function'
+import { average } from '@edouardmisset/math'
 
 /**
  * Calculates the average time from an array of Date objects and returns it as a
@@ -14,7 +14,7 @@ import { err, ok, Result } from '../function/try-catch.ts'
  *
  * @example
  * ```typescript
- * import { averageTime } from './average-time.ts'
+ * import { averageTime } from '@edouardmisset/math'
  *
  * const dates = [new Date('2022-01-01T09:00:00Z'), new Date('2022-01-01T11:00:00Z')]
  * const result = averageTime(dates)

@@ -1,4 +1,4 @@
-import { isFunction } from '@edouardmisset/function/is-function.ts'
+import { isFunction } from '@edouardmisset/function'
 
 /**
  * Wraps a Promise, function or async function in a try-catch block and returns

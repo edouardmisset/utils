@@ -1,4 +1,4 @@
-import { err, ok, Result } from '../function/try-catch.ts'
+import { err, ok, type Result } from '@edouardmisset/function'
 
 /**
  * Creates an array of a specified length and populates it with the results of calling a provided function on every index in the array.
@@ -103,16 +103,6 @@ export function createArray<T = number>(
  *   console.log('Error:', result.error.message)
  * } else {
  *   console.log(result.data) // [0, 5, 10, 15, 20]
- * }
- * ```
- *
- * @example
- * ```typescript
- * import { range } from './create.ts'
- *
- * const result = range({start:0, end:10, step:0})
- * if (result.error) {
- *   console.log('Error:', result.error.message) // "step cannot be 0"
  * }
  * ```
  */

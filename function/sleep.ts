@@ -1,4 +1,4 @@
-import { Result } from './try-catch.ts'
+import { err, ok, type Result } from '@edouardmisset/function'
 
 /**
  * Pauses the execution of an asynchronous function for a specified time (ms).
@@ -27,17 +27,15 @@ import { Result } from './try-catch.ts'
  */
 export function sleep(milliseconds: number): Promise<Result<void, RangeError>> {
   if (milliseconds < 0) {
-    return Promise.resolve({
-      data: undefined,
-      error: new RangeError(
-        `Invalid time value (${milliseconds} ms). Time must be a positive number.`,
-      ),
-    })
+    return Promise.resolve(err(new RangeError(
+      `Invalid time value (${milliseconds} ms). Time must be a positive number.`,
+    ))
+    )
   }
 
   return new Promise<Result<void, RangeError>>((resolve) =>
     setTimeout(
-      () => resolve({ data: undefined, error: undefined }),
+      () => resolve(ok(undefined)),
       milliseconds,
     )
   )

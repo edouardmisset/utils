@@ -1,5 +1,5 @@
 import { isValidDate } from '@edouardmisset/date'
-import type { ObjectOfType } from '@edouardmisset/type/type-helpers.ts'
+import type { ObjectOfType } from '@edouardmisset/type'
 
 /**
  * Sorts objects by their date property.

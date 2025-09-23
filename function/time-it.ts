@@ -1,4 +1,4 @@
-import { err, ok, type Result, tryCatch } from './try-catch.ts'
+import { err, ok, type Result, tryCatch } from '@edouardmisset/function'
 
 /**
  * Measures the execution time of a synchronous or asynchronous function.
