@@ -11,16 +11,16 @@
  * @example
  * ```typescript
  * // returns true
- * stringIncludesCaseInsensitive('Hello World', 'hello')
+ * stringIncludes('Hello World', 'hello')
  * ```
  *
  * @example
  * ```typescript
  * // returns false
- * stringIncludesCaseInsensitive('Hello World', 'hello', { caseSensitive: true })
+ * stringIncludes('Hello World', 'hello', { caseSensitive: true })
  * ```
  */
-export function stringIncludesCaseInsensitive(
+export function stringIncludes(
   string: string,
   subString: string,
   { caseSensitive }: { caseSensitive?: boolean } = { caseSensitive: false },
@@ -29,9 +29,3 @@ export function stringIncludesCaseInsensitive(
     ? string.includes(subString)
     : string.toLowerCase().includes(subString.toLowerCase())
 }
-
-/**
- * Alias for the {@link stringIncludesCaseInsensitive} function.
- */
-export const stringIncludes: typeof stringIncludesCaseInsensitive =
-  stringIncludesCaseInsensitive
