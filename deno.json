@@ -6,10 +6,12 @@
     "coverage:gen": "deno coverage ./coverage --lcov --output=./coverage/lcov.info",
     "coverage:view": "deno coverage --html coverage",
     "docs:lint": "deno doc --lint ./**/*.ts",
-    "test": "deno test --doc --reporter=dot --ignore=check-imports.ts --coverage --parallel ./**/*.ts",
+    "test": "deno test --doc --reporter=dot --coverage --parallel ./**/*.ts",
     "docs": "deno doc --html --name='utils' ./mod.ts",
-    "test:watch": "deno test --reporter=dot --ignore=check-imports.ts --watch",
-    "check:imports": "deno run --allow-read ./check-imports.ts"
+    "test:watch": "deno test --reporter=dot --watch",
+    "check:imports": "deno run --allow-read ./check-imports.ts",
+    "check:barrels": "deno run --allow-read ./check-barrels.ts",
+    "validate": "deno task check && deno task check:imports && deno task check:barrels && deno task docs:lint"
   },
   "workspace": [
     "./array",
@@ -71,6 +73,10 @@
   "test": {
     "include": [
       "./**/*.test.ts"
+    ],
+    "exclude": [
+      "check-imports.ts",
+      "check-barrels.ts"
     ]
   }
 }
