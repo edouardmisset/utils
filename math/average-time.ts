@@ -1,5 +1,5 @@
-import { err, ok, Result } from '../function/try-catch.ts'
 import { average } from '@edouardmisset/math/average.ts'
+import { err, ok, Result } from '../function/try-catch.ts'
 
 /**
  * Calculates the average time from an array of Date objects and returns it as a
@@ -26,7 +26,7 @@ import { average } from '@edouardmisset/math/average.ts'
  * ```
  */
 export function averageTime(dates: Date[]): Result<string, Error> {
-  if (dates.length === 0) return { data: '00:00:00', error: undefined }
+  if (dates.length === 0) return ok('00:00:00')
 
   const datesInMs = dates.map((date) => {
     const newDate = new Date(date)
@@ -35,9 +35,10 @@ export function averageTime(dates: Date[]): Result<string, Error> {
   })
 
   const averageResult = average(datesInMs)
+
   if (averageResult.error) return err(averageResult.error)
 
-  const averageDate = new Date(averageResult.data)
+  const averageTime = new Date(averageResult.data).toISOString().slice(11, 19)
 
-  return ok(averageDate.toISOString().slice(11, 19))
+  return ok(averageTime)
 }

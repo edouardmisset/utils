@@ -1,4 +1,4 @@
-import { Result } from '../function/try-catch.ts'
+import { err, ok, type Result } from '@edouardmisset/function'
 
 /**
  * `scale` function's parameters.
@@ -70,21 +70,17 @@ export interface Rescale {
 export function scale(parameters: ScaleParameters): Result<number, Error> {
   const { inMinimum, inMaximum, outMinimum = 0, outMaximum = 1, value } =
     parameters
-  if (inMinimum === inMaximum) {
-    return {
-      data: undefined,
-      error: new Error(
+
+  return inMinimum === inMaximum
+    ? err(
+      new RangeError(
         `inMinimum (${inMinimum}) cannot equal inMaximum (${inMaximum}) as this leads to a division by 0.`,
       ),
-    }
-  }
-  return {
-    data: (
+    )
+    : ok(
       outMinimum + ((value - inMinimum) * (outMaximum - outMinimum)) /
-        (inMaximum - inMinimum)
-    ),
-    error: undefined,
-  }
+          (inMaximum - inMinimum),
+    )
 }
 
 /**

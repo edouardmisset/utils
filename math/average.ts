@@ -1,4 +1,4 @@
-import { Result } from '../function/try-catch.ts'
+import { err, ok, type Result } from '../function/try-catch.ts'
 
 /**
  * Calculates the average of the given numbers.
@@ -40,23 +40,20 @@ export function average(
   const numbers = number_.flat()
 
   if (numbers.length === 0) {
-    return {
-      data: undefined,
-      error: new Error(
+    return err(
+      new Error(
         `Cannot calculate average if no values are passed in (${
           String(number_)
         })`,
       ),
-    }
+    )
   }
 
-  return {
-    data: (
-      numbers.reduce((accumulator, value) => accumulator + value, 0) /
-      numbers.length
-    ),
-    error: undefined,
-  }
+  const average =
+    numbers.reduce((accumulator, value) => accumulator + value, 0) /
+    numbers.length
+
+  return ok(average)
 }
 
 /**

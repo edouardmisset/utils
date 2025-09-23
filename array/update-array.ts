@@ -1,4 +1,4 @@
-import { Result } from '../function/try-catch.ts'
+import { err, ok, type Result } from '@edouardmisset/function'
 
 /**
  * Updates an object in an array in an immutable way.
@@ -51,18 +51,13 @@ export const updateObjectInArray = <T extends object>(
   newData: Partial<T>,
 ): Result<T[], Error> => {
   if (newData[key] === undefined) {
-    return {
-      data: undefined,
-      error: new Error(`The key ${key.toString()} does not exist in newData`),
-    }
+    return err(new Error(`The key ${key.toString()} does not exist in newData`))
   }
+
   const result = array.map((object) =>
     object[key] === newData[key] ? { ...object, ...newData } : object
   )
-  return {
-    data: result,
-    error: undefined,
-  }
+  return ok(result)
 }
 
 /**

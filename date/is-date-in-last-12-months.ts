@@ -1,5 +1,5 @@
 import { isValidDate } from '@edouardmisset/date'
-import { Result } from '../function/try-catch.ts'
+import { err, ok, type Result } from '@edouardmisset/function'
 
 /**
  * Determines if a given date is within the last 12 months from the current date.
@@ -36,10 +36,7 @@ export function isDateInLast12Months(
   const parsedDate = typeof date === 'string' ? new Date(date) : date
 
   if (!isValidDate(parsedDate)) {
-    return {
-      data: undefined,
-      error: new Error('Invalid date format.'),
-    }
+    return err(new Error('Invalid date format.'))
   }
 
   const now = new Date()
@@ -48,8 +45,5 @@ export function isDateInLast12Months(
   lastYear.setHours(0, 0, 0, 0)
   const result = lastYear <= parsedDate && parsedDate <= now
 
-  return {
-    data: result,
-    error: undefined,
-  }
+  return ok(result)
 }

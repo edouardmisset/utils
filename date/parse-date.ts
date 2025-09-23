@@ -1,4 +1,4 @@
-import { Result } from '../function/try-catch.ts'
+import { err, ok, type Result } from '@edouardmisset/function'
 import { isValidDate } from './is-valid-date.ts'
 
 /**
@@ -31,16 +31,10 @@ export function parseDate(stringDate: string): Result<Date, Error> {
   const parsedDate = new Date(`${year}-${month}-${day}`)
 
   if (!isValidDate(parsedDate)) {
-    return {
-      data: undefined,
-      error: new Error('Invalid date format'),
-    }
+    return err(new Error('Invalid date format'))
   }
 
-  return {
-    data: parsedDate,
-    error: undefined,
-  }
+  return ok(parsedDate)
 }
 
 /**
@@ -72,15 +66,7 @@ export function parseFrenchDate(stringDate: string): Result<Date, Error> {
   const [, day, month, year] = datePattern.exec(stringDate) ?? []
   const parsedDate = new Date(`${year}-${month}-${day}`)
 
-  if (!isValidDate(parsedDate)) {
-    return {
-      data: undefined,
-      error: new Error('Invalid date format'),
-    }
-  }
-
-  return {
-    data: parsedDate,
-    error: undefined,
-  }
+  return isValidDate(parsedDate)
+    ? ok(parsedDate)
+    : err(new Error('Invalid date format'))
 }

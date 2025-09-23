@@ -1,5 +1,3 @@
-import { tryCatch } from './try-catch.ts'
-
 /**
  * Checks if a string is valid JSON.
  *
@@ -17,8 +15,12 @@ import { tryCatch } from './try-catch.ts'
  * ```
  */
 export function isValidJSON(string_: string): boolean {
-  const result = tryCatch(() => JSON.parse(string_))
-  return result.error === undefined
+  try {
+    JSON.parse(string_)
+    return true
+  } catch (_error) {
+    return false
+  }
 }
 
 /**

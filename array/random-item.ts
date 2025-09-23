@@ -1,4 +1,4 @@
-import { Result } from '../function/try-catch.ts'
+import { err, ok, type Result } from '@edouardmisset/function'
 
 /**
  * Returns a random item from an array.
@@ -29,10 +29,7 @@ import { Result } from '../function/try-catch.ts'
  */
 export function randomItem<T>(array: T[]): Result<T, Error> {
   if (array.length === 0) {
-    return { data: undefined, error: new Error('Array is empty') }
+    return err(new Error('Array is empty'))
   }
-  return {
-    data: array[Math.floor(Math.random() * array.length)],
-    error: undefined,
-  }
+  return ok(array[Math.floor(Math.random() * array.length)])
 }

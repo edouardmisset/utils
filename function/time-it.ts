@@ -57,9 +57,9 @@ export async function timeIt<T, Args extends unknown[], E = Error>(
       const result = await tryCatch<T, E>(maybe)
       return { ...result, duration: Date.now() - start }
     }
-    return { ...ok<T>(maybe), duration: Date.now() - start }
+    return { ...ok(maybe), duration: Date.now() - start }
   } catch (e) {
-    return { ...err<E>(e as E), duration: Date.now() - start }
+    return { ...err(e as E), duration: Date.now() - start }
   }
 }
 

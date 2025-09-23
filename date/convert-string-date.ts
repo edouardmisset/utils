@@ -1,4 +1,5 @@
-import { Result } from '../function/try-catch.ts'
+import { isValidDate } from '@edouardmisset/date'
+import { err, ok, type Result } from '@edouardmisset/function'
 
 /**
  * Converts a string date from "dd/mm/yyyy hh:mm" format to "yyyy-mm-ddThh:mm" format.
@@ -39,21 +40,15 @@ import { Result } from '../function/try-catch.ts'
  * ```
  */
 export function convertStringDate(dateString: string): Result<string, Error> {
-  if (dateString === '') {
-    return {
-      data: dateString,
-      error: undefined,
-    }
-  }
+  if (dateString === '') return ok(dateString)
 
   if (!/^\d{2}\/\d{2}\/\d{4} \d{2}:\d{2}$/.test(dateString)) {
-    return {
-      data: undefined,
-      error: new Error(
+    return err(
+      new Error(
         `Invalid date format (${String(dateString)}). 
 It should be in the form: "dd/mm/yyyy hh:mm"`,
       ),
-    }
+    )
   }
 
   const [shortDate, shortTime = ''] = dateString.split(' ')
@@ -61,10 +56,7 @@ It should be in the form: "dd/mm/yyyy hh:mm"`,
   const [hours = 0, minutes = 0] = shortTime.split(':')
   const result = `${years}-${months}-${days}T${hours}:${minutes}`
 
-  return {
-    data: result,
-    error: undefined,
-  }
+  return ok(result)
 }
 
 /**
@@ -110,29 +102,27 @@ It should be in the form: "dd/mm/yyyy hh:mm"`,
  */
 export function datification(date: string | Date): Result<Date, Error> {
   if (date instanceof Date) {
-    return {
-      data: date,
-      error: undefined,
-    }
+    return isValidDate(date) ? ok(date) : err(
+      new TypeError(
+        `Invalid date format (${String(date)}).
+It should follow the ISO 8601 standard like: "YYYY-MM-DDTHH:MM:SSZ"`,
+      ),
+    )
   }
 
   const ISO8601DatePattern =
     /^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$/
 
   if (!ISO8601DatePattern.test(date)) {
-    return {
-      data: undefined,
-      error: new Error(
+    return err(
+      new Error(
         `Invalid date format (${String(date)}).
 It should follow the ISO 8601 standard like: "YYYY-MM-DDTHH:MM:SSZ"`,
       ),
-    }
+    )
   }
 
-  return {
-    data: new Date(date),
-    error: undefined,
-  }
+  return ok(new Date(date))
 }
 
 /**
@@ -166,13 +156,12 @@ It should follow the ISO 8601 standard like: "YYYY-MM-DDTHH:MM:SSZ"`,
 export function stringifyDate(
   date: Date,
 ): Result<`${string}-${string}-${string}`, TypeError> {
-  if (!(date instanceof Date)) {
-    return {
-      data: undefined,
-      error: new TypeError(
-        `Expected a Date object for ${date} but got ${(typeof date) as unknown}`,
+  if (!isValidDate(date)) {
+    return err(
+      new TypeError(
+        `Expected a valid Date object for ${date} but got ${(typeof date) as unknown}`,
       ),
-    }
+    )
   }
 
   const year = date.getFullYear().toString()
@@ -180,8 +169,5 @@ export function stringifyDate(
   const day = date.getDate().toString().padStart(2, '0')
   const result = `${year}-${month}-${day}` as `${string}-${string}-${string}`
 
-  return {
-    data: result,
-    error: undefined,
-  }
+  return ok(result)
 }

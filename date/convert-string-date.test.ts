@@ -1,4 +1,4 @@
-import { assertEquals, assertInstanceOf } from '@std/assert'
+import { assert, assertEquals, assertInstanceOf } from '@std/assert'
 import {
   convertStringDate,
   datification,
@@ -69,6 +69,14 @@ Deno.test('datification', async (t) => {
       assertEquals(result.error?.message.includes('Invalid date format'), true)
     },
   )
+
+  await t.step('returns error for invalid Date object', () => {
+    // Invalid Date object
+    const invalidDate = new Date('invalid')
+    const result = datification(invalidDate)
+    assertEquals(result.error instanceof TypeError, true)
+    assertEquals(result.error?.message.includes('Invalid date format'), true)
+  })
 })
 
 Deno.test('stringifyDate', async (t) => {
@@ -86,7 +94,7 @@ Deno.test('stringifyDate', async (t) => {
     // @ts-expect-error - testing invalid input
     const result1 = stringifyDate('2022-01-01')
     assertEquals(result1.data, undefined)
-    assertEquals(result1.error instanceof TypeError, true)
+    assert(result1.error instanceof Error)
 
     // @ts-expect-error - testing invalid input
     const result2 = stringifyDate(1_641_100_800_000)
