@@ -5,6 +5,7 @@
  * and analysis.
  * Includes functions for counting, grouping, finding elements, sorting, and
  * statistical operations.
+ * E.g. {@link groupBy}, {@link countBy}, {@link maxBy}, {@link randomItem}
  *
  * @example
  * ```ts
@@ -58,3 +59,4 @@ export * from './sets.ts'
 export * from './sort-by.ts'
 export * from './sort.ts'
 export * from './update-array.ts'
+

@@ -2,20 +2,22 @@
  * 🚀 Powerful TypeScript utility toolkit for modern web development
  *
  * This library provides a comprehensive collection of utility functions organized into modules:
- * - **array**: Functions for working with arrays (groupBy, countBy, filterBy, etc.)
- * - **date**: Date manipulation and conversion utilities
- * - **function**: Common function utilities (debounce, throttle, memoization, etc.)
- * - **math**: Mathematical calculations and validations
- * - **object**: Object manipulation utilities
- * - **text**: String processing and text utilities
- * - **type**: TypeScript type helpers and utilities
+ * - **array**: Functions for working with arrays (e.g. {@link groupBy}, {@link countBy})
+ * - **date**: Date manipulation and conversion utilities (e.g. {@link parseDate}, {@link isValidDate})
+ * - **function**: Common function utilities (e.g. {@link debounce}, {@link throttle}, {@link memoize})
+ * - **math**: Mathematical calculations and validations (e.g. {@link random},
+ *   {@link average}, {@link range}) 
+ * - **object**: Object manipulation utilities (e.g. {@link invert}, {@link size},
+ *   {@link objectKeys})
+ * - **text**: String processing and text utilities (e.g. {@link slugify}, {@link stringEquals},
+ *   {@link stringIncludes}, {@link removeAccents})
+ * - **type**: TypeScript type helpers and utilities (e.g. {@link Primitive}, {@link Override}, {@link LooseAutoComplete})
  *
  * @example
  * ```ts
  * import { groupBy } from "jsr:@edouardmisset/array";
  * import { assertEquals } from "@std/assert";
  *
- * // Test array utilities with objects
  * const users = [
  *   { name: 'Alice', type: 'even' },
  *   { name: 'Bob', type: 'odd' },
@@ -23,7 +25,7 @@
  * ];
  * const grouped = groupBy(users, 'type');
  * assertEquals(grouped.even.length, 2);
- * assertEquals(grouped.odd.length, 1);
+ * assertEquals(grouped.odd, { name: 'Bob', type: 'odd' });
  * ```
  *
  * @example
@@ -46,3 +48,4 @@ export * from './math/mod.ts'
 export * from './object/mod.ts'
 export * from './text/mod.ts'
 export * from './type/mod.ts'
+

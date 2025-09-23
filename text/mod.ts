@@ -1,8 +1,11 @@
 // This module is browser compatible.
 
 /**
- * Text processing utilities for string manipulation, formatting, and analysis.
- * Includes functions for capitalization, slug generation, accent removal, and string comparison.
+ * Text processing utilities for string manipulation, formatting, and analysis. 
+ * Includes functions for capitalization, slug generation, accent removal, and
+ * string comparison. 
+ * E.g. {@link capitalize}, {@link slugify}, {@link removeAccents},
+ * {@link stringEquals}, {@link stringIncludes}
  *
  * @example
  * ```ts
@@ -37,3 +40,4 @@ export * from './string-equals.ts'
 export * from './string-includes.ts'
 export * from './string-to-boolean.ts'
 export * from './wrap-in-parentheses.ts'
+

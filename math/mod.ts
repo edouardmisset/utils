@@ -1,8 +1,11 @@
 // This module is browser compatible.
 
 /**
- * Mathematical utility functions for calculations, statistics, and number validation.
- * Includes arithmetic operations, averages, products, and mathematical validations.
+ * Mathematical utility functions for calculations, statistics, and number
+ * validation. 
+ * Includes arithmetic operations, averages, products, and mathematical
+ * validations. 
+ * E.g. {@link sum}, {@link average}, {@link range}, {@link random}
  *
  * @example
  * ```ts
@@ -50,3 +53,4 @@ export * from './standard-deviation.ts'
 export * from './sum.ts'
 export * from './to-fixed-without-zero.ts'
 export * from './validate-number.ts'
+

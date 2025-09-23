@@ -1,8 +1,12 @@
 // This module is browser compatible.
 
 /**
- * Comprehensive date manipulation utilities for parsing, formatting, and date calculations.
- * Includes functions for date conversion, boundary calculations, and date arithmetic.
+ * Comprehensive date manipulation utilities for parsing, formatting, and date
+ * calculations.
+ * Includes functions for date conversion, boundary calculations, and date
+ * arithmetic.
+ * E.g. {@link parseDate}, {@link isValidDate}, {@link convertStringDate},
+ * {@link firstDateOfMonth}
  *
  * @example
  * ```ts
@@ -39,3 +43,4 @@ export * from './is-date-in-year.ts'
 export * from './is-valid-date.ts'
 export * from './parse-date.ts'
 export * from './sort-by-date.ts'
+

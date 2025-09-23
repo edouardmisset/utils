@@ -1,8 +1,11 @@
 // This module is browser compatible.
 
 /**
- * Object manipulation utilities for transformation, validation, and key operations.
- * Includes functions for object inversion, key checking, type validation, and mapping.
+ * Object manipulation utilities for transformation, validation, and key
+ * operations. 
+ * Includes functions for object inversion, key checking, type validation, and
+ * mapping. 
+ * E.g. {@link invert}, {@link size}, {@link objectKeys}, {@link mapObject}
  *
  * @example
  * ```ts
@@ -44,3 +47,4 @@ export * from './pick.ts'
 export * from './remove-nullish-values.ts'
 export * from './shallow-equal.ts'
 export * from './size.ts'
+
