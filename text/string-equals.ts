@@ -1,33 +1,4 @@
-/**
- * Checks if a string equals another string in a case-insensitive manner.
- * **Note**: uses the `normalize` method to normalize the strings to Unicode
- * Normalization Form Composition (NFC)
- * {@link [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/normalize#description)}
- *
- * @param {string} leftString - The first string to compare.
- * @param {string} rightString - The second string to compare.
- * @returns {boolean} - A boolean indicating whether the two strings are equal,
- * ignoring case.
- *
- * @example
- * ```typescript
- * stringEqualsCaseInsensitive('Hello', 'hello')
- * // returns true
- * ```
- *
- * @example
- * ```typescript
- * stringEqualsCaseInsensitive('Hello', 'world')
- * // returns false
- * ```
- */
-export function stringEqualsCaseInsensitive(
-  leftString: string,
-  rightString: string,
-): boolean {
-  return leftString.normalize('NFC').toLowerCase() ===
-    rightString.normalize('NFC').toLowerCase()
-}
+import { stringEqualsCaseInsensitive } from './string-equals-case-insensitive.ts'
 
 /**
  * Checks if a string equals another string.

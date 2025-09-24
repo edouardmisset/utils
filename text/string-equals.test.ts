@@ -1,5 +1,6 @@
 import { assert } from '@std/assert'
-import { stringEquals, stringEqualsCaseInsensitive } from './string-equals.ts'
+import { stringEquals } from './string-equals.ts'
+import { stringEqualsCaseInsensitive } from './string-equals-case-insensitive.ts'
 
 Deno.test('stringEqualsCaseInsensitive', async (t) => {
   await t.step(

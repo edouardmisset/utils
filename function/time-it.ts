@@ -1,4 +1,6 @@
-import { err, ok, type Result, tryCatch } from '@edouardmisset/function'
+import { type Result, tryCatch } from '@edouardmisset/function'
+import { ok } from './ok.ts'
+import { err } from './err.ts'
 
 /**
  * Measures the execution time of a synchronous or asynchronous function.

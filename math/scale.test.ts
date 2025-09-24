@@ -1,5 +1,7 @@
 import { assertEquals } from '@std/assert'
-import { percent, rescale, scale } from './scale.ts'
+import { scale } from './scale.ts'
+import { rescale } from './rescale.ts'
+import { percent } from './percent.ts'
 
 Deno.test('scale', async (t) => {
   await t.step('scales value from one range to another', () => {

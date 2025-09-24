@@ -22,15 +22,7 @@ export type UnaryFunction<T> = (argument: T) => T
  * const result = addOneThenDouble(5) // 12
  * ```
  */
-export function compose<T>(...functions: UnaryFunction<T>[]): UnaryFunction<T> {
-  return (data) =>
-    functions.reduceRight((value, function_) => function_(value), data)
-}
-
-/**
- * Alias for the {@link compose} function.
- */
-export const combine: typeof compose = compose
+// Note: compose moved to `compose.ts`.
 
 /**
  * Pipes any number of unary functions into a single unary function.

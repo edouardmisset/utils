@@ -1,4 +1,6 @@
 import { isFunction } from '@edouardmisset/function'
+import { ok } from './ok.ts'
+import { err } from './err.ts'
 
 /**
  * Wraps a function or promise and returns a Result with either data or error.
@@ -55,9 +57,7 @@ export function tryCatch<T, E = Error>(
  * @param {T} data - The data to wrap in a Result.
  * @returns {Result<T>} A Result object with the data and no error.
  */
-export function ok<T>(data: T): Success<T> {
-  return { data, error: undefined }
-}
+// ok moved to ok.ts
 
 /**
  * Creates a failed Result object containing the provided error.
@@ -66,9 +66,7 @@ export function ok<T>(data: T): Success<T> {
  * @param {E} error - The error to wrap in a Result.
  * @returns {Result<undefined, E>} A Result object with the error and no data.
  */
-export function err<E = Error>(error: E): Failure<E> {
-  return { data: undefined, error }
-}
+// err moved to err.ts
 
 /** Result type for successful operations. */
 export type Success<T> = { data: T; error: undefined }

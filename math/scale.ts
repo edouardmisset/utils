@@ -1,4 +1,6 @@
-import { err, ok, type Result } from '@edouardmisset/function'
+import type { Result } from '@edouardmisset/function'
+import { ok } from '../function/ok.ts'
+import { err } from '../function/err.ts'
 
 /**
  * `scale` function's parameters.
@@ -102,16 +104,7 @@ export function scale(parameters: ScaleParameters): Result<number, Error> {
  * }
  * ```
  */
-export function percent(parameters: Rescale): Result<number, Error> {
-  const { value, minimum, maximum } = parameters
-  return scale({
-    inMinimum: minimum,
-    inMaximum: maximum,
-    outMinimum: 0,
-    outMaximum: 100,
-    value,
-  })
-}
+// Note: percent moved to `percent.ts`.
 
 /**
  * Scales a value from one range to a value between 0 and 1.
@@ -132,13 +125,4 @@ export function percent(parameters: Rescale): Result<number, Error> {
  * }
  * ```
  */
-export function rescale(parameters: Rescale): Result<number, Error> {
-  const { value, minimum, maximum } = parameters
-  return scale({
-    inMinimum: minimum,
-    inMaximum: maximum,
-    value,
-    outMinimum: 0,
-    outMaximum: 1,
-  })
-}
+// Note: rescale moved to `rescale.ts`.

@@ -1,5 +1,6 @@
 import { assertEquals } from '@std/assert'
-import { createArray, range } from './create.ts'
+import { createArray } from './create.ts'
+import { range } from './range.ts'
 
 Deno.test('createArray', async (t) => {
   await t.step(

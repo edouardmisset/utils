@@ -1,8 +1,6 @@
 import { assertEquals } from '@std/assert'
-import {
-  firstDateOfMonth,
-  lastDateOfMonth,
-} from './first-last-date-of-month.ts'
+import { firstDateOfMonth } from './first-last-date-of-month.ts'
+import { lastDateOfMonth } from './last-date-of-month.ts'
 
 Deno.test('firstDateOfMonth', async (t) => {
   await t.step(

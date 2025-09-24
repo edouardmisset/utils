@@ -3,7 +3,7 @@
  *
  * **Note**: `NaN` and `Infinity` are not considered valid numbers.
  *
- * @param {unknown} n - The input to validate.
+ * @param {unknown} value - The input to validate.
  * @returns {boolean} Returns true if the input is a number and is finite, false
  * otherwise.
  *
@@ -24,12 +24,12 @@
  * // returns false
  * ```
  */
-export function validateNumber(n: unknown): boolean {
-  if (typeof n === 'number') return Number.isFinite(n)
-  if (typeof n === 'string') {
-    // @ts-expect-error: we want to explicitly this test case (for runtime behavior)
+export function validateNumber(value: unknown): boolean {
+  if (typeof value === 'number') return Number.isFinite(value)
+  if (typeof value === 'string') {
+    // @ts-expect-error: we want to explicitly to test this case (for runtime behavior)
     // deno-lint-ignore eqeqeq
-    return Number.isFinite(parseFloat(n)) && Number(n) == n
+    return Number.isFinite(parseFloat(value)) && Number(value) == value
   }
 
   return false

@@ -24,11 +24,6 @@ export function takeEnd<T>(array: T[], n = 1): T[] {
 }
 
 /**
- * Alias for the {@link takeEnd} function.
- */
-export const getLastElements: typeof takeEnd = takeEnd
-
-/**
  * Returns the first `n` elements from the given array.
  *
  * @template T - The type of the elements in the array.
@@ -51,11 +46,6 @@ export function takeStart<T>(array: T[], n = 1): T[] {
 }
 
 /**
- * Alias for the {@link takeStart} function.
- */
-export const getFirstElements: typeof takeStart = takeStart
-
-/**
  * Returns the first `n` elements if `n` is positive or the last `n` elements if `n` is negative from the given array.
  *
  * @template T - The type of the elements in the array.
@@ -76,3 +66,4 @@ export const getFirstElements: typeof takeStart = takeStart
 export function take<T>(array: T[], n = 1): T[] {
   return n >= 0 ? takeStart(array, n) : takeEnd(array, n)
 }
+// Note: aliases moved into dedicated files.

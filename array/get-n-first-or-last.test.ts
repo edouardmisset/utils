@@ -1,5 +1,7 @@
 import { assertEquals } from '@std/assert'
-import { take, takeEnd, takeStart } from './get-n-first-or-last.ts'
+import { take } from './take.ts'
+import { takeEnd } from './take-end.ts'
+import { takeStart } from './take-start.ts'
 
 Deno.test('takeEnd', async (t) => {
   await t.step('should return the last n elements from the array', () => {

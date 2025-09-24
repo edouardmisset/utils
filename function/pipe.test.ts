@@ -1,5 +1,6 @@
 import { assertEquals } from '@std/assert'
-import { compose, pipe } from './pipe.ts'
+import { compose } from './compose.ts'
+import { pipe } from './pipe.ts'
 
 const addOne = (x: number): number => x + 1
 const double = (x: number): number => x * 2
