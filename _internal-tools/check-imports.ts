@@ -3,8 +3,8 @@
 
 import { green } from 'jsr:@std/fmt/colors'
 import { join } from 'jsr:@std/path'
-import denoJson from './deno.json' with { type: 'json' }
-import importMap from './import-map.json' with { type: 'json' }
+import denoJson from '../deno.json' with { type: 'json' }
+import importMap from '../import-map.json' with { type: 'json' }
 
 const imports = importMap.imports
 const denoJsonList = Promise.all(

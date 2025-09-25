@@ -1,6 +1,8 @@
 import { bold, green, red, yellow } from 'jsr:@std/fmt/colors'
 import { extname, join } from 'jsr:@std/path'
-import rootDenoJson from './deno.json' with { type: 'json' }
+import rootDenoJson from '../deno.json' with {
+  type: 'json',
+}
 
 type Result = {
   pkg: string

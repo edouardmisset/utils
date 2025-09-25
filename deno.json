@@ -2,9 +2,10 @@
   "$schema": "https://raw.githubusercontent.com/denoland/deno/main/cli/schemas/config-file.v1.json",
   "importMap": "./import-map.json",
   "tasks": {
-    "check:barrels": "deno run --allow-read ./check-barrels.ts",
-    "check:imports": "deno run --allow-read ./check-imports.ts",
-    "check": " deno lint && deno fmt && deno task typecheck && deno task docs:lint && deno task test && deno task check:imports && deno task check:barrels",
+    "check:barrels": "deno run --allow-read ./_internal-tools/check-barrels.ts",
+    "check:imports": "deno run --allow-read ./_internal-tools/check-imports.ts",
+    "check:links": "deno run --allow-read ./_internal-tools/check-links.ts",
+    "check": " deno lint && deno fmt && deno task typecheck && deno task docs:lint && deno task test && deno task check:imports && deno task check:barrels && deno task check:links",
     "coverage:gen": "deno coverage ./coverage --lcov --output=./coverage/lcov.info",
     "coverage:view": "deno coverage --html coverage",
     "docs:lint": "deno doc --lint ./**/*.ts",
@@ -75,8 +76,7 @@
       "./**/*.test.ts"
     ],
     "exclude": [
-      "check-imports.ts",
-      "check-barrels.ts"
+      "_internal-tools"
     ]
   }
 }
