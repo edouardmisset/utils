@@ -7,4 +7,6 @@
 - [ ] Create a tree class
 - [ ] Create a graph class
 - [ ] Create a heap class
-- [ ] Rework the memoize function to use a class instead of function ? (support async ?)
+- [ ] Rework the memoize function to use a class instead of function ? (support
+      async ?)
+- [ ] Refactor: single function per file (with exceptions: tryCatch, err, ok)
