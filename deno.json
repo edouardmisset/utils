@@ -2,16 +2,16 @@
   "$schema": "https://raw.githubusercontent.com/denoland/deno/main/cli/schemas/config-file.v1.json",
   "importMap": "./import-map.json",
   "tasks": {
-    "check": "deno check --doc ./**/*.ts && deno lint && deno fmt && deno run --allow-read ./check-imports.ts && deno run test",
+    "check:barrels": "deno run --allow-read ./check-barrels.ts",
+    "check:imports": "deno run --allow-read ./check-imports.ts",
+    "check": " deno lint && deno fmt && deno task typecheck && deno task docs:lint && deno task test && deno task check:imports && deno task check:barrels",
     "coverage:gen": "deno coverage ./coverage --lcov --output=./coverage/lcov.info",
     "coverage:view": "deno coverage --html coverage",
     "docs:lint": "deno doc --lint ./**/*.ts",
-    "test": "deno test --doc --reporter=dot --coverage --parallel ./**/*.ts",
     "docs": "deno doc --html --name='TS utils 🚀' ./mod.ts",
     "test:watch": "deno test --reporter=dot --watch",
-    "check:imports": "deno run --allow-read ./check-imports.ts",
-    "check:barrels": "deno run --allow-read ./check-barrels.ts",
-    "validate": "deno task check && deno task check:imports && deno task check:barrels && deno task docs:lint"
+    "test": "deno test --doc --reporter=dot --coverage --parallel ./**/*.ts",
+    "typecheck": "deno check --doc ./**/*.ts"
   },
   "workspace": [
     "./array",
