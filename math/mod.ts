@@ -2,9 +2,9 @@
 
 /**
  * Mathematical utility functions for calculations, statistics, and number
- * validation. 
+ * validation.
  * Includes arithmetic operations, averages, products, and mathematical
- * validations. 
+ * validations.
  * E.g. {@link sum}, {@link average}, {@link range}, {@link random}
  *
  * @example
@@ -53,4 +53,3 @@ export * from './standard-deviation.ts'
 export * from './sum.ts'
 export * from './to-fixed-without-zero.ts'
 export * from './validate-number.ts'
-

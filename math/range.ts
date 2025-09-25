@@ -1,16 +1,12 @@
+import type { ValueAndRange } from '@edouardmisset/type'
+
 /**
- * An object containing the maximum, minimum, value to be considered and
+ * An object containing the minimum, maximum, and the value to be considered and
  * optionally its inclusiveness.
  */
-export interface ValueAndRange {
+export type ValueRangeAndBoundaryType = ValueAndRange & {
   /** Wether or not the bounds (min & max) are included or not */
   inclusive?: boolean
-  /** The maximum value of the range */
-  maximum: number
-  /** The minimum value of the range */
-  minimum: number
-  /** The value to consider with respect to the range */
-  value: number
 }
 
 /**
@@ -33,9 +29,12 @@ export function clampValueInRange({
   maximum,
   minimum,
   value,
-}: Omit<ValueAndRange, 'inclusive'>): number {
+}: ValueAndRange): number {
   return Math.max(Math.min(value, maximum), minimum)
 }
+
+/** Alias for {@link clampValueInRange} */
+export const clamp: typeof clampValueInRange = clampValueInRange
 
 /**
  * Checks if the provided value is strictly outside the specified limits.
@@ -58,7 +57,7 @@ export function isOutsideRange({
   maximum,
   minimum,
   value,
-}: Omit<ValueAndRange, 'inclusive'>): boolean {
+}: ValueAndRange): boolean {
   return value < minimum || maximum < value
 }
 
@@ -141,7 +140,7 @@ export function isInRange({
   minimum,
   value,
   inclusive = true,
-}: ValueAndRange): boolean {
+}: ValueRangeAndBoundaryType): boolean {
   return inclusive
     ? isInclusiveInRange({ maximum, minimum, value })
     : isExclusiveInRange({ maximum, minimum, value })

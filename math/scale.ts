@@ -1,4 +1,5 @@
 import { err, ok, type Result } from '@edouardmisset/function'
+import type { ValueAndRange } from '@edouardmisset/type'
 
 /**
  * `scale` function's parameters.
@@ -13,18 +14,6 @@ export interface ScaleParameters {
   /** The lower bound of the target range */
   outMinimum?: number
   /** The value to transform */
-  value: number
-}
-
-/**
- * `rescale` function's parameters rescale a value between 0 and 1 given its range.
- */
-export interface Rescale {
-  /** The upper bound of the original range */
-  maximum: number
-  /** The lower bound of the original range */
-  minimum: number
-  /** The value to scale between 0 and 1 */
   value: number
 }
 
@@ -79,7 +68,7 @@ export function scale(parameters: ScaleParameters): Result<number, Error> {
     )
     : ok(
       outMinimum + ((value - inMinimum) * (outMaximum - outMinimum)) /
-          (inMaximum - inMinimum),
+      (inMaximum - inMinimum),
     )
 }
 
@@ -102,7 +91,7 @@ export function scale(parameters: ScaleParameters): Result<number, Error> {
  * }
  * ```
  */
-export function percent(parameters: Rescale): Result<number, Error> {
+export function percent(parameters: ValueAndRange): Result<number, Error> {
   const { value, minimum, maximum } = parameters
   return scale({
     inMinimum: minimum,
@@ -132,7 +121,7 @@ export function percent(parameters: Rescale): Result<number, Error> {
  * }
  * ```
  */
-export function rescale(parameters: Rescale): Result<number, Error> {
+export function rescale(parameters: ValueAndRange): Result<number, Error> {
   const { value, minimum, maximum } = parameters
   return scale({
     inMinimum: minimum,

@@ -32,6 +32,15 @@ export type Primitive =
   | undefined
   | null
 
+export type ValueAndRange = {
+  /** The value to be checked against the range */
+  value: number
+  /** The minimum value of the range */
+  minimum: number
+  /** The maximum value of the range */
+  maximum: number
+}
+
 /**
  * Type is a number representing the duration in milliseconds.
  */

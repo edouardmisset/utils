@@ -1,8 +1,8 @@
 /**
  * TypeScript utility types and helpers for enhanced type safety and developer
- * experience. 
+ * experience.
  * Includes advanced type helpers for autocomplete, conditionals, and type
- * transformations. 
+ * transformations.
  * E.g. {@link Primitive}, {@link Override}, {@link LooseAutoComplete}
  *
  * @example
