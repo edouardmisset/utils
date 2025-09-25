@@ -2,9 +2,9 @@
 
 /**
  * Object manipulation utilities for transformation, validation, and key
- * operations. 
+ * operations.
  * Includes functions for object inversion, key checking, type validation, and
- * mapping. 
+ * mapping.
  * E.g. {@link invert}, {@link size}, {@link objectKeys}, {@link mapObject}
  *
  * @example
@@ -49,4 +49,3 @@ export * from './pick.ts'
 export * from './remove-nullish-values.ts'
 export * from './shallow-equal.ts'
 export * from './size.ts'
-

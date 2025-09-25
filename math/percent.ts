@@ -4,7 +4,7 @@ import { scale } from './scale.ts'
 /**
  * `rescale` function's parameters rescale a value between 0 and 1 given its range.
  */
-export interface Rescale {
+interface Rescale {
   /** The upper bound of the original range */
   maximum: number
   /** The lower bound of the original range */

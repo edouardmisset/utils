@@ -42,14 +42,14 @@ export function average(
   if (nums.length === 0) {
     return err(
       new Error(
-        `Cannot calculate average if no values are passed in (${String(numbers)
+        `Cannot calculate average if no values are passed in (${
+          String(numbers)
         })`,
       ),
     )
   }
 
-  const average =
-    nums.reduce((accumulator, value) => accumulator + value, 0) /
+  const average = nums.reduce((accumulator, value) => accumulator + value, 0) /
     nums.length
 
   return ok(average)

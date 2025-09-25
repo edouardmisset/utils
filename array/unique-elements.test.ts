@@ -1,5 +1,5 @@
 import { assertEquals } from '@std/assert'
-import { uniqueElements, symmetricDifference } from './unique-elements.ts'
+import { symmetricDifference, uniqueElements } from './unique-elements.ts'
 
 const array1 = [1, 2, 3] as const
 const array2 = [2, 3, 4] as const

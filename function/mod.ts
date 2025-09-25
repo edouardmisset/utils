@@ -3,7 +3,7 @@
 /**
  * Utility functions for common tasks such as {@link sleep},
  * {@link debounce}, {@link throttle}, {@link memoize}, and error
- * handling ({@link tryCatch}). 
+ * handling ({@link tryCatch}).
  *
  * @example
  * ```ts
@@ -52,4 +52,3 @@ export * from './sleep.ts'
 export * from './throttle.ts'
 export * from './time-it.ts'
 export * from './try-catch.ts'
-

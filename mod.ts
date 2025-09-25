@@ -6,7 +6,7 @@
  * - **date**: Date manipulation and conversion utilities (e.g. {@link parseDate}, {@link isValidDate})
  * - **function**: Common function utilities (e.g. {@link debounce}, {@link throttle}, {@link memoize})
  * - **math**: Mathematical calculations and validations (e.g. {@link random},
- *   {@link average}, {@link range}) 
+ *   {@link average}, {@link range})
  * - **object**: Object manipulation utilities (e.g. {@link invert}, {@link size},
  *   {@link objectKeys})
  * - **text**: String processing and text utilities (e.g. {@link slugify}, {@link stringEquals},
@@ -25,7 +25,7 @@
  * ];
  * const grouped = groupBy(users, 'type');
  * assertEquals(grouped.even.length, 2);
- * assertEquals(grouped.odd, { name: 'Bob', type: 'odd' });
+ * assertEquals(grouped.odd, [{ name: 'Bob', type: 'odd' }]);
  * ```
  *
  * @example
@@ -48,4 +48,3 @@ export * from './math/mod.ts'
 export * from './object/mod.ts'
 export * from './text/mod.ts'
 export * from './type/mod.ts'
-

@@ -5,7 +5,7 @@ Deno.test('ok', async (t) => {
   await t.step('should create successful result with data', () => {
     const data = { name: 'test', value: 123 }
     const result = ok(data)
-    
+
     assertEquals(result.data, data)
     assertEquals(result.error, undefined)
   })

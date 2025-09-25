@@ -1,5 +1,5 @@
 import { assertEquals } from '@std/assert'
-import { takeStart, getFirstElements } from './take-start.ts'
+import { getFirstElements, takeStart } from './take-start.ts'
 
 Deno.test('takeStart', async (t) => {
   await t.step('should return the first n elements from the array', () => {

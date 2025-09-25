@@ -44,4 +44,3 @@ export * from './is-date-in-year.ts'
 export * from './is-valid-date.ts'
 export * from './parse-date.ts'
 export * from './sort-by-date.ts'
-

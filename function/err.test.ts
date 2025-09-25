@@ -5,7 +5,7 @@ Deno.test('err', async (t) => {
   await t.step('should create failure result with error', () => {
     const error = new Error('test error')
     const result = err(error)
-    
+
     assertEquals(result.data, undefined)
     assertEquals(result.error, error)
   })

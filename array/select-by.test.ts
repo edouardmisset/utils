@@ -1,5 +1,5 @@
 import { assertEquals } from '@std/assert'
-import { selectBy, pluckBy } from './select-by.ts'
+import { pluckBy, selectBy } from './select-by.ts'
 
 Deno.test('selectBy', async (t) => {
   const objects = [{ id: 1, name: 'John' }, { id: 2, name: 'Jane' }]

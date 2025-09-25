@@ -1,5 +1,5 @@
 import { assertEquals } from '@std/assert'
-import { createSelectBy, buildSelectBy } from './create-select-by.ts'
+import { buildSelectBy, createSelectBy } from './create-select-by.ts'
 
 Deno.test('createSelectBy', async (t) => {
   const selectByName = createSelectBy('name')
