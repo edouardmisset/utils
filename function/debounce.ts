@@ -1,17 +1,9 @@
-import type { AnyVoidFunction } from '@edouardmisset/type'
+import type { AnyVoidFunction, CallbackAndDelay } from '@edouardmisset/type'
 
 /**
  * Parameters for the debounce function.
  */
-interface DebounceParameters {
-  /**
-   * The function to debounce.
-   */
-  callback: AnyVoidFunction
-  /**
-   * The delay in milliseconds before invoking the callback. Defaults to 50.
-   */
-  delay?: number
+type DebounceParameters = CallbackAndDelay & {
   /**
    * An optional object to store the timer ID, allowing external control or
    * cancellation.

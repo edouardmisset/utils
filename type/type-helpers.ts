@@ -41,6 +41,13 @@ export type ValueAndRange = {
   maximum: number
 }
 
+export type CallbackAndDelay = {
+  /** The function to be called after the delay */
+  callback: AnyVoidFunction
+  /** The delay in milliseconds before invoking the callback */
+  delay: number
+}
+
 /**
  * Type is a number representing the duration in milliseconds.
  */
@@ -201,8 +208,8 @@ export type NotNullValues<
   Object_ extends ObjectOfType<unknown>,
   Key extends keyof Object_ = keyof Object_,
 > = {
-  [P in Key]: Exclude<Object_[P], null>
-}
+    [P in Key]: Exclude<Object_[P], null>
+  }
 
 /**
  * Constructs a type by excluding `null` and `undefined` from the possible values
@@ -238,8 +245,8 @@ export type NotNullishValues<
   Object_ extends ObjectOfType<unknown>,
   Key extends keyof Object_ = keyof Object_,
 > = {
-  [P in Key]: Exclude<Object_[P], null | undefined>
-}
+    [P in Key]: Exclude<Object_[P], null | undefined>
+  }
 
 /**
  * It takes a type as its argument and returns a new type that has the same

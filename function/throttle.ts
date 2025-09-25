@@ -1,15 +1,10 @@
-import type { AnyVoidFunction } from '@edouardmisset/type'
-
-interface ThrottleParameters {
-  callback: AnyVoidFunction
-  delay?: number
-}
+import type { AnyVoidFunction, CallbackAndDelay } from '@edouardmisset/type'
 
 /**
  * Creates a throttled function that only invokes the provided callback at most
  * once per every 'delay' milliseconds.
  *
- * @param {ThrottleParameters} parameters - The parameters for the throttle function.
+ * @param {CallbackAndDelay} parameters - The parameters for the throttle function.
  * @returns {AnyVoidFunction} - A new function that throttles the callback.
  *
  * @example
@@ -19,7 +14,7 @@ interface ThrottleParameters {
  * throttledFunction() // 'Hello' will not be logged because the function is throttled
  * ```
  */
-export const throttle = (parameters: ThrottleParameters): AnyVoidFunction => {
+export const throttle = (parameters: CallbackAndDelay): AnyVoidFunction => {
   const { callback, delay = 100 } = parameters
 
   let lastCalled = 0

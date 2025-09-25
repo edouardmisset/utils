@@ -4,7 +4,7 @@ import type { ValueAndRange } from '@edouardmisset/type'
 /**
  * `scale` function's parameters.
  */
-export interface ScaleParameters {
+export type ScaleParameters = {
   /** The upper bound of the original range */
   inMaximum: number
   /** The lower bound of the original range */
