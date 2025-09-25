@@ -1,21 +1,4 @@
 import { err, ok, type Result } from '@edouardmisset/function'
-import type { ValueAndRange } from '@edouardmisset/type'
-
-/**
- * `scale` function's parameters.
- */
-export type ScaleParameters = {
-  /** The upper bound of the original range */
-  inMaximum: number
-  /** The lower bound of the original range */
-  inMinimum: number
-  /** The upper bound of the target range */
-  outMaximum?: number
-  /** The lower bound of the target range */
-  outMinimum?: number
-  /** The value to transform */
-  value: number
-}
 
 /**
  * Scales a value from one range to another.
@@ -68,66 +51,20 @@ export function scale(parameters: ScaleParameters): Result<number, Error> {
     )
     : ok(
       outMinimum + ((value - inMinimum) * (outMaximum - outMinimum)) /
-      (inMaximum - inMinimum),
+          (inMaximum - inMinimum),
     )
 }
 
-/**
- * Scales a value from one range to another, outputting a percentage.
- *
- * @param {Object} parameters - The scaling parameters.
- * @param {number} parameters.value - The value to scale.
- * @param {number} parameters.minimum - The lower bound of the original range.
- * @param {number} parameters.maximum - The upper bound of the original range.
- * @returns {Result<number, Error>} A result object containing either the scaled value as a percentage or an error.
- *
- * @example
- * ```typescript
- * const result = percent({ value: 5, minimum: 0, maximum: 10 })
- * if (result.error) {
- *   console.error('Percentage calculation failed:', result.error.message)
- * } else {
- *   console.log('Percentage:', result.data) // 50
- * }
- * ```
- */
-export function percent(parameters: ValueAndRange): Result<number, Error> {
-  const { value, minimum, maximum } = parameters
-  return scale({
-    inMinimum: minimum,
-    inMaximum: maximum,
-    outMinimum: 0,
-    outMaximum: 100,
-    value,
-  })
-}
-
-/**
- * Scales a value from one range to a value between 0 and 1.
- *
- * @param {Object} parameters - The scaling parameters.
- * @param {number} parameters.value - The value to scale.
- * @param {number} parameters.minimum - The lower bound of the original range.
- * @param {number} parameters.maximum - The upper bound of the original range.
- * @returns {Result<number, Error>} A result object containing either the scaled value or an error.
- *
- * @example
- * ```typescript
- * const result = rescale({ value: 5, minimum: 0, maximum: 10 })
- * if (result.error) {
- *   console.error('Rescaling failed:', result.error.message)
- * } else {
- *   console.log('Rescaled value:', result.data) // 0.5
- * }
- * ```
- */
-export function rescale(parameters: ValueAndRange): Result<number, Error> {
-  const { value, minimum, maximum } = parameters
-  return scale({
-    inMinimum: minimum,
-    inMaximum: maximum,
-    value,
-    outMinimum: 0,
-    outMaximum: 1,
-  })
+/** `scale` function's parameters. */
+export type ScaleParameters = {
+  /** The upper bound of the original range */
+  inMaximum: number
+  /** The lower bound of the original range */
+  inMinimum: number
+  /** The upper bound of the target range */
+  outMaximum?: number
+  /** The lower bound of the target range */
+  outMinimum?: number
+  /** The value to transform */
+  value: number
 }

@@ -1,42 +1,6 @@
 import type { ValueAndRange } from '@edouardmisset/type'
 
 /**
- * An object containing the minimum, maximum, and the value to be considered and
- * optionally its inclusiveness.
- */
-export type ValueRangeAndBoundaryType = ValueAndRange & {
-  /** Wether or not the bounds (min & max) are included or not */
-  inclusive?: boolean
-}
-
-/**
- * Clamps the provided value within the specified range.
- *
- * @param {ValueAndRange} options - An object containing the maximum, minimum,
- * and value to be clamped.
- * @param {number} options.maximum - The maximum value of the range.
- * @param {number} options.minimum - The minimum value of the range.
- * @param {number} options.value - The value to be clamped within the range.
- * @returns {number} - The clamped value within the specified range.
- *
- * @example
- * ```typescript
- * clampValueInRange({ maximum: 10, minimum: 0, value: 15 })
- * // returns 10
- * ```
- */
-export function clampValueInRange({
-  maximum,
-  minimum,
-  value,
-}: ValueAndRange): number {
-  return Math.max(Math.min(value, maximum), minimum)
-}
-
-/** Alias for {@link clampValueInRange} */
-export const clamp: typeof clampValueInRange = clampValueInRange
-
-/**
  * Checks if the provided value is strictly outside the specified limits.
  *
  * @param {IsOutsideLimitsOptions} options - An object containing the maximum,
@@ -49,16 +13,44 @@ export const clamp: typeof clampValueInRange = clampValueInRange
  *
  * @example
  * ```typescript
- * isOutsideRange({ maximum: 10, minimum: 0, value: 15 })
+ * isStrictlyOutsideRange({ maximum: 10, minimum: 0, value: 15 })
  * // returns true
  * ```
  */
-export function isOutsideRange({
+export function isStrictlyOutsideRange({
   maximum,
   minimum,
   value,
 }: ValueAndRange): boolean {
   return value < minimum || maximum < value
+}
+
+/**
+ * Checks if the provided value is outside the specified limits.
+ *
+ * @remarks **Note**: This function is inclusive, meaning that if the value is equal to
+ * the minimum or maximum, it will be considered outside the range.
+ *
+ * @param {IsOutsideLimitsOptions} options - An object containing the maximum,
+ * minimum, and value to be checked.
+ * @param {number} options.maximum - The maximum value of the limit.
+ * @param {number} options.minimum - The minimum value of the limit.
+ * @param {number} options.value - The value to be checked against the limits.
+ * @returns {boolean} - A boolean value indicating whether the provided value is
+ * outside the specified limits.
+ *
+ * @example
+ * ```typescript
+ * isOutsideRangeInclusive({ maximum: 10, minimum: 0, value: 10 })
+ * // returns true
+ * ```
+ */
+export function isOutsideRangeInclusive({
+  maximum,
+  minimum,
+  value,
+}: ValueAndRange): boolean {
+  return value <= minimum || maximum <= value
 }
 
 /**
@@ -76,11 +68,11 @@ export function isOutsideRange({
  *
  * @example
  * ```typescript
- * isInclusiveInRange({ maximum: 10, minimum: 0, value: 5 })
+ * isInRangeInclusive({ maximum: 10, minimum: 0, value: 5 })
  * // returns true
  * ```
  */
-export function isInclusiveInRange({
+export function isInRangeInclusive({
   maximum,
   minimum,
   value,
@@ -103,11 +95,11 @@ export function isInclusiveInRange({
  *
  * @example
  * ```typescript
- * isExclusiveInRange({ maximum: 10, minimum: 0, value: 10 })
+ * isStrictlyInRange({ maximum: 10, minimum: 0, value: 10 })
  * // returns false
  * ```
  */
-export function isExclusiveInRange({
+export function isStrictlyInRange({
   maximum,
   minimum,
   value,
@@ -142,6 +134,15 @@ export function isInRange({
   inclusive = true,
 }: ValueRangeAndBoundaryType): boolean {
   return inclusive
-    ? isInclusiveInRange({ maximum, minimum, value })
-    : isExclusiveInRange({ maximum, minimum, value })
+    ? isInRangeInclusive({ maximum, minimum, value })
+    : isStrictlyInRange({ maximum, minimum, value })
+}
+
+/**
+ * An object containing the minimum, maximum, and the value to be considered and
+ * optionally its inclusiveness.
+ */
+export type ValueRangeAndBoundaryType = ValueAndRange & {
+  /** Wether or not the bounds (min & max) are included or not */
+  inclusive?: boolean
 }

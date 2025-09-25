@@ -1,76 +1,85 @@
 import { assertEquals } from '@std/assert'
 import {
-  clampValueInRange,
-  isExclusiveInRange,
-  isInclusiveInRange,
   isInRange,
-  isOutsideRange,
+  isInRangeInclusive,
+  isStrictlyInRange,
+  isStrictlyOutsideRange,
 } from './range.ts'
 
-Deno.test('range functions', async (t) => {
-  const maximum = 10
-  const minimum = 0
-  const range = { maximum, minimum }
-  const valueInsideRange = { ...range, value: 5 }
-  const valueAboveRange = { ...range, value: 15 }
-  const valueBelowRange = { ...range, value: -5 }
-  const valueEqualsHigherBound = { ...range, value: maximum }
-  const valueEqualsLowerBound = { ...range, value: minimum }
+const maximum = 10
+const minimum = 0
+const range = { maximum, minimum }
+const valueInsideRange = { ...range, value: 5 }
+const valueAboveRange = { ...range, value: 15 }
+const valueBelowRange = { ...range, value: -5 }
+const valueEqualsHigherBound = { ...range, value: maximum }
+const valueEqualsLowerBound = { ...range, value: minimum }
 
-  await t.step('clampValueInRange', () => {
-    assertEquals(clampValueInRange(valueAboveRange), maximum)
-    assertEquals(clampValueInRange(valueBelowRange), minimum)
-    assertEquals(clampValueInRange(valueInsideRange), 5)
+Deno.test('isOutsideRange', async (t) => {
+  await t.step('value above is outside', () => {
+    assertEquals(isStrictlyOutsideRange(valueAboveRange), true)
   })
-
-  await t.step('isOutsideRange', () => {
-    assertEquals(isOutsideRange(valueAboveRange), true)
-    assertEquals(isOutsideRange(valueBelowRange), true)
-    assertEquals(isOutsideRange(valueInsideRange), false)
+  await t.step('value below is outside', () => {
+    assertEquals(isStrictlyOutsideRange(valueBelowRange), true)
   })
-
-  await t.step('isInclusiveInRange', () => {
-    assertEquals(
-      isInclusiveInRange(valueEqualsHigherBound),
-      true,
-    )
-    assertEquals(
-      isInclusiveInRange(valueEqualsLowerBound),
-      true,
-    )
-    assertEquals(
-      isInclusiveInRange(valueInsideRange),
-      true,
-    )
+  await t.step('value inside is not outside', () => {
+    assertEquals(isStrictlyOutsideRange(valueInsideRange), false)
   })
+})
 
-  await t.step('isExclusiveInRange', () => {
-    assertEquals(
-      isExclusiveInRange(valueEqualsHigherBound),
-      false,
-    )
-    assertEquals(
-      isExclusiveInRange(valueEqualsLowerBound),
-      false,
-    )
-    assertEquals(
-      isExclusiveInRange(valueInsideRange),
-      true,
-    )
+Deno.test('isInRangeInclusive', async (t) => {
+  await t.step('value equal to upper bound is inclusive', () => {
+    assertEquals(isInRangeInclusive(valueEqualsHigherBound), true)
   })
+  await t.step('value equal to lower bound is inclusive', () => {
+    assertEquals(isInRangeInclusive(valueEqualsLowerBound), true)
+  })
+  await t.step('value inside is inclusive', () => {
+    assertEquals(isInRangeInclusive(valueInsideRange), true)
+  })
+})
 
-  await t.step('isInRange', () => {
+Deno.test('isStrictlyInRange', async (t) => {
+  await t.step('value equal to upper bound is not strictly inside', () => {
+    assertEquals(isStrictlyInRange(valueEqualsHigherBound), false)
+  })
+  await t.step('value equal to lower bound is not strictly inside', () => {
+    assertEquals(isStrictlyInRange(valueEqualsLowerBound), false)
+  })
+  await t.step('value inside is strictly inside', () => {
+    assertEquals(isStrictlyInRange(valueInsideRange), true)
+  })
+})
+
+Deno.test('isInRange (parametrized inclusive flag)', async (t) => {
+  await t.step('value equal to upper bound default inclusive', () => {
     assertEquals(isInRange(valueEqualsHigherBound), true)
+  })
+  await t.step('value equal to lower bound default inclusive', () => {
     assertEquals(isInRange(valueEqualsLowerBound), true)
+  })
+  await t.step('value inside default inclusive', () => {
     assertEquals(isInRange(valueInsideRange), true)
-    assertEquals(
-      isInRange({ ...valueEqualsHigherBound, inclusive: false }),
-      false,
-    )
-    assertEquals(
-      isInRange({ ...valueEqualsLowerBound, inclusive: false }),
-      false,
-    )
+  })
+  await t.step(
+    'value equal to upper bound with inclusive=false is outside',
+    () => {
+      assertEquals(
+        isInRange({ ...valueEqualsHigherBound, inclusive: false }),
+        false,
+      )
+    },
+  )
+  await t.step(
+    'value equal to lower bound with inclusive=false is outside',
+    () => {
+      assertEquals(
+        isInRange({ ...valueEqualsLowerBound, inclusive: false }),
+        false,
+      )
+    },
+  )
+  await t.step('value inside with inclusive=false is inside', () => {
     assertEquals(
       isInRange({ ...valueInsideRange, inclusive: false }),
       true,

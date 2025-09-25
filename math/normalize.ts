@@ -1,0 +1,34 @@
+import { scale } from '@edouardmisset/math/scale.ts'
+import type { ValueAndRange } from '@edouardmisset/type/type-helpers.ts'
+import type { Result } from '../function/try-catch.ts'
+
+/**
+ * Normalize a value from one range to a value between 0 and 1.
+ *
+ * @param {Object} parameters - The scaling parameters.
+ * @param {number} parameters.value - The value to normalize.
+ * @param {number} parameters.minimum - The lower bound of the original range.
+ * @param {number} parameters.maximum - The upper bound of the original range.
+ * @returns {Result<number, Error>} A result object containing either the normalized value or an error.
+ *
+ * @example
+ * ```typescript
+ * const result = normalize({ value: 5, minimum: 0, maximum: 10 })
+ * if (result.error) {
+ *   console.error('Normalization failed:', result.error.message)
+ * } else {
+ *   console.log('Normalized value:', result.data) // 0.5
+ * }
+ * ```
+ */
+
+export function normalize(parameters: ValueAndRange): Result<number, Error> {
+  const { value, minimum, maximum } = parameters
+  return scale({
+    inMinimum: minimum,
+    inMaximum: maximum,
+    value,
+    outMinimum: 0,
+    outMaximum: 1,
+  })
+}

@@ -26,7 +26,7 @@
  *
  * @example
  * ```typescript
- * standardDeviation([1, 2, 3, 4], true)
+ * standardDeviation([1, 2, 3, 4], {usePopulation: true})
  * // returns approximately 1.118
  * ```
  *
@@ -39,8 +39,9 @@
  */
 export function standardDeviation(
   numbers: number[],
-  usePopulation = false,
+  options?: { usePopulation?: boolean },
 ): number {
+  const { usePopulation = false } = options ?? {}
   if (numbers.length === 1) return 0
 
   const size = numbers.length
