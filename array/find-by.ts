@@ -1,4 +1,4 @@
-import type { ObjectOfType } from '@edouardmisset/type'
+import type { FindByParams, ObjectOfType } from '@edouardmisset/type'
 
 /**
  * Find the first object in an array that matches a given value.
@@ -54,27 +54,13 @@ export function findBy<
   Key extends keyof Object_,
   Value extends Object_[Key],
 >(
-  { array, keyOrFunction, value }: FindByParam<Object_, Key, Value>,
+  { array, keyOrFunction, value }: FindByParams<Object_, Key, Value>,
 ): Object_ | undefined {
-  return array.find((object_) =>
-    typeof keyOrFunction === 'function'
-      ? keyOrFunction(object_) === value
-      : object_[keyOrFunction] === value
-  )
-}
-
-/** Describes the parameters for the findBy function */
-export type FindByParam<
-  Object_ extends ObjectOfType<unknown>,
-  Key extends keyof Object_,
-  Value extends Object_[Key],
-> = {
-  /** The array to search */
-  array: Object_[]
-  /** The object's key giving the value to match or a function returning the
-   * value to match
-   */
-  keyOrFunction: Key | ((o: Object_) => unknown)
-  /** The value to match */
-  value: Value
+  const isFunction = typeof keyOrFunction === 'function'
+  return array.find((object_) => {
+    const valueToCompare = isFunction
+      ? keyOrFunction(object_)
+      : object_[keyOrFunction]
+    return valueToCompare === value
+  })
 }
