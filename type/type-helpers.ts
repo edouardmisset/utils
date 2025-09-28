@@ -50,6 +50,22 @@ export type CallbackAndDelay = {
   delay: number
 }
 
+/** Describes the parameters for the findBy function */
+export type FindByParams<
+  Object_ extends ObjectOfType<unknown> = ObjectOfType<unknown>,
+  Key extends keyof Object_ = keyof Object_,
+  Value extends Object_[Key] = Object_[Key],
+> = {
+  /** The array to search */
+  array: Object_[]
+  /** The object's key giving the value to match or a function returning the
+   * value to match
+   */
+  keyOrFunction: Key | ((obj: Object_) => unknown)
+  /** The value to match */
+  value: Value
+}
+
 /**
  * Type is a number representing the duration in milliseconds.
  */
