@@ -5,22 +5,22 @@ import { Milliseconds } from '@edouardmisset/type'
  * `Date` type).
  */
 export type DurationAndReferenceDate = {
-  durationInMS?: Milliseconds
-  referenceDate?: Date
+  durationInMS: Milliseconds
+  referenceDate: Date
 }
 
 /**
  * Checks if the given date is within the duration from the reference date
- * (inclusive).
+ * (**inclusive**).
  *
  * @param {Date} date - The date to check.
- * @param {Required<DurationAndReferenceDate>} options - An object containing
+ * @param {DurationAndReferenceDate} options - An object containing
  * the reference date and duration in milliseconds.
  * @returns {boolean} - True if the date is within the duration, false otherwise.
  */
 export function isDateInDuration(
   date: Date,
-  options: Required<DurationAndReferenceDate>,
+  options: DurationAndReferenceDate,
 ): boolean {
   const { referenceDate, durationInMS } = options
   const referenceTime = referenceDate.getTime()

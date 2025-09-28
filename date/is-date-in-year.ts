@@ -4,7 +4,7 @@ import { Integer } from '@edouardmisset/type'
 /**
  * Type representing a year as an integer (number).
  */
-export type Year = {
+export type YearOption = {
   year: Integer
 }
 
@@ -14,8 +14,8 @@ export type Year = {
  * @param {unknown} option - The option to check.
  * @returns {boolean} - True if the option is of type Year, false otherwise.
  */
-export function isYearOption(option: unknown): option is Year {
-  return (option as Year)?.year !== undefined
+export function isYearOption(option: unknown): option is YearOption {
+  return (option as YearOption)?.year !== undefined
 }
 
 /**

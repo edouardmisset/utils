@@ -21,7 +21,7 @@ export function isDateInRangeOption(
 }
 
 /**
- * Checks if the given date is within the given start and end dates (inclusive).
+ * Checks if the given date is within the given start and end dates (**inclusive**).
  *
  * @param {Date} date - The date to check.
  * @param {StartAndEndDate} options - An object containing the start and end
