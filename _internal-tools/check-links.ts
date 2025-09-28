@@ -1,4 +1,5 @@
-#!/usr/bin/env -S deno run --allow-read
+import { bold, green, red, rgb24 } from 'jsr:@std/fmt/colors'
+
 /**
  * Script to verify that all {@link ...} references in module JSDoc blocks (barrel files)
  * resolve to actual exported symbols present in the repository.
@@ -138,26 +139,26 @@ let hasErrors = false
 for (const r of results) {
   if (r.missing.length) {
     hasErrors = true
-    await Deno.stderr.write(new TextEncoder().encode(`❌ ${r.file}\n`))
-    await Deno.stderr.write(
-      new TextEncoder().encode(
-        '  Missing symbols for links: ' + r.missing.join(', ') + '\n',
-      ),
+    globalThis.console.error(red(`❌ ${r.file}\n`))
+    globalThis.console.error(
+      red(`  Missing symbols for links: ${r.missing.join(', ')}\n`),
     )
   } else {
-    await Deno.stdout.write(
-      new TextEncoder().encode(`✅ ${r.file} (${r.links.length} links OK)\n`),
-    )
+    globalThis.console.log(green(`✅ ${r.file} (${r.links.length} links OK)\n`))
   }
 }
 
 if (hasErrors) {
-  await Deno.stderr.write(
-    new TextEncoder().encode('\nErrors found in JSDoc links.\n'),
-  )
+  globalThis.console.error(red('Errors found in JSDoc links.'))
+
   Deno.exit(1)
 } else {
-  await Deno.stdout.write(
-    new TextEncoder().encode('\nAll JSDoc {@link} references are valid.\n'),
+  globalThis.console.log(
+    bold(
+      green(
+        `✅ All JSDoc {${rgb24('@link', { r: 222, g: 49, b: 99 })
+        }} references are valid.`,
+      ),
+    ),
   )
 }

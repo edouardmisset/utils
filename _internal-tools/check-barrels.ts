@@ -110,7 +110,7 @@ async function main(): Promise<void> {
   }
 
   if (failed) Deno.exit(1)
-  globalThis.console.log(green(bold('All barrel files are consistent ✅')))
+  globalThis.console.log(green(bold('✅ All barrel files are consistent')))
 }
 
 if (import.meta.main) {
