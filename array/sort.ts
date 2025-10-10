@@ -40,7 +40,7 @@ export function createStringSorter<Object_ extends ObjectOfType<unknown>>(
     ...collatorOptions
   } = options ?? {}
 
-  const { compare } = new Intl.Collator(locales, {
+  const collator = new Intl.Collator(locales, {
     numeric,
     sensitivity,
     ...collatorOptions,
@@ -55,7 +55,7 @@ export function createStringSorter<Object_ extends ObjectOfType<unknown>>(
       ? right
       : (right[key as keyof Object_] as string)
 
-    return compare(leftString, rightString) * (descending ? -1 : 1)
+    return collator.compare(leftString, rightString) * (descending ? -1 : 1)
   }
 }
 

@@ -5,8 +5,6 @@ const collator = new Intl.Collator(undefined, {
   sensitivity: 'base', // Case-insensitive sorting
 })
 
-const { compare } = collator
-
 /**
  * Sorts an array of objects by a specified property in ascending or descending
  * order.
@@ -54,7 +52,7 @@ export function sortBy<Object_ extends ObjectOfType<string | number>>(
     const order = descending ? -1 : 1
 
     if (typeof leftValue === 'string' && typeof rightValue === 'string') {
-      return compare(leftValue, rightValue) * order
+      return collator.compare(leftValue, rightValue) * order
     }
 
     if (typeof leftValue === 'number' && typeof rightValue === 'number') {
