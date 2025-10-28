@@ -10,32 +10,32 @@ import { err, ok, type Result } from '@edouardmisset/function'
  *
  * @example
  * ```typescript
+ * import { assertEquals } from '@std/assert'
+ *
+ * // Valid date conversion
  * const result = convertStringDate("01/01/2022 12:00")
- * if (result.error) {
- *   console.log('Error:', result.error.message)
- * } else {
- *   console.log(result.data) // "2022-01-01T12:00"
- * }
+ * assertEquals(result.error, undefined)
+ * assertEquals(result.data, "2022-01-01T12:00")
  * ```
  *
  * @example
  * ```typescript
+ * import { assertEquals } from '@std/assert'
+ *
+ * // Empty string
  * const result = convertStringDate("")
- * if (result.error) {
- *   console.log('Error:', result.error.message)
- * } else {
- *   console.log(result.data) // ""
- * }
+ * assertEquals(result.error, undefined)
+ * assertEquals(result.data, "")
  * ```
  *
  * @example
  * ```typescript
+ * import { assert } from '@std/assert'
+ *
+ * // Invalid format
  * const result = convertStringDate("invalid date string")
- * if (result.error) {
- *   console.log('Error:', result.error.message)
- *   // Error: Invalid date format (invalid date string).
- *   // It should be in the form: "dd/mm/yyyy hh:mm"
- * }
+ * assert(result.error instanceof Error)
+ * assert(result.error.message.includes('Invalid date format'))
  * ```
  */
 export function convertStringDate(dateString: string): Result<string, Error> {

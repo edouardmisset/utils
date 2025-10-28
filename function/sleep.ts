@@ -8,21 +8,21 @@ import { err, ok, type Result } from '@edouardmisset/function'
  *
  * @example
  * ```typescript
- * const result = await sleep(1000)
- * if (result.error) {
- *   console.error('Sleep failed:', result.error.message)
- * } else {
- *   console.log('Sleep completed successfully')
- * }
+ * import { assertEquals } from '@std/assert'
+ *
+ * // Valid sleep duration
+ * const result = await sleep(100)
+ * assertEquals(result.error, undefined)
  * ```
  *
  * @example
  * ```typescript
+ * import { assert } from '@std/assert'
+ *
+ * // Negative duration returns error
  * const result = await sleep(-1000)
- * if (result.error) {
- *   console.log("Error:", result.error.message)
- *   // Error: Invalid time value (-1000 ms). Time must be a positive number.
- * }
+ * assert(result.error instanceof RangeError)
+ * assert(result.error.message.includes('Invalid time value'))
  * ```
  */
 export function sleep(milliseconds: number): Promise<Result<void, RangeError>> {

@@ -11,16 +11,22 @@ import { isFunction } from '@edouardmisset/function'
  * @returns Result with `data` on success or `error` on failure.
  *
  * @example
+ * ```typescript
  * import { assertEquals } from "@std/assert";
+ *
  * const syncOk = tryCatch(() => JSON.parse('{"valid": true}'));
  * assertEquals(syncOk.error, undefined);
  * assertEquals(syncOk.data?.valid, true);
+ * ```
  *
  * @example
+ * ```typescript
  * import { assertEquals } from "@std/assert";
+ *
  * const syncErr = tryCatch(() => JSON.parse('invalid'));
  * assertEquals(syncErr.data, undefined);
  * assertEquals(syncErr.error instanceof SyntaxError, true);
+ * ```
  */
 export function tryCatch<T, E = Error>(
   fn: () => T,

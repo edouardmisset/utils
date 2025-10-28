@@ -18,26 +18,22 @@ const collator = new Intl.Collator(undefined, {
  *
  * @example
  * ```typescript
- * const array = [{ id: 1, value: 10 }, { id: 2, value: 5 }, { id: 3, value: 20 }]
- * const property = 'value'
- * sortBy(array, property)
- * // returns [{ id: 2, value: 5 }, { id: 1, value: 10 }, { id: 3, value: 20 }]
+ * import { assertEquals } from '@std/assert'
  *
- * // For descending order
- * sortBy(array, property, { descending: true })
- * // returns [{ id: 3, value: 20 }, { id: 1, value: 10 }, { id: 2, value: 5 }]
+ * // Sort by value ascending (default)
+ * const array = [{ id: 1, value: 10 }, { id: 2, value: 5 }, { id: 3, value: 20 }]
+ * const sorted = sortBy(array, 'value')
+ * assertEquals(sorted, [{ id: 2, value: 5 }, { id: 1, value: 10 }, { id: 3, value: 20 }])
  * ```
  *
  * @example
  * ```typescript
- * const array = [{ name: 'John', age: 30 }, { name: 'Jane', age: 25 }]
- * const property = 'age'
- * sortBy(array, property)
- * // returns [{ name: 'Jane', age: 25 }, { name: 'John', age: 30 }]
+ * import { assertEquals } from '@std/assert'
  *
- * // For descending order
- * sortBy(array, property, { descending: true })
- * // returns [{ name: 'John', age: 30 }, { name: 'Jane', age: 25 }]
+ * // Sort descending
+ * const array = [{ id: 1, value: 10 }, { id: 2, value: 5 }, { id: 3, value: 20 }]
+ * const sorted = sortBy(array, 'value', { descending: true })
+ * assertEquals(sorted, [{ id: 3, value: 20 }, { id: 1, value: 10 }, { id: 2, value: 5 }])
  * ```
  */
 export function sortBy<Object_ extends ObjectOfType<string | number>>(

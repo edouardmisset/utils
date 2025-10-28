@@ -8,14 +8,16 @@
  *
  * @example
  * ```typescript
- * isValidNumber(1)
- * // returns true
+ * import { assertEquals } from '@std/assert'
+ *
+ * assertEquals(isValidNumber(1), true)
  * ```
  *
  * @example
  * ```typescript
- * isValidNumber('1')
- * // returns false
+ * import { assertEquals } from '@std/assert'
+ *
+ * assertEquals(isValidNumber('1'), false)
  * ```
  */
 export function isValidNumber(maybeNumber: unknown): maybeNumber is number {

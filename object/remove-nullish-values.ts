@@ -12,13 +12,13 @@ import type { ObjectOfType } from '@edouardmisset/type'
  *
  * @example
  * ```typescript
+ * import { assertEquals } from '@std/assert'
+ *
  * const object1 = { a: 1, b: null, c: undefined, d: 'hello' }
- * removeNullishObjectValues(object1)
- * // returns { a: 1, d: 'hello' }
+ * assertEquals(removeNullishObjectValues(object1), { a: 1, d: 'hello' })
  *
  * const object2 = { a: 0, b: false, c: '', d: NaN }
- * removeNullishObjectValues(object2)
- * // returns { a: 0, b: false, c: '', d: NaN }
+ * assertEquals(removeNullishObjectValues(object2), { a: 0, b: false, c: '', d: NaN })
  * ```
  */
 export function removeNullishObjectValues<

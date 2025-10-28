@@ -14,20 +14,26 @@ import { err, ok, type Result, tryCatch } from '@edouardmisset/function'
  * does not throw.
  *
  * @example
+ * ```typescript
  * import { assertEquals } from "@std/assert";
+ *
  * // Synchronous example
  * const r1 = await timeIt((a: number, b: number) => a + b, 2, 3);
  * assertEquals(r1.error, undefined);
  * assertEquals(r1.data, 5);
  * assertEquals(typeof r1.duration, "number");
+ * ```
  *
  * @example
+ * ```typescript
  * import { assertEquals } from "@std/assert";
+ *
  * // Asynchronous example
  * const r2 = await timeIt(async (n: number) => n * 2, 21);
  * assertEquals(r2.error, undefined);
  * assertEquals(r2.data, 42);
  * assertEquals(typeof r2.duration, "number");
+ * ```
  */
 export async function timeIt<T, Args extends unknown[], E = Error>(
   fn: (...args: Args) => Promise<T>,

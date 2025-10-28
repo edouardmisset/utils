@@ -56,6 +56,7 @@ const DATE_FORMAT_PATTERNS = {
  * ```typescript
  * import { assertEquals } from '@std/assert'
  *
+ * // ISO format (default)
  * const result = parseDate('2023-12-25')
  * assertEquals(result.error, undefined)
  * assertEquals(result.data?.toISOString(), new Date('2023-12-25').toISOString())
@@ -65,6 +66,7 @@ const DATE_FORMAT_PATTERNS = {
  * ```typescript
  * import { assertEquals } from '@std/assert'
  *
+ * // US format
  * const result = parseDate('12-25-2023', 'MM-DD-YYYY')
  * assertEquals(result.error, undefined)
  * assertEquals(result.data?.toISOString(), new Date('2023-12-25').toISOString())
@@ -74,6 +76,7 @@ const DATE_FORMAT_PATTERNS = {
  * ```typescript
  * import { assertEquals } from '@std/assert'
  *
+ * // European format
  * const result = parseDate('25-12-2023', 'DD-MM-YYYY')
  * assertEquals(result.error, undefined)
  * assertEquals(result.data?.toISOString(), new Date('2023-12-25').toISOString())
@@ -83,8 +86,10 @@ const DATE_FORMAT_PATTERNS = {
  * ```typescript
  * import { assert } from '@std/assert'
  *
+ * // Invalid date format
  * const result = parseDate('invalid-date')
- * assert(result.error?.message.includes('Invalid date format'))
+ * assert(result.error instanceof Error)
+ * assert(result.error.message.includes('Invalid date format'))
  * ```
  */
 export function parseDate(

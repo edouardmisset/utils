@@ -9,14 +9,18 @@
  *
  * @example
  * ```typescript
- * const result = toFixedWithoutZeros(1.23000, 5)
- * // returns "1.23"
+ * import { assertEquals } from '@std/assert'
+ *
+ * // Removes trailing zeros
+ * assertEquals(toFixedWithoutZeros(1.23000, 5), "1.23")
  * ```
  *
  * @example
  * ```typescript
- * const result = toFixedWithoutZeros(1.00000, 5)
- * // returns "1"
+ * import { assertEquals } from '@std/assert'
+ *
+ * // Removes all trailing zeros and decimal point
+ * assertEquals(toFixedWithoutZeros(1.00000, 5), "1")
  * ```
  */
 export function toFixedWithoutZeros(

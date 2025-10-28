@@ -23,32 +23,33 @@ const ISO8601_DATE_PATTERN =
  *
  * @example
  * ```typescript
+ * import { assertEquals } from '@std/assert'
+ *
+ * // Valid ISO 8601 string
  * const result = datification('2022-01-01T12:00')
- * if (result.error) {
- *   console.log('Error:', result.error.message)
- * } else {
- *   console.log(result.data) // new Date('2022-01-01T12:00')
- * }
+ * assertEquals(result.error, undefined)
+ * assertEquals(result.data?.toISOString(), new Date('2022-01-01T12:00').toISOString())
  * ```
  *
  * @example
  * ```typescript
- * const result = datification(new Date('2022-01-01T12:00'))
- * if (result.error) {
- *   console.log('Error:', result.error.message)
- * } else {
- *   console.log(result.data) // new Date('2022-01-01T12:00')
- * }
+ * import { assertEquals } from '@std/assert'
+ *
+ * // Date object input
+ * const inputDate = new Date('2022-01-01T12:00')
+ * const result = datification(inputDate)
+ * assertEquals(result.error, undefined)
+ * assertEquals(result.data, inputDate)
  * ```
  *
  * @example
  * ```typescript
+ * import { assert } from '@std/assert'
+ *
+ * // Invalid format
  * const result = datification('01012000')
- * if (result.error) {
- *   console.log('Error:', result.error.message)
- *   // Error: Invalid date format (01012000).
- *   // It should follow the ISO 8601 standard like: "YYYY-MM-DDTHH:MM:SSZ"
- * }
+ * assert(result.error instanceof Error)
+ * assert(result.error.message.includes('Invalid date format'))
  * ```
  */
 export function datification(date: string | Date): Result<Date, Error> {

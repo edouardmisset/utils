@@ -6,14 +6,24 @@
  *
  * @example
  * ```typescript
- * frequency(['apple', 'banana', 'apple', 'cherry'])
- * // returns { 'apple': 2, 'banana': 1, 'cherry': 1 }
+ * import { assertEquals } from '@std/assert'
+ *
+ * // String array frequency
+ * assertEquals(
+ *   frequency(['apple', 'banana', 'apple', 'cherry']),
+ *   { 'apple': 2, 'banana': 1, 'cherry': 1 }
+ * )
  * ```
  *
  * @example
  * ```typescript
- * frequency([1, 2, 1, 3])
- * // returns { '1': 2, '2': 1, '3': 1 }
+ * import { assertEquals } from '@std/assert'
+ *
+ * // Number array frequency
+ * assertEquals(
+ *   frequency([1, 2, 1, 3]),
+ *   { '1': 2, '2': 1, '3': 1 }
+ * )
  * ```
  */
 export function frequency<T extends string | number>(

@@ -14,14 +14,20 @@
  *
  * @example
  * ```typescript
- * // returns true
- * stringIncludes('Hello World', 'hello')
+ * import { assertEquals } from '@std/assert'
+ *
+ * // Case-insensitive by default
+ * assertEquals(stringIncludes('Hello World', 'hello'), true)
+ * assertEquals(stringIncludes('Hello World', 'WORLD'), true)
  * ```
  *
  * @example
  * ```typescript
- * // returns false
- * stringIncludes('Hello World', 'hello', { caseSensitive: true })
+ * import { assertEquals } from '@std/assert'
+ *
+ * // Case-sensitive when specified
+ * assertEquals(stringIncludes('Hello World', 'hello', { caseSensitive: true }), false)
+ * assertEquals(stringIncludes('Hello World', 'Hello', { caseSensitive: true }), true)
  * ```
  */
 export function stringIncludes(

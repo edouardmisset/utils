@@ -11,17 +11,19 @@ import type { ObjectOfType } from '@edouardmisset/type'
  *
  * @example
  * ```typescript
+ * import { assertEquals } from '@std/assert'
+ *
  * const array = [{ id: 1, value: 10 }, { id: 2, value: 5 }, { id: 3, value: 20 }]
  * const key = 'value'
- * maxBy(array, key)
- * // returns { id: 3, value: 20 }
+ * assertEquals(maxBy(array, key), { id: 3, value: 20 })
  * ```
  *
  * @example
  * ```typescript
+ * import { assertEquals } from '@std/assert'
+ *
  * const key = 'value'
- * maxBy([], key)
- * // returns undefined
+ * assertEquals(maxBy([], key), undefined)
  * ```
  */
 export function maxBy<Object_ extends ObjectOfType<unknown>>(

@@ -16,24 +16,30 @@ import type { ObjectOfType } from '@edouardmisset/type'
  * b), or zero (equal)
  *
  * @example
- * // Sort chronologically (oldest first)
- * const oldestFirst = ascents.sort((a, b) => sortByDate(a, b, { descending: false }));
+ * ```typescript
+ * import { assertEquals } from '@std/assert'
  *
- * @example
- * // Sort by date (newest first - default behavior)
- * const newestFirst = ascents.sort(sortByDate);
- *
- * @example
- * // Usage with custom objects
+ * // Sort by date (newest first - default)
  * const events = [
- *   { id: 1, date: '2025-01-15', title: 'Meeting' },
- *   { id: 2, date: '2025-01-10', title: 'Call' }
- * ];
- * const sortedEvents = events.sort(sortByDate);
+ *   { id: 1, date: '2023-01-15', title: 'Old' },
+ *   { id: 2, date: '2023-06-20', title: 'New' }
+ * ]
+ * const sorted = events.sort(sortByDate)
+ * assertEquals(sorted[0].title, 'New')
+ * ```
  *
  * @example
- * // Sort in ascending order (oldest first)
- * const oldestFirst = events.sort((a, b) => sortByDate(a, b, { descending: false }));
+ * ```typescript
+ * import { assertEquals } from '@std/assert'
+ *
+ * // Sort chronologically (oldest first)
+ * const events = [
+ *   { id: 1, date: '2023-06-20', title: 'New' },
+ *   { id: 2, date: '2023-01-15', title: 'Old' }
+ * ]
+ * const sorted = events.sort((a, b) => sortByDate(a, b, { descending: false }))
+ * assertEquals(sorted[0].title, 'Old')
+ * ```
  */
 export function sortByDate<T extends ObjectOfType & { date: string }>(
   { date: aStringDate }: T,

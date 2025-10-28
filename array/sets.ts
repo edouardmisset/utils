@@ -10,9 +10,11 @@ import type { SetDifference } from '@edouardmisset/type'
  *
  * @example
  * ```typescript
+ * import { assertEquals } from '@std/assert'
+ *
  * const array1 = [1, 2, 3]
  * const array2 = [2, 3, 4]
- * const result = commonElements(array1, array2) // [2, 3]
+ * assertEquals(commonElements(array1, array2), [2, 3])
  * ```
  */
 export function commonElements<T>(
@@ -37,9 +39,11 @@ export const intersection: typeof commonElements = commonElements
  *
  * @example
  * ```typescript
+ * import { assertEquals } from '@std/assert'
+ *
  * const array1 = [1, 2, 3]
  * const array2 = [2, 3, 4]
- * const result = mergeUnique(array1, array2) // [1, 2, 3, 4]
+ * assertEquals(mergeUnique(array1, array2), [1, 2, 3, 4])
  * ```
  */
 export function mergeUnique<T>(
@@ -64,10 +68,12 @@ export const union: typeof mergeUnique = mergeUnique
  *
  * @example
  * ```typescript
+ * import { assertEquals } from '@std/assert'
+ *
  * const array1 = [1, 2, 3]
  * const array2 = [2, 4]
  * const array3 = [3, 5]
- * const result = uniqueInFirst(array1, array2, array3) // [1]
+ * assertEquals(uniqueInFirst(array1, array2, array3), [1])
  * ```
  */
 export function uniqueInFirst<T>(
@@ -126,10 +132,12 @@ export function setDifference<
  *
  * @example
  * ```typescript
+ * import { assertEquals } from '@std/assert'
+ *
  * const array1 = [1, 2, 3]
  * const array2 = [2, 3, 4]
  * const array3 = [3, 4, 5]
- * const result = uniqueElements(array1, array2, array3) // [1, 5]
+ * assertEquals(uniqueElements(array1, array2, array3), [1, 5])
  * ```
  */
 export function uniqueElements<T>(...arrays: (T[] | readonly T[])[]): T[] {

@@ -10,13 +10,20 @@
  *
  * @example
  * ```typescript
- * const object1 = { a: 1, b: 'hello', c: true }
- * isKey(object1, 'b')
- * // returns true
+ * import { assertEquals } from '@std/assert'
  *
+ * // Key exists
+ * const object1 = { a: 1, b: 'hello', c: true }
+ * assertEquals(isKey(object1, 'b'), true)
+ * ```
+ *
+ * @example
+ * ```typescript
+ * import { assertEquals } from '@std/assert'
+ *
+ * // Key doesn't exist
  * const object2 = { a: 1, b: 'hello', c: true }
- * isKey(object2, 'd')
- * // returns false
+ * assertEquals(isKey(object2, 'd'), false)
  * ```
  */
 export function isKey<T extends object>(

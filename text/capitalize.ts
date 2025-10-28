@@ -13,26 +13,27 @@
  *
  * @example
  * ```typescript
- * capitalize('hello')
- * // returns "Hello"
+ * import { assertEquals } from '@std/assert'
+ *
+ * // Basic capitalization
+ * assertEquals(capitalize('hello'), 'Hello')
  * ```
  *
  * @example
  * ```typescript
- * capitalize('WORLD HELLO')
- * // returns "World hello"
+ * import { assertEquals } from '@std/assert'
+ *
+ * // With lowercase conversion (default)
+ * assertEquals(capitalize('WORLD HELLO'), 'World hello')
  * ```
  *
  * @example
  * ```typescript
- * capitalize('WORLD HELLO', { lowercase: false })
- * // returns "WORLD HELLO"
- * ```
+ * import { assertEquals } from '@std/assert'
  *
- * @example
- * ```typescript
- * capitalize('hELLO wORLD', { lowercase: false })
- * // returns "HELLO wORLD"
+ * // Without lowercase conversion
+ * assertEquals(capitalize('WORLD HELLO', { lowercase: false }), 'WORLD HELLO')
+ * assertEquals(capitalize('hELLO wORLD', { lowercase: false }), 'HELLO wORLD')
  * ```
  */
 export function capitalize(

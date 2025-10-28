@@ -20,9 +20,10 @@ import type { ObjectOfType } from '@edouardmisset/type'
  *
  * @example
  * ```typescript
+ * import { assertEquals } from '@std/assert'
+ *
  * const person = { name: 'Alice', age: 25 }
- * objectKeys(person)
- * // returns ['name', 'age']
+ * assertEquals(objectKeys(person), ['name', 'age'])
  * ```
  */
 export function objectKeys<Object_ extends ObjectOfType<unknown>>(

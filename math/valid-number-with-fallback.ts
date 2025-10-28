@@ -9,14 +9,16 @@ import { isValidNumber } from '@edouardmisset/math'
  *
  * @example
  * ```typescript
- * validNumberWithFallback(1, 5)
- * // returns 1
+ * import { assertEquals } from '@std/assert'
+ *
+ * assertEquals(validNumberWithFallback(1, 5), 1)
  * ```
  *
  * @example
  * ```typescript
- * validNumberWithFallback('1', 5)
- * // returns 1
+ * import { assertEquals } from '@std/assert'
+ *
+ * assertEquals(validNumberWithFallback('1', 5), 1)
  * ```
  */
 export function validNumberWithFallback<T = number>(

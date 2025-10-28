@@ -15,14 +15,18 @@
  *
  * @example
  * ```typescript
- * roundToPrecision(1.2365, 2)
- * // returns 1.24
+ * import { assertEquals } from '@std/assert'
+ *
+ * // Round to 2 decimal places
+ * assertEquals(roundToPrecision(1.2365, 2), 1.24)
  * ```
  *
  * @example
  * ```typescript
- * roundToPrecision(1.2345)
- * // returns 1
+ * import { assertEquals } from '@std/assert'
+ *
+ * // Round to integer (default precision=0)
+ * assertEquals(roundToPrecision(1.2345), 1)
  * ```
  */
 export function roundToPrecision(number_: number, precision = 0): number {

@@ -8,30 +8,32 @@ import { err, ok, type Result } from '@edouardmisset/function'
  *
  * @example
  * ```typescript
+ * import { assertEquals } from '@std/assert'
+ *
+ * // Multiple number arguments
  * const result = average(1, 2, 3, 4, 5)
- * if (result.error) {
- *   console.error('Average calculation failed:', result.error.message)
- * } else {
- *   console.log('Average:', result.data) // 3
- * }
+ * assertEquals(result.error, undefined)
+ * assertEquals(result.data, 3)
  * ```
  *
  * @example
  * ```typescript
+ * import { assertEquals } from '@std/assert'
+ *
+ * // Array of numbers
  * const result = average([1, 2, 3, 4, 5])
- * if (result.error) {
- *   console.error('Average calculation failed:', result.error.message)
- * } else {
- *   console.log('Average:', result.data) // 3
- * }
+ * assertEquals(result.error, undefined)
+ * assertEquals(result.data, 3)
  * ```
  *
  * @example
  * ```typescript
+ * import { assert } from '@std/assert'
+ *
+ * // No arguments returns error
  * const result = average()
- * if (result.error) {
- *   console.log('Error:', result.error.message) // "Cannot calculate average if no values are passed in"
- * }
+ * assert(result.error instanceof Error)
+ * assert(result.error.message.includes('Cannot calculate average'))
  * ```
  */
 export function average(

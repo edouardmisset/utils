@@ -23,6 +23,45 @@ export type DurationAndReferenceDate = {
  * @param {Date} options.referenceDate - The reference date to compare against.
  * @param {Milliseconds} options.durationInMS - The duration in milliseconds.
  * @returns {boolean} - True if the date is within the duration, false otherwise.
+ *
+ * @example
+ * ```typescript
+ * import { assertEquals } from '@std/assert'
+ *
+ * // Date within future duration (7 days = 604800000 ms)
+ * const refDate = new Date('2023-01-01')
+ * const dateInRange = new Date('2023-01-05')
+ * assertEquals(
+ *   isDateInDuration(dateInRange, { referenceDate: refDate, durationInMS: 604800000 }),
+ *   true
+ * )
+ * ```
+ *
+ * @example
+ * ```typescript
+ * import { assertEquals } from '@std/assert'
+ *
+ * // Date within past duration (negative duration)
+ * const refDate = new Date('2023-01-10')
+ * const dateInPast = new Date('2023-01-05')
+ * assertEquals(
+ *   isDateInDuration(dateInPast, { referenceDate: refDate, durationInMS: -604800000 }),
+ *   true
+ * )
+ * ```
+ *
+ * @example
+ * ```typescript
+ * import { assertEquals } from '@std/assert'
+ *
+ * // Date outside duration
+ * const refDate = new Date('2023-01-01')
+ * const dateOutOfRange = new Date('2023-02-01')
+ * assertEquals(
+ *   isDateInDuration(dateOutOfRange, { referenceDate: refDate, durationInMS: 604800000 }),
+ *   false
+ * )
+ * ```
  */
 export function isDateInDuration(
   date: Date,

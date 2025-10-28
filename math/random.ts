@@ -7,8 +7,11 @@
  *
  * @example
  * ```typescript
- * random(1, 5)
- * // returns a random number between 1 and 5 for example: 1.2
+ * import { assert } from '@std/assert'
+ *
+ * // Generates random float between 1 and 5
+ * const result = random(1, 5)
+ * assert(result >= 1 && result <= 5)
  * ```
  */
 export function random(minimum: number, maximum: number): number {
@@ -24,8 +27,12 @@ export function random(minimum: number, maximum: number): number {
  *
  * @example
  * ```typescript
- * randomInt(1, 5)
- * // returns a random integer between 1 and 5 for example: 3
+ * import { assert } from '@std/assert'
+ *
+ * // Generates random integer between 1 and 5
+ * const result = randomInt(1, 5)
+ * assert(Number.isInteger(result))
+ * assert(result >= 1 && result <= 5)
  * ```
  */
 export function randomInt(minInt: number, maxInt: number): number {

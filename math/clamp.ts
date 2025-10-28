@@ -12,8 +12,12 @@ import type { ValueAndRange } from '@edouardmisset/type/type-helpers.ts'
  *
  * @example
  * ```typescript
- * clampValueInRange({ maximum: 10, minimum: 0, value: 15 })
- * // returns 10
+ * import { assertEquals } from '@std/assert'
+ *
+ * // Clamp value to range
+ * assertEquals(clampValueInRange({ maximum: 10, minimum: 0, value: 15 }), 10)
+ * assertEquals(clampValueInRange({ maximum: 10, minimum: 0, value: -5 }), 0)
+ * assertEquals(clampValueInRange({ maximum: 10, minimum: 0, value: 5 }), 5)
  * ```
  */
 

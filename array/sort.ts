@@ -13,15 +13,15 @@ import type { ObjectOfType } from '@edouardmisset/type'
  *
  * @example
  * ```typescript
+ * import { assertEquals } from '@std/assert'
+ *
  * const sorter = createStringSorter<{ name: string, age: number }>({ key: 'name' })
  * const array = [{ name: 'John', age: 30 }, { name: 'Jane', age: 25 }]
- * array.sort(sorter)
- * // returns [{ name: 'Jane', age: 25 }, { name: 'John', age: 30 }]
+ * assertEquals(array.sort(sorter), [{ name: 'Jane', age: 25 }, { name: 'John', age: 30 }])
  *
  * // For descending order
  * const descendingSorter = createStringSorter({ key: 'name', descending: true })
- * array.sort(descendingSorter)
- * // returns [{ name: 'John', age: 30 }, { name: 'Jane', age: 25 }]
+ * assertEquals(array.sort(descendingSorter), [{ name: 'John', age: 30 }, { name: 'Jane', age: 25 }])
  * ```
  */
 export function createStringSorter<Object_ extends ObjectOfType<unknown>>(
@@ -76,15 +76,15 @@ export const buildStringSorter: typeof createStringSorter = createStringSorter
  *
  * @example
  * ```typescript
+ * import { assertEquals } from '@std/assert'
+ *
  * const sorter = createNumberSorter<{ id: number, value: number }>({ key: 'value' })
  * const array = [{ id: 1, value: 10 }, { id: 2, value: 5 }, { id: 3, value: 20 }]
- * array.sort(sorter)
- * // returns [{ id: 2, value: 5 }, { id: 1, value: 10 }, { id: 3, value: 20 }]
+ * assertEquals(array.sort(sorter), [{ id: 2, value: 5 }, { id: 1, value: 10 }, { id: 3, value: 20 }])
  *
  * // For descending order
  * const descendingSorter = createNumberSorter({ key: 'value', descending: true })
- * array.sort(descendingSorter)
- * // returns [{ id: 3, value: 20 }, { id: 1, value: 10 }, { id: 2, value: 5 }]
+ * assertEquals(array.sort(descendingSorter), [{ id: 3, value: 20 }, { id: 1, value: 10 }, { id: 2, value: 5 }])
  * ```
  */
 export function createNumberSorter<Object_ extends ObjectOfType<unknown>>(
@@ -126,15 +126,15 @@ export const buildNumberSorter: typeof createNumberSorter = createNumberSorter
  *
  * @example
  * ```typescript
+ * import { assertEquals } from '@std/assert'
+ *
  * const sorter = createDateSorter<{ id: number, date: Date }>({ key: 'date' })
  * const array = [{ id: 1, date: new Date(2022, 0, 3) }, { id: 2, date: new Date(2022, 0, 1) }, { id: 3, date: new Date(2022, 0, 2) }]
- * array.sort(sorter)
- * // returns [{ id: 2, date: new Date(2022, 0, 1) }, { id: 3, date: new Date(2022, 0, 2) }, { id: 1, date: new Date(2022, 0, 3) }]
+ * assertEquals(array.sort(sorter), [{ id: 2, date: new Date(2022, 0, 1) }, { id: 3, date: new Date(2022, 0, 2) }, { id: 1, date: new Date(2022, 0, 3) }])
  *
  * // For descending order
  * const descendingSorter = createDateSorter({ key: 'date', descending: true })
- * array.sort(descendingSorter)
- * // returns [{ id: 1, date: new Date(2022, 0, 3) }, { id: 3, date: new Date(2022, 0, 2) }, { id: 2, date: new Date(2022, 0, 1) }]
+ * assertEquals(array.sort(descendingSorter), [{ id: 1, date: new Date(2022, 0, 3) }, { id: 3, date: new Date(2022, 0, 2) }, { id: 2, date: new Date(2022, 0, 1) }])
  * ```
  */
 export function createDateSorter<Object_ extends ObjectOfType<unknown>>(

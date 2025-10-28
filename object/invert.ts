@@ -27,14 +27,18 @@ import type { ObjectOfType } from '@edouardmisset/type'
  *
  * @example
  * ```typescript
- * invert({ a: '1', b: '2' })
- * // returns { '1': 'a', '2': 'b' }
+ * import { assertEquals } from '@std/assert'
+ *
+ * // Simple inversion
+ * assertEquals(invert({ a: '1', b: '2' }), { '1': 'a', '2': 'b' })
  * ```
  *
  * @example
  * ```typescript
- * invert({ a: '1', b: '1' })
- * // returns { '1': 'b' } - 'a' is overridden by 'b'
+ * import { assertEquals } from '@std/assert'
+ *
+ * // Duplicate values (last one wins)
+ * assertEquals(invert({ a: '1', b: '1' }), { '1': 'b' })
  * ```
  */
 export function invert<

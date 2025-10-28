@@ -14,15 +14,13 @@ import { average } from '@edouardmisset/math'
  *
  * @example
  * ```typescript
- * import { averageTime } from '@edouardmisset/math'
+ * import { assertEquals } from '@std/assert'
  *
+ * // Calculate average time
  * const dates = [new Date('2022-01-01T09:00:00Z'), new Date('2022-01-01T11:00:00Z')]
  * const result = averageTime(dates)
- * if (result.error) {
- *   console.error('Average time calculation failed:', result.error.message)
- * } else {
- *   console.log('Average time:', result.data) // "10:00:00"
- * }
+ * assertEquals(result.error, undefined)
+ * assertEquals(result.data, '10:00:00')
  * ```
  */
 export function averageTime(dates: Date[]): Result<string, Error> {

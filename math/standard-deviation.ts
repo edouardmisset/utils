@@ -20,14 +20,22 @@
  *
  * @example
  * ```typescript
- * standardDeviation([1, 2, 3, 4])
- * // returns approximately 1.291
+ * import { assertAlmostEquals } from '@std/assert'
+ *
+ * // Sample standard deviation (default)
+ * assertAlmostEquals(standardDeviation([1, 2, 3, 4]), 1.291, 0.01)
  * ```
  *
  * @example
  * ```typescript
- * standardDeviation([1, 2, 3, 4], {usePopulation: true})
- * // returns approximately 1.118
+ * import { assertAlmostEquals } from '@std/assert'
+ *
+ * // Population standard deviation
+ * assertAlmostEquals(
+ *   standardDeviation([1, 2, 3, 4], { usePopulation: true }),
+ *   1.118,
+ *   0.01
+ * )
  * ```
  *
  * Mathematical formula:

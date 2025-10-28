@@ -6,12 +6,20 @@
  * @returns {number} The product of all numbers.
  *
  * @example
- * product(1, 2, 3, 4)
- * // returns 24
+ * ```typescript
+ * import { assertEquals } from '@std/assert'
+ *
+ * // Multiple number arguments
+ * assertEquals(product(1, 2, 3, 4), 24)
+ * ```
  *
  * @example
- * product([1, 2, 3, 4])
- * // returns 24
+ * ```typescript
+ * import { assertEquals } from '@std/assert'
+ *
+ * // Array of numbers
+ * assertEquals(product([1, 2, 3, 4]), 24)
+ * ```
  */
 export function product(...number_: (number | number[])[]): number {
   return number_.flat().reduce(

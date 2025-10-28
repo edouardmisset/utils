@@ -16,10 +16,12 @@ import type { ObjectOfType } from '@edouardmisset/type'
  *
  * @example
  * ```typescript
+ * import { assertEquals } from '@std/assert'
+ *
+ * // Map values to new values
  * const object = { a: 1, b: 2 }
- * const fn = (number_: number) => number_ * 2
- * mapObject(object, fn)
- * // returns { a: 2, b: 4 }
+ * const result = mapObject(object, (n: number) => n * 2)
+ * assertEquals(result, { a: 2, b: 4 })
  * ```
  */
 export function mapObject<

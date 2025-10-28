@@ -12,14 +12,12 @@ import { type ObjectOfType, Primitive } from '@edouardmisset/type'
  *
  * @example
  * ```typescript
- * isObject({})
- * // returns true
- * isObject({ a: 1 })
- * // returns true
- * isObject([])
- * // returns true
- * isObject('Hello, world!')
- * // returns false
+ * import { assertEquals } from '@std/assert'
+ *
+ * assertEquals(isObject({}), true)
+ * assertEquals(isObject({ a: 1 }), true)
+ * assertEquals(isObject([]), true)
+ * assertEquals(isObject('Hello, world!'), false)
  * ```
  */
 export function isObject(value: unknown): value is ObjectOfType<unknown> {
@@ -38,16 +36,13 @@ export function isObject(value: unknown): value is ObjectOfType<unknown> {
  *
  * @example
  * ```typescript
- * isPlainObject({})
- * // returns true
- * isPlainObject({ a: 1 })
- * // returns true
- * isPlainObject([])
- * // returns false
- * isPlainObject(null)
- * // returns false
- * isPlainObject('Hello, world!')
- * // returns false
+ * import { assertEquals } from '@std/assert'
+ *
+ * assertEquals(isPlainObject({}), true)
+ * assertEquals(isPlainObject({ a: 1 }), true)
+ * assertEquals(isPlainObject([]), false)
+ * assertEquals(isPlainObject(null), false)
+ * assertEquals(isPlainObject('Hello, world!'), false)
  * ```
  */
 export function isPlainObject(
@@ -69,10 +64,10 @@ export function isPlainObject(
  *
  * @example
  * ```typescript
- * isNotNestedObject({ a: 1, b: '2', c: null })
- * // returns true
- * isNotNestedObject({ a: 1, b: { c: 2 } })
- * // returns false
+ * import { assertEquals } from '@std/assert'
+ *
+ * assertEquals(isNotNestedObject({ a: 1, b: '2', c: null }), true)
+ * assertEquals(isNotNestedObject({ a: 1, b: { c: 2 } }), false)
  * ```
  */
 export function isNotNestedObject(

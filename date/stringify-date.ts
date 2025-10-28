@@ -9,24 +9,22 @@ import { err, ok, type Result } from '../function/try-catch.ts'
  *
  * @example
  * ```typescript
- * import { stringifyDate } from '@edouardmisset/date'
+ * import { assertEquals } from '@std/assert'
  *
- * const date = new Date(2022, 0, 31) // January 31, 2022
- * const result = stringifyDate(date)
- * if (result.error) {
- *   console.log('Error:', result.error.message)
- * } else {
- *   console.log(result.data) // '2022-01-31'
- * }
+ * // Valid date conversion
+ * const result = stringifyDate(new Date(2022, 0, 31))
+ * assertEquals(result.error, undefined)
+ * assertEquals(result.data, '2022-01-31')
  * ```
  *
  * @example
  * ```typescript
+ * import { assert } from '@std/assert'
+ *
+ * // Invalid date input
  * const result = stringifyDate('2022-01-01' as any)
- * if (result.error) {
- *   console.log('Error:', result.error.message)
- *   // Error: Expected a Date object for 2022-01-01 but got string
- * }
+ * assert(result.error instanceof TypeError)
+ * assert(result.error.message.includes('Expected a valid Date object'))
  * ```
  */
 export function stringifyDate(

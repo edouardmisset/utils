@@ -12,27 +12,24 @@ import type { ObjectOfType } from '@edouardmisset/type'
  *
  * @example
  * ```typescript
- * // Objects
- * size({a: 1, b: 2, c: 3})
- * // returns 3
+ * import { assertEquals } from '@std/assert'
  *
- * // Arrays
- * size([1, 2, 3, 4])
- * // returns 4
+ * // Different collection types
+ * assertEquals(size({a: 1, b: 2, c: 3}), 3) // Objects
+ * assertEquals(size([1, 2, 3, 4]), 4) // Arrays
+ * assertEquals(size('hello'), 5) // Strings
+ * ```
  *
- * // Strings
- * size('hello')
- * // returns 5
+ * @example
+ * ```typescript
+ * import { assertEquals } from '@std/assert'
  *
- * // Maps
+ * // Maps and Sets
  * const map = new Map([['a', 1], ['b', 2]])
- * size(map)
- * // returns 2
+ * assertEquals(size(map), 2)
  *
- * // Sets
  * const set = new Set([1, 2, 3])
- * size(set)
- * // returns 3
+ * assertEquals(size(set), 3)
  * ```
  */
 export function size<T = unknown>(

@@ -13,12 +13,12 @@ import type { Result } from '../function/try-catch.ts'
  *
  * @example
  * ```typescript
+ * import { assertEquals } from '@std/assert'
+ *
+ * // Normalize value to 0-1 range
  * const result = normalize({ value: 5, minimum: 0, maximum: 10 })
- * if (result.error) {
- *   console.error('Normalization failed:', result.error.message)
- * } else {
- *   console.log('Normalized value:', result.data) // 0.5
- * }
+ * assertEquals(result.error, undefined)
+ * assertEquals(result.data, 0.5)
  * ```
  */
 

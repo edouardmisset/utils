@@ -12,9 +12,11 @@ import type { ObjectOfType } from '@edouardmisset/type'
  *
  * @example
  * ```typescript
+ * import { assertEquals } from '@std/assert'
+ *
+ * // Omit specific keys
  * const object = { name: 'John', age: 30, city: 'New York' }
- * omit(object, ['name', 'city'])
- * // returns { age: 30 }
+ * assertEquals(omit(object, ['name', 'city']), { age: 30 })
  * ```
  */
 export function omit<

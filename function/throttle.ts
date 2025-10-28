@@ -9,9 +9,19 @@ import type { AnyVoidFunction, CallbackAndDelay } from '@edouardmisset/type'
  *
  * @example
  * ```typescript
- * const throttledFunction = throttle({ callback: () => console.log('Hello'), delay: 1000 })
- * throttledFunction() // 'Hello' will be logged immediately
- * throttledFunction() // 'Hello' will not be logged because the function is throttled
+ * import { assert } from '@std/assert'
+ *
+ * // Create a throttled function
+ * let callCount = 0
+ * const throttledFunction = throttle({
+ *   callback: () => { callCount++ },
+ *   delay: 100
+ * })
+ *
+ * throttledFunction() // First call executes immediately
+ * assert(callCount === 1)
+ * throttledFunction() // Second call is throttled
+ * assert(callCount === 1)
  * ```
  */
 export const throttle = (parameters: CallbackAndDelay): AnyVoidFunction => {

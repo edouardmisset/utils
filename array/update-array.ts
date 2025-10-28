@@ -18,31 +18,24 @@ import { err, ok, type Result } from '@edouardmisset/function'
  *
  * @example
  * ```typescript
- * const input = [
- *   { id: 1, name: 'John' },
- *   { id: 2, name: 'Jane' },
- * ]
+ * import { assertEquals } from '@std/assert'
  *
+ * // Update object in array
+ * const input = [{ id: 1, name: 'John' }, { id: 2, name: 'Jane' }]
  * const result = updateObjectInArray(input, 'id', { id: 1, name: 'Johnny' })
- * if (result.error) {
- *   console.log('Error:', result.error.message)
- * } else {
- *   console.log(result.data) // [{ id: 1, name: 'Johnny' },{ id: 2, name: 'Jane' }]
- * }
+ * assertEquals(result.error, undefined)
+ * assertEquals(result.data, [{ id: 1, name: 'Johnny' }, { id: 2, name: 'Jane' }])
  * ```
  *
  * @example
  * ```typescript
- * const input = [
- *   { id: 1, name: 'John' },
- *   { id: 2, name: 'Jane' },
- * ]
+ * import { assert } from '@std/assert'
  *
  * // Error case: key not in newData
+ * const input = [{ id: 1, name: 'John' }, { id: 2, name: 'Jane' }]
  * const result = updateObjectInArray(input, 'id', { name: 'Johnny' })
- * if (result.error) {
- *   console.log('Error:', result.error.message) // "The key id does not exist in newData"
- * }
+ * assert(result.error instanceof Error)
+ * assert(result.error.message.includes('does not exist in newData'))
  * ```
  */
 export const updateObjectInArray = <T extends object>(

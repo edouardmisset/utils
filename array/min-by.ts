@@ -11,16 +11,19 @@ import type { ObjectOfType } from '@edouardmisset/type'
  *
  * @example
  * ```typescript
+ * import { assertEquals } from '@std/assert'
+ *
+ * // Find object with minimum value
  * const array = [{ id: 1, value: 10 }, { id: 2, value: 5 }, { id: 3, value: 20 }]
- * const key = 'value'
- * minBy(array, key)
- * // returns { id: 2, value: 5 }
+ * assertEquals(minBy(array, 'value'), { id: 2, value: 5 })
  * ```
  *
  * @example
  * ```typescript
- * minBy([], 'value')
- * // returns undefined
+ * import { assertEquals } from '@std/assert'
+ *
+ * // Empty array returns undefined
+ * assertEquals(minBy([], 'value'), undefined)
  * ```
  */
 export function minBy<Object_ extends ObjectOfType<unknown>>(

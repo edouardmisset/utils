@@ -13,8 +13,9 @@ import type { ValueAndRange } from '@edouardmisset/type'
  *
  * @example
  * ```typescript
- * isStrictlyOutsideRange({ maximum: 10, minimum: 0, value: 15 })
- * // returns true
+ * import { assertEquals } from '@std/assert'
+ *
+ * assertEquals(isStrictlyOutsideRange({ maximum: 10, minimum: 0, value: 15 }), true)
  * ```
  */
 export function isStrictlyOutsideRange({
@@ -41,8 +42,9 @@ export function isStrictlyOutsideRange({
  *
  * @example
  * ```typescript
- * isOutsideRangeInclusive({ maximum: 10, minimum: 0, value: 10 })
- * // returns true
+ * import { assertEquals } from '@std/assert'
+ *
+ * assertEquals(isOutsideRangeInclusive({ maximum: 10, minimum: 0, value: 10 }), true)
  * ```
  */
 export function isOutsideRangeInclusive({
@@ -68,8 +70,9 @@ export function isOutsideRangeInclusive({
  *
  * @example
  * ```typescript
- * isInRangeInclusive({ maximum: 10, minimum: 0, value: 5 })
- * // returns true
+ * import { assertEquals } from '@std/assert'
+ *
+ * assertEquals(isInRangeInclusive({ maximum: 10, minimum: 0, value: 5 }), true)
  * ```
  */
 export function isInRangeInclusive({
@@ -95,8 +98,9 @@ export function isInRangeInclusive({
  *
  * @example
  * ```typescript
- * isStrictlyInRange({ maximum: 10, minimum: 0, value: 10 })
- * // returns false
+ * import { assertEquals } from '@std/assert'
+ *
+ * assertEquals(isStrictlyInRange({ maximum: 10, minimum: 0, value: 10 }), false)
  * ```
  */
 export function isStrictlyInRange({
@@ -123,8 +127,9 @@ export function isStrictlyInRange({
  *
  * @example
  * ```typescript
- * isInRange({ maximum: 10, minimum: 0, value: 10 })
- * // returns true
+ * import { assertEquals } from '@std/assert'
+ *
+ * assertEquals(isInRange({ maximum: 10, minimum: 0, value: 10 }), true)
  * ```
  */
 export function isInRange({

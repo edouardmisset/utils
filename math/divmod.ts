@@ -22,30 +22,32 @@ export type Remainder = number
  *
  * @example
  * ```typescript
+ * import { assertEquals } from '@std/assert'
+ *
+ * // Division with remainder
  * const result = divmod(10, 3)
- * if (result.error) {
- *   console.error('Division failed:', result.error.message)
- * } else {
- *   console.log('Result:', result.data) // [3, 1]
- * }
+ * assertEquals(result.error, undefined)
+ * assertEquals(result.data, [3, 1])
  * ```
  *
  * @example
  * ```typescript
+ * import { assertEquals } from '@std/assert'
+ *
+ * // Even division
  * const result = divmod(12, 3)
- * if (result.error) {
- *   console.error('Division failed:', result.error.message)
- * } else {
- *   console.log('Result:', result.data) // [4, 0]
- * }
+ * assertEquals(result.error, undefined)
+ * assertEquals(result.data, [4, 0])
  * ```
  *
  * @example
  * ```typescript
+ * import { assert } from '@std/assert'
+ *
+ * // Division by zero error
  * const result = divmod(10, 0)
- * if (result.error) {
- *   console.error('Error:', result.error.message) // "Cannot divide by zero (divisor: 0)"
- * }
+ * assert(result.error instanceof Error)
+ * assert(result.error.message.includes('Cannot divide by zero'))
  * ```
  */
 export function divmod(

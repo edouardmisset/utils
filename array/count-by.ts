@@ -11,22 +11,24 @@
  *
  * @example
  * ```typescript
+ * import { assertEquals } from '@std/assert'
+ *
  * const array = [1, 2, 3, 4, 5]
  * function isEven(number_: number) {
  *   return number_ % 2 === 0
  * }
- * countBy(array, isEven)
- * // returns 2
+ * assertEquals(countBy(array, isEven), 2)
  * ```
  *
  * @example
  * ```typescript
+ * import { assertEquals } from '@std/assert'
+ *
  * const array = ['apple', 'banana', 'cherry', 'apple', 'cherry', 'cherry']
  * function isCherry(fruit: string) {
  *   return fruit === 'cherry'
  * }
- * countBy(array, isCherry)
- * // returns 3
+ * assertEquals(countBy(array, isCherry), 3)
  * ```
  */
 export function countBy<T>(

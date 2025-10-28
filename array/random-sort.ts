@@ -9,9 +9,11 @@
  *
  * @example
  * ```typescript
+ * import { assertEquals } from '@std/assert'
+ *
  * const numbers = [1, 2, 3, 4, 5]
- * randomSort(numbers)
- * // returns [3, 1, 5, 2, 4] (output will vary)
+ * const result = randomSort(numbers)
+ * assertEquals(result.length, 5)
  * ```
  */
 export function randomSort<T>(originalArray: T[]): T[] {

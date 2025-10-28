@@ -11,9 +11,12 @@ import type { ObjectOfType } from '@edouardmisset/type'
  *
  * @example
  * ```typescript
+ * import { assertEquals } from '@std/assert'
+ *
+ * // Pick specific keys
  * const object = { name: 'John', age: 30, city: 'New York' }
- * pick(object, ['name', 'city'])
- * // returns { name: 'John', city: 'New York' }
+ * const result = pick(object, ['name', 'city'])
+ * assertEquals(result, { name: 'John', city: 'New York' })
  * ```
  */
 export function pick<

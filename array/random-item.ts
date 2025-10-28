@@ -9,22 +9,25 @@ import { err, ok, type Result } from '@edouardmisset/function'
  *
  * @example
  * ```typescript
+ * import { assert, assertEquals } from '@std/assert'
+ *
+ * // Random item from array
  * const numbers = [1, 2, 3, 4, 5]
  * const result = randomItem(numbers)
- * if (result.error) {
- *   console.error('Error:', result.error.message)
- * } else {
- *   console.log('Random number:', result.data) // e.g., 3 (output will vary)
- * }
+ * assertEquals(result.error, undefined)
+ * assert(result.data !== undefined)
+ * assert(numbers.includes(result.data))
  * ```
  *
  * @example
  * ```typescript
+ * import { assert } from '@std/assert'
+ *
+ * // Empty array error
  * const emptyArray: number[] = []
  * const result = randomItem(emptyArray)
- * if (result.error) {
- *   console.error('Error:', result.error.message) // "Array is empty"
- * }
+ * assert(result.error instanceof Error)
+ * assert(result.error.message.includes('Array is empty'))
  * ```
  */
 export function randomItem<T>(array: T[]): Result<T, Error> {

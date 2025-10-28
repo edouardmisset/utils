@@ -11,12 +11,11 @@
  *
  * @example
  * ```typescript
- * takeEnd([1, 2, 3, 4])
- * // returns [4]
- * takeEnd([1, 2, 3, 4], 2)
- * // returns [3, 4]
- * takeEnd([1, 2, 3, 4], -2)
- * // returns [3, 4]
+ * import { assertEquals } from '@std/assert'
+ *
+ * assertEquals(takeEnd([1, 2, 3, 4]), [4])
+ * assertEquals(takeEnd([1, 2, 3, 4], 2), [3, 4])
+ * assertEquals(takeEnd([1, 2, 3, 4], -2), [3, 4])
  * ```
  */
 export function takeEnd<T>(array: T[], n = 1): T[] {
@@ -41,9 +40,11 @@ export const getLastElements: typeof takeEnd = takeEnd
  *
  * @example
  * ```typescript
- * takeStart([1, 2, 3, 4]) // returns [1]
- * takeStart([1, 2, 3, 4], 2) // returns [1, 2]
- * takeStart([1, 2, 3, 4], -2) // returns [1, 2]
+ * import { assertEquals } from '@std/assert'
+ *
+ * assertEquals(takeStart([1, 2, 3, 4]), [1])
+ * assertEquals(takeStart([1, 2, 3, 4], 2), [1, 2])
+ * assertEquals(takeStart([1, 2, 3, 4], -2), [1, 2])
  * ```
  */
 export function takeStart<T>(array: T[], n = 1): T[] {
@@ -68,9 +69,11 @@ export const getFirstElements: typeof takeStart = takeStart
  *
  * @example
  * ```typescript
- * take([1, 2, 3, 4]) // returns [1]
- * take([1, 2, 3, 4], 2) // returns [1, 2]
- * take([1, 2, 3, 4], -2) // returns [3, 4]
+ * import { assertEquals } from '@std/assert'
+ *
+ * assertEquals(take([1, 2, 3, 4]), [1])
+ * assertEquals(take([1, 2, 3, 4], 2), [1, 2])
+ * assertEquals(take([1, 2, 3, 4], -2), [3, 4])
  * ```
  */
 export function take<T>(array: T[], n = 1): T[] {

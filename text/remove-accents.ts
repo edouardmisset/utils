@@ -15,8 +15,19 @@
  *
  * @example
  * ```typescript
- * removeAccents('résumé')
- * // returns 'resume'
+ * import { assertEquals } from '@std/assert'
+ *
+ * // Removes French accents
+ * assertEquals(removeAccents('résumé'), 'resume')
+ * ```
+ *
+ * @example
+ * ```typescript
+ * import { assertEquals } from '@std/assert'
+ *
+ * // Removes various diacritics
+ * assertEquals(removeAccents('café'), 'cafe')
+ * assertEquals(removeAccents('naïve'), 'naive')
  * ```
  */
 export function removeAccents(string_: string): string {

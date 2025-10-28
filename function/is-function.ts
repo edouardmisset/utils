@@ -5,12 +5,22 @@
  * @returns {boolean} Returns `true` if `maybeFunction` is a function, else `false`.
  *
  * @example
- * isFunction(function() {})
- * // returns true
+ * ```typescript
+ * import { assertEquals } from '@std/assert'
+ *
+ * // Function is detected
+ * assertEquals(isFunction(function() {}), true)
+ * assertEquals(isFunction(() => {}), true)
+ * ```
  *
  * @example
- * isFunction('not a function')
- * // returns false
+ * ```typescript
+ * import { assertEquals } from '@std/assert'
+ *
+ * // Non-function values
+ * assertEquals(isFunction('not a function'), false)
+ * assertEquals(isFunction(null), false)
+ * ```
  */
 // deno-lint-ignore ban-types
 export function isFunction(maybeFunction: unknown): maybeFunction is Function {

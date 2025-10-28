@@ -13,30 +13,32 @@ import { err, ok, type Result } from '@edouardmisset/function'
  *
  * @example
  * ```typescript
+ * import { assertEquals } from '@std/assert'
+ *
+ * // Scale value to different range
  * const result = scale({ inMinimum: 0, inMaximum: 10, outMinimum: 0, outMaximum: 100, value: 5 })
- * if (result.error) {
- *   console.error('Scaling failed:', result.error.message)
- * } else {
- *   console.log('Scaled value:', result.data) // 50
- * }
+ * assertEquals(result.error, undefined)
+ * assertEquals(result.data, 50)
  * ```
  *
  * @example
  * ```typescript
+ * import { assertEquals } from '@std/assert'
+ *
+ * // Scale to default 0-1 range
  * const result = scale({ inMinimum: 0, inMaximum: 100, value: 50 })
- * if (result.error) {
- *   console.error('Scaling failed:', result.error.message)
- * } else {
- *   console.log('Scaled value:', result.data) // 0.5
- * }
+ * assertEquals(result.error, undefined)
+ * assertEquals(result.data, 0.5)
  * ```
  *
  * @example
  * ```typescript
+ * import { assert } from '@std/assert'
+ *
+ * // Error: same min and max
  * const result = scale({ inMinimum: 5, inMaximum: 5, value: 5 })
- * if (result.error) {
- *   console.log('Error:', result.error.message) // "inMinimum (5) cannot equal inMaximum (5) as this leads to a division by 0."
- * }
+ * assert(result.error instanceof RangeError)
+ * assert(result.error.message.includes('division by 0'))
  * ```
  */
 export function scale(parameters: ScaleParameters): Result<number, Error> {

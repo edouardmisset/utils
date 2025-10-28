@@ -13,8 +13,19 @@
  *
  * @example
  * ```typescript
- * slugify('Hello World!')
- * // returns 'hello-world'
+ * import { assertEquals } from '@std/assert'
+ *
+ * // Converts string to URL-friendly format
+ * assertEquals(slugify('Hello World!'), 'hello-world')
+ * ```
+ *
+ * @example
+ * ```typescript
+ * import { assertEquals } from '@std/assert'
+ *
+ * // Handles special characters and spaces
+ * assertEquals(slugify('Hello   World!!!'), 'hello-world')
+ * assertEquals(slugify('Test_Case-Example'), 'test-case-example')
  * ```
  */
 export function slugify(string_: string): string {

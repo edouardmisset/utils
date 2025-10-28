@@ -21,8 +21,11 @@ type DebounceParameters = CallbackAndDelay & {
  *
  * @example
  * ```typescript
+ * import { assert } from '@std/assert'
+ *
  * // Create a debounced function
  * const debouncedFunction = debounce({ callback: () => console.log('Hello'), delay: 1000 })
+ * assert(typeof debouncedFunction === 'function')
  *
  * // Note: In actual usage, call the function and it will execute after the delay
  * // debouncedFunction() // 'Hello' will be logged after 1000ms

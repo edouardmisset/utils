@@ -14,20 +14,22 @@ import { err, ok, type Result } from '@edouardmisset/function'
  *
  * @example
  * ```typescript
+ * import { assertEquals } from '@std/assert'
+ *
+ * // Current date is always within last 12 months
  * const result = isDateInLast12Months(new Date())
- * if (result.error) {
- *   console.log('Error:', result.error.message)
- * } else {
- *   console.log('Is within last 12 months:', result.data) // true
- * }
+ * assertEquals(result.error, undefined)
+ * assertEquals(result.data, true)
  * ```
  *
  * @example
  * ```typescript
+ * import { assert } from '@std/assert'
+ *
+ * // Invalid date format
  * const result = isDateInLast12Months('invalid-date')
- * if (result.error) {
- *   console.log('Error:', result.error.message) // "Invalid date format."
- * }
+ * assert(result.error instanceof Error)
+ * assert(result.error.message.includes('Invalid date format'))
  * ```
  */
 export function isDateInLast12Months(

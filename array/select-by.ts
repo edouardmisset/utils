@@ -11,18 +11,20 @@ import type { ObjectOfType } from '@edouardmisset/type'
  *
  * @example
  * ```typescript
+ * import { assertEquals } from '@std/assert'
+ *
  * const array = [{ a: 1, b: 2 }, { a: 3, b: 4 }]
  * const key = 'b'
- * selectBy(array, key)
- * // returns [2, 4]
+ * assertEquals(selectBy(array, key), [2, 4])
  * ```
  *
  * @example
  * ```typescript
+ * import { assertEquals } from '@std/assert'
+ *
  * const array = [{ name: 'John', age: 30 }, { name: 'Jane', age: 25 }]
  * const key = 'name'
- * selectBy(array, key)
- * // returns ['John', 'Jane']
+ * assertEquals(selectBy(array, key), ['John', 'Jane'])
  * ```
  */
 export function selectBy<
@@ -47,13 +49,13 @@ export const pluckBy: typeof selectBy = selectBy
  *
  * @example
  * ```typescript
+ * import { assertEquals } from '@std/assert'
+ *
  * const selectById = createSelectBy('id')
- * selectById({ id: 1, name: 'John' })
- * // returns 1
+ * assertEquals(selectById({ id: 1, name: 'John' }), 1)
  *
  * const selectByName = createSelectBy('name')
- * selectByName({ id: 1, name: 'John' })
- * // returns 'John'
+ * assertEquals(selectByName({ id: 1, name: 'John' }), 'John')
  * ```
  */
 export function createSelectBy<
@@ -81,16 +83,18 @@ export const buildSelectBy: typeof createSelectBy = createSelectBy
  *
  * @example
  * ```typescript
+ * import { assertEquals } from '@std/assert'
+ *
  * const array = [{ a: 1, b: 2 }, { a: 3, b: 4 }]
- * selectAndTransform(array, 'b', value => value * 2)
- * // returns [4, 8]
+ * assertEquals(selectAndTransform(array, 'b', value => value * 2), [4, 8])
  * ```
  *
  * @example
  * ```typescript
+ * import { assertEquals } from '@std/assert'
+ *
  * const array = [{ name: 'John', age: 30 }, { name: 'Jane', age: 25 }]
- * selectAndTransform(array, 'name', name => name.toUpperCase())
- * // returns ['JOHN', 'JANE']
+ * assertEquals(selectAndTransform(array, 'name', name => name.toUpperCase()), ['JOHN', 'JANE'])
  * ```
  */
 export function selectAndTransform<

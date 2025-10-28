@@ -13,12 +13,12 @@ import type { Result } from '../function/try-catch.ts'
  *
  * @example
  * ```typescript
+ * import { assertEquals } from '@std/assert'
+ *
+ * // Calculate percentage
  * const result = percent({ value: 5, minimum: 0, maximum: 10 })
- * if (result.error) {
- *   console.error('Percentage calculation failed:', result.error.message)
- * } else {
- *   console.log('Percentage:', result.data) // 50
- * }
+ * assertEquals(result.error, undefined)
+ * assertEquals(result.data, 50)
  * ```
  */
 

@@ -49,25 +49,27 @@ export function keyBy<
  *
  * @example
  * ```typescript
+ * import { assertEquals } from '@std/assert'
+ *
  * const array = [{ id: 1, name: 'Alice' }, { id: 2, name: 'Bob' }, { id: 3, name: 'Charlie' }]
- * const key = 'id'
- * collectionKeyBy(array, key)
- * // returns { '1': { id: 1, name: 'Alice' }, '2': { id: 2, name: 'Bob' }, '3': { id: 3, name: 'Charlie' } }
+ * assertEquals(collectionKeyBy(array, 'id'), { '1': { id: 1, name: 'Alice' }, '2': { id: 2, name: 'Bob' }, '3': { id: 3, name: 'Charlie' } })
  * ```
  *
  * @example
  * ```typescript
+ * import { assertEquals } from '@std/assert'
+ *
  * const object = { a: { id: 1, name: 'Alice' }, b: { id: 2, name: 'Bob' }, c: { id: 3, name: 'Charlie' } }
  * const key = 'id'
- * collectionKeyBy(object, key)
- * // returns { '1': { id: 1, name: 'Alice' }, '2': { id: 2, name: 'Bob' }, '3': { id: 3, name: 'Charlie' } }
+ * assertEquals(collectionKeyBy(object, key), { '1': { id: 1, name: 'Alice' }, '2': { id: 2, name: 'Bob' }, '3': { id: 3, name: 'Charlie' } })
  * ```
  *
  * @example
  * ```typescript
+ * import { assertEquals } from '@std/assert'
+ *
  * const key = 'id'
- * collectionKeyBy([], key)
- * // returns undefined
+ * assertEquals(collectionKeyBy([], key), undefined)
  * ```
  */
 export function collectionKeyBy<
