@@ -1,7 +1,7 @@
 // Copyright 2018-2024 the Deno authors. All rights reserved. MIT license.
 
-import { green, yellow } from 'jsr:@std/fmt/colors'
-import { join } from 'jsr:@std/path'
+import { green, yellow } from '@std/fmt/colors'
+import { join } from '@std/path'
 import denoJson from '../deno.json' with { type: 'json' }
 import importMap from '../import-map.json' with { type: 'json' }
 

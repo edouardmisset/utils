@@ -1,4 +1,4 @@
-import { bold, green, red, rgb24 } from 'jsr:@std/fmt/colors'
+import { bold, green, red, rgb24 } from '@std/fmt/colors'
 
 /**
  * Script to verify that all {@link ...} references in module JSDoc blocks (barrel files)

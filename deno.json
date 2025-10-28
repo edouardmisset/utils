@@ -1,19 +1,20 @@
 {
   "$schema": "https://raw.githubusercontent.com/denoland/deno/main/cli/schemas/config-file.v1.json",
-  "importMap": "./import-map.json",
   "tasks": {
     "check:barrels": "deno run --allow-read ./_internal-tools/check-barrels.ts",
     "check:imports": "deno run --allow-read ./_internal-tools/check-imports.ts",
     "check:links": "deno run --allow-read ./_internal-tools/check-links.ts",
-    "check": " deno lint && deno fmt && deno task typecheck && deno task docs:lint && deno task test && deno task check:imports && deno task check:barrels && deno task check:links",
+    "check": "deno lint && deno fmt && deno task typecheck && deno task docs:lint && deno task test && deno task check:imports && deno task check:barrels && deno task check:links",
     "coverage:gen": "deno coverage ./coverage --lcov --output=./coverage/lcov.info",
     "coverage:view": "deno coverage --html coverage",
     "docs:lint": "deno doc --lint ./**/*.ts",
     "docs": "deno doc --html --name='TS utils 🚀' ./mod.ts",
     "test:watch": "deno test --reporter=dot --watch",
     "test": "deno test --doc --reporter=dot --coverage --parallel ./**/*.ts",
-    "typecheck": "deno check --doc ./**/*.ts"
+    "typecheck": "deno check --doc ./**/*.ts",
+    "update:std": "deno update --latest \"@std/*\""
   },
+  "importMap": "./import-map.json",
   "workspace": [
     "./array",
     "./date",

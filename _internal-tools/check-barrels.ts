@@ -1,5 +1,5 @@
-import { bold, green, red, yellow } from 'jsr:@std/fmt/colors'
-import { extname, join } from 'jsr:@std/path'
+import { bold, green, red, yellow } from '@std/fmt/colors'
+import { extname, join } from '@std/path'
 import rootDenoJson from '../deno.json' with {
   type: 'json',
 }
