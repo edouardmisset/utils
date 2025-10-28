@@ -3,7 +3,7 @@
 ## v5.0.0
 
 - [ ] Refactor: single function per file (with exceptions: `tryCatch`, `err`,
-  `ok`, and others that are logically dependent on one another)
+      `ok`, and others that are logically dependent on one another)
 
 ## v6.0.0
 

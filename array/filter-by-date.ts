@@ -60,11 +60,11 @@ import type { ObjectOfType } from '@edouardmisset/type'
  * // Filter by duration from a reference date
  * import { assertEquals } from '@std/assert'
  *
- * const dates = [{ date: new Date(2020, 0, 1) }, { date: new Date(2021, 0, 1) }]
+ * const dates = [{ date: new Date(2020, 7, 1) }, { date: new Date(2021, 0, 1) }]
  * const result = filterByDate({array:dates, keyOrFunction: 'date', options: { referenceDate: new Date(2020, 4, 1), durationInMS: 1000 * 60 * 60 * 24 * 180 }}) // 180 days
  *
  * assertEquals(result.error, undefined)
- * assertEquals(result.data, [{ date: new Date(2020, 0, 1) }])
+ * assertEquals(result.data, [{ date: new Date(2020, 7, 1) }])
  * ```
  */
 export function filterByDate<Object_ extends ObjectOfType<unknown>>(

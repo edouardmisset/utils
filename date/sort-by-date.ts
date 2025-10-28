@@ -4,7 +4,7 @@ import type { ObjectOfType } from '@edouardmisset/type'
 /**
  * Sorts objects by their date property.
  *
- * @defaults isDescending to true (newest first)
+ * @defaults descending to true (newest first)
  *
  * @template T - Object type containing a date string property
  * @param {T} a - First object to compare

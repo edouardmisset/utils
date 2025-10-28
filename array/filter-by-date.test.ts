@@ -70,7 +70,7 @@ Deno.test(
           array: dates,
           options: {
             durationInMS: _180Days,
-            referenceDate: new Date(2020, 7, 1),
+            referenceDate: new Date(2020, 4, 1),
           },
           keyOrFunction: 'date',
         })
