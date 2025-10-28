@@ -1,7 +1,7 @@
 import { assert, assertEquals } from '@std/assert'
 import { random, randomInt } from './random.ts'
 
-const numberOfNumbersGenerated = 100
+const numberOfNumbersGenerated = 1000
 
 Deno.test('random', async (t) => {
   await t.step('random float within bounds (many samples)', () => {
