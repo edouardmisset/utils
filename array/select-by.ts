@@ -40,37 +40,6 @@ export function selectBy<
 export const pluckBy: typeof selectBy = selectBy
 
 /**
- * Creates a function that selects a specific key's value from a given object.
- *
- * @template Object_ - The type of the object.
- * @template Key - The type of the key to select.
- * @param {Key} key - The key to select.
- * @returns {function} A function that takes an object and returns the value of the selected key.
- *
- * @example
- * ```typescript
- * import { assertEquals } from '@std/assert'
- *
- * const selectById = createSelectBy('id')
- * assertEquals(selectById({ id: 1, name: 'John' }), 1)
- *
- * const selectByName = createSelectBy('name')
- * assertEquals(selectByName({ id: 1, name: 'John' }), 'John')
- * ```
- */
-export function createSelectBy<
-  Object_ extends ObjectOfType<unknown>,
-  Key extends keyof Object_,
->(key: Key): (object_: Object_) => Object_[Key] {
-  return (object_) => object_[key]
-}
-
-/**
- * Alias for the {@link selectBy} function.
- */
-export const buildSelectBy: typeof createSelectBy = createSelectBy
-
-/**
  * Applies a transformation function to the values a specified by a key of each object in an array.
  *
  * @template Object_ - The type of the objects in the array.
