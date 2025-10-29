@@ -9,7 +9,7 @@
  *
  * @example
  * ```ts
- * import { sum, average, product, divmod } from "jsr:@edouardmisset/math";
+ * import { sum, average, product, divmod } from "@edouardmisset/math";
  * import { assertEquals } from "@std/assert";
  *
  * const numbers = [1, 2, 3, 4, 5];

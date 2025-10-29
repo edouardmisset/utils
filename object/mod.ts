@@ -9,7 +9,7 @@
  *
  * @example
  * ```ts
- * import { isObject, invert, isKey, mapObject } from "jsr:@edouardmisset/object";
+ * import { isObject, invert, isKey, mapObject } from "@edouardmisset/object";
  * import { assertEquals } from "@std/assert";
  *
  * const obj = { a: 1, b: 2 };

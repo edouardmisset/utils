@@ -9,7 +9,7 @@
  *
  * @example
  * ```ts
- * import { capitalize, slugify, removeAccents, levenshteinDistance } from "jsr:@edouardmisset/text";
+ * import { capitalize, slugify, removeAccents, levenshteinDistance } from "@edouardmisset/text";
  * import { assertEquals } from "@std/assert";
  *
  * //  capitalize function

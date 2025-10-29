@@ -9,7 +9,7 @@
  *
  * @example
  * ```ts
- * import { groupBy, countBy, maxBy, randomItem } from "jsr:@edouardmisset/array";
+ * import { groupBy, countBy, maxBy, randomItem } from "@edouardmisset/array";
  * import { assertEquals } from "@std/assert";
  *
  * const users = [
@@ -58,4 +58,4 @@ export * from './select-by.ts'
 export * from './sets.ts'
 export * from './sort-by.ts'
 export * from './take.ts'
-export * from './update-array.ts'
+export * from './find-and-update.ts'

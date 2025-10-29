@@ -15,7 +15,7 @@
  *
  * @example
  * ```ts
- * import { groupBy } from "jsr:@edouardmisset/array";
+ * import { groupBy } from "@edouardmisset/array";
  * import { assertEquals } from "@std/assert";
  *
  * const users = [
@@ -30,7 +30,7 @@
  *
  * @example
  * ```ts
- * import { slugify } from "jsr:@edouardmisset/text";
+ * import { slugify } from "@edouardmisset/text";
  * import { assertEquals } from "@std/assert";
  *
  * // Test text utilities

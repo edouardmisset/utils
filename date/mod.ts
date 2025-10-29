@@ -10,7 +10,7 @@
  *
  * @example
  * ```ts
- * import { convertStringDate, lastDateOfMonth, firstDateOfMonth } from "jsr:@edouardmisset/date";
+ * import { convertStringDate, lastDateOfMonth, firstDateOfMonth } from "@edouardmisset/date";
  * import { assertEquals } from "@std/assert";
  *
  * //  convertStringDate function

@@ -1,5 +1,5 @@
 import { assert, assertEquals } from '@std/assert'
-import { FakeTime } from 'jsr:@std/testing@^1.0.5/time'
+import { FakeTime } from '@std/testing/time'
 import { timeIt, type TimeResult } from './time-it.ts'
 
 Deno.test('timeIt', async (t) => {

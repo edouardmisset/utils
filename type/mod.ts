@@ -7,7 +7,7 @@
  *
  * @example
  * ```ts
- * import type { LooseAutoComplete, ObjectOfType } from "jsr:@edouardmisset/type";
+ * import type { LooseAutoComplete, ObjectOfType } from "@edouardmisset/type";
  * import { assertEquals } from "@std/assert";
  *
  * // Test LooseAutoComplete type - allows both predefined and custom values

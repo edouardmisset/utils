@@ -7,7 +7,7 @@
  *
  * @example
  * ```ts
- * import { sleep, tryCatch, isFunction, isEmpty } from "jsr:@edouardmisset/function";
+ * import { sleep, tryCatch, isFunction, isEmpty } from "@edouardmisset/function";
  * import { assertEquals } from "@std/assert";
  *
  * //  sleep function (using a shorter duration for testing)
