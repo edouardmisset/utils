@@ -44,7 +44,6 @@
 
 export * from './collection-key-by.ts'
 export * from './count-by.ts'
-export * from './filter-by-boolean.ts'
 export * from './filter-by-date.ts'
 export * from './filter-by.ts'
 export * from './find-by.ts'
