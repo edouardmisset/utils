@@ -3,6 +3,13 @@ import type { ObjectOfType } from '@edouardmisset/type'
 /**
  * Groups an array of objects by a specific key.
  *
+ * @deprecated This function is deprecated as of 2024-03-05. Use the native
+ * `Object.groupBy()` static method instead, which is Baseline Newly Available 
+ * (supported in the latest versions of all major browsers) and will become
+ * Baseline Widely Available on 2026-09-05.
+ *
+ * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/groupBy
+ *
  * @template Object_ - The type of the objects in the array, which must extend
  * `Record<string, unknown>`.
  * @template Key - The type of the key of the object.
