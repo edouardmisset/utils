@@ -11,7 +11,6 @@ import {
   YearOption,
 } from '@edouardmisset/date'
 import { err, ok, type Result } from '@edouardmisset/function'
-import { size } from '@edouardmisset/object'
 import type { ObjectOfType } from '@edouardmisset/type'
 
 /**
@@ -74,30 +73,28 @@ export function filterByDate<Object_ extends ObjectOfType<unknown>>(
     isDateInRangeOption(options) &&
     !isValidDate(options.startDate, options.endDate)
   ) {
-    return err(new Error('Invalid date range'))
+    return err(
+      new Error(
+        `Invalid date range. startDate: ${options.startDate} - endDate: ${options.endDate}`,
+      ),
+    )
   }
 
-  if (size(options) === 0) return ok(array)
+  if (Object.keys(options).length === 0) return ok(array)
 
   const filteredArrayByDate = array.filter((o) => {
     const dateValue = typeof keyOrFunction === 'function'
       ? keyOrFunction(o)
       : o[keyOrFunction]
 
-    if (!isDateCompatible(dateValue)) {
-      return false
-    }
+    if (!isDateCompatible(dateValue)) return false
 
     const date = new Date(dateValue)
-    if (!isValidDate(date)) {
-      return false
-    }
+    if (!isValidDate(date)) return false
 
     if (isYearOption(options)) return isDateInYear(date, options.year)
 
-    if (isDateInRangeOption(options)) {
-      return isDateInRange(date, options)
-    }
+    if (isDateInRangeOption(options)) return isDateInRange(date, options)
 
     return isDateInDuration(date, options)
   })

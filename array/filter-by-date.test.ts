@@ -1,4 +1,4 @@
-import { assertEquals } from '@std/assert'
+import { assert, assertEquals } from '@std/assert'
 import { filterByDate } from './filter-by-date.ts'
 
 Deno.test(
@@ -89,7 +89,7 @@ Deno.test(
         },
       })
       assertEquals(data, undefined)
-      assertEquals(error?.message, 'Invalid date range')
+      assert(error?.message.includes('Invalid date range'))
     })
 
     await t.step(
