@@ -26,20 +26,23 @@ Deno.test('keyBy', async (t) => {
     assertEquals(keyBy(array, key), undefined)
   })
 
-  await t.step('should filter out objects with undefined or null key values', () => {
-    const array = [
-      { id: 1, name: 'Alice' },
-      { id: undefined, name: 'Bob' },
-      { id: 3, name: 'Charlie' },
-      { id: null, name: 'Dave' },
-      { id: 5, name: 'Eve' },
-    ]
-    const key = 'id'
-    const expected = {
-      '1': { id: 1, name: 'Alice' },
-      '3': { id: 3, name: 'Charlie' },
-      '5': { id: 5, name: 'Eve' },
-    }
-    assertEquals(keyBy(array, key), expected)
-  })
+  await t.step(
+    'should filter out objects with undefined or null key values',
+    () => {
+      const array = [
+        { id: 1, name: 'Alice' },
+        { id: undefined, name: 'Bob' },
+        { id: 3, name: 'Charlie' },
+        { id: null, name: 'Dave' },
+        { id: 5, name: 'Eve' },
+      ]
+      const key = 'id'
+      const expected = {
+        '1': { id: 1, name: 'Alice' },
+        '3': { id: 3, name: 'Charlie' },
+        '5': { id: 5, name: 'Eve' },
+      }
+      assertEquals(keyBy(array, key), expected)
+    },
+  )
 })

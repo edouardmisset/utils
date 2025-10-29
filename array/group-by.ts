@@ -4,7 +4,7 @@ import type { ObjectOfType } from '@edouardmisset/type'
  * Groups an array of objects by a specific key.
  *
  * @deprecated This function is deprecated as of 2024-03-05. Use the native
- * `Object.groupBy()` static method instead, which is Baseline Newly Available 
+ * `Object.groupBy()` static method instead, which is Baseline Newly Available
  * (supported in the latest versions of all major browsers) and will become
  * Baseline Widely Available on 2026-09-05.
  *

@@ -27,11 +27,9 @@ export function keyBy<
   Object_ extends Record<string, unknown>,
   Key extends keyof Object_,
 >(array: Object_[], key: Key): undefined | ObjectOfType<Object_> {
-  return array.length === 0
-    ? undefined
-    : (Object.fromEntries(
-      array
-        .filter((value) => value[key] !== undefined && value[key] !== null)
-        .map((value) => [String(value[key]), value]),
-    ) as ObjectOfType<Object_>)
+  return array.length === 0 ? undefined : (Object.fromEntries(
+    array
+      .filter((value) => value[key] !== undefined && value[key] !== null)
+      .map((value) => [String(value[key]), value]),
+  ) as ObjectOfType<Object_>)
 }
