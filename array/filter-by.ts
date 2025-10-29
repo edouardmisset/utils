@@ -1,4 +1,4 @@
-import type { FindByParams, ObjectOfType } from '@edouardmisset/type'
+import type { ByParams, ObjectOfType } from '@edouardmisset/type'
 
 /**
  * Filter all objects in an array whose selected value strictly equals the
@@ -68,7 +68,7 @@ export function filterBy<
   Key extends keyof Object_,
   Value extends Object_[Key],
 >(
-  { array, keyOrFunction, value }: FindByParams<Object_, Key, Value>,
+  { array, keyOrFunction, value }: ByParams<Object_, Key, Value>,
 ): Object_[] {
   const isFunction = typeof keyOrFunction === 'function'
   return array.filter((object_) => {

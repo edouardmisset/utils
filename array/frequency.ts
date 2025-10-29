@@ -29,8 +29,8 @@
 export function frequency<T extends string | number>(
   array: T[],
 ): Record<T, number> {
-  return array.reduce((frequencyCounter, value) => {
-    frequencyCounter[value] = (frequencyCounter[value] ?? 0) + 1
-    return frequencyCounter
+  return array.reduce((frequencyObject, value) => {
+    frequencyObject[value] = (frequencyObject[value] ?? 0) + 1
+    return frequencyObject
   }, {} as Record<T, number>)
 }
