@@ -57,7 +57,6 @@ export * from './range.ts'
 export * from './select-by.ts'
 export * from './sets.ts'
 export * from './sort-by.ts'
-export * from './sort.ts'
 export * from './take.ts'
 export * from './update-array.ts'
 
