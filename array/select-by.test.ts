@@ -1,5 +1,5 @@
 import { assertEquals } from '@std/assert'
-import { selectAndTransform, selectBy } from './select-by.ts'
+import { selectBy } from './select-by.ts'
 
 Deno.test('selectBy', async (t) => {
   const objects = [{ id: 1, name: 'John' }, { id: 2, name: 'Jane' }]
@@ -22,39 +22,6 @@ Deno.test('selectBy', async (t) => {
       ]
       const result = selectBy(mixedObjects, 'name')
       assertEquals(result, ['John', 'Bob'])
-    },
-  )
-})
-
-Deno.test('selectAndTransform', async (t) => {
-  const objects = [{ id: 1, name: 'John' }, { id: 2, name: 'Jane' }]
-
-  await t.step(
-    'should apply a transformation function to the values specified by a key of each object in an array',
-    () => {
-      const result = selectAndTransform(
-        objects,
-        'name',
-        (name) => name.toUpperCase(),
-      )
-      assertEquals(result, ['JOHN', 'JANE'])
-    },
-  )
-
-  await t.step(
-    'should skip objects that do not have the specified key during transformation',
-    () => {
-      const mixedObjects = [
-        { id: 1, name: 'John' },
-        { id: 2 }, // missing name key
-        { id: 3, name: 'Bob' },
-      ]
-      const result = selectAndTransform(
-        mixedObjects,
-        'name',
-        (name) => name?.toUpperCase() ?? '',
-      )
-      assertEquals(result, ['JOHN', 'BOB'])
     },
   )
 })

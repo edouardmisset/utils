@@ -7,80 +7,22 @@ import type { ObjectOfType } from '@edouardmisset/type'
  * @template Key - The type of the key to select from the objects.
  * @param {Object_[]} array - The array of objects.
  * @param {Key} key - The key to select from each object.
- * @returns {Array<Object_[Key]>} - An array of the selected properties.
+ * @returns {Array<Object_[Key]>} - An array of the selected values.
  *
  * @example
  * ```typescript
  * import { assertEquals } from '@std/assert'
  *
  * const array = [{ a: 1, b: 2 }, { a: 3, b: 4 }]
- * const key = 'b'
- * assertEquals(selectBy(array, key), [2, 4])
- * ```
- *
- * @example
- * ```typescript
- * import { assertEquals } from '@std/assert'
- *
- * const array = [{ name: 'John', age: 30 }, { name: 'Jane', age: 25 }]
- * const key = 'name'
- * assertEquals(selectBy(array, key), ['John', 'Jane'])
+ * assertEquals(selectBy(array, 'b'), [2, 4])
  * ```
  */
 export function selectBy<
   Object_ extends ObjectOfType<unknown>,
   Key extends keyof Object_,
->(array: Object_[], key: Key): Object_[Key][] {
-  return array.flatMap((item) => (Object.hasOwn(item, key) ? [item[key]] : []))
-}
-
-/**
- * Alias for the {@link selectBy} function.
- */
-export const pluckBy: typeof selectBy = selectBy
-
-/**
- * Applies a transformation function to the values a specified by a key of each object in an array.
- *
- * @template Object_ - The type of the objects in the array.
- * @template Key - The type of the key to select from the objects.
- * @template Result - The type of the result of the transformation function.
- * @param {Object_[]} array - The array of objects.
- * @param {Key} key - The key to select from each object.
- * @param {(value: Object_[Key]) => Result} transform - The transformation function to apply to each selected key.
- * @returns {Array<Result>} - An array of the transformed properties.
- *
- * @example
- * ```typescript
- * import { assertEquals } from '@std/assert'
- *
- * const array = [{ a: 1, b: 2 }, { a: 3, b: 4 }]
- * assertEquals(selectAndTransform(array, 'b', value => value * 2), [4, 8])
- * ```
- *
- * @example
- * ```typescript
- * import { assertEquals } from '@std/assert'
- *
- * const array = [{ name: 'John', age: 30 }, { name: 'Jane', age: 25 }]
- * assertEquals(selectAndTransform(array, 'name', name => name.toUpperCase()), ['JOHN', 'JANE'])
- * ```
- */
-export function selectAndTransform<
-  Object_ extends ObjectOfType<unknown>,
-  Key extends keyof Object_,
-  Result,
 >(
   array: Object_[],
   key: Key,
-  transform: (value: Object_[Key]) => Result,
-): Result[] {
-  return array.flatMap(
-    (item) => (Object.hasOwn(item, key) ? [transform(item[key])] : []),
-  )
+): Array<Object_[Key]> {
+  return array.flatMap((item) => (Object.hasOwn(item, key) ? [item[key]] : []))
 }
-
-/**
- * Alias for the {@link selectAndTransform} function.
- */
-export const pluckAndMap: typeof selectAndTransform = selectAndTransform
