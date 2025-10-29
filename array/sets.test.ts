@@ -3,7 +3,7 @@ import {
   commonElements,
   mergeUnique,
   setDifference,
-  uniqueElements,
+  symmetricDifference,
   uniqueInFirst,
 } from './sets.ts'
 
@@ -143,43 +143,43 @@ Deno.test('uniqueInFirst', async (t) => {
 
 Deno.test('uniqueElements', async (t) => {
   await t.step('should return unique elements from n arrays', () => {
-    const result = uniqueElements(array1, array2, array3)
+    const result = symmetricDifference(array1, array2, array3)
     assertEquals(result, [1, 5])
   })
 
   await t.step('should handle empty arrays', () => {
-    assertEquals(uniqueElements(emptyArray, noCommonElements1, [3]), [1, 2, 3])
-    assertEquals(uniqueElements(singleElement1, emptyArray, emptyArray), [1])
-    assertEquals(uniqueElements(emptyArray, emptyArray, emptyArray), [])
+    assertEquals(symmetricDifference(emptyArray, noCommonElements1, [3]), [1, 2, 3])
+    assertEquals(symmetricDifference(singleElement1, emptyArray, emptyArray), [1])
+    assertEquals(symmetricDifference(emptyArray, emptyArray, emptyArray), [])
   })
 
   await t.step('should handle single array', () => {
-    const result = uniqueElements(array1)
+    const result = symmetricDifference(array1)
     assertEquals(result, [1, 2, 3])
   })
 
   await t.step('should handle two arrays', () => {
-    const result = uniqueElements(array1, array2)
+    const result = symmetricDifference(array1, array2)
     assertEquals(result, [1, 4])
   })
 
   await t.step('should handle arrays with duplicates within same array', () => {
-    const result = uniqueElements([1, 1, 2], [2, 3, 3], [4])
+    const result = symmetricDifference([1, 1, 2], [2, 3, 3], [4])
     assertEquals(result, [4])
   })
 
   await t.step('should handle identical arrays', () => {
-    const result = uniqueElements(array1, identicalToArray1)
+    const result = symmetricDifference(array1, identicalToArray1)
     assertEquals(result, [])
   })
 
   await t.step('should handle no common elements', () => {
-    const result = uniqueElements(noCommonElements1, noCommonElements2, [5, 6])
+    const result = symmetricDifference(noCommonElements1, noCommonElements2, [5, 6])
     assertEquals(result, [1, 2, 3, 4, 5, 6])
   })
 
   await t.step('should handle many arrays', () => {
-    const result = uniqueElements(
+    const result = symmetricDifference(
       singleElement1,
       singleElement2,
       [3],

@@ -124,11 +124,11 @@ export function setDifference<
 }
 
 /**
- * Returns the unique elements from n arrays.
+ * Returns elements that appear in exactly one of the provided arrays.
  *
  * @template T The type of the elements in the arrays.
- * @param {...T[][]} arrays The arrays to find the unique elements of.
- * @returns {T[]} An array that contains all elements that are in exactly one of the input arrays.
+ * @param {...T[][]} arrays The arrays to find the symmetric difference of.
+ * @returns {T[]} An array containing all elements that appear in exactly one of the input arrays.
  *
  * @example
  * ```typescript
@@ -137,10 +137,10 @@ export function setDifference<
  * const array1 = [1, 2, 3]
  * const array2 = [2, 3, 4]
  * const array3 = [3, 4, 5]
- * assertEquals(uniqueElements(array1, array2, array3), [1, 5])
+ * assertEquals(symmetricDifference(array1, array2, array3), [1, 5])
  * ```
  */
-export function uniqueElements<T>(...arrays: (T[] | readonly T[])[]): T[] {
+export function symmetricDifference<T>(...arrays: (T[] | readonly T[])[]): T[] {
   const counts = new Map<T, number>()
   arrays.flat().forEach((value) => {
     counts.set(value, (counts.get(value) ?? 0) + 1)
@@ -150,8 +150,3 @@ export function uniqueElements<T>(...arrays: (T[] | readonly T[])[]): T[] {
     .filter(([, count]) => count === 1)
     .map(([value]) => value)
 }
-
-/**
- * Alias for the {@link uniqueElements} function.
- */
-export const symmetricDifference: typeof uniqueElements = uniqueElements
