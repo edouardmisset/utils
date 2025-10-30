@@ -1,6 +1,6 @@
+import type { Result } from '@edouardmisset/function'
 import { scale } from '@edouardmisset/math/scale.ts'
 import type { ValueAndRange } from '@edouardmisset/type/type-helpers.ts'
-import type { Result } from '../function/try-catch.ts'
 
 /**
  * Scales a value from one range to another, outputting a percentage.

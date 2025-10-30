@@ -1,5 +1,5 @@
 import { isValidDate } from '@edouardmisset/date/is-valid-date.ts'
-import { err, ok, type Result } from '../function/try-catch.ts'
+import { err, ok, type Result } from '@edouardmisset/function'
 
 /**
  * Converts a Date object into a string in the format 'yyyy-mm-dd'.
