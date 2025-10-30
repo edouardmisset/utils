@@ -39,9 +39,9 @@ Deno.test('tryCatch', async (t) => {
     assertEquals(objectResult.error, undefined)
 
     // Array
-    const arr = [1, 2, 3]
-    const arrayResult = await tryCatch(Promise.resolve(arr))
-    assertEquals(arrayResult.data, arr)
+    const array = [1, 2, 3]
+    const arrayResult = await tryCatch(Promise.resolve(array))
+    assertEquals(arrayResult.data, array)
     assertEquals(arrayResult.error, undefined)
   })
 
@@ -120,14 +120,14 @@ Deno.test('tryCatch', async (t) => {
 
   await t.step('should work with synchronous functions', () => {
     // Success case
-    const syncSuccess = () => 'sync success'
+    const syncSuccess = (): string => 'sync success'
     const successResult = tryCatch(syncSuccess)
 
     assertEquals(successResult.data, 'sync success')
     assertEquals(successResult.error, undefined)
 
     // Error case
-    const syncError = () => {
+    const syncError: VoidFunction = () => {
       throw new Error('sync error')
     }
     const errorResult = tryCatch(syncError)

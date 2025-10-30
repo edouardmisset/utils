@@ -1,12 +1,14 @@
 import { join } from '@std/path'
 import { z } from 'zod'
 
+/** Barrel file name used for module exports */
+export const BARREL_FILE_NAME = 'mod.ts'
 /** Deno's configuration file name */
 export const DENO_FILE_NAME: string = 'deno.json'
 /** This is the project's root directory */
-export const ROOT_DIR: string = new URL('..', import.meta.url).pathname
+export const ROOT_DIRECTORY: string = new URL('..', import.meta.url).pathname
 /** This is the path to the root Deno configuration file */
-export const ROOT_DENO_FILE_PATH: string = join(ROOT_DIR, DENO_FILE_NAME)
+export const ROOT_DENO_FILE_PATH: string = join(ROOT_DIRECTORY, DENO_FILE_NAME)
 
 /** Basic Deno configuration schema */
 const basicDenoConfigSchema = z.object({
@@ -63,7 +65,7 @@ export async function getAllWorkspaceConfigs(): Promise<
     const workspaceName = path.replace(/^\.\//, '')
     return {
       workspaceName,
-      path: join(ROOT_DIR, workspaceName, DENO_FILE_NAME),
+      path: join(ROOT_DIRECTORY, workspaceName, DENO_FILE_NAME),
     }
   })
 

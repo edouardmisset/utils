@@ -1,23 +1,24 @@
 import { bold, green, yellow } from '@std/fmt/colors'
 import { join } from '@std/path'
 import {
+  BARREL_FILE_NAME,
   DENO_FILE_NAME,
   getWorkspacePaths,
   readDenoConfig,
-  ROOT_DIR,
+  ROOT_DIRECTORY,
 } from './deno-config.ts'
 
 type Result = {
   pkg: string
-  modUpdated: boolean
+  moduleUpdated: boolean
   denoJsonUpdated: boolean
 }
 
-const BARREL_FILE_NAME = 'mod.ts'
 
-async function getTSFiles(dir: string): Promise<string[]> {
+
+async function getTypescriptFiles(directory: string): Promise<string[]> {
   const expected: string[] = []
-  for await (const entry of Deno.readDir(dir)) {
+  for await (const entry of Deno.readDir(directory)) {
     if (!entry.isFile) continue
     if (!entry.name.endsWith('.ts')) continue
     if (entry.name === BARREL_FILE_NAME) continue
@@ -28,19 +29,20 @@ async function getTSFiles(dir: string): Promise<string[]> {
   return expected
 }
 
-async function getModuleDocComment(modPath: string): Promise<string> {
+async function getModuleDocumentComment(modulePath: string): Promise<string> {
   try {
-    const content = await Deno.readTextFile(modPath)
+    const content = await Deno.readTextFile(modulePath)
     // Extract the JSDoc comment block at the top of the file
     const docMatch = content.match(/^\/\*\*[\s\S]*?\*\/\n\n/m)
     return docMatch ? docMatch[0] : ''
-  } catch {
+  } catch (error) {
+    globalThis.console.error(error)
     return ''
   }
 }
 
-function generateModuleContent(files: string[], docComment: string): string {
-  const documentationComment = docComment || '\n/**\n * @module\n */\n\n'
+function generateModuleContent(files: string[], documentComment: string): string {
+  const documentationComment = documentComment || '\n/**\n * @module\n */\n\n'
 
   const exports = files.map((file) => `export * from './${file}'`).join('\n')
   return `${documentationComment + exports}\n`
@@ -50,16 +52,16 @@ async function updateBarrelFile(
   packageDirectory: string,
   files: string[],
 ): Promise<boolean> {
-  const modPath = join(packageDirectory, BARREL_FILE_NAME)
+  const modulePath = join(packageDirectory, BARREL_FILE_NAME)
 
   // Get existing doc comment if barrel file exists
-  const existingDoc = await getModuleDocComment(modPath)
-  const newContent = generateModuleContent(files, existingDoc)
+  const existingDocumentation = await getModuleDocumentComment(modulePath)
+  const newContent = generateModuleContent(files, existingDocumentation)
 
-  const currentContent = await Deno.readTextFile(modPath)
+  const currentContent = await Deno.readTextFile(modulePath)
   if (currentContent.trim() === newContent.trim()) return false // No changes needed
 
-  await Deno.writeTextFile(modPath, newContent)
+  await Deno.writeTextFile(modulePath, newContent)
   return true
 }
 
@@ -103,7 +105,7 @@ async function updateDenoExports(
 }
 
 async function processPackage(packageDirectory: string): Promise<Result> {
-  const files = await getTSFiles(packageDirectory)
+  const files = await getTypescriptFiles(packageDirectory)
 
   const [modUpdated, denoJsonUpdated] = await Promise.all([
     updateBarrelFile(packageDirectory, files),
@@ -112,13 +114,13 @@ async function processPackage(packageDirectory: string): Promise<Result> {
 
   return {
     pkg: packageDirectory,
-    modUpdated,
+    moduleUpdated: modUpdated,
     denoJsonUpdated,
   }
 }
 
 async function main(): Promise<void> {
-  const rootDenoConfig = await readDenoConfig(`${ROOT_DIR}/${DENO_FILE_NAME}`)
+  const rootDenoConfig = await readDenoConfig(`${ROOT_DIRECTORY}/${DENO_FILE_NAME}`)
   const workspaces = getWorkspacePaths(rootDenoConfig)
   if (workspaces.length === 0) {
     globalThis.console.warn(
@@ -130,7 +132,7 @@ async function main(): Promise<void> {
   const results = await Promise.all(workspaces.map((ws) => processPackage(ws)))
 
   let hasUpdates = false
-  for (const { pkg, modUpdated, denoJsonUpdated } of results) {
+  for (const { pkg, moduleUpdated: modUpdated, denoJsonUpdated } of results) {
     if (!modUpdated && !denoJsonUpdated) continue
 
     hasUpdates = true

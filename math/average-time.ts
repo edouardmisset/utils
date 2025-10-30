@@ -36,7 +36,7 @@ export function averageTime(dates: Date[]): Result<string, Error> {
 
   if (averageResult.error) return err(averageResult.error)
 
-  const averageTime = new Date(averageResult.data).toISOString().slice(11, 19)
+  const meanTime = new Date(averageResult.data).toISOString().slice(11, 19)
 
-  return ok(averageTime)
+  return ok(meanTime)
 }

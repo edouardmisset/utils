@@ -7,7 +7,7 @@ import type { ObjectOfType } from '@edouardmisset/type'
  * @template Key - The type of the key to select from the objects.
  * @param {Object_[]} array - The array of objects.
  * @param {Key} key - The key to select from each object.
- * @returns {Array<Object_[Key]>} - An array of the selected values.
+ * @returns {Object_[Key][]} - An array of the selected values.
  *
  * @example
  * ```typescript
@@ -23,6 +23,6 @@ export function selectBy<
 >(
   array: Object_[],
   key: Key,
-): Array<Object_[Key]> {
+): Object_[Key][] {
   return array.flatMap((item) => (Object.hasOwn(item, key) ? [item[key]] : []))
 }

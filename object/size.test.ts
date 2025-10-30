@@ -70,12 +70,12 @@ Deno.test('size', async (t) => {
 
 Deno.test('aliases', async (t) => {
   await t.step('length alias should work the same as size', () => {
-    const obj = { a: 1, b: 2 }
-    const arr = [1, 2, 3]
-    const str = 'test'
+    const testObject = { a: 1, b: 2 }
+    const numberArray = [1, 2, 3]
+    const someString = 'test'
 
-    assertEquals(length(obj), size(obj))
-    assertEquals(length(arr), size(arr))
-    assertEquals(length(str), size(str))
+    assertEquals(length(testObject), size(testObject))
+    assertEquals(length(numberArray), size(numberArray))
+    assertEquals(length(someString), size(someString))
   })
 })

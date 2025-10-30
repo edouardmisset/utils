@@ -1,4 +1,5 @@
 import { bold, green, red, rgb24 } from '@std/fmt/colors'
+import { BARREL_FILE_NAME } from './deno-config.ts'
 
 /**
  * Script to verify that all {@link ...} references in module JSDoc blocks (barrel files)
@@ -84,15 +85,13 @@ async function collectExports(): Promise<Set<string>> {
 async function discoverBarrelFiles(): Promise<string[]> {
   const barrelFiles: string[] = []
   for await (const entry of Deno.readDir(projectRoot)) {
-    if (entry.isFile && entry.name === 'mod.ts') {
+    if (entry.isFile && entry.name === BARREL_FILE_NAME) {
       barrelFiles.push(`${projectRoot}${entry.name}`)
     }
     if (entry.isDirectory) {
-      const modPath = `${projectRoot}${entry.name}/mod.ts`
-      try {
-        const stat = await Deno.stat(modPath)
-        if (stat.isFile) barrelFiles.push(modPath)
-      } catch (_) { /* ignore: directory may not contain mod.ts */ }
+      const modulePath = `${projectRoot}${entry.name}/${BARREL_FILE_NAME}`
+      const stat = await Deno.stat(modulePath)
+      if (stat.isFile) barrelFiles.push(modulePath)
     }
   }
   return barrelFiles
@@ -156,8 +155,7 @@ if (hasErrors) {
   globalThis.console.log(
     bold(
       green(
-        `✅ All JSDoc {${
-          rgb24('@link', { r: 222, g: 49, b: 99 })
+        `✅ All JSDoc {${rgb24('@link', { r: 222, g: 49, b: 99 })
         }} references are valid.`,
       ),
     ),

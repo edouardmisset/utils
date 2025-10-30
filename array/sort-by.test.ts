@@ -98,7 +98,7 @@ Deno.test('sortBy', async (t) => {
         { id: 2, value: 42 },
         { id: 3, value: 'world' },
         { id: 4, value: 10 },
-      ] as Array<{ id: number; value: string | number }>
+      ] satisfies { id: number; value: string | number }[]
       const result = sortBy(mixedObjects, 'value', { descending: false })
       // Numbers are sorted among themselves (10 < 42)
       // Strings maintain their order relative to each other
@@ -119,8 +119,8 @@ Deno.test('sortBy', async (t) => {
         { id: 1, value: { nested: 'a' } },
         { id: 2, value: { nested: 'b' } },
         { id: 3, value: 'string' },
-      ] as Array<{ id: number; value: { nested: string } | string }>
-      // @ts-ignore - Testing edge case with object values
+      ] satisfies { id: number; value: { nested: string } | string }[]
+      // @ts-expect-error - Testing edge case with object values
       const result = sortBy(objectsWithObjects, 'value', { descending: false })
       // Objects should maintain original order
       assertEquals(result, objectsWithObjects as typeof result)
@@ -134,8 +134,8 @@ Deno.test('sortBy', async (t) => {
         { id: 1, name: 'first', active: true },
         { id: 2, name: 'second', active: false },
         { id: 3, name: 'third', active: true },
-      ] as Array<{ id: number; name: string; active: boolean }>
-      // @ts-ignore - Testing edge case with boolean values which aren't string | number
+      ] satisfies { id: number; name: string; active: boolean }[]
+      // @ts-expect-error - Testing edge case with boolean values which aren't string | number
       const result = sortBy(objectsWithBooleans, 'active', {
         descending: false,
       })

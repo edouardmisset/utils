@@ -105,9 +105,9 @@ Deno.test('shallowEqual', async (t) => {
   })
 
   await t.step('should handle arrays as values', () => {
-    const arr = [1, 2, 3]
-    const object1 = { a: arr, b: 'test' }
-    const object2 = { a: arr, b: 'test' } // Same array reference
+    const array = [1, 2, 3]
+    const object1 = { a: array, b: 'test' }
+    const object2 = { a: array, b: 'test' } // Same array reference
     const result1 = shallowEqual(object1, object2)
     assertEquals(result1, true)
 

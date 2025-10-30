@@ -35,6 +35,6 @@ export function findAndUpdate<
   },
 ): Object_[] {
   return array.map((
-    obj,
-  ) => (obj?.[key] === value ? { ...obj, ...updates } : obj))
+    object_,
+  ) => (object_?.[key] === value ? { ...object_, ...updates } : object_))
 }

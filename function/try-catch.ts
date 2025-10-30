@@ -7,7 +7,7 @@ import { isFunction } from '@edouardmisset/function'
  * @typeParam T Data type when successful.
  * @typeParam E Error type when failed (default Error).
  *
- * @param fn Synchronous function to invoke inside a try/catch.
+ * @param function_ Synchronous function to invoke inside a try/catch.
  * @returns Result with `data` on success or `error` on failure.
  *
  * @example
@@ -29,19 +29,19 @@ import { isFunction } from '@edouardmisset/function'
  * ```
  */
 export function tryCatch<T, E = Error>(
-  fn: () => T,
+  function_: () => T,
 ): Result<T, E>
 /** Promise overload. Wraps a Promise and resolves to a Result. */
 export function tryCatch<T, E = Error>(
   promise: Promise<T>,
 ): Promise<Result<T, E>>
 export function tryCatch<T, E = Error>(
-  fn: (() => T) | Promise<T>,
+  function_: (() => T) | Promise<T>,
 ): Result<T, E> | Promise<Result<T, E>> {
   // Handle synchronous function
-  if (isFunction(fn)) {
+  if (isFunction(function_)) {
     try {
-      const data = fn()
+      const data = function_()
       return ok(data) as Result<T, E>
     } catch (error) {
       return err(error as E) as Result<T, E>
@@ -49,7 +49,7 @@ export function tryCatch<T, E = Error>(
   }
 
   // Handle promise
-  return Promise.resolve(fn)
+  return Promise.resolve(function_)
     .then((data) => ok(data) as Result<T, E>)
     .catch((error) => err(error as E) as Result<T, E>)
 }

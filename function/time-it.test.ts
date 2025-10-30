@@ -63,7 +63,7 @@ Deno.test('timeIt', async (t) => {
     try {
       const p = timeIt(() =>
         new Promise<number>((resolve) => {
-          setTimeout(() => resolve(7), 30)
+          setTimeout(() => { resolve(7) }, 30)
         })
       )
 
@@ -83,7 +83,7 @@ Deno.test('timeIt', async (t) => {
     try {
       const p = timeIt(async () => {
         await new Promise((_, reject) =>
-          setTimeout(() => reject(new Error('fail')), 40)
+          setTimeout(() => { reject(new Error('fail')) }, 40)
         )
         return 'never'
       })

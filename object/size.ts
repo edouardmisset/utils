@@ -7,7 +7,7 @@ import type { ObjectOfType } from '@edouardmisset/type'
  * - For Maps and Sets: the size
  *
  * @template T - The type of elements in the collection.
- * @param {Record<string, T> | Array<T> | Map<string, T> | Set<T> | string} o - The collection to query.
+ * @param {Record<string, T> | T[] | Map<string, T> | Set<T> | string} o - The collection to query.
  * @returns {number} Returns the size of the collection.
  *
  * @example
@@ -33,7 +33,7 @@ import type { ObjectOfType } from '@edouardmisset/type'
  * ```
  */
 export function size<T = unknown>(
-  o: ObjectOfType<T> | Array<T> | Map<string, T> | Set<T> | string,
+  o: ObjectOfType<T> | T[] | Map<string, T> | Set<T> | string,
 ): number {
   if (o instanceof Map || o instanceof Set) return o.size
   if (Array.isArray(o) || typeof o === 'string') return o.length

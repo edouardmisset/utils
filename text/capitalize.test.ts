@@ -59,10 +59,10 @@ Deno.test('capitalize', async (t) => {
   })
 
   await t.step('should handle very long strings efficiently', () => {
-    const longString = `a${'b'.repeat(10000)}`
+    const longString = `a${'b'.repeat(10_000)}`
     const result = capitalize(longString)
     assertEquals(result[0], 'A')
-    assertEquals(result.slice(1), 'b'.repeat(10000))
+    assertEquals(result.slice(1), 'b'.repeat(10_000))
   })
 
   await t.step('should handle Turkish locale edge cases', () => {

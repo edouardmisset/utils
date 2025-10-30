@@ -67,7 +67,7 @@ Deno.test('slugify', async (t) => {
   await t.step('should handle very long strings efficiently', () => {
     const longString = 'Hello World! '.repeat(100)
     const result = slugify(longString)
-    assertEquals(result, 'hello-world-'.repeat(99) + 'hello-world')
+    assertEquals(result, `${'hello-world-'.repeat(99)}hello-world`)
   })
 
   await t.step('should handle strings with only whitespace', () => {

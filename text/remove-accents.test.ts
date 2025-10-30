@@ -59,8 +59,8 @@ Deno.test('removeAccents', async (t) => {
   })
 
   await t.step('should handle very long strings with accents', () => {
-    const longString = 'café '.repeat(1000) + 'résumé'
-    const expected = 'cafe '.repeat(1000) + 'resume'
+    const longString = `${'café '.repeat(1000)}résumé`
+    const expected = `${'cafe '.repeat(1000)}resume`
     assertEquals(removeAccents(longString), expected)
   })
 

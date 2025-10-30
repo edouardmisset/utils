@@ -4,13 +4,13 @@ import { green, yellow } from '@std/fmt/colors'
 import importMap from '../import-map.json' with { type: 'json' }
 import { getAllWorkspaceConfigs } from './deno-config.ts'
 
-const { imports } = importMap
+const imports = importMap?.imports
 const workspaceConfigs = await getAllWorkspaceConfigs()
 
 let failed = false
 
 for (const { config } of workspaceConfigs) {
-  const { name, version } = config
+  const { name = '', version } = config
   const dependency = imports[name as keyof typeof imports]
 
   if (!dependency) {

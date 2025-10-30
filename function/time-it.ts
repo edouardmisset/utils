@@ -36,16 +36,16 @@ import { err, ok, type Result, tryCatch } from '@edouardmisset/function'
  * ```
  */
 export async function timeIt<T, Args extends unknown[], E = Error>(
-  fn: (...args: Args) => Promise<T>,
+  fn: (...parameters: Args) => Promise<T>,
   ...args: Args
 ): Promise<TimeResult<T, E>>
 /** Synchronous overload. Returns a Promise resolving to the timed Result. */
 export async function timeIt<T, Args extends unknown[], E = Error>(
-  fn: (...args: Args) => T,
+  fn: (...parameters: Args) => T,
   ...args: Args
 ): Promise<TimeResult<T, E>>
 export async function timeIt<T, Args extends unknown[], E = Error>(
-  fn: (...args: Args) => T | Promise<T>,
+  fn: (...parameters: Args) => T | Promise<T>,
   ...args: Args
 ): Promise<TimeResult<T, E>> {
   const start = Date.now()
@@ -56,8 +56,8 @@ export async function timeIt<T, Args extends unknown[], E = Error>(
       return { ...result, duration: Date.now() - start }
     }
     return { ...ok(maybe), duration: Date.now() - start }
-  } catch (e) {
-    return { ...err(e as E), duration: Date.now() - start }
+  } catch (error_) {
+    return { ...err(error_ as E), duration: Date.now() - start }
   }
 }
 
