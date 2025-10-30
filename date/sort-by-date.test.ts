@@ -98,11 +98,11 @@ Deno.test('sortByDate', async (t) => {
       assertEquals(errorLogs.length, invalidFormats.length)
 
       // Verify each error log contains the expected structure
-      for (let i = 0; i < errorLogs.length; i++) {
-        assertEquals(errorLogs[i][0], 'Invalid date format detected:')
-        assertEquals(errorLogs[i][1], {
+      for (let index = 0; index < errorLogs.length; index++) {
+        assertEquals(errorLogs[index][0], 'Invalid date format detected:')
+        assertEquals(errorLogs[index][1], {
           aStringDate: dateA.date,
-          bStringDate: invalidFormats[i].date,
+          bStringDate: invalidFormats[index].date,
         })
       }
     } finally {
