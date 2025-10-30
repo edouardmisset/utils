@@ -74,9 +74,9 @@ async function main(): Promise<void> {
     const color = hasIssue ? red : green
     globalThis.console.log(
       name.padEnd(40) +
-      (jsr ?? 'N/A').padEnd(12) +
-      local.padEnd(12) +
-      color(status),
+        (jsr ?? 'N/A').padEnd(12) +
+        local.padEnd(12) +
+        color(status),
     )
   }
 

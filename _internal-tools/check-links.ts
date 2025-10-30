@@ -145,7 +145,8 @@ if (hasErrors) {
   globalThis.console.log(
     bold(
       green(
-        `✅ All JSDoc {${rgb24('@link', { r: 222, g: 49, b: 99 })
+        `✅ All JSDoc {${
+          rgb24('@link', { r: 222, g: 49, b: 99 })
         }} references are valid.`,
       ),
     ),

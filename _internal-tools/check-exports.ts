@@ -27,12 +27,12 @@ async function getTypescriptFiles(directory: string): Promise<string[]> {
   return expected
 }
 
-async function getModuleDocumentComment(modulePath: string): Promise<string> {
+async function getModuleJSDoc(modulePath: string): Promise<string> {
   try {
     const content = await Deno.readTextFile(modulePath)
     // Extract the JSDoc comment block at the top of the file
-    const docMatch = content.match(/^\/\*\*[\s\S]*?\*\/\n\n/m)
-    return docMatch ? docMatch[0] : ''
+    const jsdocMatch = content.match(/^\/\*\*[\s\S]*?\*\/\n\n/m)
+    return jsdocMatch ? jsdocMatch[0] : ''
   } catch (error) {
     globalThis.console.error(error)
     return ''
@@ -41,9 +41,9 @@ async function getModuleDocumentComment(modulePath: string): Promise<string> {
 
 function generateModuleContent(
   files: string[],
-  documentComment: string,
+  jsDoc: string,
 ): string {
-  const documentationComment = documentComment || '\n/**\n * @module\n */\n\n'
+  const documentationComment = jsDoc || '\n/**\n * @module\n */\n\n'
 
   const exports = files.map((file) => `export * from './${file}'`).join('\n')
   return `${documentationComment + exports}\n`
@@ -56,8 +56,8 @@ async function updateBarrelFile(
   const modulePath = join(packageDirectory, BARREL_FILE_NAME)
 
   // Get existing doc comment if barrel file exists
-  const existingDocumentation = await getModuleDocumentComment(modulePath)
-  const newContent = generateModuleContent(files, existingDocumentation)
+  const existingJSDoc = await getModuleJSDoc(modulePath)
+  const newContent = generateModuleContent(files, existingJSDoc)
 
   const currentContent = await Deno.readTextFile(modulePath)
   if (currentContent.trim() === newContent.trim()) return false // No changes needed
