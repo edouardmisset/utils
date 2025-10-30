@@ -54,16 +54,17 @@ async function collectExports(): Promise<Set<string>> {
     const content = await Deno.readTextFile(file)
     const exportRegex =
       /export\s+(?:function|const|class|interface|type|enum)\s+([A-Za-z0-9_]+)|export\s+{([^}]+)}/g
-    let m: RegExpExecArray | null
-    while ((m = exportRegex.exec(content))) {
-      if (m[2]) { // destructured export list
-        const names = m[2].split(',').map((s) => s.trim()).filter(Boolean)
-        for (const n of names) {
-          const parts = n.split(/\s+as\s+/i)
-          exports.add((parts[1] ?? parts[0]).trim())
-        }
-      } else {
-        exports.add(m[1])
+    let matches: RegExpExecArray | null
+    while ((matches = exportRegex.exec(content))) {
+      if (!matches[2]) {
+        exports.add(matches[1])
+        continue
+      }
+
+      const names = matches[2].split(',').map((s) => s.trim()).filter(Boolean)
+      for (const name of names) {
+        const parts = name.split(/\s+as\s+/i)
+        exports.add((parts[1] ?? parts[0]).trim())
       }
     }
   }
@@ -144,8 +145,7 @@ if (hasErrors) {
   globalThis.console.log(
     bold(
       green(
-        `✅ All JSDoc {${
-          rgb24('@link', { r: 222, g: 49, b: 99 })
+        `✅ All JSDoc {${rgb24('@link', { r: 222, g: 49, b: 99 })
         }} references are valid.`,
       ),
     ),
