@@ -8,7 +8,7 @@ import { err, ok, type Result, tryCatch } from '@edouardmisset/function'
  * @typeParam E Error type captured in the Result.
  *
  * @param function_ The function to execute and time.
- * @param args Arguments to pass to the function.
+ * @param arguments_ Arguments to pass to the function.
  * @returns A promise resolving to a Result with the function outcome and the
  * duration in milliseconds. Errors thrown by `fn` are captured; this function
  * does not throw.
@@ -37,20 +37,20 @@ import { err, ok, type Result, tryCatch } from '@edouardmisset/function'
  */
 export async function timeIt<T, Args extends unknown[], E = Error>(
   function_: (...parameters: Args) => Promise<T>,
-  ...args: Args
+  ...arguments_: Args
 ): Promise<TimeResult<T, E>>
 /** Synchronous overload. Returns a Promise resolving to the timed Result. */
 export async function timeIt<T, Args extends unknown[], E = Error>(
   function_: (...parameters: Args) => T,
-  ...args: Args
+  ...arguments_: Args
 ): Promise<TimeResult<T, E>>
 export async function timeIt<T, Args extends unknown[], E = Error>(
   function_: (...parameters: Args) => T | Promise<T>,
-  ...args: Args
+  ...arguments_: Args
 ): Promise<TimeResult<T, E>> {
   const start = Date.now()
   try {
-    const maybe = function_(...args)
+    const maybe = function_(...arguments_)
     if (maybe instanceof Promise) {
       const result = await tryCatch<T, E>(maybe)
       return { ...result, duration: Date.now() - start }

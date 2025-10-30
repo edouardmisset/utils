@@ -31,11 +31,11 @@ interface JSDocCheckResult {
 
 const projectRoot = new URL('.', import.meta.url).pathname
 
-async function listTsFiles(dir: string): Promise<string[]> {
+async function listTsFiles(directory: string): Promise<string[]> {
   const files: string[] = []
-  for await (const entry of Deno.readDir(dir)) {
+  for await (const entry of Deno.readDir(directory)) {
     if (entry.name.startsWith('.')) continue
-    const full = `${dir}/${entry.name}`
+    const full = `${directory}/${entry.name}`
     if (entry.isDirectory) {
       files.push(...await listTsFiles(full))
     } else if (entry.isFile && entry.name.endsWith('.ts')) {
