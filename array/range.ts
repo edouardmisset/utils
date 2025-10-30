@@ -2,16 +2,18 @@
  * Creates an array of numbers (positive and/or negative) progressing from
  * `start` up to `end` (included).
  *
- * If `end` is not provided, it defaults to `start` with `start` then set to 0.
+ * If `end` is not provided, the function creates a range from 0 to `start`
+ * (included).
  *
- * **Note**: The output of this function is sorted in ascending order.
+ * **Note**: The output of this function is always sorted in ascending order.
  *
- * @default step = 1
- *
- * @param {number} start - The start of the range.
- * @param {number} [end] - The end of the range.
- * @param {number} [step=1] - The value to increment or decrement by.
- * @returns {number[]} Returns an array of numbers representing the range, or an empty array if step is 0.
+ * @param {number} start - The start of the range. If `end` is not provided,
+ * this becomes the end and start defaults to 0.
+ * @param {number} [end] - The end of the range (included).
+ * @param {number} [step=1] - The value to increment by. Negative values are
+ * converted to positive.
+ * @returns {number[]} Returns an array of numbers representing the range, or an
+ * empty array if step is 0.
  *
  * @example
  * ```typescript
@@ -39,16 +41,26 @@
  *
  * assertEquals(result, [0, 5, 10, 15, 20])
  * ```
+ *
+ * @example
+ * ```typescript
+ * import { assertEquals } from '@std/assert'
+ *
+ * // When end is not provided, creates range from 0 to start
+ * const result = range(5)
+ *
+ * assertEquals(result, [0, 1, 2, 3, 4, 5])
+ * ```
  */
 export function range(
   start: number,
-  end: number,
+  end?: number,
   step = 1,
 ): number[] {
   if (step === 0) return []
 
-  const adjustedStart = start === undefined ? 0 : start
   const adjustedEnd = end ?? start
+  const adjustedStart = end === undefined ? 0 : start
 
   const lowerBound = Math.min(adjustedStart, adjustedEnd)
   const upperBound = Math.max(adjustedStart, adjustedEnd)
