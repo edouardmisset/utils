@@ -11,7 +11,7 @@
     "source.removeUnusedImports": "always",
     "source.addMissingImports.ts": "always",
     "source.sortImports": "always",
-    "source.organizeImports": "always",
+    "source.organizeImports": "never",
     "source.fixAll": "always"
   },
   "editor.defaultFormatter": "denoland.vscode-deno",
