@@ -36,7 +36,9 @@ export function sleep(milliseconds: number): Promise<Result<void, RangeError>> {
 
   return new Promise<Result<void, RangeError>>((resolve) =>
     setTimeout(
-      () => { resolve(ok(undefined)) },
+      () => {
+        resolve(ok(undefined))
+      },
       milliseconds,
     )
   )

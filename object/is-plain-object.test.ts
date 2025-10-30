@@ -29,7 +29,7 @@ Deno.test('isPlainObject', async (t) => {
   )
 
   await t.step('should return false for class instance', () => {
-    class MyClass { }
+    class MyClass {}
     assert(!isPlainObject(new MyClass()))
   })
 

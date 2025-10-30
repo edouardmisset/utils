@@ -14,8 +14,6 @@ type Result = {
   denoJsonUpdated: boolean
 }
 
-
-
 async function getTypescriptFiles(directory: string): Promise<string[]> {
   const expected: string[] = []
   for await (const entry of Deno.readDir(directory)) {
@@ -41,7 +39,10 @@ async function getModuleDocumentComment(modulePath: string): Promise<string> {
   }
 }
 
-function generateModuleContent(files: string[], documentComment: string): string {
+function generateModuleContent(
+  files: string[],
+  documentComment: string,
+): string {
   const documentationComment = documentComment || '\n/**\n * @module\n */\n\n'
 
   const exports = files.map((file) => `export * from './${file}'`).join('\n')
@@ -120,7 +121,9 @@ async function processPackage(packageDirectory: string): Promise<Result> {
 }
 
 async function main(): Promise<void> {
-  const rootDenoConfig = await readDenoConfig(`${ROOT_DIRECTORY}/${DENO_FILE_NAME}`)
+  const rootDenoConfig = await readDenoConfig(
+    `${ROOT_DIRECTORY}/${DENO_FILE_NAME}`,
+  )
   const workspaces = getWorkspacePaths(rootDenoConfig)
   if (workspaces.length === 0) {
     globalThis.console.warn(

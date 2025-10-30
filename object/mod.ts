@@ -47,4 +47,3 @@ export * from './pick.ts'
 export * from './remove-nullish-values.ts'
 export * from './shallow-equal.ts'
 export * from './size.ts'
-

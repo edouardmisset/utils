@@ -49,32 +49,21 @@ async function listTsFiles(dir: string): Promise<string[]> {
 async function collectExports(): Promise<Set<string>> {
   const files = await listTsFiles(projectRoot)
   const exports = new Set<string>()
-  const exportRegexes: RegExp[] = [
-    /export\s+function\s+([A-Za-z0-9_]+)/g,
-    /export\s+const\s+([A-Za-z0-9_]+)/g,
-    /export\s+class\s+([A-Za-z0-9_]+)/g,
-    /export\s+interface\s+([A-Za-z0-9_]+)/g,
-    /export\s+type\s+([A-Za-z0-9_]+)/g,
-    /export\s+enum\s+([A-Za-z0-9_]+)/g,
-    /export\s+{([^}]+)}/g,
-  ]
 
   for (const file of files) {
     const content = await Deno.readTextFile(file)
-    for (const reg of exportRegexes) {
-      reg.lastIndex = 0
-      let m: RegExpExecArray | null
-      while ((m = reg.exec(content))) {
-        if (reg === exportRegexes[6]) { // destructured export list
-          const names = m[1].split(',').map((s) => s.trim()).filter(Boolean)
-          for (const n of names) {
-            // handle `a as b`
-            const parts = n.split(/\s+as\s+/i)
-            exports.add((parts[1] ?? parts[0]).trim())
-          }
-        } else {
-          exports.add(m[1])
+    const exportRegex =
+      /export\s+(?:function|const|class|interface|type|enum)\s+([A-Za-z0-9_]+)|export\s+{([^}]+)}/g
+    let m: RegExpExecArray | null
+    while ((m = exportRegex.exec(content))) {
+      if (m[2]) { // destructured export list
+        const names = m[2].split(',').map((s) => s.trim()).filter(Boolean)
+        for (const n of names) {
+          const parts = n.split(/\s+as\s+/i)
+          exports.add((parts[1] ?? parts[0]).trim())
         }
+      } else {
+        exports.add(m[1])
       }
     }
   }
@@ -155,7 +144,8 @@ if (hasErrors) {
   globalThis.console.log(
     bold(
       green(
-        `✅ All JSDoc {${rgb24('@link', { r: 222, g: 49, b: 99 })
+        `✅ All JSDoc {${
+          rgb24('@link', { r: 222, g: 49, b: 99 })
         }} references are valid.`,
       ),
     ),
