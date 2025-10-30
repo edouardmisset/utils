@@ -6,13 +6,15 @@
     ".": "./mod.ts",
     "./invert.ts": "./invert.ts",
     "./is-key.ts": "./is-key.ts",
+    "./is-not-nested-object.ts": "./is-not-nested-object.ts",
     "./is-object.ts": "./is-object.ts",
+    "./is-plain-object.ts": "./is-plain-object.ts",
     "./map-object.ts": "./map-object.ts",
     "./object-keys.ts": "./object-keys.ts",
-    "./object-size.ts": "./object-size.ts",
     "./omit.ts": "./omit.ts",
     "./pick.ts": "./pick.ts",
     "./remove-nullish-values.ts": "./remove-nullish-values.ts",
-    "./shallow-equal.ts": "./shallow-equal.ts"
+    "./shallow-equal.ts": "./shallow-equal.ts",
+    "./size.ts": "./size.ts"
   }
 }

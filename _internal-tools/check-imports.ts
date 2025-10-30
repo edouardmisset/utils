@@ -1,31 +1,27 @@
 // Copyright 2018-2024 the Deno authors. All rights reserved. MIT license.
 
 import { green, yellow } from '@std/fmt/colors'
-import { join } from '@std/path'
-import denoJson from '../deno.json' with { type: 'json' }
 import importMap from '../import-map.json' with { type: 'json' }
+import { getAllWorkspaceConfigs } from './deno-config.ts'
 
-const imports = importMap.imports
-const denoJsonList = Promise.all(
-  denoJson.workspace.map((space) =>
-    Deno.readTextFile(join(space, 'deno.json')).then(JSON.parse)
-  ),
-)
+const { imports } = importMap
+const workspaceConfigs = await getAllWorkspaceConfigs()
 
 let failed = false
 
-for (const denoJson of await denoJsonList) {
-  const dependency = imports[denoJson.name as keyof typeof imports]
+for (const { config } of workspaceConfigs) {
+  const { name, version } = config
+  const dependency = imports[name as keyof typeof imports]
 
   if (!dependency) {
-    globalThis.console.warn(`No import map entry found for ${denoJson.name}`)
+    globalThis.console.warn(`No import map entry found for ${name}`)
     failed = true
     continue
   }
-  const correctDependency = `jsr:${denoJson.name}@^${denoJson.version}`
+  const correctDependency = `jsr:${name}@^${version}`
   if (dependency !== correctDependency) {
     globalThis.console.warn(
-      yellow(`Invalid import map entry for ${denoJson.name}: ${dependency}`),
+      yellow(`Invalid import map entry for ${name}: ${dependency}`),
     )
     globalThis.console.warn(
       yellow(`Expected: ${correctDependency}`),

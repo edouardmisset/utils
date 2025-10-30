@@ -1,5 +1,3 @@
-// This module is browser compatible.
-
 /**
  * Comprehensive utility functions for array manipulation, filtering, grouping,
  * and analysis.

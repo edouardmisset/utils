@@ -1,5 +1,3 @@
-// This module is browser compatible.
-
 /**
  * Utility functions for common tasks such as {@link sleep},
  * {@link debounce}, {@link throttle}, {@link memoize}, and error

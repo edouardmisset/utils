@@ -1,5 +1,3 @@
-// This module is browser compatible.
-
 /**
  * Mathematical utility functions for calculations, statistics, and number
  * validation.

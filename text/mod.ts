@@ -1,5 +1,3 @@
-// This module is browser compatible.
-
 /**
  * Text processing utilities for string manipulation, formatting, and analysis.
  * Includes functions for capitalization, slug generation, accent removal, and

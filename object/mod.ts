@@ -1,5 +1,3 @@
-// This module is browser compatible.
-
 /**
  * Object manipulation utilities for transformation, validation, and key
  * operations.

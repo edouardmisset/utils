@@ -1,5 +1,3 @@
-// This module is browser compatible.
-
 /**
  * Comprehensive date manipulation utilities for parsing, formatting, and date
  * calculations.

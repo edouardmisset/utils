@@ -5,21 +5,26 @@
   "exports": {
     ".": "./mod.ts",
     "./collection-key-by.ts": "./collection-key-by.ts",
+    "./common-elements.ts": "./common-elements.ts",
     "./count-by.ts": "./count-by.ts",
-    "./create.ts": "./create.ts",
     "./filter-by-date.ts": "./filter-by-date.ts",
-    "./filter.ts": "./filter.ts",
-    "./find.ts": "./find.ts",
-    "./get-n-first-or-last.ts": "./get-n-first-or-last.ts",
+    "./filter-by.ts": "./filter-by.ts",
+    "./find-and-update.ts": "./find-and-update.ts",
+    "./find-by.ts": "./find-by.ts",
+    "./frequency.ts": "./frequency.ts",
     "./group-by.ts": "./group-by.ts",
+    "./key-by.ts": "./key-by.ts",
     "./max-by.ts": "./max-by.ts",
+    "./merge-unique.ts": "./merge-unique.ts",
     "./min-by.ts": "./min-by.ts",
     "./random-item.ts": "./random-item.ts",
     "./random-sort.ts": "./random-sort.ts",
+    "./range.ts": "./range.ts",
     "./select-by.ts": "./select-by.ts",
-    "./sets.ts": "./sets.ts",
+    "./set-difference.ts": "./set-difference.ts",
     "./sort-by.ts": "./sort-by.ts",
-    "./sort.ts": "./sort.ts",
-    "./update-array.ts": "./update-array.ts"
+    "./symmetric-difference.ts": "./symmetric-difference.ts",
+    "./take.ts": "./take.ts",
+    "./unique-in-first.ts": "./unique-in-first.ts"
   }
 }

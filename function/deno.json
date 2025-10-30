@@ -10,8 +10,11 @@
     "./is-empty.ts": "./is-empty.ts",
     "./is-function.ts": "./is-function.ts",
     "./is-valid-json.ts": "./is-valid-json.ts",
+    "./memoization.ts": "./memoization.ts",
     "./pipe.ts": "./pipe.ts",
     "./sleep.ts": "./sleep.ts",
-    "./throttle.ts": "./throttle.ts"
+    "./throttle.ts": "./throttle.ts",
+    "./time-it.ts": "./time-it.ts",
+    "./try-catch.ts": "./try-catch.ts"
   }
 }
