@@ -10,24 +10,24 @@
  * import { isObject, invert, isKey, mapObject } from "@edouardmisset/object";
  * import { assertEquals } from "@std/assert";
  *
- * const obj = { a: 1, b: 2 };
+ * const object_ = { a: 1, b: 2 };
  *
  * // isObject function
- * assertEquals(isObject(obj), true);
+ * assertEquals(isObject(object_), true);
  * assertEquals(isObject("not an object"), false);
  * assertEquals(isObject(null), false);
  *
  * // invert function
- * const inverted = invert(obj);
+ * const inverted = invert(object_);
  * assertEquals(inverted["1"], "a");
  * assertEquals(inverted["2"], "b");
  *
  * // isKey function
- * assertEquals(isKey(obj, 'a'), true);
- * assertEquals(isKey(obj, 'c'), false);
+ * assertEquals(isKey(object_, 'a'), true);
+ * assertEquals(isKey(object_, 'c'), false);
  *
  * // mapObject function
- * const doubled = mapObject(obj, value => value * 2);
+ * const doubled = mapObject(object_, value => value * 2);
  * assertEquals(doubled.a, 2);
  * assertEquals(doubled.b, 4);
  * ```
@@ -47,3 +47,4 @@ export * from './pick.ts'
 export * from './remove-nullish-values.ts'
 export * from './shallow-equal.ts'
 export * from './size.ts'
+

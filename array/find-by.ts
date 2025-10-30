@@ -1,4 +1,4 @@
-import type { ByParams, ObjectOfType } from '@edouardmisset/type'
+import type { ByParameters, ObjectOfType } from '@edouardmisset/type'
 
 /**
  * Find the first object in an array that matches a given value.
@@ -54,7 +54,7 @@ export function findBy<
   Key extends keyof Object_,
   Value extends Object_[Key],
 >(
-  { array, keyOrFunction, value }: ByParams<Object_, Key, Value>,
+  { array, keyOrFunction, value }: ByParameters<Object_, Key, Value>,
 ): Object_ | undefined {
   const isFunction = typeof keyOrFunction === 'function'
   return array.find((object_) => {

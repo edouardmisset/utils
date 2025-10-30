@@ -33,9 +33,9 @@ Deno.test('tryCatch', async (t) => {
     assertEquals(numberResult.error, undefined)
 
     // Object
-    const obj = { name: 'test', value: 123 }
-    const objectResult = await tryCatch(Promise.resolve(obj))
-    assertEquals(objectResult.data, obj)
+    const object_ = { name: 'test', value: 123 }
+    const objectResult = await tryCatch(Promise.resolve(object_))
+    assertEquals(objectResult.data, object_)
     assertEquals(objectResult.error, undefined)
 
     // Array

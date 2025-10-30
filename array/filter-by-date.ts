@@ -48,7 +48,7 @@ import type { ObjectOfType } from '@edouardmisset/type'
  * import { assertEquals } from '@std/assert'
  *
  * const dates = [{ date: new Date(2020, 0, 1) }, { date: new Date(2021, 0, 1) }]
- * const result = filterByDate({array:dates, keyOrFunction: obj => obj.date, options: { startDate: new Date(2019, 6, 1), endDate: new Date(2020, 11, 31) }})
+ * const result = filterByDate({array:dates, keyOrFunction: object_ => object_.date, options: { startDate: new Date(2019, 6, 1), endDate: new Date(2020, 11, 31) }})
  *
  * assertEquals(result.error, undefined)
  * assertEquals(result.data, [{ date: new Date(2020, 0, 1) }])

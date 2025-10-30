@@ -9,7 +9,7 @@ import {
 } from './deno-config.ts'
 
 type Result = {
-  pkg: string
+  package_: string
   moduleUpdated: boolean
   denoJsonUpdated: boolean
 }
@@ -107,14 +107,14 @@ async function updateDenoExports(
 async function processPackage(packageDirectory: string): Promise<Result> {
   const files = await getTypescriptFiles(packageDirectory)
 
-  const [modUpdated, denoJsonUpdated] = await Promise.all([
+  const [moduleUpdated, denoJsonUpdated] = await Promise.all([
     updateBarrelFile(packageDirectory, files),
     updateDenoExports(packageDirectory, files),
   ])
 
   return {
-    pkg: packageDirectory,
-    moduleUpdated: modUpdated,
+    package_: packageDirectory,
+    moduleUpdated,
     denoJsonUpdated,
   }
 }
@@ -132,16 +132,16 @@ async function main(): Promise<void> {
   const results = await Promise.all(workspaces.map((ws) => processPackage(ws)))
 
   let hasUpdates = false
-  for (const { pkg, moduleUpdated: modUpdated, denoJsonUpdated } of results) {
-    if (!modUpdated && !denoJsonUpdated) continue
+  for (const { package_, moduleUpdated, denoJsonUpdated } of results) {
+    if (!moduleUpdated && !denoJsonUpdated) continue
 
     hasUpdates = true
     const updates: string[] = []
-    if (modUpdated) updates.push(BARREL_FILE_NAME)
+    if (moduleUpdated) updates.push(BARREL_FILE_NAME)
     if (denoJsonUpdated) updates.push(DENO_FILE_NAME)
 
     globalThis.console.log(
-      bold(green(`✓ ${pkg}: updated ${updates.join(' and ')}`)),
+      bold(green(`✓ ${package_}: updated ${updates.join(' and ')}`)),
     )
   }
 

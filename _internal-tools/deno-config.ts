@@ -49,7 +49,7 @@ export function getWorkspacePaths(
   config: BasicDenoConfig,
 ): string[] {
   return config.workspace
-    ?.map((pkg) => pkg.replace(/^\.\//, '')) ?? []
+    ?.map((package_) => package_.replace(/^\.\//, '')) ?? []
 }
 
 /**

@@ -2,7 +2,7 @@ import { assertEquals } from '@std/assert'
 import { sortBy } from './sort-by.ts'
 
 Deno.test('sortBy', async (t) => {
-  const objects = [{ id: 1, value: 10 }, { id: 2, value: 5 }, {
+  const objectList = [{ id: 1, value: 10 }, { id: 2, value: 5 }, {
     id: 3,
     value: 20,
   }]
@@ -10,7 +10,7 @@ Deno.test('sortBy', async (t) => {
   await t.step(
     'should sort objects by a specific key in ascending order',
     () => {
-      const result = sortBy(objects, 'value', { descending: false })
+      const result = sortBy(objectList, 'value', { descending: false })
       assertEquals(result, [{ id: 2, value: 5 }, { id: 1, value: 10 }, {
         id: 3,
         value: 20,
@@ -21,7 +21,7 @@ Deno.test('sortBy', async (t) => {
   await t.step(
     'should sort objects by a specific key in descending order',
     () => {
-      const result = sortBy(objects, 'value', { descending: true })
+      const result = sortBy(objectList, 'value', { descending: true })
       assertEquals(result, [{ id: 3, value: 20 }, { id: 1, value: 10 }, {
         id: 2,
         value: 5,
@@ -57,11 +57,11 @@ Deno.test('sortBy', async (t) => {
   })
 
   await t.step('should handle array with duplicate values', () => {
-    const objects = [{ id: 1, value: 10 }, { id: 2, value: 10 }, {
+    const objectList2 = [{ id: 1, value: 10 }, { id: 2, value: 10 }, {
       id: 3,
       value: 5,
     }]
-    const result = sortBy(objects, 'value', { descending: false })
+    const result = sortBy(objectList2, 'value', { descending: false })
     assertEquals(result, [{ id: 3, value: 5 }, { id: 1, value: 10 }, {
       id: 2,
       value: 10,
@@ -71,7 +71,7 @@ Deno.test('sortBy', async (t) => {
   await t.step(
     'should default to ascending when options is not provided',
     () => {
-      const result = sortBy(objects, 'value')
+      const result = sortBy(objectList, 'value')
       assertEquals(result, [{ id: 2, value: 5 }, { id: 1, value: 10 }, {
         id: 3,
         value: 20,
@@ -82,7 +82,7 @@ Deno.test('sortBy', async (t) => {
   await t.step(
     'should default to ascending when options is empty object',
     () => {
-      const result = sortBy(objects, 'value', {})
+      const result = sortBy(objectList, 'value', {})
       assertEquals(result, [{ id: 2, value: 5 }, { id: 1, value: 10 }, {
         id: 3,
         value: 20,

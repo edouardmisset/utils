@@ -51,19 +51,19 @@ export type CallbackAndDelay = {
 }
 
 /** Describes the parameters for the findBy function */
-export type ByParams<
+export type ByParameters<
   Object_ extends ObjectOfType<unknown> = ObjectOfType<unknown>,
   Key extends keyof Object_ = keyof Object_,
-  Value extends Object_[Key] = Object_[Key],
+  ObjectValue extends Object_[Key] = Object_[Key],
 > = {
   /** The array to search */
   array: Object_[]
   /** The object's key giving the value to match or a function returning the
    * value to match
    */
-  keyOrFunction: Key | ((obj: Object_) => unknown)
+  keyOrFunction: Key | ((object_: Object_) => unknown)
   /** The value to match */
-  value: Value
+  value: ObjectValue
 }
 
 /**
@@ -226,8 +226,8 @@ export type NotNullValues<
   Object_ extends ObjectOfType<unknown>,
   Key extends keyof Object_ = keyof Object_,
 > = {
-  [P in Key]: Exclude<Object_[P], null>
-}
+    [P in Key]: Exclude<Object_[P], null>
+  }
 
 /**
  * Constructs a type by excluding `null` and `undefined` from the possible values
@@ -263,8 +263,8 @@ export type NotNullishValues<
   Object_ extends ObjectOfType<unknown>,
   Key extends keyof Object_ = keyof Object_,
 > = {
-  [P in Key]: Exclude<Object_[P], null | undefined>
-}
+    [P in Key]: Exclude<Object_[P], null | undefined>
+  }
 
 /**
  * It takes a type as its argument and returns a new type that has the same
