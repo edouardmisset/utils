@@ -1,5 +1,7 @@
 # Utils
 
+🚀 TypeScript utility functions for modern web development
+
 ## Versions
 
 [![JSR](https://jsr.io/badges/@edouardmisset/array?label=array)](https://jsr.io/@edouardmisset/array)
@@ -19,13 +21,13 @@
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/6977b38a37ed478985cd1b15233505e7)](https://app.codacy.com/gh/edouardmisset/utils/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
 [![Codacy Badge](https://app.codacy.com/project/badge/Coverage/6977b38a37ed478985cd1b15233505e7)](https://app.codacy.com/gh/edouardmisset/utils/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_coverage)
 
-🚀 TypeScript utility functions for modern web development
+## Table of content
 
 - [Utils](#utils)
   - [Versions](#versions)
   - [Install](#install)
     - [Deno 🦕](#deno-)
-    - [npm / yarn / pnpm / bun](#npm--yarn--pnpm--bun)
+    - [Package manager](#package-manager)
     - [Usage](#usage)
   - [Docs 📜](#docs-)
   - [Issues 🐛](#issues-)
@@ -67,7 +69,7 @@ Import it in your file:
 import { capitalize } from 'jsr:@edouardmisset/text@5.0.0'
 ```
 
-### npm / yarn / pnpm / bun
+### Package manager
 
 ```sh
 # Add the text package using a package manager in a node-like environment
