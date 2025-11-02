@@ -42,13 +42,13 @@
 In Deno you can either import code inside a file directly or go through an
 import map.
 
-- Using imports (import map)
+- Using imports (or an import map)
 
 Add it to your imports:
 
 ```sh
 # Add the text package
-deno add @edouardmisset/text
+deno add @edouardmisset/text@5
 ```
 
 Then import it in you files:
@@ -75,13 +75,13 @@ import { capitalize } from 'jsr:@edouardmisset/text@5.0.0'
 # Add the text package using a package manager in a node-like environment
 
 # npm
-npx jsr add @edouardmisset/text
+npx jsr add @edouardmisset/text@5
 
 # pnpm
-pnpx jsr add @edouardmisset/text
+pnpx jsr add @edouardmisset/text@5
 
 # bun
-bunx jsr add @edouardmisset/text
+bunx jsr add @edouardmisset/text@5
 ```
 
 ### Usage
