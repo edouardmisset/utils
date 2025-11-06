@@ -6,6 +6,7 @@
     "check:links": "deno run --allow-read ./_internal-tools/check-links.ts",
     "check:versions": "deno run --allow-read --allow-net ./_internal-tools/check-versions.ts",
     "check": "deno lint && deno fmt && deno task typecheck && deno task docs:lint && deno task test && deno task check:imports && deno task check:exports && deno task check:links && deno task check:versions",
+    "count:functions": "deno run --allow-read ./_internal-tools/count-functions.ts",
     "coverage:gen": "deno coverage ./coverage --lcov --output=./coverage/lcov.info",
     "coverage:view": "deno coverage --html coverage",
     "docs:lint": "deno doc --lint [!_]*/*.ts",

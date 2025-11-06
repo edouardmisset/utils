@@ -7,6 +7,7 @@
     "@std/semver": "jsr:@std/semver@^1.0.6",
     "@std/fmt/colors": "jsr:@std/fmt@^1.0.8/colors",
     "@std/path": "jsr:@std/path@^1.1.2",
+    "@std/fs": "jsr:@std/fs@^1.0.19",
     "zod": "npm:zod@^4.0.0",
     "@edouardmisset/array": "jsr:@edouardmisset/array@^5.0.0",
     "@edouardmisset/date": "jsr:@edouardmisset/date@^5.0.0",
