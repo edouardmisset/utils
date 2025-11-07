@@ -1,17 +1,21 @@
 {
   "$schema": "https://raw.githubusercontent.com/denoland/deno/main/cli/schemas/config-file.v1.json",
   "name": "@edouardmisset/date",
-  "version": "4.2.0",
+  "version": "5.0.0",
   "exports": {
     ".": "./mod.ts",
     "./convert-string-date.ts": "./convert-string-date.ts",
-    "./first-last-date-of-month.ts": "./first-last-date-of-month.ts",
+    "./datification.ts": "./datification.ts",
+    "./first-date-of-month.ts": "./first-date-of-month.ts",
     "./is-date-compatible.ts": "./is-date-compatible.ts",
     "./is-date-in-duration.ts": "./is-date-in-duration.ts",
     "./is-date-in-last-12-months.ts": "./is-date-in-last-12-months.ts",
     "./is-date-in-range.ts": "./is-date-in-range.ts",
     "./is-date-in-year.ts": "./is-date-in-year.ts",
     "./is-valid-date.ts": "./is-valid-date.ts",
-    "./parse-date.ts": "./parse-date.ts"
+    "./last-date-of-month.ts": "./last-date-of-month.ts",
+    "./parse-date.ts": "./parse-date.ts",
+    "./sort-by-date.ts": "./sort-by-date.ts",
+    "./stringify-date.ts": "./stringify-date.ts"
   }
 }

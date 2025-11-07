@@ -40,7 +40,7 @@ export function memoize<Function_ extends (...arguments_: any[]) => any>(
     return cache.get(key)
   }) as Function_ & { clearCache: () => void }
 
-  memoizedFunction.clearCache = () => {
+  memoizedFunction.clearCache = (): void => {
     cache.clear()
   }
 

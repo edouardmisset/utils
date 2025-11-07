@@ -8,7 +8,7 @@ Deno.test('standardDeviation', async (t) => {
   })
 
   await t.step('calculates standard deviation for a population', () => {
-    const result = standardDeviation([1, 2, 3, 4], true)
+    const result = standardDeviation([1, 2, 3, 4], { usePopulation: true })
     assertEquals(result, 1.118_033_988_749_895)
   })
 

@@ -1,12 +1,12 @@
 import { assertEquals } from '@std/assert'
 
-import { stringIncludesCaseInsensitive } from './string-includes.ts'
+import { stringIncludes } from './string-includes.ts'
 
-Deno.test('stringIncludesCaseInsensitive', async (t) => {
+Deno.test('stringIncludes', async (t) => {
   await t.step(
     'should return true when the substring exists in the string (case insensitive)',
     () => {
-      assertEquals(stringIncludesCaseInsensitive('Hello World', 'hello'), true)
+      assertEquals(stringIncludes('Hello World', 'hello'), true)
     },
   )
 
@@ -14,7 +14,7 @@ Deno.test('stringIncludesCaseInsensitive', async (t) => {
     'should return false when the substring does not exist in the string',
     () => {
       assertEquals(
-        stringIncludesCaseInsensitive('Hello World', 'goodbye'),
+        stringIncludes('Hello World', 'goodbye'),
         false,
       )
     },
@@ -24,7 +24,7 @@ Deno.test('stringIncludesCaseInsensitive', async (t) => {
     'should return true when the substring exists in the string (case sensitive)',
     () => {
       assertEquals(
-        stringIncludesCaseInsensitive('Hello World', 'Hello', {
+        stringIncludes('Hello World', 'Hello', {
           caseSensitive: true,
         }),
         true,
@@ -36,7 +36,7 @@ Deno.test('stringIncludesCaseInsensitive', async (t) => {
     'should return false when the substring exists in the string but with different case (case sensitive)',
     () => {
       assertEquals(
-        stringIncludesCaseInsensitive('Hello World', 'hello', {
+        stringIncludes('Hello World', 'hello', {
           caseSensitive: true,
         }),
         false,

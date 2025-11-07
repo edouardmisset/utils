@@ -1,3 +1,5 @@
+import type { ObjectOfType } from '@edouardmisset/type'
+
 /**
  * Deeply compares two values to determine if they are structurally equivalent.
  *
@@ -22,18 +24,14 @@
  *
  * @example
  * ```typescript
- * deepEqual({ a: 1, b: 2 }, { a: 1, b: 2 })
- * // returns true
- * deepEqual({ a: 1, b: 2 }, { a: 1, b: 3 })
- * // returns false
- * deepEqual('a', 'a')
- * // returns true
- * deepEqual('a', 'b')
- * // returns false
- * deepEqual(new Date('2021-01-01'), new Date('2021-01-01'))
- * // returns true
- * deepEqual(new Date('2021-01-01'), new Date('2022-01-01'))
- * // returns false
+ * import { assertEquals } from '@std/assert'
+ *
+ * assertEquals(deepEqual({ a: 1, b: 2 }, { a: 1, b: 2 }), true)
+ * assertEquals(deepEqual({ a: 1, b: 2 }, { a: 1, b: 3 }), false)
+ * assertEquals(deepEqual('a', 'a'), true)
+ * assertEquals(deepEqual('a', 'b'), false)
+ * assertEquals(deepEqual(new Date('2021-01-01'), new Date('2021-01-01')), true)
+ * assertEquals(deepEqual(new Date('2021-01-01'), new Date('2022-01-01')), false)
  * ```
  */
 export function deepEqual<T>(left: T, right: T): boolean {
@@ -59,8 +57,8 @@ export function deepEqual<T>(left: T, right: T): boolean {
     return false
   }
 
-  const leftObject = left as Record<string, unknown>
-  const rightObject = right as Record<string, unknown>
+  const leftObject = left as ObjectOfType<unknown>
+  const rightObject = right as ObjectOfType<unknown>
 
   const leftKeys = Object.keys(leftObject)
   if (leftKeys.length !== Object.keys(rightObject).length) return false

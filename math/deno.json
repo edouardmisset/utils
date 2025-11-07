@@ -1,12 +1,16 @@
 {
   "$schema": "https://raw.githubusercontent.com/denoland/deno/main/cli/schemas/config-file.v1.json",
   "name": "@edouardmisset/math",
-  "version": "4.0.0",
+  "version": "5.0.0",
   "exports": {
     ".": "./mod.ts",
+    "./average-time.ts": "./average-time.ts",
     "./average.ts": "./average.ts",
+    "./clamp.ts": "./clamp.ts",
     "./divmod.ts": "./divmod.ts",
-    "./is-valid.ts": "./is-valid.ts",
+    "./is-valid-number.ts": "./is-valid-number.ts",
+    "./normalize.ts": "./normalize.ts",
+    "./percent.ts": "./percent.ts",
     "./product.ts": "./product.ts",
     "./random.ts": "./random.ts",
     "./range.ts": "./range.ts",
@@ -15,6 +19,6 @@
     "./standard-deviation.ts": "./standard-deviation.ts",
     "./sum.ts": "./sum.ts",
     "./to-fixed-without-zero.ts": "./to-fixed-without-zero.ts",
-    "./validate-number.ts": "./validate-number.ts"
+    "./valid-number-with-fallback.ts": "./valid-number-with-fallback.ts"
   }
 }

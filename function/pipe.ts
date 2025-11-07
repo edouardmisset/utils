@@ -16,10 +16,12 @@ export type UnaryFunction<T> = (argument: T) => T
  *
  * @example
  * ```typescript
+ * import { assertEquals } from '@std/assert'
+ *
  * const addOne = (x: number) => x + 1
  * const double = (x: number) => x * 2
  * const addOneThenDouble = compose(double, addOne)
- * const result = addOneThenDouble(5) // 12
+ * assertEquals(addOneThenDouble(5), 12)
  * ```
  */
 export function compose<T>(...functions: UnaryFunction<T>[]): UnaryFunction<T> {
@@ -44,10 +46,12 @@ export const combine: typeof compose = compose
  *
  * @example
  * ```typescript
+ * import { assertEquals } from '@std/assert'
+ *
  * const addOne = (x: number) => x + 1
  * const double = (x: number) => x * 2
  * const addOneThenDouble = pipe(addOne, double)
- * const result = addOneThenDouble(5) // 12
+ * assertEquals(addOneThenDouble(5), 12)
  * ```
  */
 export function pipe<T>(...functions: UnaryFunction<T>[]): UnaryFunction<T> {

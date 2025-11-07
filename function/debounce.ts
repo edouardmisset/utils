@@ -1,8 +1,13 @@
-import type { AnyVoidFunction } from '@edouardmisset/type'
+import type { AnyVoidFunction, CallbackAndDelay } from '@edouardmisset/type'
 
-interface DebounceParameters {
-  callback: AnyVoidFunction
-  delay?: number
+/**
+ * Parameters for the debounce function.
+ */
+type DebounceParameters = CallbackAndDelay & {
+  /**
+   * An optional object to store the timer ID, allowing external control or
+   * cancellation.
+   */
   timerId?: { id: number }
 }
 
@@ -16,14 +21,20 @@ interface DebounceParameters {
  *
  * @example
  * ```typescript
+ * import { assert } from '@std/assert'
+ *
+ * // Create a debounced function
  * const debouncedFunction = debounce({ callback: () => console.log('Hello'), delay: 1000 })
- * debouncedFunction() // 'Hello' will be logged after 1 second
+ * assert(typeof debouncedFunction === 'function')
+ *
+ * // Note: In actual usage, call the function and it will execute after the delay
+ * // debouncedFunction() // 'Hello' will be logged after 1000ms
  * ```
  */
 export const debounce = (parameters: DebounceParameters): AnyVoidFunction => {
   const { callback, delay = 50, timerId = { id: -1 } } = parameters
 
-  return (...arguments_) => {
+  return (...arguments_: unknown[]) => {
     if (timerId.id !== -1) clearTimeout(timerId.id)
 
     timerId.id = setTimeout(() => {

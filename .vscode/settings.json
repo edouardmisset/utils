@@ -8,8 +8,11 @@
   "editor.formatOnSaveMode": "file",
   "editor.formatOnPaste": true,
   "editor.codeActionsOnSave": {
-    "source.fixAll": "always",
-    "source.organizeImports": "always"
+    "source.removeUnusedImports": "always",
+    "source.addMissingImports.ts": "always",
+    "source.sortImports": "always",
+    "source.organizeImports": "never",
+    "source.fixAll": "always"
   },
   "editor.defaultFormatter": "denoland.vscode-deno",
   "workbench.colorCustomizations": {

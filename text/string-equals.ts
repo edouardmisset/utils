@@ -11,14 +11,16 @@
  *
  * @example
  * ```typescript
- * stringEqualsCaseInsensitive('Hello', 'hello')
- * // returns true
+ * import { assertEquals } from '@std/assert'
+ *
+ * assertEquals(stringEqualsCaseInsensitive('Hello', 'hello'), true)
  * ```
  *
  * @example
  * ```typescript
- * stringEqualsCaseInsensitive('Hello', 'world')
- * // returns false
+ * import { assertEquals } from '@std/assert'
+ *
+ * assertEquals(stringEqualsCaseInsensitive('Hello', 'world'), false)
  * ```
  */
 export function stringEqualsCaseInsensitive(
@@ -47,14 +49,16 @@ export function stringEqualsCaseInsensitive(
  *
  * @example
  * ```typescript
- * stringEquals('Hello', 'hello', { caseSensitive: false })
- * // returns true
+ * import { assertEquals } from '@std/assert'
+ *
+ * assertEquals(stringEquals('Hello', 'hello', { caseSensitive: false }), true)
  * ```
  *
  * @example
  * ```typescript
- * stringEquals('Hello', 'hello', { caseSensitive: true })
- * // returns false
+ * import { assertEquals } from '@std/assert'
+ *
+ * assertEquals(stringEquals('Hello', 'hello', { caseSensitive: true }), false)
  * ```
  */
 export function stringEquals(

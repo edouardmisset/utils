@@ -6,12 +6,23 @@
  *
  * @example
  * ```typescript
- * isValidJSON('{"name":"John", "age":30, "city":"New York"}')
- * // returns true
- * isValidJSON('Invalid JSON string')
- * // returns false
- * isValidJSON('')
- * // returns true
+ * import { assertEquals } from '@std/assert'
+ *
+ * // Valid JSON
+ * assertEquals(isValidJSON('{"name":"John", "age":30}'), true)
+ * assertEquals(isValidJSON('[]'), true)
+ * assertEquals(isValidJSON('""'), true) // empty string as JSON string
+ * assertEquals(isValidJSON('123'), true) // number as JSON
+ * assertEquals(isValidJSON('true'), true) // boolean as JSON
+ * ```
+ *
+ * @example
+ * ```typescript
+ * import { assertEquals } from '@std/assert'
+ *
+ * // Invalid JSON
+ * assertEquals(isValidJSON('Invalid JSON string'), false)
+ * assertEquals(isValidJSON('{name: "John"}'), false)
  * ```
  */
 export function isValidJSON(string_: string): boolean {

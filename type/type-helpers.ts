@@ -1,7 +1,7 @@
 /**
  * It represents an object type with string keys and values of type `T`. It is a
- * shorthand for `Record<string, T>`. This is a more explicit way to `object`
- * type.
+ * shorthand for `Record<string, T>`. This is a more explicit way to represent an
+ * object type.
  */
 // deno-lint-ignore no-explicit-any
 export type ObjectOfType<Value = any, Key extends string | number = string> =
@@ -31,6 +31,40 @@ export type Primitive =
   | symbol
   | undefined
   | null
+
+/** A type representing a range with a value, minimum, and maximum. */
+export type ValueAndRange = {
+  /** The value to be checked against the range */
+  value: number
+  /** The minimum value of the range */
+  minimum: number
+  /** The maximum value of the range */
+  maximum: number
+}
+
+/** A type representing a callback function with a delay. */
+export type CallbackAndDelay = {
+  /** The function to be called after the delay */
+  callback: AnyVoidFunction
+  /** The delay in milliseconds before invoking the callback */
+  delay: number
+}
+
+/** Describes the parameters for the findBy function */
+export type ByParameters<
+  Object_ extends ObjectOfType<unknown> = ObjectOfType<unknown>,
+  Key extends keyof Object_ = keyof Object_,
+  ObjectValue extends Object_[Key] = Object_[Key],
+> = {
+  /** The array to search */
+  array: Object_[]
+  /** The object's key giving the value to match or a function returning the
+   * value to match
+   */
+  keyOrFunction: Key | ((object_: Object_) => unknown)
+  /** The value to match */
+  value: ObjectValue
+}
 
 /**
  * Type is a number representing the duration in milliseconds.

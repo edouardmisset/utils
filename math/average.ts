@@ -1,75 +1,63 @@
+import { err, ok, type Result } from '@edouardmisset/function'
+
 /**
  * Calculates the average of the given numbers.
  *
- * @param {number[] | number} number_ - The numbers to calculate the average of.
- * @throws {Error} When no arguments are provided.
- * @returns {number} The average of the given numbers.
+ * @param {...(number[] | number)[]} numbers - The numbers to calculate the average of.
+ * @returns {Result<number, Error>} A result object containing either the average or an error.
  *
  * @example
  * ```typescript
- * average(1, 2, 3, 4, 5)
- * // returns 3
+ * import { assertEquals } from '@std/assert'
+ *
+ * // Multiple number arguments
+ * const result = average(1, 2, 3, 4, 5)
+ * assertEquals(result.error, undefined)
+ * assertEquals(result.data, 3)
  * ```
  *
  * @example
  * ```typescript
- * average([1, 2, 3, 4, 5])
- * // returns 3
+ * import { assertEquals } from '@std/assert'
+ *
+ * // Array of numbers
+ * const result = average([1, 2, 3, 4, 5])
+ * assertEquals(result.error, undefined)
+ * assertEquals(result.data, 3)
+ * ```
+ *
+ * @example
+ * ```typescript
+ * import { assert } from '@std/assert'
+ *
+ * // No arguments returns error
+ * const result = average()
+ * assert(result.error instanceof Error)
+ * assert(result.error.message.includes('Cannot calculate average'))
  * ```
  */
-export function average(...number_: (number[] | number)[]): number {
-  const numbers = number_.flat()
+export function average(
+  ...numbers: (number[] | number)[]
+): Result<number, Error> {
+  const nums = numbers.flat()
 
-  if (numbers.length === 0) {
-    throw new Error(
-      `Cannot calculate average if no values are passed in (${
-        String(number_)
-      })`,
+  if (nums.length === 0) {
+    return err(
+      new Error(
+        `Cannot calculate average if no values are passed in (${
+          String(numbers)
+        })`,
+      ),
     )
   }
 
-  return (
-    numbers.reduce((accumulator, value) => accumulator + value, 0) /
-    numbers.length
-  )
+  const mean = nums.reduce((accumulator, value) => accumulator + value, 0) /
+    nums.length
+
+  return ok(mean)
 }
 
 /**
  * Alias for the {@link average} function.
  */
 export const mean: typeof average = average
-
-/**
- * Calculates the average time from an array of Date objects and returns it as a
- * string.
- *
- * **Note:** For best results, the dates should be in the same timezone, in the
- * format ("YYYY-MM-DDTHH:MM:SSZ") `2022-01-01T01:00:00Z` (ISO 8601).
- * The time is calculated as if all the dates were on the same day.
- *
- * @param {Date[]} dates The array of Date objects.
- * @returns {string} The average time in the format "HH:MM:SS".
- *
- * @example
- * ```typescript
- * import { averageTime } from './average.ts'
- *
- * const dates = [new Date('2022-01-01T09:00:00Z'), new Date('2022-01-01T11:00:00Z')]
- * averageTime(dates)
- * // returns "10:00:00"
- * ```
- */
-export function averageTime(dates: Date[]): string {
-  if (dates.length === 0) {
-    return '00:00:00'
-  }
-
-  const datesInMs = dates.map((date) => {
-    const newDate = new Date(date)
-    newDate.setUTCFullYear(2000, 0, 1)
-    return newDate.getTime()
-  })
-  const averageDate = new Date(average(datesInMs))
-
-  return averageDate.toISOString().slice(11, 19)
-}

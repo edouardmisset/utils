@@ -6,22 +6,28 @@
  * @returns {number} - The number of character difference
  *
  * @example
- * levenshteinDistance('hi', 'hi')
- * // returns 0
+ * ```typescript
+ * import { assertEquals } from '@std/assert'
  *
- * levenshteinDistance('hello', 'hi')
- * // returns 4
+ * // Identical strings have distance 0
+ * assertEquals(levenshteinDistance('hi', 'hi'), 0)
+ * ```
+ *
+ * @example
+ * ```typescript
+ * import { assertEquals } from '@std/assert'
+ *
+ * // Different strings
+ * assertEquals(levenshteinDistance('hello', 'hi'), 4)
+ * assertEquals(levenshteinDistance('kitten', 'sitting'), 3)
+ * ```
  */
-export const levenshteinDistance = (source: string, target: string): number => {
+export function levenshteinDistance(source: string, target: string): number {
   if (!source.length) return target.length
   if (!target.length) return source.length
 
   const distanceGrid: number[][] = []
-  for (
-    let currentIndex = 0;
-    currentIndex <= target.length;
-    currentIndex++
-  ) {
+  for (let currentIndex = 0; currentIndex <= target.length; currentIndex++) {
     distanceGrid[currentIndex] = [currentIndex]
     for (
       let comparisonIndex = 1;

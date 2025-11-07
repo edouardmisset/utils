@@ -6,16 +6,22 @@
  * @returns {number} The sum of all numbers.
  *
  * @example
- * sum(1, 2, 3)
- * // returns 6
+ * ```typescript
+ * import { assertEquals } from '@std/assert'
+ *
+ * // Multiple arguments
+ * assertEquals(sum(1, 2, 3), 6)
+ * ```
  *
  * @example
- * sum([1, 2, 3])
- * // returns 6
+ * ```typescript
+ * import { assertEquals } from '@std/assert'
  *
- * @example
- * sum([])
- * // returns 0
+ * // Array argument
+ * assertEquals(sum([1, 2, 3]), 6)
+ * // Empty array
+ * assertEquals(sum([]), 0)
+ * ```
  */
 export function sum(...number_: (number[] | number)[]): number {
   return number_.flat().reduce(

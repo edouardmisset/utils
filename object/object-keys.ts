@@ -1,3 +1,5 @@
+import type { ObjectOfType } from '@edouardmisset/type'
+
 /**
  * Returns an array of the keys of an object.
  *
@@ -10,7 +12,7 @@
  * This ensures that the TypeScript compiler knows that the keys are of type
  * `keyof T`, not just `string`.
  *
- * @template Object_ The type of the object. It extends `Record<string, unknown>`.
+ * @template Object_ The type of the object. It extends `ObjectOfType<unknown`>.
  *
  * @param {Object_} object The object to get the keys from.
  *
@@ -18,12 +20,13 @@
  *
  * @example
  * ```typescript
+ * import { assertEquals } from '@std/assert'
+ *
  * const person = { name: 'Alice', age: 25 }
- * objectKeys(person)
- * // returns ['name', 'age']
+ * assertEquals(objectKeys(person), ['name', 'age'])
  * ```
  */
-export function objectKeys<Object_ extends Record<string, unknown>>(
+export function objectKeys<Object_ extends ObjectOfType<unknown>>(
   object: Object_,
 ): (keyof Object_)[] {
   return Object.keys(object) as (keyof Object_)[]

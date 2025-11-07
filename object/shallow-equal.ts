@@ -1,5 +1,5 @@
+import { objectKeys } from '@edouardmisset/object'
 import { ObjectOfType } from '@edouardmisset/type'
-import { objectKeys } from './object-keys.ts'
 
 /**
  * Performs a shallow comparison between two objects of the same type.
@@ -12,13 +12,22 @@ import { objectKeys } from './object-keys.ts'
  *
  * @example
  * ```typescript
+ * import { assertEquals } from '@std/assert'
+ *
+ * // Same keys and values (different order)
  * const object1 = { a: 1, b: 2 }
  * const object2 = { b: 2, a: 1 }
+ * assertEquals(shallowEqual(object1, object2), true)
+ * ```
+ *
+ * @example
+ * ```typescript
+ * import { assertEquals } from '@std/assert'
+ *
+ * // Different values
+ * const object1 = { a: 1, b: 2 }
  * const object3 = { a: 1, b: 3 }
- * shallowEqual(object1, object2)
- * // returns true
- * shallowEqual(object1, object3)
- * // returns false
+ * assertEquals(shallowEqual(object1, object3), false)
  * ```
  */
 export function shallowEqual<Object_ extends ObjectOfType>(
@@ -31,7 +40,12 @@ export function shallowEqual<Object_ extends ObjectOfType>(
   if (leftKeys.length !== rightKeys.length) return false
 
   return leftKeys.every(
-    (key, index) =>
-      key === rightKeys[index] && leftObject[key] === rightObject[key],
+    (
+      key,
+      index,
+    ) => (key === rightKeys[index] &&
+      (Number.isNaN(leftObject[key]) && Number.isNaN(rightObject[key])
+        ? true
+        : leftObject[key] === rightObject[key])),
   )
 }

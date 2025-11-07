@@ -1,16 +1,23 @@
 {
   "$schema": "https://raw.githubusercontent.com/denoland/deno/main/cli/schemas/config-file.v1.json",
-  "importMap": "./import-map.json",
   "tasks": {
-    "check": "deno check ./**/*.ts && deno lint && deno fmt && deno test --reporter=dot --coverage --parallel",
+    "check:exports": "deno run --allow-read --allow-write --allow-run ./_internal-tools/check-exports.ts",
+    "check:imports": "deno run --allow-read ./_internal-tools/check-imports.ts",
+    "check:links": "deno run --allow-read ./_internal-tools/check-links.ts",
+    "check:versions": "deno run --allow-read --allow-net ./_internal-tools/check-versions.ts",
+    "check": "deno lint && deno fmt && deno task typecheck && deno task docs:lint && deno task test && deno task check:imports && deno task check:exports && deno task check:links && deno task check:versions",
+    "count:functions": "deno run --allow-read ./_internal-tools/count-functions.ts",
     "coverage:gen": "deno coverage ./coverage --lcov --output=./coverage/lcov.info",
     "coverage:view": "deno coverage --html coverage",
-    "docs:lint": "deno doc --lint ./**/*.ts",
-    "docs:test": "deno test --doc --reporter=dot ./**/*.ts",
-    "docs": "deno doc --html --name='utils' ./mod.ts",
-    "test:watch": "deno test --watch",
-    "test": "deno test --reporter=dot --coverage --parallel"
+    "docs:lint": "deno doc --lint [!_]*/*.ts",
+    "docs": "deno doc --html --name='TS utils 🚀' ./mod.ts",
+    "format": "deno fmt",
+    "test:watch": "deno test --reporter=dot --watch",
+    "test": "deno test --doc --reporter=dot --coverage --parallel ./**/*.ts",
+    "typecheck": "deno check --doc ./**/*.ts",
+    "update:std": "deno update --latest \"@std/*\""
   },
+  "importMap": "./import-map.json",
   "workspace": [
     "./array",
     "./date",
@@ -71,6 +78,9 @@
   "test": {
     "include": [
       "./**/*.test.ts"
+    ],
+    "exclude": [
+      "_internal-tools"
     ]
   }
 }

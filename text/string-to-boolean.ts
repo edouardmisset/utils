@@ -9,12 +9,21 @@
  *
  * @example
  * ```typescript
- * stringToBoolean('true') // returns true
- * stringToBoolean('True') // returns true
- * stringToBoolean(' TRUE ') // returns true
- * stringToBoolean('false') // returns false
- * stringToBoolean('yes', ['yes', 'y', 'true']) // returns true
- * stringToBoolean('no', ['yes', 'y', 'true']) // returns false
+ * import { assertEquals } from '@std/assert'
+ *
+ * // Case-insensitive truthy values
+ * assertEquals(stringToBoolean('true'), true)
+ * assertEquals(stringToBoolean('True'), true)
+ * assertEquals(stringToBoolean(' TRUE '), true)
+ * ```
+ *
+ * @example
+ * ```typescript
+ * import { assertEquals } from '@std/assert'
+ *
+ * // Custom truthy values
+ * assertEquals(stringToBoolean('yes', ['yes', 'y', 'true']), true)
+ * assertEquals(stringToBoolean('no', ['yes', 'y', 'true']), false)
  * ```
  */
 export function stringToBoolean(

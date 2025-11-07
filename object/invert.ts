@@ -1,3 +1,5 @@
+import type { ObjectOfType } from '@edouardmisset/type'
+
 /**
  * Inverts the keys and values of an object.
  *
@@ -25,19 +27,23 @@
  *
  * @example
  * ```typescript
- * invert({ a: '1', b: '2' })
- * // returns { '1': 'a', '2': 'b' }
+ * import { assertEquals } from '@std/assert'
+ *
+ * // Simple inversion
+ * assertEquals(invert({ a: '1', b: '2' }), { '1': 'a', '2': 'b' })
  * ```
  *
  * @example
  * ```typescript
- * invert({ a: '1', b: '1' })
- * // returns { '1': 'b' } - 'a' is overridden by 'b'
+ * import { assertEquals } from '@std/assert'
+ *
+ * // Duplicate values (last one wins)
+ * assertEquals(invert({ a: '1', b: '1' }), { '1': 'b' })
  * ```
  */
 export function invert<
   Value extends string | number | symbol,
-  Object_ extends Record<string, Value>,
+  Object_ extends ObjectOfType<Value>,
   Key extends keyof Object_,
   Values extends Object_[Key],
   Result extends Record<Values, Key>,

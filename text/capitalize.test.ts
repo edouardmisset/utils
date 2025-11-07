@@ -18,4 +18,104 @@ Deno.test('capitalize', async (t) => {
   await t.step('should handle empty strings', () => {
     assertEquals(capitalize(''), '')
   })
+
+  // Unicode and international character tests
+  await t.step('should handle accented characters correctly', () => {
+    assertEquals(capitalize('éléphant'), 'Éléphant')
+    assertEquals(capitalize('àVOIR'), 'Àvoir')
+    assertEquals(capitalize('çà'), 'Çà')
+  })
+
+  await t.step('should handle non-Latin scripts', () => {
+    assertEquals(capitalize('αβγ'), 'Αβγ') // Greek
+    assertEquals(capitalize('привет'), 'Привет') // Cyrillic
+  })
+
+  await t.step('should handle strings starting with numbers', () => {
+    assertEquals(capitalize('123hello'), '123hello')
+    assertEquals(capitalize('9world'), '9world')
+  })
+
+  await t.step('should handle strings starting with special characters', () => {
+    assertEquals(capitalize('!hello'), '!hello')
+    assertEquals(capitalize('@world'), '@world')
+    assertEquals(capitalize('#test'), '#test')
+  })
+
+  await t.step('should handle strings with emojis', () => {
+    assertEquals(capitalize('🌍hello'), '🌍hello')
+    assertEquals(capitalize('hello 🌍 world'), 'Hello 🌍 world')
+  })
+
+  await t.step('should handle whitespace-only strings', () => {
+    assertEquals(capitalize(' '), ' ')
+    assertEquals(capitalize('\t'), '\t')
+    assertEquals(capitalize('\n'), '\n')
+  })
+
+  await t.step('should handle mixed case with multiple words', () => {
+    assertEquals(capitalize('hello WORLD test'), 'Hello world test')
+    assertEquals(capitalize('MiXeD CaSe'), 'Mixed case')
+  })
+
+  await t.step('should handle very long strings efficiently', () => {
+    const longString = `a${'b'.repeat(10_000)}`
+    const result = capitalize(longString)
+    assertEquals(result[0], 'A')
+    assertEquals(result.slice(1), 'b'.repeat(10_000))
+  })
+
+  await t.step('should handle Turkish locale edge cases', () => {
+    // Note: capitalize uses toLocaleUpperCase which might not handle Turkish i->İ conversion without specific locale
+    assertEquals(capitalize('istanbul'), 'Istanbul')
+    assertEquals(capitalize('İSTANBUL'), 'İstanbul')
+  })
+
+  await t.step('should handle German ß character', () => {
+    assertEquals(capitalize('straße'), 'Straße')
+    // Note: ß converts to SS when uppercased in German
+    assertEquals(capitalize('ßeta'), 'SSeta')
+  })
+
+  // Options parameter tests
+  await t.step('should respect lowercase option when set to false', () => {
+    assertEquals(capitalize('hello WORLD', { lowercase: false }), 'Hello WORLD')
+    assertEquals(capitalize('MIXED cAsE', { lowercase: false }), 'MIXED cAsE')
+    assertEquals(capitalize('test', { lowercase: false }), 'Test')
+  })
+
+  await t.step(
+    'should default to lowercase behavior when options not provided',
+    () => {
+      assertEquals(capitalize('HELLO WORLD'), 'Hello world')
+      assertEquals(capitalize('MiXeD cAsE'), 'Mixed case')
+    },
+  )
+
+  await t.step(
+    'should default to lowercase behavior when lowercase option is true',
+    () => {
+      assertEquals(
+        capitalize('HELLO WORLD', { lowercase: true }),
+        'Hello world',
+      )
+      assertEquals(capitalize('MiXeD cAsE', { lowercase: true }), 'Mixed case')
+    },
+  )
+
+  await t.step('should handle empty options object', () => {
+    assertEquals(capitalize('HELLO WORLD', {}), 'Hello world')
+  })
+
+  await t.step('should handle undefined options', () => {
+    assertEquals(capitalize('HELLO WORLD', undefined), 'Hello world')
+  })
+
+  await t.step(
+    'should preserve case with lowercase false and special characters',
+    () => {
+      assertEquals(capitalize('éLÉPHANT', { lowercase: false }), 'ÉLÉPHANT')
+      assertEquals(capitalize('àVOIR', { lowercase: false }), 'ÀVOIR')
+    },
+  )
 })

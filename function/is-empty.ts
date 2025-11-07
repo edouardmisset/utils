@@ -1,3 +1,5 @@
+import { size } from '@edouardmisset/object'
+
 /**
  * A type that represents any iterable value, or a value that is `null` or
  * `undefined`.
@@ -32,18 +34,28 @@ export type IterableOrNullish =
  *
  * @example
  * ```typescript
- * isEmpty(null) // returns true
- * isEmpty('') // returns true
- * isEmpty('   ') // returns true
- * isEmpty({}) // returns true
- * isEmpty([]) // returns true
- * isEmpty({ a: 1 }) // returns false
- * isEmpty('Hello, world!') // returns false
+ * import { assertEquals } from '@std/assert'
+ *
+ * // Empty values
+ * assertEquals(isEmpty(null), true)
+ * assertEquals(isEmpty(''), true)
+ * assertEquals(isEmpty('   '), true)
+ * assertEquals(isEmpty({}), true)
+ * assertEquals(isEmpty([]), true)
+ * ```
+ *
+ * @example
+ * ```typescript
+ * import { assertEquals } from '@std/assert'
+ *
+ * // Non-empty values
+ * assertEquals(isEmpty({ a: 1 }), false)
+ * assertEquals(isEmpty('Hello, world!'), false)
  * ```
  */
 export function isEmpty(value: IterableOrNullish): boolean {
   if (value === null || value === undefined) return true
   return typeof value === 'string'
     ? value.trim().length === 0
-    : Object.keys(value).length === 0
+    : size(value) === 0
 }

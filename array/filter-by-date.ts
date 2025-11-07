@@ -1,27 +1,17 @@
-import { isDateCompatible } from '@edouardmisset/date/is-date-compatible.ts'
 import {
   DurationAndReferenceDate,
+  isDateCompatible,
   isDateInDuration,
-} from '@edouardmisset/date/is-date-in-duration.ts'
-import {
   isDateInRange,
   isDateInRangeOption,
-  StartAndEndDate,
-} from '@edouardmisset/date/is-date-in-range.ts'
-import {
   isDateInYear,
+  isValidDate,
   isYearOption,
-  Year,
-} from '@edouardmisset/date/is-date-in-year.ts'
-import { isValidDate } from '@edouardmisset/date/is-valid-date.ts'
-import { objectSize } from '@edouardmisset/object/object-size.ts'
-import { ONE_YEAR_IN_MILLISECONDS } from './filter.ts'
-
-/**
- * The filter options for the {@link filterByDate} function.
- * This can be a year, a start and end date, or a duration from a reference date.
- */
-export type FilterOptions = Year | StartAndEndDate | DurationAndReferenceDate
+  StartAndEndDate,
+  YearOption,
+} from '@edouardmisset/date'
+import { err, ok, type Result } from '@edouardmisset/function'
+import type { ObjectOfType } from '@edouardmisset/type'
 
 /**
  * Creates a filter function that can be used to filter an array of objects
@@ -29,80 +19,108 @@ export type FilterOptions = Year | StartAndEndDate | DurationAndReferenceDate
  *
  * NOTE: By default it checks if the date provided is within the last year
  *
- * NOTE 2: The filter function will return true if the object does not have a
- * options or if the date is invalid.
+ * NOTE 2: The filter function filters out objects that do not have a valid
+ * date.
  *
  * @template Object_ - The type of object in the array to filter.
+ * @param {Object_[]} array - The array of objects to filter.
  * @param {keyof Object_} dateKey - The key of the date property in the objects to
  * filter.
  * @param {FilterOptions} [options={}] - The filter options to use.
- * @returns {(object_: Object_) => boolean} - A filter function that takes an object and
- * returns true if the object passes the filter, false otherwise.
+ * @returns {Result<(object_: Object_) => boolean, Error>} - Returns a Result
+ * containing either a filter function or an Error for invalid date ranges.
  *
  * @example
  * ```typescript
  * // Filter an array of objects by a year
+ * import { assertEquals } from '@std/assert'
+ *
  * const dates = [{ date: new Date(2020, 0, 1) }, { date: new Date(2021, 0, 1) }]
- * const filter = filterByDate('date', { year: 2020 })
- * const result = dates.filter(filter)
- * // [{ date: new Date(2020, 0, 1) }]
+ * const result = filterByDate({array:dates, keyOrFunction: 'date', options: { year: 2020 }})
+ *
+ * assertEquals(result.error, undefined)
+ * assertEquals(result.data, [{ date: new Date(2020, 0, 1) }])
  * ```
  *
  * @example
  * ```typescript
  * // Filter an array of objects by a date range
+ * import { assertEquals } from '@std/assert'
+ *
  * const dates = [{ date: new Date(2020, 0, 1) }, { date: new Date(2021, 0, 1) }]
- * const filter = filterByDate('date', { startDate: new Date(2020, 6, 1), endDate: new Date(2020, 11, 31) })
- * const result = dates.filter(filter)
- * // []
+ * const result = filterByDate({array:dates, keyOrFunction: object_ => object_.date, options: { startDate: new Date(2019, 6, 1), endDate: new Date(2020, 11, 31) }})
+ *
+ * assertEquals(result.error, undefined)
+ * assertEquals(result.data, [{ date: new Date(2020, 0, 1) }])
  * ```
  *
  * @example
  * ```typescript
- * // Filter an array of objects by a duration from a reference date
- * const dates = [{ date: new Date(2020, 0, 1) }, { date: new Date(2021, 0, 1) }]
- * const filter = filterByDate('date', { referenceDate: new Date(2020, 6, 1), durationInMS: 1000 * 60 * 60 * 24 * 180 }) // 180 days
- * const result = dates.filter(filter)
- * // [{ date: new Date(2020, 0, 1) }]
+ * // Filter by duration from a reference date
+ * import { assertEquals } from '@std/assert'
+ *
+ * const dates = [{ date: new Date(2020, 7, 1) }, { date: new Date(2021, 0, 1) }]
+ * const result = filterByDate({array:dates, keyOrFunction: 'date', options: { referenceDate: new Date(2020, 4, 1), durationInMS: 1000 * 60 * 60 * 24 * 180 }}) // 180 days
+ *
+ * assertEquals(result.error, undefined)
+ * assertEquals(result.data, [{ date: new Date(2020, 7, 1) }])
  * ```
  */
-export function filterByDate<Object_ extends Record<string, unknown>>(
-  dateKey: keyof Object_ = 'date',
-  options: FilterOptions = {} as FilterOptions,
-): (object_: Object_) => boolean {
-  return (object_: Object_) => {
-    if (objectSize(options) === 0) return true
+export function filterByDate<Object_ extends ObjectOfType<unknown>>(
+  { array, options, keyOrFunction = 'date' }: FilterByDateParams<Object_>,
+): Result<Object_[], Error> {
+  if (
+    isDateInRangeOption(options) &&
+    !isValidDate(options.startDate, options.endDate)
+  ) {
+    return err(
+      new Error(
+        `Invalid date range. startDate: ${options.startDate} - endDate: ${options.endDate}`,
+      ),
+    )
+  }
 
-    const dateValue = object_[dateKey]
-    if (!isDateCompatible(dateValue)) return true
+  if (Object.keys(options).length === 0) return ok(array)
+
+  const filteredArrayByDate = array.filter((o) => {
+    const dateValue = typeof keyOrFunction === 'function'
+      ? keyOrFunction(o)
+      : o[keyOrFunction]
+
+    if (!isDateCompatible(dateValue)) return false
 
     const date = new Date(dateValue)
-    if (!isValidDate(date)) return true
+    if (!isValidDate(date)) return false
 
     if (isYearOption(options)) return isDateInYear(date, options.year)
 
-    if (
-      isDateInRangeOption(options)
-    ) {
-      if (!isValidDate(options.startDate, options.endDate)) {
-        throw new Error('Invalid date range')
-      }
-      return isDateInRange(
-        date,
-        options,
-      )
-    }
+    if (isDateInRangeOption(options)) return isDateInRange(date, options)
 
-    const {
-      durationInMS = ONE_YEAR_IN_MILLISECONDS,
-      referenceDate = new Date(),
-    } = options
+    return isDateInDuration(date, options)
+  })
 
-    return isDateInDuration(date, { referenceDate, durationInMS })
-  }
+  return ok(
+    filteredArrayByDate,
+  )
 }
 
 /**
- * Alias for the {@link createDateFilter} function.
+ * The filter options for the {@link filterByDate} function.
+ * This can be a year, a start and end date, or a duration from a reference date.
  */
-export const filterByDateKey: typeof filterByDate = filterByDate
+export type FilterOptions =
+  | YearOption
+  | StartAndEndDate
+  | DurationAndReferenceDate
+
+/** Parameters for the {@link filterByDate} function. */
+export type FilterByDateParams<Object_ extends ObjectOfType<unknown>> = {
+  /** The array of objects to filter. */
+  array: Object_[]
+  /** The filter options to use @see {@link FilterOptions}. */
+  options: FilterOptions
+  /** The object's key representing the date field or function to use to extract
+   * the date from each object.
+   */
+  keyOrFunction: ((o: Object_) => Date) | keyof Object_
+}

@@ -33,4 +33,12 @@ Deno.test('wrapInParentheses function', async (t) => {
       assertEquals(result, '(987654321)')
     },
   )
+
+  await t.step(
+    'should return an empty string when the input is an empty string',
+    () => {
+      const result = wrapInParentheses('')
+      assertEquals(result, '')
+    },
+  )
 })

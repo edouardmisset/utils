@@ -3,19 +3,21 @@
  * order.
  *
  * @template T The type of the elements in the array.
- * @param {T[]} originalArray The array to shuffle.
+ * @param {T[]} array The array to shuffle.
  * @returns {T[]} A new array with the same elements as the original array, but
  * in a random order.
  *
  * @example
  * ```typescript
+ * import { assertEquals } from '@std/assert'
+ *
  * const numbers = [1, 2, 3, 4, 5]
- * randomSort(numbers)
- * // returns [3, 1, 5, 2, 4] (output will vary)
+ * const result = randomSort(numbers)
+ * assertEquals(result.length, 5)
  * ```
  */
-export function randomSort<T>(originalArray: T[]): T[] {
-  return originalArray
+export function randomSort<T>(array: T[]): T[] {
+  return array
     .map((value) => ({ randomValue: Math.random(), value }))
     .sort((a, b) => a.randomValue - b.randomValue)
     .map(({ value }) => value)
