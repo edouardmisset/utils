@@ -1,5 +1,5 @@
 /**
- * 🚀 Powerful TypeScript utility toolkit for modern web development
+ * TypeScript utilities for modern web development
  *
  * This library provides a comprehensive collection of utility functions organized into modules:
  * - **array**: Functions for working with arrays (e.g. {@link groupBy}, {@link countBy})
@@ -48,3 +48,4 @@ export * from './math/mod.ts'
 export * from './object/mod.ts'
 export * from './text/mod.ts'
 export * from './type/mod.ts'
+

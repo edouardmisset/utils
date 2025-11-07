@@ -2,9 +2,9 @@
 
 ## v5.0.0
 
-- [ ] Refactor: single function per file (with exceptions: `tryCatch`, `err`,
+- [x] Refactor: single function per file (with exceptions: `tryCatch`, `err`,
       `ok`, and others that are logically dependent on one another)
-  - [ ] Array
+  - [x] Array
   - [x] Date
   - [x] Function
   - [x] Math
