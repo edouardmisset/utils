@@ -1,5 +1,5 @@
-import { isValidDate } from '@edouardmisset/date/is-valid-date.ts'
 import { err, ok, type Result } from '@edouardmisset/function'
+import { isValidDate } from './is-valid-date.ts'
 
 // ISO8601_DATE_PATTERN matches ISO 8601 date strings, including:
 // - Calendar dates (YYYY-MM-DD)
