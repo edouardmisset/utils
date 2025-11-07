@@ -1,5 +1,5 @@
-import { isValidDate } from '@edouardmisset/date/is-valid-date.ts'
 import { err, ok, type Result } from '@edouardmisset/function'
+import { isValidDate } from './is-valid-date.ts'
 
 /**
  * Converts a Date object into a string in the format 'yyyy-mm-dd'.
@@ -33,8 +33,7 @@ export function stringifyDate(
   if (!isValidDate(date)) {
     return err(
       new TypeError(
-        `Expected a valid Date object for ${String(date)} but got ${
-          String(typeof date)
+        `Expected a valid Date object for ${String(date)} but got ${String(typeof date)
         }`,
       ),
     )
