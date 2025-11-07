@@ -1,4 +1,4 @@
-import type { ValueAndRange } from '@edouardmisset/type/type-helpers.ts'
+import type { ValueAndRange } from '@edouardmisset/type'
 
 /**
  * Clamps the provided value within the specified range.

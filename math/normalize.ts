@@ -1,6 +1,6 @@
 import type { Result } from '@edouardmisset/function'
-import { scale } from '@edouardmisset/math/scale.ts'
-import type { ValueAndRange } from '@edouardmisset/type/type-helpers.ts'
+import { scale } from '@edouardmisset/math'
+import type { ValueAndRange } from '@edouardmisset/type'
 
 /**
  * Normalize a value from one range to a value between 0 and 1.
