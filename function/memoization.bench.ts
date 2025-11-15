@@ -5,9 +5,9 @@
 import { memoization } from './memoization.ts'
 
 // Test functions to memoize
-const fibonacci = (n: number): number => {
+const _fibonacci = (n: number): number => {
   if (n <= 1) return n
-  return fibonacci(n - 1) + fibonacci(n - 2)
+  return _fibonacci(n - 1) + _fibonacci(n - 2)
 }
 
 const add = (a: number, b: number): number => a + b
