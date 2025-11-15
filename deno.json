@@ -2,8 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/denoland/deno/main/cli/schemas/config-file.v1.json",
   "tasks": {
     "bench:generate": "deno run --allow-read --allow-write ./_internal-tools/generate-benchmarks.ts",
-    "bench:run": "deno run --allow-read --allow-write --allow-run ./_internal-tools/run-benchmarks.ts",
-    "bench": "deno task bench:run",
+    "bench": "deno run --allow-read --allow-write --allow-run ./_internal-tools/run-benchmarks.ts",
     "check:exports": "deno run --allow-read --allow-write --allow-run ./_internal-tools/check-exports.ts",
     "check:imports": "deno run --allow-read ./_internal-tools/check-imports.ts",
     "check:links": "deno run --allow-read ./_internal-tools/check-links.ts",
