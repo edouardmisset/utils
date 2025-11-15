@@ -138,32 +138,43 @@ async function runWorkspaceBenchmarks(
 
       if (output.success) {
         const text = new TextDecoder().decode(output.stdout)
-        const lines = text.split('\n').filter((line) => line.trim())
 
         const benchResults: BenchmarkResult[] = []
 
-        for (const line of lines) {
-          try {
-            const json = JSON.parse(line)
-            if (json.ok && json.result) {
-              benchResults.push({
-                name: json.name || functionName,
-                measuredRunsAvgMs: json.result.measuredRunsAvgMs || 0,
-                measuredRunsMs: json.result.measuredRunsMs || [],
-                totalMs: json.result.totalMs || 0,
-                iterationsPerSec: json.result.measuredRunsAvgMs
-                  ? 1000 / json.result.measuredRunsAvgMs
-                  : 0,
-                min: json.result.min || 0,
-                max: json.result.max || 0,
-                p75: json.result.p75 || 0,
-                p99: json.result.p99 || 0,
-                p995: json.result.p995 || 0,
-              })
+        try {
+          const json = JSON.parse(text)
+          if (json.benches && Array.isArray(json.benches)) {
+            for (const bench of json.benches) {
+              if (
+                bench.results && Array.isArray(bench.results) &&
+                bench.results.length > 0
+              ) {
+                const result = bench.results[0]
+                if (result.ok) {
+                  const okData = result.ok
+                  // Convert nanoseconds to milliseconds
+                  const avgMs = okData.avg / 1_000_000
+                  benchResults.push({
+                    name: bench.name || functionName,
+                    measuredRunsAvgMs: avgMs,
+                    measuredRunsMs: [],
+                    totalMs: (okData.n * okData.avg) / 1_000_000,
+                    iterationsPerSec: avgMs ? 1000 / avgMs : 0,
+                    min: okData.min / 1_000_000,
+                    max: okData.max / 1_000_000,
+                    p75: okData.p75 / 1_000_000,
+                    p99: okData.p99 / 1_000_000,
+                    p995: okData.p995 / 1_000_000,
+                  })
+                }
+              }
             }
-          } catch {
-            // Skip invalid JSON lines
           }
+        } catch (error) {
+          console.error(
+            `Error parsing benchmark output for ${benchFile}:`,
+            error,
+          )
         }
 
         if (benchResults.length > 0) {
