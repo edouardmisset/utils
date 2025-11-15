@@ -29,7 +29,7 @@ export function isValidJSON(string_: string): boolean {
   try {
     JSON.parse(string_)
     return true
-  } catch (_error) {
+  } catch {
     return false
   }
 }

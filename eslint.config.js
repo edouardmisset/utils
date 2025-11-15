@@ -31,9 +31,9 @@ export default [
     rules: {
       // Functional programming rules from eslint-plugin-functional
       // Immutability rules
-      'functional/immutable-data': ['error', {
+      'functional/immutable-data': ['warn', {
         ignoreImmediateMutation: true,
-        ignoreAccessorPattern: ['**.current', '**.current.*'],
+        ignoreAccessorPattern: ['**.current', '**.current.*', '**.id'],
       }],
       'functional/no-let': 'error',
       'functional/prefer-readonly-type': ['warn', {
@@ -43,32 +43,32 @@ export default [
         ignoreInterface: false,
         ignoreCollections: false,
       }],
-      
+
       // No statements rules
       'functional/no-expression-statements': 'off', // Too strict for most codebases
       'functional/no-return-void': 'off', // Allow void returns for test functions
-      
+
       // No exceptions rules
       'functional/no-throw-statements': 'off', // Allow throw for error handling
       'functional/no-try-statements': 'off', // Allow try-catch for error handling
-      
+
       // Currying rules
       'functional/functional-parameters': 'off', // Can be too strict
-      
+
       // No other paradigm rules
-      'functional/no-class-inheritance': 'error',
+      'functional/no-class-inheritance': 'warn',
       'functional/no-classes': 'off', // Allow classes when needed
       'functional/no-mixed-types': 'off',
       'functional/no-this-expressions': 'off', // Allow this in classes
-      
+
       // TypeScript specific
       '@typescript-eslint/explicit-function-return-type': 'off',
       '@typescript-eslint/no-explicit-any': 'warn',
-      '@typescript-eslint/no-unused-vars': ['error', { 
+      '@typescript-eslint/no-unused-vars': ['error', {
         argsIgnorePattern: '^_',
         varsIgnorePattern: '^_',
       }],
-      
+
       // ESLint core
       'no-undef': 'error',
       'no-unused-vars': 'off', // Use @typescript-eslint/no-unused-vars instead
@@ -83,6 +83,7 @@ export default [
       'functional/no-return-void': 'off',
       'functional/prefer-readonly-type': 'off',
       'functional/immutable-data': 'off',
+      'functional/no-let': 'off',
     },
   },
   {

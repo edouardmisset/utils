@@ -34,37 +34,40 @@ export async function getEnv(
   environmentType: EnvType = 'node',
 ): Promise<Result<string, TypeError>> {
   const prefix = ENVIRONNEMENT_PREFIX[environmentType]
-  let value: string | undefined = undefined
 
-  if (environmentType === 'node' || environmentType === 'CRA') {
-    value = process.env[environmentVariable] ??
-      process.env[`${prefix}${environmentVariable}`]
-  }
-  if (environmentType === 'vite') {
-    // @ts-expect-error: it depends on the environment
-    value = import.meta.env[environmentVariable] ??
+  const getValue = async (): Promise<string | undefined> => {
+    if (environmentType === 'node' || environmentType === 'CRA') {
+      return process.env[environmentVariable] ??
+        process.env[`${prefix}${environmentVariable}`]
+    }
+    if (environmentType === 'vite') {
       // @ts-expect-error: it depends on the environment
-      import.meta.env[`${prefix}${environmentVariable}`]
+      return import.meta.env[environmentVariable] ??
+        // @ts-expect-error: it depends on the environment
+        import.meta.env[`${prefix}${environmentVariable}`]
+    }
+    if (environmentType === 'deno') {
+      const loadDotenv = async () => {
+        const dotenv = await import('@std/dotenv')
+        const env = await dotenv.load()
+        return env[environmentVariable]
+      }
+
+      const result = await tryCatch(loadDotenv())
+
+      if (result.error) {
+        globalThis.console.error(
+          "Error loading Deno's `dotenv` library:",
+          result.error,
+        )
+        return undefined
+      }
+      return result.data
+    }
+    return undefined
   }
 
-  if (environmentType === 'deno') {
-    const loadDotenv = async () => {
-      const dotenv = await import('@std/dotenv')
-      const env = await dotenv.load()
-      return env[environmentVariable]
-    }
-
-    const result = await tryCatch(loadDotenv())
-
-    if (result.error) {
-      globalThis.console.error(
-        "Error loading Deno's `dotenv` library:",
-        result.error,
-      )
-    } else {
-      value = result.data
-    }
-  }
+  const value = await getValue()
 
   if (value === undefined) {
     return err(

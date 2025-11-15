@@ -33,7 +33,8 @@ export function stringifyDate(
   if (!isValidDate(date)) {
     return err(
       new TypeError(
-        `Expected a valid Date object for ${String(date)} but got ${String(typeof date)
+        `Expected a valid Date object for ${String(date)} but got ${
+          String(typeof date)
         }`,
       ),
     )
