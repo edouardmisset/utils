@@ -34,5 +34,9 @@
     "titleBar.inactiveBackground": "#1b52bb99",
     "titleBar.inactiveForeground": "#e7e7e799"
   },
-  "peacock.color": "#1b52bb"
+  "peacock.color": "#1b52bb",
+  "cSpell.words": [
+    "edouardmisset",
+    "tsgo"
+  ]
 }

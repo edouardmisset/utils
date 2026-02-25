@@ -14,7 +14,7 @@
     "format": "deno fmt",
     "test:watch": "deno test --reporter=dot --watch",
     "test": "deno test --doc --reporter=dot --coverage --parallel ./**/*.ts",
-    "typecheck": "deno check --doc ./**/*.ts",
+    "typecheck": "deno check --unstable-tsgo --doc ./**/*.ts",
     "update:std": "deno update --latest \"@std/*\""
   },
   "importMap": "./import-map.json",
