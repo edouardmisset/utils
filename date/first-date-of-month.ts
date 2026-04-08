@@ -5,8 +5,11 @@
  *
  * Migration (native):
  * ```typescript
+ * import { assertEquals } from '@std/assert'
+ * 
  * const date = Temporal.PlainDate.from('2024-02-29')
  * const firstDay = date.with({ day: 1 })
+ * assertEquals(firstDay, Temporal.PlainDate.from('2024-02-01'))
  * ```
  *
  * API availability:
