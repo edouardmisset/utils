@@ -6,22 +6,12 @@
  * Migration (native):
  * ```typescript
  * import { assertEquals } from '@std/assert'
- * 
- * function nativeSymmetricDifference<T>(...arrays: (T[] | readonly T[])[]): T[] {
- *   return [
- *     ...arrays
- *       .map((array) => new Set(array))
- *       .reduce(
- *         (accumulator, set_) => accumulator.symmetricDifference(set_),
- *         new Set<T>(),
- *       ),
- *   ]
- * }
- * const array1 = [1, 2, 3]
- * const array2 = [2, 3, 4]
- * const array3 = [3, 4, 5]
- * const result = nativeSymmetricDifference(array1, array2, array3)
- * assertEquals(result, [1, 5])
+ *
+ * const set1 = new Set([1, 2, 3])
+ * const set2 = new Set([2, 3, 4])
+ *
+ * const result = [...set1.symmetricDifference(set2)]
+ * assertEquals(result, [1, 4])
  * ```
  *
  * API availability:

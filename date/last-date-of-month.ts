@@ -6,7 +6,7 @@
  * Migration (native):
  * ```typescript
  * import { assertEquals } from '@std/assert'
- * 
+ *
  * const date = Temporal.PlainDate.from('2024-02-29')
  * const lastDay = date.with({ day: date.daysInMonth })
  * assertEquals(lastDay, Temporal.PlainDate.from('2024-02-29'))
