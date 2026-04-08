@@ -2,11 +2,11 @@
  * Returns the elements that are common to both arrays.
  *
  * @deprecated Deprecated and scheduled for removal in v6, native Set operations should be preferred.
- * 
+ *
  * Migration (native):
  * ```typescript
  * import { assertEquals } from '@std/assert'
- * 
+ *
  * const leftArray = [1, 2, 3]
  * const rightArray = [2, 3, 4]
  * const result = [...new Set(leftArray).intersection(new Set(rightArray))]
@@ -49,7 +49,7 @@ export function commonElements<T>(
  * Migration (native):
  * ```typescript
  * import { assertEquals } from '@std/assert'
- * 
+ *
  * const leftArray = [1, 2, 3]
  * const rightArray = [2, 3, 4]
  * const result = [...new Set(leftArray).intersection(new Set(rightArray))]

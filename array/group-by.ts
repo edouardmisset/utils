@@ -6,7 +6,7 @@ import type { ObjectOfType } from '@edouardmisset/type'
  * @deprecated Deprecated and scheduled for removal in v6, native grouping should be preferred.
  *
  * Migration (native):
- * ```typescript 
+ * ```typescript
  * import { assertEquals } from '@std/assert'
  *
  * const objects = [{ id: 1, name: 'Object 1' }, { id: 2, name: 'Object 2' }, { id: 1, name: 'Object 3' }]

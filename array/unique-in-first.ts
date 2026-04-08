@@ -6,7 +6,7 @@
  * Migration (native):
  * ```typescript
  * import { assertEquals } from '@std/assert'
- * 
+ *
  * const otherArray = [1, 2, 3, 4, 5]
  * const otherValues = new Set(otherArray)
  * const result = [...new Set([0, 1, 2]).difference(otherValues)]

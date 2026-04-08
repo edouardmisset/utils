@@ -9,7 +9,7 @@ import type { SetDifference } from '@edouardmisset/type'
  * Migration (native):
  * ```typescript
  * import { assertEquals } from '@std/assert'
- * 
+ *
  * const result = [...new Set([1, 2, 3, 4]).symmetricDifference(new Set([3, 4, 5, 6]))]
  * assertEquals(result, [1, 2, 5, 6]);
  * ```
