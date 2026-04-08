@@ -1,6 +1,17 @@
 /**
  * Returns the elements that are unique to the first array.
  *
+ * @deprecated Deprecated and scheduled for removal in v6, native Set operations should be preferred.
+ *
+ * Migration (native):
+ * ```typescript
+ * const otherValues = new Set(otherArrays)
+ * const result = [...new Set(firstArray).difference(otherValues)]
+ * ```
+ *
+ * API availability:
+ * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set/difference#browser_compatibility
+ *
  * @template T The type of the elements in the arrays.
  * @param {T[]} firstArray The first array.
  * @param {...T[][]} otherArrays The other arrays.
@@ -20,7 +31,8 @@ export function uniqueInFirst<T>(
   firstArray: T[] | readonly T[],
   ...otherArrays: (T[] | readonly T[])[]
 ): T[] {
+  const sets = otherArrays.map((array) => new Set(array))
   return firstArray.filter(
-    (item) => !otherArrays.some((array) => new Set(array).has(item)),
+    (item) => !sets.some((set) => set.has(item)),
   )
 }

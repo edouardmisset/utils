@@ -3,10 +3,15 @@ import type { ObjectOfType } from '@edouardmisset/type'
 /**
  * Groups an array of objects by a specific key.
  *
- * @deprecated This function is deprecated as of 2024-03-05. Use the native
- * `Object.groupBy()` static method instead, which is Baseline Newly Available
- * (supported in the latest versions of all major browsers) and will become
- * Baseline Widely Available on 2026-09-05.
+ * @deprecated Deprecated and scheduled for removal in v6, native grouping should be preferred.
+ *
+ * Migration (native):
+ * ```typescript
+ * const grouped = Object.groupBy(objects, (object_) => String(object_.id))
+ * ```
+ *
+ * API availability:
+ * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/groupBy#browser_compatibility
  *
  * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/groupBy
  *
@@ -39,13 +44,15 @@ export function groupBy<
   key: Key,
 ): GroupedObject {
   return array.reduce(
-    (grouped, element) =>
-      Object.assign(grouped, {
-        [element[key] as Value]: [
-          ...(grouped[element[key] as Value] || []),
-          element,
-        ],
-      }),
+    (grouped, element) => {
+      const value = element[key] as Value
+      if (!grouped[value]) {
+        grouped[value] = [] as unknown as GroupedObject[Value]
+      }
+
+      grouped[value].push(element)
+      return grouped
+    },
     {} as GroupedObject,
   )
 }

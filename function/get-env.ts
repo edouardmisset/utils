@@ -20,6 +20,25 @@ export type EnvType = keyof typeof ENVIRONNEMENT_PREFIX
 /**
  * Retrieves the value of an environment variable.
  *
+ * @deprecated Deprecated and scheduled for removal in v6.
+ *
+ * Migration (native):
+ * ```typescript
+ * // Node.js / Next.js
+ * const nodeValue = process.env.MY_VARIABLE
+ *
+ * // Deno
+ * const denoValue = Deno.env.get('MY_VARIABLE')
+ *
+ * // Vite
+ * const viteValue = import.meta.env.VITE_MY_VARIABLE
+ * ```
+ *
+ * API availability:
+ * https://nodejs.org/api/process.html#processenv
+ * https://docs.deno.com/api/deno/~/Deno.Env
+ * https://vite.dev/guide/env-and-mode.html
+ *
  * @param {string} environmentVariable - The name of the environment variable to
  * retrieve.
  * @param {EnvType} [environmentType='node'] - The environment from which to

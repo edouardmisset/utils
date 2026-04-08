@@ -4,6 +4,16 @@ import type { SetDifference } from '@edouardmisset/type'
  * Computes the difference between two arrays, returning the unique items from
  * both arrays.
  *
+ * @deprecated Deprecated and scheduled for removal in v6, native Set operations should be preferred.
+ *
+ * Migration (native):
+ * ```typescript
+ * const result = [...new Set(firstArray).symmetricDifference(new Set(secondArray))]
+ * ```
+ *
+ * API availability:
+ * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set/symmetricDifference#browser_compatibility
+ *
  * @template FirstArrayType - The type of the first array.
  * @template SecondArrayType - The type of the second array.
  * @template Result - The type of the result array.
@@ -26,11 +36,13 @@ export function setDifference<
   const SecondArrayType extends readonly unknown[],
   Result extends SetDifference<FirstArrayType, SecondArrayType>,
 >(firstArray: FirstArrayType, secondArray: SecondArrayType): Result[] {
+  const secondSet = new Set(secondArray)
+  const firstSet = new Set(firstArray)
   const uniqueItemsFromFirstArray = firstArray.filter(
-    (item) => !secondArray.includes(item),
+    (item) => !secondSet.has(item),
   )
   const uniqueItemsFromSecondArray = secondArray.filter(
-    (item) => !firstArray.includes(item),
+    (item) => !firstSet.has(item),
   )
   return [
     ...uniqueItemsFromFirstArray,

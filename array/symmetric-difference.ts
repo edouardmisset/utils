@@ -1,6 +1,25 @@
 /**
  * Returns elements that appear in exactly one of the provided arrays.
  *
+ * @deprecated Deprecated and scheduled for removal in v6, native Set operations should be preferred.
+ *
+ * Migration (native):
+ * ```typescript
+ * function nativeSymmetricDifference<T>(...arrays: (T[] | readonly T[])[]): T[] {
+ *   return [
+ *     ...arrays
+ *       .map((array) => new Set(array))
+ *       .reduce(
+ *         (accumulator, set_) => accumulator.symmetricDifference(set_),
+ *         new Set<T>(),
+ *       ),
+ *   ]
+ * }
+ * ```
+ *
+ * API availability:
+ * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set/symmetricDifference#browser_compatibility
+ *
  * @template T The type of the elements in the arrays.
  * @param {...T[][]} arrays The arrays to find the symmetric difference of.
  * @returns {T[]} An array containing all elements that appear in exactly one of the input arrays.

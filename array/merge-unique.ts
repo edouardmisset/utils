@@ -1,6 +1,16 @@
 /**
  * Returns the unique elements from the combination of two arrays.
  *
+ * @deprecated Deprecated and scheduled for removal in v6, native Set operations should be preferred.
+ *
+ * Migration (native):
+ * ```typescript
+ * const result = [...new Set(leftArray).union(new Set(rightArray))]
+ * ```
+ *
+ * API availability:
+ * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set/union#browser_compatibility
+ *
  * @template T The type of the elements in the arrays.
  * @param {T[]} leftArray The first array.
  * @param {T[]} rightArray The second array.
@@ -24,5 +34,16 @@ export function mergeUnique<T>(
 
 /**
  * Alias for the {@link mergeUnique} function.
+ *
+ * @deprecated Deprecated and scheduled for removal in v6. Use
+ * `Set.prototype.union()`.
+ *
+ * Migration (native):
+ * ```typescript
+ * const result = [...new Set(leftArray).union(new Set(rightArray))]
+ * ```
+ *
+ * API availability:
+ * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set/union#browser_compatibility
  */
 export const union: typeof mergeUnique = mergeUnique
