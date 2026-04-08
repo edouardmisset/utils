@@ -23,14 +23,11 @@ export type EnvType = keyof typeof ENVIRONNEMENT_PREFIX
  * @deprecated Deprecated and scheduled for removal in v6.
  *
  * Migration (native):
- * ```typescript
- * // Node.js / Next.js
+ * ```typescript ignore
  * const nodeValue = process.env.MY_VARIABLE
  *
- * // Deno
  * const denoValue = Deno.env.get('MY_VARIABLE')
  *
- * // Vite
  * const viteValue = import.meta.env.VITE_MY_VARIABLE
  * ```
  *

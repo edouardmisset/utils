@@ -5,7 +5,12 @@
  *
  * Migration (native):
  * ```typescript
- * const result = [...new Set(leftArray).union(new Set(rightArray))]
+ * import { assertEquals } from '@std/assert'
+ *
+ * const array1 = [1, 2, 3]
+ * const array2 = [2, 3, 4]
+ * const result = [...new Set(array1).union(new Set(array2))]
+ * assertEquals(result, [1, 2, 3, 4])
  * ```
  *
  * API availability:
@@ -40,7 +45,12 @@ export function mergeUnique<T>(
  *
  * Migration (native):
  * ```typescript
- * const result = [...new Set(leftArray).union(new Set(rightArray))]
+ * import { assertEquals } from '@std/assert'
+ *
+ * const array1 = [1, 2, 3]
+ * const array2 = [2, 3, 4]
+ * const result = [...new Set(array1).union(new Set(array2))]
+ * assertEquals(result, [1, 2, 3, 4])
  * ```
  *
  * API availability:

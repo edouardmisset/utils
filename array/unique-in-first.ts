@@ -5,8 +5,12 @@
  *
  * Migration (native):
  * ```typescript
- * const otherValues = new Set(otherArrays)
- * const result = [...new Set(firstArray).difference(otherValues)]
+ * import { assertEquals } from '@std/assert'
+ * 
+ * const otherArray = [1, 2, 3, 4, 5]
+ * const otherValues = new Set(otherArray)
+ * const result = [...new Set([0, 1, 2]).difference(otherValues)]
+ * assertEquals(result, [0])
  * ```
  *
  * API availability:
