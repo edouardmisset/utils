@@ -82,9 +82,9 @@
   },
   "workspace": {
     "dependencies": [
-      "jsr:@edouardmisset/array@5",
-      "jsr:@edouardmisset/date@5",
-      "jsr:@edouardmisset/function@5",
+      "jsr:@edouardmisset/array@^5.0.1",
+      "jsr:@edouardmisset/date@^5.0.1",
+      "jsr:@edouardmisset/function@^5.0.1",
       "jsr:@edouardmisset/math@5",
       "jsr:@edouardmisset/object@5",
       "jsr:@edouardmisset/text@5",
