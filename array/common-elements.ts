@@ -1,6 +1,21 @@
 /**
  * Returns the elements that are common to both arrays.
  *
+ * @deprecated Deprecated and scheduled for removal in v6, native Set operations should be preferred.
+ *
+ * Migration (native):
+ * ```typescript
+ * import { assertEquals } from '@std/assert'
+ *
+ * const leftArray = [1, 2, 3]
+ * const rightArray = [2, 3, 4]
+ * const result = [...new Set(leftArray).intersection(new Set(rightArray))]
+ * assertEquals(result, [2, 3])
+ * ```
+ *
+ * API availability:
+ * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set/intersection#browser_compatibility
+ *
  * @template T The type of the elements in the arrays.
  * @param {T[]} leftArray The first array.
  * @param {T[]} rightArray The second array.
@@ -19,10 +34,29 @@ export function commonElements<T>(
   leftArray: T[] | readonly T[],
   rightArray: T[] | readonly T[],
 ): T[] {
-  return leftArray.filter((item) => new Set(rightArray).has(item))
+  const rightArraySet = new Set(rightArray)
+  return leftArray.filter((item) => {
+    return rightArraySet.has(item)
+  })
 }
 
 /**
  * Alias for the {@link commonElements} function.
+ *
+ * @deprecated Deprecated and scheduled for removal in v6. Use
+ * `Set.prototype.intersection()`.
+ *
+ * Migration (native):
+ * ```typescript
+ * import { assertEquals } from '@std/assert'
+ *
+ * const leftArray = [1, 2, 3]
+ * const rightArray = [2, 3, 4]
+ * const result = [...new Set(leftArray).intersection(new Set(rightArray))]
+ * assertEquals(result, [2, 3])
+ * ```
+ *
+ * API availability:
+ * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set/intersection#browser_compatibility
  */
 export const intersection: typeof commonElements = commonElements

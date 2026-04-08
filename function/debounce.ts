@@ -38,7 +38,7 @@ export const debounce = (parameters: DebounceParameters): AnyVoidFunction => {
     if (timerId.id !== -1) clearTimeout(timerId.id)
 
     timerId.id = setTimeout(() => {
-      callback.apply(this, arguments_)
+      callback(...arguments_)
     }, delay)
   }
 }

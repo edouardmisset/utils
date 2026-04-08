@@ -2,6 +2,8 @@
 
 🚀 TypeScript utility functions for modern web development
 
+This project targets evergreen browsers and Baseline Newly Available web APIs.
+
 ## Versions
 
 [![JSR](https://jsr.io/badges/@edouardmisset/array?label=array)](https://jsr.io/@edouardmisset/array)
@@ -125,7 +127,6 @@ that have contributed to the JavaScript and TypeScript developer community.
 - And many others...
 
 I am indebted to these projects and communities for their insights, code
-examples, and continuous support, which have shaped the development of this
-utility package.
+examples, which have shaped the development of this utility package.
 
 Thank you ⭐️

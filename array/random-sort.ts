@@ -17,10 +17,12 @@
  * ```
  */
 export function randomSort<T>(array: T[]): T[] {
-  return array
-    .map((value) => ({ randomValue: Math.random(), value }))
-    .sort((a, b) => a.randomValue - b.randomValue)
-    .map(({ value }) => value)
+  const result = [...array]
+  for (let right = result.length - 1; right > 0; right--) {
+    const randomIndex = Math.floor(Math.random() * (right + 1))
+    ;[result[right], result[randomIndex]] = [result[randomIndex], result[right]]
+  }
+  return result
 }
 
 /**

@@ -1,6 +1,22 @@
 /**
  * Returns elements that appear in exactly one of the provided arrays.
  *
+ * @deprecated Deprecated and scheduled for removal in v6, native Set operations should be preferred.
+ *
+ * Migration (native):
+ * ```typescript
+ * import { assertEquals } from '@std/assert'
+ *
+ * const set1 = new Set([1, 2, 3])
+ * const set2 = new Set([2, 3, 4])
+ *
+ * const result = [...set1.symmetricDifference(set2)]
+ * assertEquals(result, [1, 4])
+ * ```
+ *
+ * API availability:
+ * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set/symmetricDifference#browser_compatibility
+ *
  * @template T The type of the elements in the arrays.
  * @param {...T[][]} arrays The arrays to find the symmetric difference of.
  * @returns {T[]} An array containing all elements that appear in exactly one of the input arrays.

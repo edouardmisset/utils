@@ -24,7 +24,7 @@ async function main(): Promise<void> {
   const workspaceConfigs = await getAllWorkspaceConfigs()
 
   // Fetch all JSR versions in parallel
-  const results = await Promise.all(
+  const configVersionResults = await Promise.all(
     workspaceConfigs.map(async ({ config }) => ({
       name: config?.name ?? '',
       local: config?.version ?? undefined,
@@ -33,7 +33,7 @@ async function main(): Promise<void> {
   )
 
   // Process results
-  const processedResults = results.map((result) => {
+  const processedResults = configVersionResults.map((result) => {
     if (!result.jsr) {
       return { ...result, status: '❓ Not found', hasIssue: false }
     }

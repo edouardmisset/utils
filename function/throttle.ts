@@ -33,6 +33,6 @@ export const throttle = (parameters: CallbackAndDelay): AnyVoidFunction => {
     if (now - lastCalled < delay) return
 
     lastCalled = now
-    return callback.apply(this, arguments_)
+    return callback(...arguments_)
   }
 }
