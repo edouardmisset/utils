@@ -12,3 +12,4 @@
 - [ ] Create a tree class
 - [ ] Create a graph class
 - [ ] Create a heap class
+- [ ] Update security policy
