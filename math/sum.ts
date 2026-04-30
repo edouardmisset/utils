@@ -2,6 +2,19 @@
  * This function calculates the sum of all numbers provided as arguments.
  * It accepts either a single array of numbers or multiple number arguments.
  *
+ * @deprecated Deprecated and scheduled for removal in v6, native
+ * `Math.sumPrecise` should be preferred.
+ *
+ * Migration (native):
+ * ```typescript
+ * import { assertEquals } from '@std/assert'
+ *
+ * assertEquals(Math.sumPrecise([1, 2, 3]), 6)
+ * ```
+ *
+ * API availability:
+ * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/sumPrecise#browser_compatibility
+ *
  * @param {...(number[] | number)[]} number_ - The numbers to sum.
  * @returns {number} The sum of all numbers.
  *
