@@ -6,7 +6,7 @@
  * `Math.sumPrecise` should be preferred.
  *
  * Migration (native):
- * ```typescript
+ * ```typescript ignore
  * import { assertEquals } from '@std/assert'
  *
  * assertEquals(Math.sumPrecise([1, 2, 3]), 6)
