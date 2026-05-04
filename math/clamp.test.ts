@@ -1,21 +1,21 @@
 import { assertEquals } from '@std/assert'
 import { clampValueInRange } from './clamp.ts'
-
-const maximum = 10
-const minimum = 0
-const range = { maximum, minimum } as const
-const valueInsideRange = { ...range, value: 5 } as const
-const valueAboveRange = { ...range, value: 15 } as const
-const valueBelowRange = { ...range, value: -5 } as const
+import {
+  clampFixture,
+  clampFixtureMaximum,
+  clampFixtureMinimum,
+  clampFixtureValueAbove,
+  clampFixtureValueBelow,
+} from './clamp.fixture.ts'
 
 Deno.test('clampValueInRange', async (t) => {
   await t.step('value above -> clamp to maximum', () => {
-    assertEquals(clampValueInRange(valueAboveRange), maximum)
+    assertEquals(clampValueInRange(clampFixtureValueAbove), clampFixtureMaximum)
   })
   await t.step('value below -> clamp to minimum', () => {
-    assertEquals(clampValueInRange(valueBelowRange), minimum)
+    assertEquals(clampValueInRange(clampFixtureValueBelow), clampFixtureMinimum)
   })
   await t.step('value inside -> unchanged', () => {
-    assertEquals(clampValueInRange(valueInsideRange), 5)
+    assertEquals(clampValueInRange(clampFixture), 5)
   })
 })
