@@ -1,1 +1,1 @@
-export const isFunctionFixture = () => 'test'
+export const isFunctionFixture = (): string => 'test'
