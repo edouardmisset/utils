@@ -1,0 +1,1618 @@
+{
+  "timestamp": "2026-05-04T15:47:25.818Z",
+  "gitCommit": "unknown",
+  "denoVersion": "2.7.14",
+  "benchmarkSchemaVersion": "1.0.0",
+  "results": [
+    {
+      "workspace": "array",
+      "functionName": "collectionKeyBy",
+      "canonicalName": null,
+      "fixtureSize": "medium",
+      "skipped": false,
+      "stats": {
+        "n": 1187389,
+        "min": 1291.0000000374566,
+        "max": 2229290.9999998757,
+        "average": 1618.6946224015342,
+        "p75": 1583.0000002097222,
+        "p99": 3959.0000001226144
+      }
+    },
+    {
+      "workspace": "array",
+      "functionName": "normalizeBy",
+      "canonicalName": "collectionKeyBy",
+      "fixtureSize": "medium",
+      "skipped": false,
+      "stats": {
+        "n": 1223640,
+        "min": 1332.9999992492958,
+        "max": 107540.99999940081,
+        "average": 1565.3340655705993,
+        "p75": 1583.0000002097222,
+        "p99": 2000.0000004074536
+      }
+    },
+    {
+      "workspace": "array",
+      "functionName": "commonElements",
+      "canonicalName": null,
+      "fixtureSize": "medium",
+      "skipped": false,
+      "stats": {
+        "n": 14030845,
+        "min": 0,
+        "max": 2848374.999999578,
+        "average": 80.22245452301338,
+        "p75": 83.99999933317304,
+        "p99": 125.0000004802132
+      }
+    },
+    {
+      "workspace": "array",
+      "functionName": "intersection",
+      "canonicalName": "commonElements",
+      "fixtureSize": "medium",
+      "skipped": false,
+      "stats": {
+        "n": 13198646,
+        "min": 0,
+        "max": 561583.9999991294,
+        "average": 80.45550179986843,
+        "p75": 83.99999933317304,
+        "p99": 207.99999947485048
+      }
+    },
+    {
+      "workspace": "array",
+      "functionName": "countBy",
+      "canonicalName": null,
+      "fixtureSize": "medium",
+      "skipped": false,
+      "stats": {
+        "n": 11329627,
+        "min": 0,
+        "max": 215334.00000043912,
+        "average": 89.53475942749716,
+        "p75": 83.99999933317304,
+        "p99": 125.0000022992026
+      }
+    },
+    {
+      "workspace": "array",
+      "functionName": "countIf",
+      "canonicalName": "countBy",
+      "fixtureSize": "medium",
+      "skipped": false,
+      "stats": {
+        "n": 3886472,
+        "min": 332.9999963170849,
+        "max": 1986166.9999991136,
+        "average": 447.0903055468209,
+        "p75": 458.0000022542663,
+        "p99": 1041.9999998703133
+      }
+    },
+    {
+      "workspace": "array",
+      "functionName": "filterByDate",
+      "canonicalName": null,
+      "fixtureSize": "medium",
+      "skipped": false,
+      "stats": {
+        "n": 57321,
+        "min": 29874.999996536644,
+        "max": 3784749.999998894,
+        "average": 34824.89164529929,
+        "p75": 34374.999999272404,
+        "p99": 67834.00000131223
+      }
+    },
+    {
+      "workspace": "array",
+      "functionName": "filterBy",
+      "canonicalName": null,
+      "fixtureSize": "medium",
+      "skipped": false,
+      "stats": {
+        "n": 4266960,
+        "min": 290.99999665049836,
+        "max": 2487916.9999985606,
+        "average": 401.8734455074744,
+        "p75": 416.0000025876798,
+        "p99": 833.0000018759165
+      }
+    },
+    {
+      "workspace": "array",
+      "functionName": "findAndUpdate",
+      "canonicalName": null,
+      "fixtureSize": "medium",
+      "skipped": false,
+      "stats": {
+        "n": 7813865,
+        "min": 82.99999899463728,
+        "max": 526874.9999959255,
+        "average": 188.0119625864101,
+        "p75": 207.99999765586108,
+        "p99": 416.0000025876798
+      }
+    },
+    {
+      "workspace": "array",
+      "functionName": "findBy",
+      "canonicalName": null,
+      "fixtureSize": "medium",
+      "skipped": false,
+      "stats": {
+        "n": 18901072,
+        "min": 0,
+        "max": 134917.00000304263,
+        "average": 39.690120472565205,
+        "p75": 41.99999966658652,
+        "p99": 82.99999899463728
+      }
+    },
+    {
+      "workspace": "array",
+      "functionName": "frequency",
+      "canonicalName": null,
+      "fixtureSize": "medium",
+      "skipped": false,
+      "stats": {
+        "n": 10796130,
+        "min": 40.99999932805076,
+        "max": 4012957.999999344,
+        "average": 112.90305648074924,
+        "p75": 124.9999986612238,
+        "p99": 249.9999973224476
+      }
+    },
+    {
+      "workspace": "array",
+      "functionName": "groupBy",
+      "canonicalName": null,
+      "fixtureSize": "medium",
+      "skipped": false,
+      "stats": {
+        "n": 1704190,
+        "min": 915.999997232575,
+        "max": 249500.0000053551,
+        "average": 1107.8444874001634,
+        "p75": 1084.0000031748787,
+        "p99": 1374.999999825377
+      }
+    },
+    {
+      "workspace": "array",
+      "functionName": "keyBy",
+      "canonicalName": null,
+      "fixtureSize": "medium",
+      "skipped": false,
+      "stats": {
+        "n": 1172726,
+        "min": 1333.0000001587905,
+        "max": 2467791.0000027623,
+        "average": 1636.3058600316583,
+        "p75": 1584.0000050957315,
+        "p99": 2082.999999402091
+      }
+    },
+    {
+      "workspace": "array",
+      "functionName": "maxBy",
+      "canonicalName": null,
+      "fixtureSize": "medium",
+      "skipped": false,
+      "stats": {
+        "n": 11663111,
+        "min": 40.99999932805076,
+        "max": 117916.9999959413,
+        "average": 103.63061434551803,
+        "p75": 124.9999986612238,
+        "p99": 249.9999973224476
+      }
+    },
+    {
+      "workspace": "array",
+      "functionName": "mergeUnique",
+      "canonicalName": null,
+      "fixtureSize": "medium",
+      "skipped": false,
+      "stats": {
+        "n": 13292377,
+        "min": 0,
+        "max": 6768666.99999664,
+        "average": 85.06938840859567,
+        "p75": 83.99999933317304,
+        "p99": 125.00000593718141
+      }
+    },
+    {
+      "workspace": "array",
+      "functionName": "union",
+      "canonicalName": "mergeUnique",
+      "fixtureSize": "medium",
+      "skipped": false,
+      "stats": {
+        "n": 12970757,
+        "min": 0,
+        "max": 160916.9999937876,
+        "average": 85.98790663258481,
+        "p75": 83.99999933317304,
+        "p99": 207.99999765586108
+      }
+    },
+    {
+      "workspace": "array",
+      "functionName": "minBy",
+      "canonicalName": null,
+      "fixtureSize": "medium",
+      "skipped": false,
+      "stats": {
+        "n": 11979479,
+        "min": 40.99999205209315,
+        "max": 48917.00000735,
+        "average": 100.28243924923311,
+        "p75": 124.99999138526618,
+        "p99": 125.00000593718141
+      }
+    },
+    {
+      "workspace": "array",
+      "functionName": "randomItem",
+      "canonicalName": null,
+      "fixtureSize": "medium",
+      "skipped": true,
+      "skipReason": "non-deterministic: matches skip pattern"
+    },
+    {
+      "workspace": "array",
+      "functionName": "randomSort",
+      "canonicalName": null,
+      "fixtureSize": "medium",
+      "skipped": true,
+      "skipReason": "non-deterministic: matches skip pattern"
+    },
+    {
+      "workspace": "array",
+      "functionName": "shuffleArray",
+      "canonicalName": "randomSort",
+      "fixtureSize": "medium",
+      "skipped": false,
+      "stats": {
+        "n": 3316158,
+        "min": 374.9999887077138,
+        "max": 1750416.9999883743,
+        "average": 538.7118481544929,
+        "p75": 541.9999943114817,
+        "p99": 1332.9999928828329
+      }
+    },
+    {
+      "workspace": "array",
+      "functionName": "range",
+      "canonicalName": null,
+      "fixtureSize": "small",
+      "skipped": false,
+      "stats": {
+        "n": 4180210,
+        "min": 291.000003926456,
+        "max": 247624.99998905696,
+        "average": 407.8728336453102,
+        "p75": 417.00000292621553,
+        "p99": 541.0000012489036
+      }
+    },
+    {
+      "workspace": "array",
+      "functionName": "sequence",
+      "canonicalName": "range",
+      "fixtureSize": "small",
+      "skipped": false,
+      "stats": {
+        "n": 4103252,
+        "min": 290.99998937454075,
+        "max": 311042.00000118,
+        "average": 413.025258975756,
+        "p75": 417.00000292621553,
+        "p99": 541.9999943114817
+      }
+    },
+    {
+      "workspace": "array",
+      "functionName": "selectBy",
+      "canonicalName": null,
+      "fixtureSize": "medium",
+      "skipped": false,
+      "stats": {
+        "n": 1053894,
+        "min": 1541.0000050906092,
+        "max": 2926957.9999963753,
+        "average": 1831.6625817973736,
+        "p75": 1791.0000024130568,
+        "p99": 2291.000011609867
+      }
+    },
+    {
+      "workspace": "array",
+      "functionName": "setDifference",
+      "canonicalName": null,
+      "fixtureSize": "medium",
+      "skipped": false,
+      "stats": {
+        "n": 10821692,
+        "min": 40.99999205209315,
+        "max": 4265500.000008615,
+        "average": 119.6503627221142,
+        "p75": 125.00000593718141,
+        "p99": 208.99999071843922
+      }
+    },
+    {
+      "workspace": "array",
+      "functionName": "orderBy",
+      "canonicalName": "sortBy",
+      "fixtureSize": "medium",
+      "skipped": false,
+      "stats": {
+        "n": 409988,
+        "min": 3874.999994877726,
+        "max": 1342749.9999961583,
+        "average": 4811.327082747988,
+        "p75": 4708.000007667579,
+        "p99": 13459.00000887923
+      }
+    },
+    {
+      "workspace": "array",
+      "functionName": "sortBy",
+      "canonicalName": null,
+      "fixtureSize": "medium",
+      "skipped": false,
+      "stats": {
+        "n": 420853,
+        "min": 3958.999994210899,
+        "max": 223249.9999954598,
+        "average": 4687.218211582511,
+        "p75": 4791.999992448837,
+        "p99": 5417.000007582828
+      }
+    },
+    {
+      "workspace": "array",
+      "functionName": "symmetricDifference",
+      "canonicalName": null,
+      "fixtureSize": "medium",
+      "skipped": false,
+      "stats": {
+        "n": 5622227,
+        "min": 165.99999798927456,
+        "max": 5834958.999999799,
+        "average": 290.7094373650644,
+        "p75": 291.9999969890341,
+        "p99": 416.9999883743003
+      }
+    },
+    {
+      "workspace": "array",
+      "functionName": "take",
+      "canonicalName": null,
+      "fixtureSize": "medium",
+      "skipped": false,
+      "stats": {
+        "n": 19233058,
+        "min": 0,
+        "max": 400457.99998915754,
+        "average": 40.75292217173981,
+        "p75": 41.99999966658652,
+        "p99": 83.0000062705949
+      }
+    },
+    {
+      "workspace": "array",
+      "functionName": "uniqueInFirst",
+      "canonicalName": null,
+      "fixtureSize": "medium",
+      "skipped": false,
+      "stats": {
+        "n": 12257420,
+        "min": 0,
+        "max": 378541.000012774,
+        "average": 97.28063710869338,
+        "p75": 124.99999138526618,
+        "p99": 125.00000593718141
+      }
+    },
+    {
+      "workspace": "date",
+      "functionName": "convertStringDate",
+      "canonicalName": null,
+      "fixtureSize": "small",
+      "skipped": false,
+      "stats": {
+        "n": 537636,
+        "min": 3165.999994962476,
+        "max": 117750.00000488944,
+        "average": 3647.6627569601433,
+        "p75": 3666.0000041592866,
+        "p99": 4625.000001396984
+      }
+    },
+    {
+      "workspace": "date",
+      "functionName": "datification",
+      "canonicalName": null,
+      "fixtureSize": "small",
+      "skipped": false,
+      "stats": {
+        "n": 3794045,
+        "min": 332.99998904112726,
+        "max": 1401582.9999989364,
+        "average": 460.17890986954535,
+        "p75": 459.00000259280205,
+        "p99": 583.0000009154901
+      }
+    },
+    {
+      "workspace": "date",
+      "functionName": "firstDateOfMonth",
+      "canonicalName": null,
+      "fixtureSize": "small",
+      "skipped": false,
+      "stats": {
+        "n": 12298895,
+        "min": 40.99999205209315,
+        "max": 337999.99998882413,
+        "average": 96.47094775133156,
+        "p75": 124.99999138526618,
+        "p99": 125.00000593718141
+      }
+    },
+    {
+      "workspace": "date",
+      "functionName": "isDateCompatible",
+      "canonicalName": null,
+      "fixtureSize": "small",
+      "skipped": false,
+      "stats": {
+        "n": 19102479,
+        "min": 0,
+        "max": 27707.9999941634,
+        "average": 36.09732379743256,
+        "p75": 41.99999966658652,
+        "p99": 42.00001421850175
+      }
+    },
+    {
+      "workspace": "date",
+      "functionName": "isDateInDuration",
+      "canonicalName": null,
+      "fixtureSize": "small",
+      "skipped": false,
+      "stats": {
+        "n": 18656955,
+        "min": 0,
+        "max": 37041.99999629054,
+        "average": 37.9177964334058,
+        "p75": 41.99999966658652,
+        "p99": 42.00001421850175
+      }
+    },
+    {
+      "workspace": "date",
+      "functionName": "isDateInLast12Months",
+      "canonicalName": null,
+      "fixtureSize": "small",
+      "skipped": false,
+      "stats": {
+        "n": 2284914,
+        "min": 624.9999860301614,
+        "max": 219791.0000104457,
+        "average": 811.7533119781451,
+        "p75": 832.9999982379377,
+        "p99": 958.9999972376972
+      }
+    },
+    {
+      "workspace": "date",
+      "functionName": "isDateInRange",
+      "canonicalName": null,
+      "fixtureSize": "small",
+      "skipped": false,
+      "stats": {
+        "n": 10181919,
+        "min": 40.99999205209315,
+        "max": 297083.0000122078,
+        "average": 126.70189687078104,
+        "p75": 125.00002048909664,
+        "p99": 167.00002015568316
+      }
+    },
+    {
+      "workspace": "date",
+      "functionName": "isDateInRangeOption",
+      "canonicalName": null,
+      "fixtureSize": "medium",
+      "skipped": false,
+      "stats": {
+        "n": 18957208,
+        "min": 0,
+        "max": 30499.999993480742,
+        "average": 34.90907763393647,
+        "p75": 41.99999966658652,
+        "p99": 41.99999966658652
+      }
+    },
+    {
+      "workspace": "date",
+      "functionName": "isDateInYear",
+      "canonicalName": null,
+      "fixtureSize": "small",
+      "skipped": false,
+      "stats": {
+        "n": 3680009,
+        "min": 291.000003926456,
+        "max": 24272083.99999654,
+        "average": 474.2111217922393,
+        "p75": 459.00000259280205,
+        "p99": 584.0000230818987
+      }
+    },
+    {
+      "workspace": "date",
+      "functionName": "isYearOption",
+      "canonicalName": null,
+      "fixtureSize": "medium",
+      "skipped": false,
+      "stats": {
+        "n": 20720053,
+        "min": 0,
+        "max": 36624.99997881241,
+        "average": 32.58347557160942,
+        "p75": 41.99999966658652,
+        "p99": 41.99999966658652
+      }
+    },
+    {
+      "workspace": "date",
+      "functionName": "isValidDate",
+      "canonicalName": null,
+      "fixtureSize": "small",
+      "skipped": false,
+      "stats": {
+        "n": 3782066,
+        "min": 332.99997448921204,
+        "max": 9254458.000010345,
+        "average": 465.0433319062634,
+        "p75": 499.9999946448952,
+        "p99": 582.9999863635749
+      }
+    },
+    {
+      "workspace": "date",
+      "functionName": "lastDateOfMonth",
+      "canonicalName": null,
+      "fixtureSize": "small",
+      "skipped": false,
+      "stats": {
+        "n": 11961225,
+        "min": 40.99999205209315,
+        "max": 308416.9999929145,
+        "average": 101.63189122453763,
+        "p75": 124.99999138526618,
+        "p99": 125.00002048909664
+      }
+    },
+    {
+      "workspace": "date",
+      "functionName": "parseDate",
+      "canonicalName": null,
+      "fixtureSize": "small",
+      "skipped": false,
+      "stats": {
+        "n": 2968719,
+        "min": 457.9999949783087,
+        "max": 5232457.999984035,
+        "average": 607.4512299364391,
+        "p75": 624.9999860301614,
+        "p99": 750.000006519258
+      }
+    },
+    {
+      "workspace": "date",
+      "functionName": "sortByDate",
+      "canonicalName": null,
+      "fixtureSize": "medium",
+      "skipped": true,
+      "skipReason": "non-deterministic: matches skip pattern"
+    },
+    {
+      "workspace": "date",
+      "functionName": "stringifyDate",
+      "canonicalName": null,
+      "fixtureSize": "small",
+      "skipped": false,
+      "stats": {
+        "n": 3437079,
+        "min": 374.99997415579855,
+        "max": 123000.00002142042,
+        "average": 515.3013957470764,
+        "p75": 540.9999866969883,
+        "p99": 667.0000148005784
+      }
+    },
+    {
+      "workspace": "function",
+      "functionName": "debounce",
+      "canonicalName": null,
+      "fixtureSize": "medium",
+      "skipped": true,
+      "skipReason": "non-deterministic: matches skip pattern"
+    },
+    {
+      "workspace": "function",
+      "functionName": "deepEqual",
+      "canonicalName": null,
+      "fixtureSize": "medium",
+      "skipped": false,
+      "stats": {
+        "n": 14875751,
+        "min": 0,
+        "max": 1369915.9999960102,
+        "average": 70.49838209590533,
+        "p75": 83.00002082251012,
+        "p99": 83.99999933317304
+      }
+    },
+    {
+      "workspace": "function",
+      "functionName": "isEqual",
+      "canonicalName": "deepEqual",
+      "fixtureSize": "medium",
+      "skipped": false,
+      "stats": {
+        "n": 14475757,
+        "min": 0,
+        "max": 12054707.999981474,
+        "average": 72.59321733223744,
+        "p75": 83.00002082251012,
+        "p99": 124.99999138526618
+      }
+    },
+    {
+      "workspace": "function",
+      "functionName": "getEnv",
+      "canonicalName": null,
+      "fixtureSize": "medium",
+      "skipped": true,
+      "skipReason": "non-deterministic: matches skip pattern"
+    },
+    {
+      "workspace": "function",
+      "functionName": "isEmpty",
+      "canonicalName": null,
+      "fixtureSize": "small",
+      "skipped": false,
+      "stats": {
+        "n": 19931573,
+        "min": 0,
+        "max": 161833.00002012402,
+        "average": 35.06776789706229,
+        "p75": 41.99999966658652,
+        "p99": 41.99999966658652
+      }
+    },
+    {
+      "workspace": "function",
+      "functionName": "isFunction",
+      "canonicalName": null,
+      "fixtureSize": "small",
+      "skipped": false,
+      "stats": {
+        "n": 19457379,
+        "min": 0,
+        "max": 773416.999989422,
+        "average": 33.69252728006963,
+        "p75": 41.99999966658652,
+        "p99": 42.000028770416975
+      }
+    },
+    {
+      "workspace": "function",
+      "functionName": "isJSON",
+      "canonicalName": "isValidJSON",
+      "fixtureSize": "small",
+      "skipped": false,
+      "stats": {
+        "n": 12462636,
+        "min": 40.99999205209315,
+        "max": 253499.9999916181,
+        "average": 95.99438697738222,
+        "p75": 124.99999138526618,
+        "p99": 125.00002048909664
+      }
+    },
+    {
+      "workspace": "function",
+      "functionName": "isValidJSON",
+      "canonicalName": null,
+      "fixtureSize": "small",
+      "skipped": false,
+      "stats": {
+        "n": 12031318,
+        "min": 40.99999205209315,
+        "max": 619207.9999891575,
+        "average": 99.2954932311476,
+        "p75": 124.99999138526618,
+        "p99": 125.00002048909664
+      }
+    },
+    {
+      "workspace": "function",
+      "functionName": "memo",
+      "canonicalName": "memoize",
+      "fixtureSize": "small",
+      "skipped": false,
+      "stats": {
+        "n": 18795762,
+        "min": 0,
+        "max": 236375.0000076834,
+        "average": 39.35203045971196,
+        "p75": 41.99999966658652,
+        "p99": 41.99999966658652
+      }
+    },
+    {
+      "workspace": "function",
+      "functionName": "memoize",
+      "canonicalName": null,
+      "fixtureSize": "small",
+      "skipped": false,
+      "stats": {
+        "n": 18304250,
+        "min": 0,
+        "max": 645166.0000020638,
+        "average": 40.00649733143143,
+        "p75": 41.99999966658652,
+        "p99": 82.99999171867967
+      }
+    },
+    {
+      "workspace": "function",
+      "functionName": "chain",
+      "canonicalName": "pipe",
+      "fixtureSize": "small",
+      "skipped": false,
+      "stats": {
+        "n": 19576083,
+        "min": 0,
+        "max": 180666.99997871183,
+        "average": 39.67351725695573,
+        "p75": 41.99999966658652,
+        "p99": 42.000028770416975
+      }
+    },
+    {
+      "workspace": "function",
+      "functionName": "combine",
+      "canonicalName": "compose",
+      "fixtureSize": "small",
+      "skipped": false,
+      "stats": {
+        "n": 19323533,
+        "min": 0,
+        "max": 166916.99999500997,
+        "average": 40.4879733813042,
+        "p75": 41.99999966658652,
+        "p99": 82.99999171867967
+      }
+    },
+    {
+      "workspace": "function",
+      "functionName": "compose",
+      "canonicalName": null,
+      "fixtureSize": "small",
+      "skipped": false,
+      "stats": {
+        "n": 19263070,
+        "min": 0,
+        "max": 226542.00001852587,
+        "average": 40.41599343986194,
+        "p75": 41.99999966658652,
+        "p99": 82.99999171867967
+      }
+    },
+    {
+      "workspace": "function",
+      "functionName": "pipe",
+      "canonicalName": null,
+      "fixtureSize": "small",
+      "skipped": false,
+      "stats": {
+        "n": 19884503,
+        "min": 0,
+        "max": 146791.0000064876,
+        "average": 37.95270310440348,
+        "p75": 41.99999966658652,
+        "p99": 42.000028770416975
+      }
+    },
+    {
+      "workspace": "function",
+      "functionName": "sleep",
+      "canonicalName": null,
+      "fixtureSize": "small",
+      "skipped": true,
+      "skipReason": "non-deterministic: matches skip pattern"
+    },
+    {
+      "workspace": "function",
+      "functionName": "wait",
+      "canonicalName": "sleep",
+      "fixtureSize": "small",
+      "skipped": true,
+      "skipReason": "non-deterministic: matches skip pattern"
+    },
+    {
+      "workspace": "function",
+      "functionName": "throttle",
+      "canonicalName": null,
+      "fixtureSize": "medium",
+      "skipped": true,
+      "skipReason": "non-deterministic: matches skip pattern"
+    },
+    {
+      "workspace": "function",
+      "functionName": "timeIt",
+      "canonicalName": null,
+      "fixtureSize": "medium",
+      "skipped": false,
+      "stats": {
+        "n": 248508,
+        "min": 6999.999983236194,
+        "max": 226958.0000138376,
+        "average": 7984.226548064729,
+        "p75": 8040.999993681908,
+        "p99": 8874.999999534339
+      }
+    },
+    {
+      "workspace": "function",
+      "functionName": "err",
+      "canonicalName": null,
+      "fixtureSize": "small",
+      "skipped": false,
+      "stats": {
+        "n": 19213669,
+        "min": 0,
+        "max": 413000.00000046566,
+        "average": 38.05644521907098,
+        "p75": 41.99999966658652,
+        "p99": 41.99999966658652
+      }
+    },
+    {
+      "workspace": "function",
+      "functionName": "ok",
+      "canonicalName": null,
+      "fixtureSize": "small",
+      "skipped": false,
+      "stats": {
+        "n": 18834315,
+        "min": 0,
+        "max": 96041.99999012053,
+        "average": 38.0856248144932,
+        "p75": 41.99999966658652,
+        "p99": 41.99999966658652
+      }
+    },
+    {
+      "workspace": "function",
+      "functionName": "tryCatch",
+      "canonicalName": null,
+      "fixtureSize": "small",
+      "skipped": false,
+      "stats": {
+        "n": 18656886,
+        "min": 0,
+        "max": 1533957.9999854323,
+        "average": 37.67100740941146,
+        "p75": 41.99999966658652,
+        "p99": 42.000028770416975
+      }
+    },
+    {
+      "workspace": "math",
+      "functionName": "averageTime",
+      "canonicalName": null,
+      "fixtureSize": "small",
+      "skipped": false,
+      "stats": {
+        "n": 2432500,
+        "min": 582.9999863635749,
+        "max": 8015917.000011541,
+        "average": 756.1896521856314,
+        "p75": 750.000006519258,
+        "p99": 958.9999972376972
+      }
+    },
+    {
+      "workspace": "math",
+      "functionName": "average",
+      "canonicalName": null,
+      "fixtureSize": "medium",
+      "skipped": false,
+      "stats": {
+        "n": 1993057,
+        "min": 790.9999985713512,
+        "max": 393167.0000019949,
+        "average": 939.6100021270139,
+        "p75": 957.9999896232039,
+        "p99": 1167.0000094454736
+      }
+    },
+    {
+      "workspace": "math",
+      "functionName": "mean",
+      "canonicalName": "average",
+      "fixtureSize": "medium",
+      "skipped": false,
+      "stats": {
+        "n": 1992556,
+        "min": 790.9999985713512,
+        "max": 11701415.999996243,
+        "average": 939.3614146940652,
+        "p75": 957.9999896232039,
+        "p99": 1125.000009778887
+      }
+    },
+    {
+      "workspace": "math",
+      "functionName": "clamp",
+      "canonicalName": "clampValueInRange",
+      "fixtureSize": "small",
+      "skipped": false,
+      "stats": {
+        "n": 18784538,
+        "min": 0,
+        "max": 1374959.000007948,
+        "average": 37.37672924205595,
+        "p75": 41.99999966658652,
+        "p99": 82.99999171867967
+      }
+    },
+    {
+      "workspace": "math",
+      "functionName": "clampValueInRange",
+      "canonicalName": null,
+      "fixtureSize": "small",
+      "skipped": false,
+      "stats": {
+        "n": 19169450,
+        "min": 0,
+        "max": 48958.00002850592,
+        "average": 36.99847956525661,
+        "p75": 42.000028770416975,
+        "p99": 42.000028770416975
+      }
+    },
+    {
+      "workspace": "math",
+      "functionName": "divmod",
+      "canonicalName": null,
+      "fixtureSize": "small",
+      "skipped": false,
+      "stats": {
+        "n": 17690490,
+        "min": 0,
+        "max": 13330749.99996461,
+        "average": 40.39629580266119,
+        "p75": 42.000028770416975,
+        "p99": 42.000028770416975
+      }
+    },
+    {
+      "workspace": "math",
+      "functionName": "isValidNumber",
+      "canonicalName": null,
+      "fixtureSize": "small",
+      "skipped": false,
+      "stats": {
+        "n": 19439763,
+        "min": 0,
+        "max": 32833.000004757196,
+        "average": 34.78523512970157,
+        "p75": 42.000028770416975,
+        "p99": 42.000028770416975
+      }
+    },
+    {
+      "workspace": "math",
+      "functionName": "normalize",
+      "canonicalName": null,
+      "fixtureSize": "small",
+      "skipped": false,
+      "stats": {
+        "n": 18659951,
+        "min": 0,
+        "max": 819791.9999947771,
+        "average": 36.85958569545333,
+        "p75": 42.000028770416975,
+        "p99": 42.000028770416975
+      }
+    },
+    {
+      "workspace": "math",
+      "functionName": "percent",
+      "canonicalName": null,
+      "fixtureSize": "small",
+      "skipped": false,
+      "stats": {
+        "n": 19258794,
+        "min": 0,
+        "max": 223583.00001360476,
+        "average": 35.97687957334876,
+        "p75": 42.000028770416975,
+        "p99": 42.000028770416975
+      }
+    },
+    {
+      "workspace": "math",
+      "functionName": "product",
+      "canonicalName": null,
+      "fixtureSize": "medium",
+      "skipped": false,
+      "stats": {
+        "n": 4849886,
+        "min": 249.99998277053237,
+        "max": 3481541.999964975,
+        "average": 341.059767376934,
+        "p75": 333.9999821037054,
+        "p99": 457.9999949783087
+      }
+    },
+    {
+      "workspace": "math",
+      "functionName": "random",
+      "canonicalName": null,
+      "fixtureSize": "small",
+      "skipped": true,
+      "skipReason": "non-deterministic: matches skip pattern"
+    },
+    {
+      "workspace": "math",
+      "functionName": "randomInt",
+      "canonicalName": null,
+      "fixtureSize": "small",
+      "skipped": true,
+      "skipReason": "non-deterministic: matches skip pattern"
+    },
+    {
+      "workspace": "math",
+      "functionName": "isInRange",
+      "canonicalName": null,
+      "fixtureSize": "medium",
+      "skipped": false,
+      "stats": {
+        "n": 19494934,
+        "min": 0,
+        "max": 37375.0000144355,
+        "average": 35.22871916781123,
+        "p75": 42.000028770416975,
+        "p99": 42.000028770416975
+      }
+    },
+    {
+      "workspace": "math",
+      "functionName": "isInRangeInclusive",
+      "canonicalName": null,
+      "fixtureSize": "medium",
+      "skipped": false,
+      "stats": {
+        "n": 19200719,
+        "min": 0,
+        "max": 28708.000027108938,
+        "average": 35.242773814679815,
+        "p75": 42.000028770416975,
+        "p99": 42.000028770416975
+      }
+    },
+    {
+      "workspace": "math",
+      "functionName": "isOutsideRangeInclusive",
+      "canonicalName": null,
+      "fixtureSize": "medium",
+      "skipped": false,
+      "stats": {
+        "n": 19910007,
+        "min": 0,
+        "max": 338042.00001759455,
+        "average": 34.83522280400715,
+        "p75": 42.000028770416975,
+        "p99": 42.000028770416975
+      }
+    },
+    {
+      "workspace": "math",
+      "functionName": "isStrictlyInRange",
+      "canonicalName": null,
+      "fixtureSize": "medium",
+      "skipped": false,
+      "stats": {
+        "n": 18516181,
+        "min": 0,
+        "max": 575167.0000026934,
+        "average": 35.51723380893019,
+        "p75": 42.000028770416975,
+        "p99": 42.000028770416975
+      }
+    },
+    {
+      "workspace": "math",
+      "functionName": "isStrictlyOutsideRange",
+      "canonicalName": null,
+      "fixtureSize": "medium",
+      "skipped": false,
+      "stats": {
+        "n": 21022047,
+        "min": 0,
+        "max": 35208.9999942109,
+        "average": 33.10782707041322,
+        "p75": 42.000028770416975,
+        "p99": 42.000028770416975
+      }
+    },
+    {
+      "workspace": "math",
+      "functionName": "roundToPrecision",
+      "canonicalName": null,
+      "fixtureSize": "small",
+      "skipped": false,
+      "stats": {
+        "n": 18962938,
+        "min": 0,
+        "max": 2081207.999959588,
+        "average": 36.91325259117936,
+        "p75": 42.000028770416975,
+        "p99": 42.000028770416975
+      }
+    },
+    {
+      "workspace": "math",
+      "functionName": "scale",
+      "canonicalName": null,
+      "fixtureSize": "small",
+      "skipped": false,
+      "stats": {
+        "n": 18625008,
+        "min": 0,
+        "max": 235084.000043571,
+        "average": 38.52034092239128,
+        "p75": 42.000028770416975,
+        "p99": 42.000028770416975
+      }
+    },
+    {
+      "workspace": "math",
+      "functionName": "standardDeviation",
+      "canonicalName": null,
+      "fixtureSize": "medium",
+      "skipped": false,
+      "stats": {
+        "n": 9954503,
+        "min": 40.99996294826269,
+        "max": 3796083.000022918,
+        "average": 132.78630653178837,
+        "p75": 125.00002048909664,
+        "p99": 167.00004925951362
+      }
+    },
+    {
+      "workspace": "math",
+      "functionName": "variance",
+      "canonicalName": "standardDeviation",
+      "fixtureSize": "medium",
+      "skipped": false,
+      "stats": {
+        "n": 10276421,
+        "min": 40.99996294826269,
+        "max": 233583.99997232482,
+        "average": 132.41140966733633,
+        "p75": 125.00002048909664,
+        "p99": 167.00004925951362
+      }
+    },
+    {
+      "workspace": "math",
+      "functionName": "sum",
+      "canonicalName": null,
+      "fixtureSize": "medium",
+      "skipped": false,
+      "stats": {
+        "n": 5883602,
+        "min": 165.99998343735933,
+        "max": 238916.0000020638,
+        "average": 272.1117735177292,
+        "p75": 291.99995333328843,
+        "p99": 333.9999821037054
+      }
+    },
+    {
+      "workspace": "math",
+      "functionName": "toFixed",
+      "canonicalName": "toFixedWithoutZeros",
+      "fixtureSize": "small",
+      "skipped": false,
+      "stats": {
+        "n": 12664995,
+        "min": 0,
+        "max": 7513416.000001598,
+        "average": 88.17826433134545,
+        "p75": 83.99999933317304,
+        "p99": 125.00002048909664
+      }
+    },
+    {
+      "workspace": "math",
+      "functionName": "toFixedWithoutZeros",
+      "canonicalName": null,
+      "fixtureSize": "small",
+      "skipped": false,
+      "stats": {
+        "n": 12822725,
+        "min": 0,
+        "max": 181582.99999777228,
+        "average": 86.5754709528742,
+        "p75": 83.99999933317304,
+        "p99": 125.00002048909664
+      }
+    },
+    {
+      "workspace": "math",
+      "functionName": "validNumberWithFallback",
+      "canonicalName": null,
+      "fixtureSize": "small",
+      "skipped": false,
+      "stats": {
+        "n": 18910162,
+        "min": 0,
+        "max": 68541.00001510233,
+        "average": 38.4455459871052,
+        "p75": 42.000028770416975,
+        "p99": 42.000028770416975
+      }
+    },
+    {
+      "workspace": "object",
+      "functionName": "invert",
+      "canonicalName": null,
+      "fixtureSize": "medium",
+      "skipped": false,
+      "stats": {
+        "n": 4964720,
+        "min": 207.9999540001154,
+        "max": 225374.99997997656,
+        "average": 331.3682930676461,
+        "p75": 333.9999821037054,
+        "p99": 417.000032030046
+      }
+    },
+    {
+      "workspace": "object",
+      "functionName": "isKey",
+      "canonicalName": null,
+      "fixtureSize": "small",
+      "skipped": false,
+      "stats": {
+        "n": 19256537,
+        "min": 0,
+        "max": 486833.9999811724,
+        "average": 38.94911695639716,
+        "p75": 42.000028770416975,
+        "p99": 42.000028770416975
+      }
+    },
+    {
+      "workspace": "object",
+      "functionName": "isNotNestedObject",
+      "canonicalName": null,
+      "fixtureSize": "small",
+      "skipped": false,
+      "stats": {
+        "n": 15903455,
+        "min": 0,
+        "max": 520125.00003911555,
+        "average": 56.429498498921156,
+        "p75": 82.99999171867967,
+        "p99": 83.99999933317304
+      }
+    },
+    {
+      "workspace": "object",
+      "functionName": "isObject",
+      "canonicalName": null,
+      "fixtureSize": "small",
+      "skipped": false,
+      "stats": {
+        "n": 18528335,
+        "min": 0,
+        "max": 106458.99997325614,
+        "average": 38.319074158927734,
+        "p75": 42.000028770416975,
+        "p99": 42.000028770416975
+      }
+    },
+    {
+      "workspace": "object",
+      "functionName": "isPlainObject",
+      "canonicalName": null,
+      "fixtureSize": "small",
+      "skipped": false,
+      "stats": {
+        "n": 16791009,
+        "min": 0,
+        "max": 2232542.0000124723,
+        "average": 43.60454210788863,
+        "p75": 42.000028770416975,
+        "p99": 83.99999933317304
+      }
+    },
+    {
+      "workspace": "object",
+      "functionName": "mapObject",
+      "canonicalName": null,
+      "fixtureSize": "medium",
+      "skipped": false,
+      "stats": {
+        "n": 7354949,
+        "min": 124.99996228143573,
+        "max": 288708.999985829,
+        "average": 201.04344446905046,
+        "p75": 208.99996161460876,
+        "p99": 250.00004097819328
+      }
+    },
+    {
+      "workspace": "object",
+      "functionName": "objectKeys",
+      "canonicalName": null,
+      "fixtureSize": "medium",
+      "skipped": false,
+      "stats": {
+        "n": 18143717,
+        "min": 0,
+        "max": 712957.9999600537,
+        "average": 41.410072844779776,
+        "p75": 42.000028770416975,
+        "p99": 82.99999171867967
+      }
+    },
+    {
+      "workspace": "object",
+      "functionName": "omit",
+      "canonicalName": null,
+      "fixtureSize": "small",
+      "skipped": false,
+      "stats": {
+        "n": 6921720,
+        "min": 124.99996228143573,
+        "max": 398749.9999930151,
+        "average": 224.01376998828,
+        "p75": 249.99998277053237,
+        "p99": 292.00001154094934
+      }
+    },
+    {
+      "workspace": "object",
+      "functionName": "pick",
+      "canonicalName": null,
+      "fixtureSize": "small",
+      "skipped": false,
+      "stats": {
+        "n": 11683851,
+        "min": 40.99996294826269,
+        "max": 19182124.999992084,
+        "average": 102.38263574040269,
+        "p75": 124.99996228143573,
+        "p99": 125.00002048909664
+      }
+    },
+    {
+      "workspace": "object",
+      "functionName": "removeNullishObjectValues",
+      "canonicalName": null,
+      "fixtureSize": "small",
+      "skipped": false,
+      "stats": {
+        "n": 7330952,
+        "min": 83.99999933317304,
+        "max": 277416.99997568503,
+        "average": 201.14932711718114,
+        "p75": 208.99996161460876,
+        "p99": 250.00004097819328
+      }
+    },
+    {
+      "workspace": "object",
+      "functionName": "shallowEqual",
+      "canonicalName": null,
+      "fixtureSize": "small",
+      "skipped": false,
+      "stats": {
+        "n": 9429328,
+        "min": 40.99996294826269,
+        "max": 135917.00000688434,
+        "average": 139.61971871073573,
+        "p75": 125.00002048909664,
+        "p99": 249.99998277053237
+      }
+    },
+    {
+      "workspace": "object",
+      "functionName": "length",
+      "canonicalName": "size",
+      "fixtureSize": "medium",
+      "skipped": false,
+      "stats": {
+        "n": 18224618,
+        "min": 0,
+        "max": 198583.9999979362,
+        "average": 41.678408834456725,
+        "p75": 42.000028770416975,
+        "p99": 82.99999171867967
+      }
+    },
+    {
+      "workspace": "object",
+      "functionName": "size",
+      "canonicalName": null,
+      "fixtureSize": "medium",
+      "skipped": false,
+      "stats": {
+        "n": 17830240,
+        "min": 0,
+        "max": 363458.0000070855,
+        "average": 41.7994638848146,
+        "p75": 42.000028770416975,
+        "p99": 42.000028770416975
+      }
+    },
+    {
+      "workspace": "text",
+      "functionName": "capitalize",
+      "canonicalName": null,
+      "fixtureSize": "small",
+      "skipped": false,
+      "stats": {
+        "n": 18166312,
+        "min": 0,
+        "max": 247208.0000443384,
+        "average": 42.02758918931979,
+        "p75": 42.000028770416975,
+        "p99": 82.99999171867967
+      }
+    },
+    {
+      "workspace": "text",
+      "functionName": "levenshteinDistance",
+      "canonicalName": null,
+      "fixtureSize": "small",
+      "skipped": false,
+      "stats": {
+        "n": 5874344,
+        "min": 165.99998343735933,
+        "max": 1193417.0000022277,
+        "average": 276.4160369046896,
+        "p75": 291.99995333328843,
+        "p99": 457.9999949783087
+      }
+    },
+    {
+      "workspace": "text",
+      "functionName": "removeAccents",
+      "canonicalName": null,
+      "fixtureSize": "small",
+      "skipped": false,
+      "stats": {
+        "n": 16110288,
+        "min": 0,
+        "max": 141416.999977082,
+        "average": 61.01903821472912,
+        "p75": 82.99999171867967,
+        "p99": 83.99999933317304
+      }
+    },
+    {
+      "workspace": "text",
+      "functionName": "slugify",
+      "canonicalName": null,
+      "fixtureSize": "medium",
+      "skipped": false,
+      "stats": {
+        "n": 814716,
+        "min": 1999.9999785795808,
+        "max": 220708.00000801682,
+        "average": 2390.055839104816,
+        "p75": 2375.0000400468707,
+        "p99": 2957.999997306615
+      }
+    },
+    {
+      "workspace": "text",
+      "functionName": "stringEquals",
+      "canonicalName": null,
+      "fixtureSize": "small",
+      "skipped": false,
+      "stats": {
+        "n": 12336130,
+        "min": 0,
+        "max": 1017957.9999530688,
+        "average": 96.50676136418535,
+        "p75": 124.99996228143573,
+        "p99": 125.00002048909664
+      }
+    },
+    {
+      "workspace": "text",
+      "functionName": "stringEqualsCaseInsensitive",
+      "canonicalName": "stringEquals",
+      "fixtureSize": "small",
+      "skipped": false,
+      "stats": {
+        "n": 13066981,
+        "min": 0,
+        "max": 154333.0000131391,
+        "average": 88.97406981879466,
+        "p75": 83.99999933317304,
+        "p99": 125.00002048909664
+      }
+    },
+    {
+      "workspace": "text",
+      "functionName": "stringIncludes",
+      "canonicalName": null,
+      "fixtureSize": "small",
+      "skipped": false,
+      "stats": {
+        "n": 18128188,
+        "min": 0,
+        "max": 185083.99999700487,
+        "average": 41.61766128227418,
+        "p75": 42.000028770416975,
+        "p99": 82.99999171867967
+      }
+    },
+    {
+      "workspace": "text",
+      "functionName": "stringToBoolean",
+      "canonicalName": null,
+      "fixtureSize": "small",
+      "skipped": false,
+      "stats": {
+        "n": 18762782,
+        "min": 0,
+        "max": 217333.00003688782,
+        "average": 36.950091726729475,
+        "p75": 42.000028770416975,
+        "p99": 42.000028770416975
+      }
+    },
+    {
+      "workspace": "text",
+      "functionName": "wrapInParentheses",
+      "canonicalName": null,
+      "fixtureSize": "small",
+      "skipped": false,
+      "stats": {
+        "n": 18383240,
+        "min": 0,
+        "max": 142207.99994654953,
+        "average": 40.42356645424096,
+        "p75": 42.000028770416975,
+        "p99": 82.99999171867967
+      }
+    }
+  ]
+}

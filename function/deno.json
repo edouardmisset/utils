@@ -1,5 +1,4 @@
 {
-  "$schema": "https://raw.githubusercontent.com/denoland/deno/main/cli/schemas/config-file.v1.json",
   "name": "@edouardmisset/function",
   "version": "5.0.1",
   "exports": {
