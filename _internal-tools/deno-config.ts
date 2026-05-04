@@ -1,4 +1,4 @@
-import { join } from '@std/path'
+import { dirname, fromFileUrl, join } from '@std/path'
 import { z } from 'zod'
 
 /** Barrel file name used for module exports */
@@ -6,7 +6,9 @@ export const BARREL_FILE_NAME = 'mod.ts'
 /** Deno's configuration file name */
 export const DENO_FILE_NAME: string = 'deno.json'
 /** This is the project's root directory */
-export const ROOT_DIRECTORY: string = new URL('..', import.meta.url).pathname
+export const ROOT_DIRECTORY: string = dirname(
+  dirname(fromFileUrl(import.meta.url)),
+)
 /** This is the path to the root Deno configuration file */
 export const ROOT_DENO_FILE_PATH: string = join(ROOT_DIRECTORY, DENO_FILE_NAME)
 
