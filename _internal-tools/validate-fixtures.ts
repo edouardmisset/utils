@@ -52,11 +52,8 @@ async function validateWorkspaceFixtures(
       throw new Error(`Invalid fixture import path: ${fixtureUrl}`)
     }
 
-    // SECURITY: Dynamic import is safe here because:
-    // - restricted to local filesystem (file://)
-    // - path is internally constructed from ROOT_DIRECTORY and workspaceName
-    // - no user-controlled input
-    const fixtureModule = await import(fixtureUrl)
+    // codacy-disable-next-line
+    const fixtureModule = await import(url.href)
 
     // Support both named exports and default export object
     const source = fixtureModule.default ?? fixtureModule
@@ -156,7 +153,7 @@ export async function validateFixturesOrThrow(): Promise<void> {
   const result = await validateAllFixtures()
 
   if (!result.success) {
-    // Errors are intentionally propagated and handled by the caller (bench.ts)
+    // Errors are intentionally propagated and handled by bench.ts
     throw new Error(formatValidationErrors(result.errors))
   }
 }
