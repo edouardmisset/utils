@@ -45,16 +45,17 @@ async function validateWorkspaceFixtures(
   try {
     // Use proper URL construction for cross-platform compatibility
     const fixtureUrl = toFileUrl(fixturePath).href
+    const url = new URL(fixtureUrl)
 
     // Validate that the import path is a safe local file URL
-    if (!fixtureUrl.startsWith('file://')) {
+    if (url.protocol !== 'file:') {
       throw new Error(`Invalid fixture import path: ${fixtureUrl}`)
     }
 
-    // Dynamic import is safe because:
-    // - Path is internally constructed from ROOT_DIRECTORY and workspaceName
-    // - Restricted to local workspace directories only
-    // - URL is validated to be a file:// protocol
+    // SECURITY: Dynamic import is safe here because:
+    // - restricted to local filesystem (file://)
+    // - path is internally constructed from ROOT_DIRECTORY and workspaceName
+    // - no user-controlled input
     const fixtureModule = await import(fixtureUrl)
 
     // Support both named exports and default export object
@@ -155,6 +156,7 @@ export async function validateFixturesOrThrow(): Promise<void> {
   const result = await validateAllFixtures()
 
   if (!result.success) {
+    // Errors are intentionally propagated and handled by the caller (bench.ts)
     throw new Error(formatValidationErrors(result.errors))
   }
 }
