@@ -1,11 +1,9 @@
 import { assertEquals } from '@std/assert'
 import { sortBy } from './sort-by.ts'
+import { sortByFixture } from './sort-by.fixture.ts'
 
 Deno.test('sortBy', async (t) => {
-  const objectList = [{ id: 1, value: 10 }, { id: 2, value: 5 }, {
-    id: 3,
-    value: 20,
-  }]
+  const objectList = sortByFixture
 
   await t.step(
     'should sort objects by a specific key in ascending order',

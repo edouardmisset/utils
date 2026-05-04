@@ -1,5 +1,6 @@
 import { assertEquals } from '@std/assert'
 import { collectionKeyBy } from './collection-key-by.ts'
+import { collectionKeyByFixture } from './collection-key-by.fixture.ts'
 
 const userCollection = {
   '1': { id: 1, name: 'Alice' },
@@ -11,12 +12,8 @@ Deno.test('collectionKeyBy', async (t) => {
   await t.step(
     'should transform a collection of objects into an object keyed by a specified key',
     () => {
-      const collection = [{ id: 1, name: 'Alice' }, { id: 2, name: 'Bob' }, {
-        id: 3,
-        name: 'Charlie',
-      }]
       const key = 'id'
-      assertEquals(collectionKeyBy(collection, key), userCollection)
+      assertEquals(collectionKeyBy(collectionKeyByFixture, key), userCollection)
     },
   )
 

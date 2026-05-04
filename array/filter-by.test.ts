@@ -1,5 +1,6 @@
 import { assertEquals } from '@std/assert'
 import { filterBy } from './filter-by.ts'
+import { filterByFixture } from './filter-by.fixture.ts'
 
 Deno.test('filterBy', async (t) => {
   const array = [
@@ -11,7 +12,11 @@ Deno.test('filterBy', async (t) => {
   ]
 
   await t.step('filters by key/value returning all matches', () => {
-    const result = filterBy({ array, keyOrFunction: 'category', value: 'a' })
+    const result = filterBy({
+      array: filterByFixture,
+      keyOrFunction: 'category',
+      value: 'a',
+    })
     assertEquals(result, [
       { id: 1, category: 'a', name: 'First' },
       { id: 3, category: 'a', name: 'Third' },
@@ -22,7 +27,7 @@ Deno.test('filterBy', async (t) => {
     'returns empty array when no objects match the key/value',
     () => {
       const result = filterBy({
-        array,
+        array: filterByFixture,
         keyOrFunction: 'category',
         value: 'z',
       })

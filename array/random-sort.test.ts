@@ -1,8 +1,9 @@
 import { assertEquals } from '@std/assert'
 import { shuffleArray } from './random-sort.ts'
+import { randomSortFixture } from './random-sort.fixture.ts'
 
 Deno.test('shuffleArray function', async (t) => {
-  const array = [1, 2, 3, 4, 5]
+  const array = randomSortFixture
 
   await t.step('should return an array with the same length', () => {
     const result = shuffleArray(array)

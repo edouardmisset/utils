@@ -1,13 +1,19 @@
 import { assert, assertEquals } from '@std/assert'
 import { filterByDate } from './filter-by-date.ts'
+import {
+  filterByDate1,
+  filterByDate2,
+  filterByDate3,
+  filterByDateFixture,
+} from './filter-by-date.fixture.ts'
 
 Deno.test(
   'filterByDate',
   async (t) => {
-    const date1 = { date: new Date(2020, 6, 1) } // July 1, 2020
-    const date2 = { date: new Date(2021, 6, 1) } // July 1, 2021
-    const date3 = { date: new Date(2022, 6, 1) } // July 1, 2022
-    const dates = [date1, date2, date3]
+    const date1 = filterByDate1
+    const date2 = filterByDate2
+    const date3 = filterByDate3
+    const dates = filterByDateFixture
 
     await t.step('should filter an array of objects by a year', () => {
       const { data: filtered, error } = filterByDate(

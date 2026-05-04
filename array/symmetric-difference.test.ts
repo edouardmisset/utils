@@ -1,8 +1,12 @@
 import { assertEquals } from '@std/assert'
 import { symmetricDifference } from './symmetric-difference.ts'
+import {
+  symmetricDifferenceFixtureA,
+  symmetricDifferenceFixtureB,
+} from './symmetric-difference.fixture.ts'
 
-const array1 = [1, 2, 3] as const
-const array2 = [2, 3, 4] as const
+const array1 = symmetricDifferenceFixtureA
+const array2 = symmetricDifferenceFixtureB
 const array3 = [3, 4, 5] as const
 const emptyArray: number[] = [] as const
 const singleElement1 = [1] as const

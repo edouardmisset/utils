@@ -1,11 +1,12 @@
 import { assertEquals } from '@std/assert'
 import { range } from './range.ts'
+import { rangeFixtureEnd, rangeFixtureStart } from './range.fixture.ts'
 
 Deno.test('range', async (t) => {
   await t.step(
     'should create an array of numbers progressing from start to end',
     () => {
-      const result = range(1, 5)
+      const result = range(rangeFixtureStart, rangeFixtureEnd)
       assertEquals(result, [1, 2, 3, 4, 5])
     },
   )

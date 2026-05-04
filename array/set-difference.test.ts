@@ -1,8 +1,12 @@
 import { assertEquals } from '@std/assert'
 import { setDifference } from './set-difference.ts'
+import {
+  setDifferenceFixtureA,
+  setDifferenceFixtureB,
+} from './set-difference.fixture.ts'
 
-const array1 = [1, 2, 3] as const
-const array2 = [2, 3, 4] as const
+const array1 = setDifferenceFixtureA
+const array2 = setDifferenceFixtureB
 const emptyArray: number[] = [] as const
 const singleElement1 = [1] as const
 const singleElement2 = [2] as const

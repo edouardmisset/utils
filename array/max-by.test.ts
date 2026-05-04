@@ -1,11 +1,9 @@
 import { assertEquals } from '@std/assert'
 import { maxBy } from './max-by.ts'
+import { maxByFixture } from './max-by.fixture.ts'
 
 Deno.test('maxBy', async (t) => {
-  const objects = [{ id: 1, value: 10 }, { id: 2, value: 5 }, {
-    id: 3,
-    value: 20,
-  }]
+  const objects = maxByFixture
 
   await t.step(
     'should return the object with the maximum value for a specific key',

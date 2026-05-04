@@ -1,8 +1,9 @@
 import { assertEquals } from '@std/assert'
 import { selectBy } from './select-by.ts'
+import { selectByFixture } from './select-by.fixture.ts'
 
 Deno.test('selectBy', async (t) => {
-  const objects = [{ id: 1, name: 'John' }, { id: 2, name: 'Jane' }]
+  const objects = selectByFixture
 
   await t.step(
     'should select a specific key from each object in an array',

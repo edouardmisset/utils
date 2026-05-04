@@ -1,8 +1,12 @@
 import { assertEquals } from '@std/assert'
 import { mergeUnique } from './merge-unique.ts'
+import {
+  mergeUniqueFixtureA,
+  mergeUniqueFixtureB,
+} from './merge-unique.fixture.ts'
 
-const array1 = [1, 2, 3] as const
-const array2 = [2, 3, 4] as const
+const array1 = mergeUniqueFixtureA
+const array2 = mergeUniqueFixtureB
 const emptyArray: number[] = [] as const
 const singleElement1 = [1] as const
 const singleElement2 = [2] as const

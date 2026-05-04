@@ -1,14 +1,14 @@
 import { assert, assertEquals } from '@std/assert'
 import { randomItem } from './random-item.ts'
+import { randomItemFixture } from './random-item.fixture.ts'
 
 Deno.test('randomItem function', async (t) => {
   await t.step('should return a random item from the array', () => {
-    const array = [1, 2, 3, 4, 5]
-    const result = randomItem(array)
+    const result = randomItem(randomItemFixture)
 
     assertEquals(result.error, undefined)
     assert(result.data !== undefined)
-    assert(array.includes(result.data))
+    assert(randomItemFixture.includes(result.data))
   })
 
   await t.step('should return an error if the array is empty', () => {

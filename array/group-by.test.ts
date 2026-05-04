@@ -1,11 +1,9 @@
 import { assertEquals } from '@std/assert'
 import { groupBy } from './group-by.ts'
+import { groupByFixture } from './group-by.fixture.ts'
 
 Deno.test('groupBy', async (t) => {
-  const objects = [{ id: 1, name: 'Object 1' }, { id: 2, name: 'Object 2' }, {
-    id: 1,
-    name: 'Object 3',
-  }]
+  const objects = groupByFixture
 
   await t.step('should group objects by a specific key', () => {
     const result = groupBy(objects, 'id')

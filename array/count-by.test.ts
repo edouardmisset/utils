@@ -1,5 +1,6 @@
 import { assertEquals } from '@std/assert'
 import { countBy } from './count-by.ts'
+import { countByFixture } from './count-by.fixture.ts'
 
 Deno.test('countBy', async (t) => {
   const isEven = (number_: number): boolean => number_ % 2 === 0
@@ -7,8 +8,7 @@ Deno.test('countBy', async (t) => {
   await t.step(
     'should count the number of elements that satisfy a condition',
     () => {
-      const array = [1, 2, 3, 4, 5]
-      assertEquals(countBy(array, isEven), 2)
+      assertEquals(countBy(countByFixture, isEven), 2)
     },
   )
 

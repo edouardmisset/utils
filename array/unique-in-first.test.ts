@@ -1,8 +1,12 @@
 import { assertEquals } from '@std/assert'
 import { uniqueInFirst } from './unique-in-first.ts'
+import {
+  uniqueInFirstFixtureA,
+  uniqueInFirstFixtureB,
+} from './unique-in-first.fixture.ts'
 
-const array1 = [1, 2, 3] as const
-const array2 = [2, 3, 4] as const
+const array1 = uniqueInFirstFixtureA
+const array2 = uniqueInFirstFixtureB
 const array3 = [3, 4, 5] as const
 const emptyArray: number[] = [] as const
 const singleElement1 = [1] as const

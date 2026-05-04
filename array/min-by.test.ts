@@ -1,11 +1,9 @@
 import { assertEquals } from '@std/assert'
 import { minBy } from './min-by.ts'
+import { minByFixture } from './min-by.fixture.ts'
 
 Deno.test('minBy', async (t) => {
-  const objects = [{ id: 1, value: 10 }, { id: 2, value: 5 }, {
-    id: 3,
-    value: 20,
-  }]
+  const objects = minByFixture
 
   await t.step(
     'should return the object with the minimum value for a specific key',

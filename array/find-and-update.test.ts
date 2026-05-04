@@ -1,11 +1,11 @@
 import { assertEquals } from '@std/assert'
 import { findAndUpdate } from './find-and-update.ts'
+import { findAndUpdateFixture } from './find-and-update.fixture.ts'
 
 Deno.test('findAndUpdate', async (t) => {
   await t.step('should update an object in an array', () => {
-    const array = [{ id: 1, name: 'Alice' }, { id: 2, name: 'Bob' }]
     const result = findAndUpdate({
-      array,
+      array: findAndUpdateFixture,
       key: 'id',
       value: 1,
       updates: { name: 'Updated' },
@@ -14,14 +14,13 @@ Deno.test('findAndUpdate', async (t) => {
   })
 
   await t.step('should not update an object if the key does not match', () => {
-    const array = [{ id: 1, name: 'Alice' }, { id: 2, name: 'Bob' }]
     const result = findAndUpdate({
-      array,
+      array: findAndUpdateFixture,
       key: 'id',
       value: 3,
       updates: { name: 'Updated' },
     })
-    assertEquals(result, array)
+    assertEquals(result, findAndUpdateFixture)
   })
 
   await t.step('should handle an empty array', () => {
