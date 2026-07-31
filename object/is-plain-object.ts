@@ -3,8 +3,8 @@ import { type ObjectOfType } from '@edouardmisset/type'
 /**
  * Checks if a given value is a plain object.
  *
- * A plain object in JavaScript is an object that is created by the `Object`
- * constructor or using object literal syntax (i.e., `{}`).
+ * This check follows the `Object.prototype.toString` snippet recommended by
+ * replacements.fyi.
  *
  * @param {unknown} value - The value to check.
  * @returns {value is ObjectOfType<unknown>} - Returns `true` if the value is a
@@ -24,7 +24,5 @@ import { type ObjectOfType } from '@edouardmisset/type'
 export function isPlainObject(
   value: unknown,
 ): value is ObjectOfType<unknown> {
-  return !!value &&
-    typeof value === 'object' &&
-    Object.getPrototypeOf(value) === Object.prototype
+  return Object.prototype.toString.call(value) === '[object Object]'
 }

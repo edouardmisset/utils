@@ -21,16 +21,16 @@ Deno.test('isPlainObject', async (t) => {
   )
 
   await t.step(
-    'should return false for object created with Object.create(null)',
+    'should return true for object created with Object.create(null)',
     () => {
       const result = isPlainObject(Object.create(null))
-      assert(!result)
+      assert(result)
     },
   )
 
-  await t.step('should return false for class instance', () => {
+  await t.step('should return true for class instance', () => {
     class MyClass {}
-    assert(!isPlainObject(new MyClass()))
+    assert(isPlainObject(new MyClass()))
   })
 
   await t.step('should return false for array', () => {
