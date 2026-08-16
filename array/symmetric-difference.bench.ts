@@ -48,44 +48,85 @@ function symmetricDifferenceOptimised<T>(
 // Fixture data
 // ---------------------------------------------------------------------------
 
-const SIZE = 1_000
+function makeFixtures(size: number) {
+  return {
+    arr1: Array.from({ length: size }, (_, i) => i),
+    arr2: Array.from({ length: size }, (_, i) => i + size / 2),
+    arr3: Array.from({ length: size }, (_, i) => i + size),
+  }
+}
 
-const arr1 = Array.from({ length: SIZE }, (_, i) => i)
-const arr2 = Array.from({ length: SIZE }, (_, i) => i + SIZE / 2)
-const arr3 = Array.from({ length: SIZE }, (_, i) => i + SIZE)
+const s100 = makeFixtures(100)
+const s10k = makeFixtures(10_000)
 
 // ---------------------------------------------------------------------------
-// Benchmarks
+// Benchmarks — 100 elements per array
 // ---------------------------------------------------------------------------
 
 Deno.bench(
-  'symmetricDifference (current)   — 2 arrays',
-  { group: 'symDiff-2' },
+  'symmetricDifference (current)   — 100 items, 2 arrays',
+  { group: 'symDiff-100-2' },
   () => {
-    symmetricDifferenceCurrent(arr1, arr2)
+    symmetricDifferenceCurrent(s100.arr1, s100.arr2)
   },
 )
 
 Deno.bench(
-  'symmetricDifference (optimised) — 2 arrays',
-  { group: 'symDiff-2', baseline: true },
+  'symmetricDifference (optimised) — 100 items, 2 arrays',
+  { group: 'symDiff-100-2', baseline: true },
   () => {
-    symmetricDifferenceOptimised(arr1, arr2)
+    symmetricDifferenceOptimised(s100.arr1, s100.arr2)
   },
 )
 
 Deno.bench(
-  'symmetricDifference (current)   — 3 arrays',
-  { group: 'symDiff-3' },
+  'symmetricDifference (current)   — 100 items, 3 arrays',
+  { group: 'symDiff-100-3' },
   () => {
-    symmetricDifferenceCurrent(arr1, arr2, arr3)
+    symmetricDifferenceCurrent(s100.arr1, s100.arr2, s100.arr3)
   },
 )
 
 Deno.bench(
-  'symmetricDifference (optimised) — 3 arrays',
-  { group: 'symDiff-3', baseline: true },
+  'symmetricDifference (optimised) — 100 items, 3 arrays',
+  { group: 'symDiff-100-3', baseline: true },
   () => {
-    symmetricDifferenceOptimised(arr1, arr2, arr3)
+    symmetricDifferenceOptimised(s100.arr1, s100.arr2, s100.arr3)
+  },
+)
+
+// ---------------------------------------------------------------------------
+// Benchmarks — 10 000 elements per array
+// ---------------------------------------------------------------------------
+
+Deno.bench(
+  'symmetricDifference (current)   — 10 000 items, 2 arrays',
+  { group: 'symDiff-10k-2' },
+  () => {
+    symmetricDifferenceCurrent(s10k.arr1, s10k.arr2)
+  },
+)
+
+Deno.bench(
+  'symmetricDifference (optimised) — 10 000 items, 2 arrays',
+  { group: 'symDiff-10k-2', baseline: true },
+  () => {
+    symmetricDifferenceOptimised(s10k.arr1, s10k.arr2)
+  },
+)
+
+Deno.bench(
+  'symmetricDifference (current)   — 10 000 items, 3 arrays',
+  { group: 'symDiff-10k-3' },
+  () => {
+    symmetricDifferenceCurrent(s10k.arr1, s10k.arr2, s10k.arr3)
+  },
+)
+
+Deno.bench(
+  'symmetricDifference (optimised) — 10 000 items, 3 arrays',
+  { group: 'symDiff-10k-3', baseline: true },
+  () => {
+    symmetricDifferenceOptimised(s10k.arr1, s10k.arr2, s10k.arr3)
   },
 )

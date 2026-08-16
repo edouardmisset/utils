@@ -40,25 +40,48 @@ function selectByOptimised<
 // Fixture data
 // ---------------------------------------------------------------------------
 
-const SIZE = 1_000
+const items100: Item[] = Array.from({ length: 100 }, (_, i) => ({
+  id: i,
+  name: `name-${i}`,
+}))
 
-const items: Item[] = Array.from({ length: SIZE }, (_, i) => ({
+const items10k: Item[] = Array.from({ length: 10_000 }, (_, i) => ({
   id: i,
   name: `name-${i}`,
 }))
 
 // ---------------------------------------------------------------------------
-// Benchmarks
+// Benchmarks — 100 items
 // ---------------------------------------------------------------------------
 
-Deno.bench('selectBy (current)   — 1 000 items', { group: 'selectBy' }, () => {
-  selectByCurrent(items, 'name')
+Deno.bench('selectBy (current)   — 100 items', { group: 'selectBy-100' }, () => {
+  selectByCurrent(items100, 'name')
 })
 
 Deno.bench(
-  'selectBy (optimised) — 1 000 items',
-  { group: 'selectBy', baseline: true },
+  'selectBy (optimised) — 100 items',
+  { group: 'selectBy-100', baseline: true },
   () => {
-    selectByOptimised(items, 'name')
+    selectByOptimised(items100, 'name')
+  },
+)
+
+// ---------------------------------------------------------------------------
+// Benchmarks — 10 000 items
+// ---------------------------------------------------------------------------
+
+Deno.bench(
+  'selectBy (current)   — 10 000 items',
+  { group: 'selectBy-10k' },
+  () => {
+    selectByCurrent(items10k, 'name')
+  },
+)
+
+Deno.bench(
+  'selectBy (optimised) — 10 000 items',
+  { group: 'selectBy-10k', baseline: true },
+  () => {
+    selectByOptimised(items10k, 'name')
   },
 )

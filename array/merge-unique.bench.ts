@@ -35,27 +35,48 @@ function mergeUniqueOptimised<T>(
 // Fixture data
 // ---------------------------------------------------------------------------
 
-const SIZE = 1_000
+const left100 = Array.from({ length: 100 }, (_, i) => i)
+const right100 = Array.from({ length: 100 }, (_, i) => i + 50)
 
-const left = Array.from({ length: SIZE }, (_, i) => i)
-const right = Array.from({ length: SIZE }, (_, i) => i + SIZE / 2)
+const left10k = Array.from({ length: 10_000 }, (_, i) => i)
+const right10k = Array.from({ length: 10_000 }, (_, i) => i + 5_000)
 
 // ---------------------------------------------------------------------------
-// Benchmarks
+// Benchmarks — 100 + 100 items
 // ---------------------------------------------------------------------------
 
 Deno.bench(
-  'mergeUnique (current)   — 1 000 + 1 000 items',
-  { group: 'mergeUnique' },
+  'mergeUnique (current)   — 100 + 100 items',
+  { group: 'mergeUnique-100' },
   () => {
-    mergeUniqueCurrent(left, right)
+    mergeUniqueCurrent(left100, right100)
   },
 )
 
 Deno.bench(
-  'mergeUnique (optimised) — 1 000 + 1 000 items',
-  { group: 'mergeUnique', baseline: true },
+  'mergeUnique (optimised) — 100 + 100 items',
+  { group: 'mergeUnique-100', baseline: true },
   () => {
-    mergeUniqueOptimised(left, right)
+    mergeUniqueOptimised(left100, right100)
+  },
+)
+
+// ---------------------------------------------------------------------------
+// Benchmarks — 10 000 + 10 000 items
+// ---------------------------------------------------------------------------
+
+Deno.bench(
+  'mergeUnique (current)   — 10 000 + 10 000 items',
+  { group: 'mergeUnique-10k' },
+  () => {
+    mergeUniqueCurrent(left10k, right10k)
+  },
+)
+
+Deno.bench(
+  'mergeUnique (optimised) — 10 000 + 10 000 items',
+  { group: 'mergeUnique-10k', baseline: true },
+  () => {
+    mergeUniqueOptimised(left10k, right10k)
   },
 )

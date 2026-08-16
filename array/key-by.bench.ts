@@ -46,25 +46,44 @@ function keyByOptimised<
 // Fixture data
 // ---------------------------------------------------------------------------
 
-const SIZE = 1_000
+const items100: Item[] = Array.from({ length: 100 }, (_, i) => ({
+  id: i,
+  name: `name-${i}`,
+}))
 
-const items: Item[] = Array.from({ length: SIZE }, (_, i) => ({
+const items10k: Item[] = Array.from({ length: 10_000 }, (_, i) => ({
   id: i,
   name: `name-${i}`,
 }))
 
 // ---------------------------------------------------------------------------
-// Benchmarks
+// Benchmarks — 100 items
 // ---------------------------------------------------------------------------
 
-Deno.bench('keyBy (current)   — 1 000 items', { group: 'keyBy' }, () => {
-  keyByCurrent(items, 'id')
+Deno.bench('keyBy (current)   — 100 items', { group: 'keyBy-100' }, () => {
+  keyByCurrent(items100, 'id')
 })
 
 Deno.bench(
-  'keyBy (optimised) — 1 000 items',
-  { group: 'keyBy', baseline: true },
+  'keyBy (optimised) — 100 items',
+  { group: 'keyBy-100', baseline: true },
   () => {
-    keyByOptimised(items, 'id')
+    keyByOptimised(items100, 'id')
+  },
+)
+
+// ---------------------------------------------------------------------------
+// Benchmarks — 10 000 items
+// ---------------------------------------------------------------------------
+
+Deno.bench('keyBy (current)   — 10 000 items', { group: 'keyBy-10k' }, () => {
+  keyByCurrent(items10k, 'id')
+})
+
+Deno.bench(
+  'keyBy (optimised) — 10 000 items',
+  { group: 'keyBy-10k', baseline: true },
+  () => {
+    keyByOptimised(items10k, 'id')
   },
 )

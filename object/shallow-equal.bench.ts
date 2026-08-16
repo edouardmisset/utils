@@ -60,44 +60,77 @@ function shallowEqualOptimised<Object_ extends ObjectOfType>(
 // Fixture data
 // ---------------------------------------------------------------------------
 
-// Same-size objects — sorting happens in both implementations
-const objA = Object.fromEntries(
-  Array.from({ length: 50 }, (_, i) => [`key${i}`, i]),
+// Same-size objects — 100 keys
+const objA100 = Object.fromEntries(
+  Array.from({ length: 100 }, (_, i) => [`key${i}`, i]),
 )
-const objB = Object.fromEntries(
-  Array.from({ length: 50 }, (_, i) => [`key${i}`, i]),
+const objB100 = Object.fromEntries(
+  Array.from({ length: 100 }, (_, i) => [`key${i}`, i]),
+)
+
+// Same-size objects — 10 000 keys
+const objA10k = Object.fromEntries(
+  Array.from({ length: 10_000 }, (_, i) => [`key${i}`, i]),
+)
+const objB10k = Object.fromEntries(
+  Array.from({ length: 10_000 }, (_, i) => [`key${i}`, i]),
 )
 
 // Different-size objects — optimised version skips sorting entirely
+// 100 vs 10 000 keys (early exit scenario)
 const objSmall = Object.fromEntries(
-  Array.from({ length: 10 }, (_, i) => [`key${i}`, i]),
+  Array.from({ length: 100 }, (_, i) => [`key${i}`, i]),
 )
 const objLarge = Object.fromEntries(
-  Array.from({ length: 50 }, (_, i) => [`key${i}`, i]),
+  Array.from({ length: 10_000 }, (_, i) => [`key${i}`, i]),
 )
 
 // ---------------------------------------------------------------------------
-// Benchmarks
+// Benchmarks — same size, 100 keys
 // ---------------------------------------------------------------------------
 
 Deno.bench(
-  'shallowEqual (current)   — same size (50 keys)',
-  { group: 'shallowEqual-same' },
+  'shallowEqual (current)   — same size, 100 keys',
+  { group: 'shallowEqual-same-100' },
   () => {
-    shallowEqualCurrent(objA, objB)
+    shallowEqualCurrent(objA100, objB100)
   },
 )
 
 Deno.bench(
-  'shallowEqual (optimised) — same size (50 keys)',
-  { group: 'shallowEqual-same', baseline: true },
+  'shallowEqual (optimised) — same size, 100 keys',
+  { group: 'shallowEqual-same-100', baseline: true },
   () => {
-    shallowEqualOptimised(objA, objB)
+    shallowEqualOptimised(objA100, objB100)
+  },
+)
+
+// ---------------------------------------------------------------------------
+// Benchmarks — same size, 10 000 keys
+// ---------------------------------------------------------------------------
+
+Deno.bench(
+  'shallowEqual (current)   — same size, 10 000 keys',
+  { group: 'shallowEqual-same-10k' },
+  () => {
+    shallowEqualCurrent(objA10k, objB10k)
   },
 )
 
 Deno.bench(
-  'shallowEqual (current)   — different sizes (early exit)',
+  'shallowEqual (optimised) — same size, 10 000 keys',
+  { group: 'shallowEqual-same-10k', baseline: true },
+  () => {
+    shallowEqualOptimised(objA10k, objB10k)
+  },
+)
+
+// ---------------------------------------------------------------------------
+// Benchmarks — different sizes (early exit): 100 vs 10 000 keys
+// ---------------------------------------------------------------------------
+
+Deno.bench(
+  'shallowEqual (current)   — different sizes, early exit',
   { group: 'shallowEqual-diff' },
   () => {
     shallowEqualCurrent(objSmall, objLarge)
@@ -105,7 +138,7 @@ Deno.bench(
 )
 
 Deno.bench(
-  'shallowEqual (optimised) — different sizes (early exit)',
+  'shallowEqual (optimised) — different sizes, early exit',
   { group: 'shallowEqual-diff', baseline: true },
   () => {
     shallowEqualOptimised(objSmall, objLarge)
