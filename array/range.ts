@@ -68,10 +68,11 @@ export function range(
   const length = Math.ceil(Math.abs(upperBound - lowerBound) / Math.abs(step)) +
     1
 
+  const absStep = step < 0 ? -step : step
   return Array.from(
     { length },
-    (_, index) => lowerBound + index * ((step < 0) ? -step : step),
-  ).sort((a, b) => a - b)
+    (_, index) => lowerBound + index * absStep,
+  )
 }
 
 /**

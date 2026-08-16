@@ -34,10 +34,13 @@ export function shallowEqual<Object_ extends ObjectOfType>(
   leftObject: Object_,
   rightObject: Object_,
 ): boolean {
-  const leftKeys = objectKeys(leftObject).sort()
-  const rightKeys = objectKeys(rightObject).sort()
+  const leftKeys = objectKeys(leftObject)
+  const rightKeys = objectKeys(rightObject)
 
   if (leftKeys.length !== rightKeys.length) return false
+
+  leftKeys.sort()
+  rightKeys.sort()
 
   return leftKeys.every(
     (

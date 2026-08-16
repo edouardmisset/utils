@@ -35,8 +35,6 @@ export function uniqueInFirst<T>(
   firstArray: T[] | readonly T[],
   ...otherArrays: (T[] | readonly T[])[]
 ): T[] {
-  const sets = otherArrays.map((array) => new Set(array))
-  return firstArray.filter(
-    (item) => !sets.some((set) => set.has(item)),
-  )
+  const excluded = new Set(otherArrays.flat())
+  return firstArray.filter((item) => !excluded.has(item))
 }
