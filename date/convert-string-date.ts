@@ -50,10 +50,9 @@ It should be in the form: "dd/mm/yyyy hh:mm"`,
     )
   }
 
-  const [shortDate, shortTime = ''] = dateString.split(' ')
-  const [days, months, years] = shortDate.split('/')
-  const [hours = 0, minutes = 0] = shortTime.split(':')
-  const result = `${years}-${months}-${days}T${hours}:${minutes}`
+  const result = `${dateString.slice(6, 10)}-${dateString.slice(3, 5)}-${
+    dateString.slice(0, 2)
+  }T${dateString.slice(11)}`
 
   return ok(result)
 }

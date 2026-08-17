@@ -8,7 +8,7 @@ type DebounceParameters = CallbackAndDelay & {
    * An optional object to store the timer ID, allowing external control or
    * cancellation.
    */
-  timerId?: { id: number }
+  timerId?: { id: ReturnType<typeof setTimeout> | -1 }
 }
 
 /**

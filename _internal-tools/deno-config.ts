@@ -11,7 +11,7 @@ export const ROOT_DIRECTORY: string = new URL('..', import.meta.url).pathname
 export const ROOT_DENO_FILE_PATH: string = join(ROOT_DIRECTORY, DENO_FILE_NAME)
 
 /** Basic Deno configuration schema */
-const basicDenoConfigSchema = z.object({
+const basicDenoConfigSchema = z.looseObject({
   name: z.string(),
   version: z.string(),
   workspace: z.array(z.string()),

@@ -34,7 +34,9 @@ export function mergeUnique<T>(
   leftArray: T[] | readonly T[],
   rightArray: T[] | readonly T[],
 ): T[] {
-  return Array.from(new Set([...leftArray, ...rightArray]))
+  const set = new Set(leftArray)
+  for (const v of rightArray) set.add(v)
+  return Array.from(set)
 }
 
 /**

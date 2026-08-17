@@ -50,12 +50,10 @@ export function invert<
 >(
   object: Object_,
 ): Result {
-  return Object.entries(object).reduce((accumulator, [key, value]) => {
-    if (!['string', 'number', 'symbol'].includes(typeof value)) {
-      return accumulator
-    }
-
-    Object.assign(accumulator, { [String(value)]: key })
-    return accumulator
-  }, {} as Result)
+  const result: Record<PropertyKey, Key> = {}
+  for (const [key, value] of Object.entries(object)) {
+    if (!['string', 'number', 'symbol'].includes(typeof value)) continue
+    result[value] = key as Key
+  }
+  return result as Result
 }

@@ -75,5 +75,6 @@ export function isDateInRange(
   options: StartAndEndDate,
 ): boolean {
   const { startDate, endDate } = options
-  return startDate <= date && date <= endDate
+  const time = date.getTime()
+  return startDate.getTime() <= time && time <= endDate.getTime()
 }

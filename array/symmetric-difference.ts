@@ -33,11 +33,15 @@
  */
 export function symmetricDifference<T>(...arrays: (T[] | readonly T[])[]): T[] {
   const counts = new Map<T, number>()
-  arrays.flat().forEach((value) => {
-    counts.set(value, (counts.get(value) ?? 0) + 1)
-  })
+  for (const array of arrays) {
+    for (const value of array) {
+      counts.set(value, (counts.get(value) ?? 0) + 1)
+    }
+  }
 
-  return [...counts.entries()]
-    .filter(([, count]) => count === 1)
-    .map(([value]) => value)
+  const result: T[] = []
+  for (const [value, count] of counts) {
+    if (count === 1) result.push(value)
+  }
+  return result
 }

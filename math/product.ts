@@ -22,8 +22,15 @@
  * ```
  */
 export function product(...number_: (number | number[])[]): number {
-  return number_.flat().reduce(
-    (accumulator, value) => accumulator * value,
-    1,
-  )
+  let total = 1
+  for (const value of number_) {
+    if (Array.isArray(value)) {
+      for (let index = 0; index < value.length; index++) {
+        if (index in value) total *= value[index]
+      }
+    } else {
+      total *= value
+    }
+  }
+  return total
 }

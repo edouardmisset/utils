@@ -24,5 +24,9 @@ export function selectBy<
   array: Object_[],
   key: Key,
 ): Object_[Key][] {
-  return array.flatMap((item) => (Object.hasOwn(item, key) ? [item[key]] : []))
+  const result: Object_[Key][] = []
+  for (const item of array) {
+    if (Object.hasOwn(item, key)) result.push(item[key])
+  }
+  return result
 }

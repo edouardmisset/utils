@@ -21,6 +21,7 @@ async function getTypescriptFiles(directory: string): Promise<string[]> {
     if (!entry.name.endsWith('.ts')) continue
     if (entry.name === BARREL_FILE_NAME) continue
     if (entry.name.endsWith('.test.ts')) continue
+    if (entry.name.endsWith('.bench.ts')) continue
     expected.push(entry.name)
   }
   expected.sort()

@@ -82,26 +82,22 @@ export function filterByDate<Object_ extends ObjectOfType<unknown>>(
 
   if (Object.keys(options).length === 0) return ok(array)
 
-  const filteredArrayByDate = array.filter((o) => {
+  const includesDate: (date: Date) => boolean = isYearOption(options)
+    ? (date) => isDateInYear(date, options.year)
+    : isDateInRangeOption(options)
+    ? (date) => isDateInRange(date, options)
+    : (date) => isDateInDuration(date, options)
+
+  return ok(array.filter((o) => {
     const dateValue = typeof keyOrFunction === 'function'
       ? keyOrFunction(o)
       : o[keyOrFunction]
 
     if (!isDateCompatible(dateValue)) return false
 
-    const date = new Date(dateValue)
-    if (!isValidDate(date)) return false
-
-    if (isYearOption(options)) return isDateInYear(date, options.year)
-
-    if (isDateInRangeOption(options)) return isDateInRange(date, options)
-
-    return isDateInDuration(date, options)
-  })
-
-  return ok(
-    filteredArrayByDate,
-  )
+    const date = dateValue instanceof Date ? dateValue : new Date(dateValue)
+    return isValidDate(date) && includesDate(date)
+  }))
 }
 
 /**
