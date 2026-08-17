@@ -29,7 +29,7 @@ export const throttle = (parameters: CallbackAndDelay): AnyVoidFunction => {
 
   let lastCalled = 0
   return (...arguments_) => {
-    const now = new Date().getTime()
+    const now = Date.now()
     if (now - lastCalled < delay) return
 
     lastCalled = now

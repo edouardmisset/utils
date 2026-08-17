@@ -19,4 +19,9 @@ Deno.test('product function', async (t) => {
     assertEquals(product(5, [5, 5, 5]), 625)
     assertEquals(product([0, 2], 3, 4), 0)
   })
+
+  await t.step('ignores empty slots like Array.prototype.flat', () => {
+    const sparse = [2, , 3] as number[]
+    assertEquals(product(sparse), 6)
+  })
 })

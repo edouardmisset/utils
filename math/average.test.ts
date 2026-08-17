@@ -40,4 +40,9 @@ Deno.test('average function', async (t) => {
       true,
     )
   })
+
+  await t.step('ignores empty slots like Array.prototype.flat', () => {
+    const sparse = [1, , 3] as number[]
+    assertEquals(average(sparse).data, 2)
+  })
 })

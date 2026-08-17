@@ -39,9 +39,22 @@ import { err, ok, type Result } from '@edouardmisset/function'
 export function average(
   ...numbers: (number[] | number)[]
 ): Result<number, Error> {
-  const nums = numbers.flat()
+  let count = 0
+  let total = 0
+  for (const value of numbers) {
+    if (Array.isArray(value)) {
+      for (let index = 0; index < value.length; index++) {
+        if (!(index in value)) continue
+        total += value[index]
+        count++
+      }
+    } else {
+      total += value
+      count++
+    }
+  }
 
-  if (nums.length === 0) {
+  if (count === 0) {
     return err(
       new Error(
         `Cannot calculate average if no values are passed in (${
@@ -51,10 +64,7 @@ export function average(
     )
   }
 
-  const mean = nums.reduce((accumulator, value) => accumulator + value, 0) /
-    nums.length
-
-  return ok(mean)
+  return ok(total / count)
 }
 
 /**

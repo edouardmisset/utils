@@ -42,10 +42,11 @@ export function isDateInLast12Months(
   }
 
   const now = new Date()
-  const lastYear = new Date()
+  const lastYear = new Date(now)
   lastYear.setFullYear(now.getFullYear() - 1)
   lastYear.setHours(0, 0, 0, 0)
-  const result = lastYear <= parsedDate && parsedDate <= now
+  const time = parsedDate.getTime()
+  const result = lastYear.getTime() <= time && time <= now.getTime()
 
   return ok(result)
 }

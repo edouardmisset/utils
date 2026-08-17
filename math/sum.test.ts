@@ -21,4 +21,9 @@ Deno.test('sum', async (t) => {
     const result = sum([])
     assertEquals(result, 0)
   })
+
+  await t.step('ignores empty slots like Array.prototype.flat', () => {
+    const sparse = [1, , 3] as number[]
+    assertEquals(sum(sparse), 4)
+  })
 })

@@ -38,8 +38,7 @@
 export function isValidDate(...dates: unknown[]): boolean {
   for (const date of dates) {
     if (
-      !(date instanceof Date) || Number.isNaN(date.getTime()) ||
-      date.toString() === 'Invalid Date'
+      !(date instanceof Date) || Number.isNaN(date.getTime())
     ) {
       return false
     }
