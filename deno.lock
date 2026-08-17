@@ -82,11 +82,11 @@
   },
   "workspace": {
     "dependencies": [
-      "jsr:@edouardmisset/array@^5.0.1",
-      "jsr:@edouardmisset/date@^5.0.1",
-      "jsr:@edouardmisset/function@^5.0.1",
-      "jsr:@edouardmisset/math@5",
-      "jsr:@edouardmisset/object@5",
+      "jsr:@edouardmisset/array@^5.1.0",
+      "jsr:@edouardmisset/date@^5.1.0",
+      "jsr:@edouardmisset/function@^5.1.0",
+      "jsr:@edouardmisset/math@^5.1.0",
+      "jsr:@edouardmisset/object@^5.1.0",
       "jsr:@edouardmisset/text@5",
       "jsr:@edouardmisset/type@5",
       "jsr:@std/assert@^1.0.19",
