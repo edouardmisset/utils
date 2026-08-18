@@ -1,0 +1,63 @@
+name: Performance regression
+
+on:
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+concurrency:
+  group: performance-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  benchmark:
+    name: Compare base and candidate
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+
+    steps:
+      - name: Check out candidate
+        uses: actions/checkout@v4
+        with:
+          path: candidate
+
+      - name: Check out base
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.base.sha }}
+          path: baseline
+
+      - name: Set up Deno
+        uses: denoland/setup-deno@v2
+        with:
+          deno-version: v2.9.5
+
+      - name: Run base and candidate benchmarks
+        run: >-
+          deno run --allow-read --allow-write --allow-run
+          candidate/benchmarks/run.ts
+          --baseline=baseline
+          --candidate=candidate
+          --output=benchmark-results
+          --runs=3
+
+      - name: Compare results
+        run: >-
+          deno run --allow-read --allow-write
+          --allow-env=GITHUB_STEP_SUMMARY
+          candidate/benchmarks/compare.ts
+          --baseline=benchmark-results/baseline
+          --candidate=benchmark-results/candidate
+          --threshold=0.10
+          --runs=3
+
+      - name: Upload raw benchmark results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: performance-results
+          path: benchmark-results
+          retention-days: 14
