@@ -234,9 +234,15 @@ export const performanceCases: PerformanceCase[] = [
     run: () => consume(utils.isDateInRangeOption({ startDate, endDate })),
   },
   {
-    name: 'date/isDateInYear',
+    name: 'date/isDateInYear — 10k dates',
     exports: ['isDateInYear'],
-    run: () => consume(utils.isDateInYear(date, 2024)),
+    run: () => {
+      let matches = 0
+      for (const value of dateValues) {
+        if (utils.isDateInYear(value, 2024)) matches++
+      }
+      consume(matches)
+    },
   },
   {
     name: 'date/isValidDate',
