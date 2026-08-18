@@ -129,6 +129,7 @@ async function main(): Promise<void> {
   const baselineDirectory = argument('baseline')
   const candidateDirectory = argument('candidate')
   const outputPath = argument('output')
+  const summaryPath = outputPath ?? Deno.env.get('GITHUB_STEP_SUMMARY')
   const threshold = Number(argument('threshold') ?? '0.10')
   const runs = Number(argument('runs') ?? '3')
   if (
@@ -157,7 +158,9 @@ async function main(): Promise<void> {
   )
   const markdown = report(comparisons, threshold)
   globalThis.console.log(markdown)
-  if (outputPath) await Deno.writeTextFile(outputPath, markdown)
+  if (summaryPath) {
+    await Deno.writeTextFile(summaryPath, markdown, { append: !outputPath })
+  }
   if (comparisons.some(({ passed }) => !passed)) Deno.exit(1)
 }
 

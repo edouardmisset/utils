@@ -35,51 +35,24 @@ jobs:
         with:
           deno-version: v2.9.5
 
-      - name: Install benchmark suite in base checkout
-        run: |
-          mkdir -p baseline/benchmarks
-          cp candidate/benchmarks/performance.bench.ts \
-            baseline/benchmarks/performance.bench.ts
-
       - name: Run base and candidate benchmarks
-        shell: bash
-        run: |
-          mkdir -p benchmark-results/baseline benchmark-results/candidate
-
-          run_benchmark() {
-            local checkout="$1"
-            local output="$2"
-            deno bench --config "${checkout}/deno.json" --no-check --json \
-              "${checkout}/benchmarks/performance.bench.ts" > "${output}"
-          }
-
-          for iteration in 1 2 3; do
-            if ((iteration % 2 == 1)); then
-              run_benchmark baseline \
-                "benchmark-results/baseline/${iteration}.json"
-              run_benchmark candidate \
-                "benchmark-results/candidate/${iteration}.json"
-            else
-              run_benchmark candidate \
-                "benchmark-results/candidate/${iteration}.json"
-              run_benchmark baseline \
-                "benchmark-results/baseline/${iteration}.json"
-            fi
-          done
+        run: >-
+          deno run --allow-read --allow-write --allow-run
+          candidate/benchmarks/run.ts
+          --baseline=baseline
+          --candidate=candidate
+          --output=benchmark-results
+          --runs=3
 
       - name: Compare results
         run: >-
           deno run --allow-read --allow-write
+          --allow-env=GITHUB_STEP_SUMMARY
           candidate/benchmarks/compare.ts
           --baseline=benchmark-results/baseline
           --candidate=benchmark-results/candidate
           --threshold=0.10
           --runs=3
-          --output=${{ runner.temp }}/performance-summary.md
-
-      - name: Add comparison to workflow summary
-        if: always()
-        run: cat "${{ runner.temp }}/performance-summary.md" >> "$GITHUB_STEP_SUMMARY"
 
       - name: Upload raw benchmark results
         if: always()
